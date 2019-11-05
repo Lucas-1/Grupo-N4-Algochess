@@ -1,25 +1,19 @@
 package fiuba.algo3.tp2;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.assertTrue;
 
+import org.junit.Test;
 
+/**
+ * Unit test for simple App.
+ */
 public class AppTest 
-    extends TestCase
 {
-   
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    public void testApp()
+    /**
+     * Rigorous Test :-)
+     */
+    @Test
+    public void shouldAnswerWithTrue()
     {
         assertTrue( true );
     }
