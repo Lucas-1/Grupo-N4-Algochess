@@ -75,10 +75,12 @@ public class ColocacionDeEntidadesTest {
         Catapulta catapulta_5 = new Catapulta(1);
 
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
-        jugador.insertarEntidadEnPosicion(catapulta_2,4,5,tablero);
-        jugador.insertarEntidadEnPosicion(catapulta_3,3,5,tablero);
-        jugador.insertarEntidadEnPosicion(catapulta_4,2,5,tablero);
+        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero); // gasta 5 puntos
+        jugador.insertarEntidadEnPosicion(catapulta_2,4,5,tablero); // gasta 5 puntos
+        jugador.insertarEntidadEnPosicion(catapulta_3,3,5,tablero); // gasta 5 puntos
+        jugador.insertarEntidadEnPosicion(catapulta_4,2,5,tablero); // gasta 5 puntos
+
+        // jugador se quedo con 0 puntos despues de gastar 20
 
         assertThrows(JugadorNoLeAlcanzaParaEntidadException.class,
                 ()->{
