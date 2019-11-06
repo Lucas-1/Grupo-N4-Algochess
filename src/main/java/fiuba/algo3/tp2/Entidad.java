@@ -5,7 +5,7 @@ public abstract class Entidad {
     protected int puntos_de_vida;
     protected int costo;
     protected int danio;
-    protected int color; // 1 jugador 1 ----  2 jugador 2.
+    protected int color; // 1 jugador blanco ----  2 jugador negro.
 
 
     // getters

@@ -28,10 +28,17 @@ public class Casillero {
 
     }
 
+    public void borrarUnidad() {
+
+        ocupado = false;
+    }
+
 
     //getter
     public Entidad getEntidad() {
         return entidad;
     }
+
+    public boolean estaOcupado() { return ocupado; }
 
 }

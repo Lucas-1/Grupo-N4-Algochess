@@ -28,6 +28,17 @@ public class Tablero {
     }
 
 
+    public void borrarUnidad(int pos_fila, int pos_columna) {
+
+        casilleros[pos_fila][pos_columna].borrarUnidad();
+
+    }
+
+    public boolean casilleroOcupado(int pos_fila, int pos_columna) {
+
+        return casilleros[pos_fila][pos_columna].estaOcupado();
+    }
+
     // getter
     public Casillero getCasillero(int pos_fila, int pos_columna) {
 
