@@ -19,6 +19,7 @@ public class Jugador {
             throw new JugadorNoLeAlcanzaParaEntidadException();
 
         tablero.agregarUnidad(entidad, pos_fila, pos_columna);
+        entidad.setPosicion(pos_fila,pos_columna);
         puntos_disponibles = puntos_disponibles - entidad.getCosto();
         ++cantidad_de_entidades;
     }
@@ -33,6 +34,13 @@ public class Jugador {
     public boolean sigue_en_juego() {
 
         return (cantidad_de_entidades != 0);
+    }
+
+    public void moverEntidad(Entidad entidad,Direccion direccion, Tablero tablero){
+        int nuevaPosicionX = entidad.getPosicionX() + direccion.getDireccionX();
+        int nuevaPosicionY = entidad.getPosicionY() + direccion.getDireccionY();
+        tablero.borrarUnidad(entidad.getPosicionX(),entidad.getPosicionY());
+        tablero.agregarUnidad(entidad,nuevaPosicionX,nuevaPosicionY);
     }
 
 

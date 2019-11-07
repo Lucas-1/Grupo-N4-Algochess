@@ -2,6 +2,8 @@ package fiuba.algo3.tp2;
 
 public abstract class Entidad {
 
+    protected int posicionX;
+    protected int posicionY;
     protected int puntos_de_vida;
     protected int costo;
     protected int danio;
@@ -40,4 +42,18 @@ public abstract class Entidad {
 
     public int getPuntosDeVida() { return puntos_de_vida;}
 
+    public int getPosicionX() {
+        return posicionX;
+    }
+
+    public int getPosicionY() {
+        return posicionY;
+    }
+
+    //setters
+
+    public void setPosicion(int nuevaPosicionX,int nuevaPosicionY){
+        posicionX = nuevaPosicionX;
+        posicionY = nuevaPosicionY;
+    }
 }

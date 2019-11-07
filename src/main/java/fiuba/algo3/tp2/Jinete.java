@@ -9,4 +9,6 @@ public class Jinete extends Entidad {
         danio = 5;
         color = un_color;
     }
+
+
 }
