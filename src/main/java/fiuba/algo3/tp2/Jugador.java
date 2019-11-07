@@ -2,41 +2,41 @@ package fiuba.algo3.tp2;
 
 public class Jugador {
 
-    private int puntos_disponibles; // 20
+    private int puntos_disponibles;
     private int cantidad_de_entidades;
     private int color;
 
-    public Jugador(int un_color) {
+    public Jugador(int color) {
 
         puntos_disponibles = 20;
         cantidad_de_entidades = 0;
-        color = un_color;
+        this.color = color;
     }
 
-    public void insertarEntidadEnPosicion(Entidad entidad, int pos_fila, int pos_columna, Tablero tablero) {
+    public void insertarEntidadEnPosicion(Entidad entidad, int posicionFila, int posicionColumna, Tablero tablero) {
 
         if (puntos_disponibles < entidad.getCosto())
             throw new JugadorNoLeAlcanzaParaEntidadException();
 
-        tablero.agregarUnidad(entidad, pos_fila, pos_columna);
-        entidad.setPosicion(pos_fila,pos_columna);
+        tablero.agregarUnidad(entidad, posicionFila, posicionColumna);
+        entidad.setPosicion(posicionFila,posicionColumna);
         puntos_disponibles = puntos_disponibles - entidad.getCosto();
         ++cantidad_de_entidades;
     }
 
-    public void borrarUnidad(Tablero tablero, int pos_fila, int pos_columna) {
+    public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
 
-        tablero.borrarUnidad(pos_fila, pos_columna);
+        tablero.borrarUnidad(posicionFila, posicionColumna);
         --cantidad_de_entidades;
-
     }
 
-    public boolean sigue_en_juego() {
+    public boolean sigueEnJuego() {
 
         return (cantidad_de_entidades != 0);
     }
 
     public void moverEntidad(Entidad entidad,Direccion direccion, Tablero tablero){
+
         int nuevaPosicionX = entidad.getPosicionX() + direccion.getDireccionX();
         int nuevaPosicionY = entidad.getPosicionY() + direccion.getDireccionY();
         tablero.borrarUnidad(entidad.getPosicionX(),entidad.getPosicionY());
@@ -45,7 +45,6 @@ public class Jugador {
 
 
 
-    //getter para prueba
     public int getPuntosDisponibles() {
 
         return  puntos_disponibles;

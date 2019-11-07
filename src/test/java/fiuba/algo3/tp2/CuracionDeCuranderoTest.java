@@ -15,9 +15,9 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(1);
         Catapulta catapulta = new Catapulta(2);
 
-        catapulta.atacar(jinete);
+        catapulta.accionContra(jinete);
 
-        curandero.atacar(jinete);
+        curandero.accionContra(jinete);
         assertEquals(jinete.getPuntosDeVida(), 95);
     }
 
@@ -29,7 +29,7 @@ public class CuracionDeCuranderoTest {
 
         assertThrows(NoPuedeCurarEntidadDelOtroEquipo.class,
                 ()->{
-                    curandero.atacar(jinete);
+                    curandero.accionContra(jinete);
                 });
     }
 
@@ -40,15 +40,16 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(1);
         Catapulta catapulta = new Catapulta(2);
 
-        catapulta.atacar(jinete);
-        catapulta.atacar(jinete);
-        catapulta.atacar(jinete);
-        catapulta.atacar(jinete);
-        catapulta.atacar(jinete); // mata al jinete
+        catapulta.accionContra(jinete);
+        catapulta.accionContra(jinete);
+        catapulta.accionContra(jinete);
+        catapulta.accionContra(jinete);
+        /** mata al jinete */
+        catapulta.accionContra(jinete);
 
         assertThrows(EntidadEstaMuertaException.class,
                 ()->{
-                    curandero.atacar(jinete);
+                    curandero.accionContra(jinete);
                 });
     }
 
@@ -58,7 +59,8 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(1);
         Catapulta catapulta = new Catapulta(1);
 
-        curandero.atacar(catapulta);
-        assertEquals(50,catapulta.getPuntosDeVida()); // Los puntos de vida de la catapulta no cambian
+        curandero.accionContra(catapulta);
+        /** Los puntos de vida de la catapulta no cambian */
+        assertEquals(50, catapulta.getPuntosDeVida());
     }
 }

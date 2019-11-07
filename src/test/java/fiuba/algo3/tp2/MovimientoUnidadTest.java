@@ -36,7 +36,7 @@ public class MovimientoUnidadTest {
     public void test03UnidadSeMueveHaciaArriba(){
         Jugador jugador = new Jugador(1);
         Tablero tablero = new Tablero();
-        Soldado_Infanteria soldado = new Soldado_Infanteria(1);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
 
         jugador.insertarEntidadEnPosicion(soldado,8,10,tablero);
         jugador.moverEntidad(soldado,new Arriba(),tablero);
@@ -48,7 +48,7 @@ public class MovimientoUnidadTest {
     public void test04UnidadSeMueveHaciaAbajo(){
         Jugador jugador = new Jugador(1);
         Tablero tablero = new Tablero();
-        Soldado_Infanteria soldado = new Soldado_Infanteria(1);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
 
         jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
         jugador.moverEntidad(soldado,new Abajo(),tablero);
@@ -60,7 +60,7 @@ public class MovimientoUnidadTest {
     public void test05UnidadSeMueveAUnaPosicionOcupada(){
         Jugador jugador = new Jugador(1);
         Tablero tablero = new Tablero();
-        Soldado_Infanteria soldado = new Soldado_Infanteria(1);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
         Jinete jinete = new Jinete(1);
 
         jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);

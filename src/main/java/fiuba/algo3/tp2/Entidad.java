@@ -2,58 +2,58 @@ package fiuba.algo3.tp2;
 
 public abstract class Entidad {
 
-    protected int posicionX;
-    protected int posicionY;
-    protected int puntos_de_vida;
-    protected int costo;
-    protected int danio;
-    protected int color; // 1 jugador blanco ------  2 jugador negro
+    protected Atributos atributos;
 
 
-    public void atacar(Entidad una_entidad) {
+    public void accionContra(Entidad entidad) {
 
-        if(color == una_entidad.getColor())
+        if(atributos.getColor() == entidad.getColor())
             throw new NoPuedeAtacarEntidadDelMismoEquipo();
 
-        una_entidad.sacarVida(danio);
+        entidad.sacarVida(atributos.getPuntosDePoder());
     }
 
-    public void sacarVida(int danio_recibido) {
+    public void sacarVida(int danioRecibido) {
 
-        if(puntos_de_vida <= 0)
+        if(atributos.estoyMuerta())
             throw new EntidadEstaMuertaException();
 
-        puntos_de_vida -= danio_recibido;
+        atributos.sacarVida(danioRecibido);
     }
 
-    public void recibirVida(int vida_recibida) {
+    public void recibirVida(int vidaRecibida) {
 
-        if(puntos_de_vida <= 0)
+        if(atributos.estoyMuerta())
             throw new EntidadEstaMuertaException();
 
-        puntos_de_vida += vida_recibida;
+        atributos.recibirVida(vidaRecibida);
     }
 
 
-    // getters
-    public int getColor() { return color; }
+    public int getColor() {
+        return atributos.getColor();
+    }
 
-    public int getCosto() { return costo; }
+    public int getCosto() {
+        return atributos.getCosto();
+    }
 
-    public int getPuntosDeVida() { return puntos_de_vida;}
+    public int getPuntosDeVida() {
+        return atributos.getPuntosDeVida();
+    }
 
     public int getPosicionX() {
-        return posicionX;
+        return atributos.getPosicionX();
     }
 
     public int getPosicionY() {
-        return posicionY;
+        return atributos.getPosicionY();
     }
 
-    //setters
 
     public void setPosicion(int nuevaPosicionX,int nuevaPosicionY){
-        posicionX = nuevaPosicionX;
-        posicionY = nuevaPosicionY;
+        
+        atributos.setPosicionX(nuevaPosicionX);
+        atributos.setPosicionY(nuevaPosicionY);
     }
 }

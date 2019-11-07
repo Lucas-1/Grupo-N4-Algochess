@@ -3,21 +3,16 @@ package fiuba.algo3.tp2;
 public class Curandero extends Entidad {
 
 
-    public Curandero(int un_color) {
-
-        costo = 2;
-        puntos_de_vida = 75;
-        danio = 15; // cura 15 puntos de vida.
-        color = un_color;
-
+    public Curandero(int color) {
+        atributos = new Atributos(this, color);
     }
 
-        @Override
-        public void atacar(Entidad una_entidad) {
+    @Override
+    public void accionContra(Entidad entidad) {
 
-            if(color != una_entidad.getColor())
-                throw new NoPuedeCurarEntidadDelOtroEquipo();
+        if(atributos.getColor() != entidad.getColor())
+            throw new NoPuedeCurarEntidadDelOtroEquipo();
 
-            una_entidad.recibirVida(danio);
-        }
+        entidad.recibirVida(atributos.getPuntosDePoder());
+    }
 }

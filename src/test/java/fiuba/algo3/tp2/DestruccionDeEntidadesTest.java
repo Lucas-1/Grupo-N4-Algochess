@@ -14,10 +14,10 @@ public class DestruccionDeEntidadesTest {
         Jugador jugador = new Jugador(1);
         Tablero tablero = new Tablero();
         Catapulta catapulta = new Catapulta(1);
-        Catapulta catapulta_2 = new Catapulta(1);
+        Catapulta catapulta2 = new Catapulta(1);
 
         jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
-        jugador.insertarEntidadEnPosicion(catapulta_2,6,5,tablero);
+        jugador.insertarEntidadEnPosicion(catapulta2,6,5,tablero);
         jugador.borrarUnidad(tablero,5,5);
 
         assertFalse(tablero.casilleroOcupado(5,5));
@@ -33,8 +33,8 @@ public class DestruccionDeEntidadesTest {
         jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
         jugador.borrarUnidad(tablero,5,5);
 
-        // jugador 1 se queda sin unidades, pierde.
-        assertFalse(jugador.sigue_en_juego());
+        /** jugador 1 se queda sin unidades, pierde. */
+        assertFalse(jugador.sigueEnJuego());
     }
 
 

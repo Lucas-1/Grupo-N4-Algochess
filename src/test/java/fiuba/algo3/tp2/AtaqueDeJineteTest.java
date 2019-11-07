@@ -12,60 +12,63 @@ public class AtaqueDeJineteTest {
     public void test01JineteAtacaOtroJineteYLeQuita5PuntosDeVida() {
 
         Jinete jinete = new Jinete(1);
-        Jinete jinete_enemigo = new Jinete(2);
+        Jinete jineteEnemigo = new Jinete(2);
 
-        // jinete ataca a jinete enemigo con 5 puntos de danio.
-        jinete.atacar(jinete_enemigo);
-        //jinete enemigo pasa de tener 100 puntos de vida a tener 95.
+        /** jinete ataca a jinete enemigo con 5 puntos de danio. */
+        jinete.accionContra(jineteEnemigo);
 
-        assertEquals(jinete_enemigo.getPuntosDeVida(), 95);
+        /**jinete enemigo pasa de tener 100 puntos de vida a tener 95. */
+        assertEquals(95, jineteEnemigo.getPuntosDeVida());
     }
 
     @Test
     public void test02JineteAtacaCatapultaYLeQuita5PuntosDeVida() {
 
         Jinete jinete = new Jinete(1);
-        Catapulta catapulta_enemiga = new Catapulta(2);
+        Catapulta catapultaEnemiga = new Catapulta(2);
 
-        jinete.atacar(catapulta_enemiga);
+        jinete.accionContra(catapultaEnemiga);
 
-        assertEquals(catapulta_enemiga.getPuntosDeVida(),45);
+        assertEquals(45, catapultaEnemiga.getPuntosDeVida());
     }
 
     @Test
-    public void test03JineteAtacaSoldadoInfanteriaYQuita5PuntosDeVida() {
+    public void test03JineteAtacaSoldadoDeInfanteriaYLeQuita5PuntosDeVida() {
 
         Jinete jinete = new Jinete(1);
-        Soldado_Infanteria soldado_enemigo = new Soldado_Infanteria(2);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(2);
 
-        jinete.atacar(soldado_enemigo);
+        jinete.accionContra(soldado);
 
-        assertEquals(soldado_enemigo.getPuntosDeVida(), 95);
+        assertEquals(95, soldado.getPuntosDeVida());
     }
 
     @Test
     public void test04JineteAtacaCuranderoYLeQuita5PuntosDeVida() {
 
         Jinete jinete = new Jinete(1);
-        Curandero curandero_enemigo = new Curandero(2);
+        Curandero curanderoEnemigo = new Curandero(2);
 
-        jinete.atacar(curandero_enemigo);
+        jinete.accionContra(curanderoEnemigo);
 
-        assertEquals(curandero_enemigo.getPuntosDeVida(), 70);
+        assertEquals(70, curanderoEnemigo.getPuntosDeVida());
     }
 
     @Test
     public void test05JineteNoPuedeAtacarPiezaMuerta() {
 
         Jinete jinete = new Jinete(1);
-        Catapulta catapulta_enemiga = new Catapulta(2);
+        Catapulta catapultaEnemiga = new Catapulta(2);
 
-        for(int i = 0; i < 10; i++)
-            jinete.atacar(catapulta_enemiga); // ataca 10 veces y la deja en 0 de vida
+        /** ataca 10 veces y la deja en 0 de vida */
+        for(int i = 0; i < 10; i++) {
+            jinete.accionContra(catapultaEnemiga);
+        }
 
+        /** falla atacar devuelta porque ya esta muerta */
         assertThrows(EntidadEstaMuertaException.class,
                 ()->{
-                    jinete.atacar(catapulta_enemiga); // falla atacar devuelta porque ya esta muerta
+                    jinete.accionContra(catapultaEnemiga);
                 });
     }
 
@@ -73,11 +76,11 @@ public class AtaqueDeJineteTest {
     public void test06JineteNoPuedeAtacarUnidadAliada() {
 
         Jinete jinete = new Jinete(1);
-        Jinete jinete_aliado = new Jinete(1);
+        Jinete jineteAliado = new Jinete(1);
 
         assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
                 ()->{
-                    jinete.atacar(jinete_aliado);
+                    jinete.accionContra(jineteAliado);
                 });
     }
 

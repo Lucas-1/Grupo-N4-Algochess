@@ -2,43 +2,44 @@ package fiuba.algo3.tp2;
 
 public class Casillero {
 
-    private int pos_fila;
-    private int pos_columna;
+    private int posicionFila;
+    private int posicionColumna;
     private int color;
-    private boolean ocupado = false;
+    private boolean ocupado;
     private Entidad entidad;
 
-    public Casillero(int fila, int columna, int un_color) {
+    public Casillero(int posicionFila, int posicionColumna, int color) {
 
-        pos_fila = fila;
-        pos_columna = columna;
-        color = un_color;
+        this.posicionFila = posicionFila;
+        this.posicionColumna = posicionColumna;
+        this.color = color;
+        ocupado = false;
     }
 
-    public void agregarUnidad(Entidad una_entidad) {
+    public void agregarUnidad(Entidad entidad) {
 
         if(ocupado)
             throw new CasilleroEstaOcupadoException();
 
-        if(color != una_entidad.getColor())
+        if(color != entidad.getColor())
             throw new CasilleroDeLadoEnemigoException();
 
-        this.entidad = una_entidad;
+        this.entidad = entidad;
         ocupado = true;
 
     }
 
     public void borrarUnidad() {
-
         ocupado = false;
     }
 
 
-    //getter
     public Entidad getEntidad() {
         return entidad;
     }
 
-    public boolean estaOcupado() { return ocupado; }
+    public boolean estaOcupado() {
+        return ocupado;
+    }
 
 }

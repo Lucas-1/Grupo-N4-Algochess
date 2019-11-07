@@ -59,7 +59,7 @@ public class ColocacionDeEntidadesTest {
 
         jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
 
-        assertEquals(jugador.getPuntosDisponibles(), 15);
+        assertEquals(15, jugador.getPuntosDisponibles());
 
     }
 
@@ -72,7 +72,6 @@ public class ColocacionDeEntidadesTest {
         Catapulta catapulta_2 = new Catapulta(1);
         Catapulta catapulta_3 = new Catapulta(1);
         Catapulta catapulta_4 = new Catapulta(1);
-        Catapulta catapulta_5 = new Catapulta(1);
 
 
         jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero); // gasta 5 puntos
