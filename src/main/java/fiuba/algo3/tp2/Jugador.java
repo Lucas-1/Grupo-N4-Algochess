@@ -6,13 +6,6 @@ public class Jugador {
     private int cantidad_de_entidades;
     private int color;
 
-
-    public Jugador() {
-
-        puntos_disponibles = 20;
-        cantidad_de_entidades = 0;
-    }
-
     public Jugador(int un_color) {
 
         puntos_disponibles = 20;

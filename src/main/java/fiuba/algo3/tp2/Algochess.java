@@ -14,15 +14,4 @@ public class Algochess {
         tablero = new Tablero();
         estado = 0;
     }
-
-    public int controlarEstado() {
-
-        if(!jugador_negro.sigue_en_juego())
-            return 1;
-
-       if(!jugador_blanco.sigue_en_juego())
-           return 2;
-
-       return 0;
-    }
 }
