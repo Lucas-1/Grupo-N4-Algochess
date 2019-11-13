@@ -24,11 +24,13 @@ public class Tablero {
         }
     }
 
-    public void agregarUnidad(Entidad entidad, int pos_fila, int pos_columna) {
+    public void agregarUnidad(Entidad entidad, int pos_fila, int pos_columna, Color color) {
 
-        casilleros[pos_fila][pos_columna].agregarUnidad(entidad);
+        Casillero casillero = casilleros[pos_fila][pos_columna];
+
+        if(casillero.esValida(color))
+            casillero.agregarUnidad(entidad);
     }
-
 
     public void borrarUnidad(int pos_fila, int pos_columna) {
 
@@ -40,7 +42,10 @@ public class Tablero {
         return casilleros[pos_fila][pos_columna].estaOcupado();
     }
 
+    public boolean esPosicionValida(int pos_fila, int pos_columna, Color color) {
 
+        return casilleros[pos_fila][pos_columna].esValida(color);
+    }
 
     public Casillero getCasillero(int pos_fila, int pos_columna) {
 
