@@ -9,8 +9,10 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
     @Test
     public void test01SoldadoDeInfanteriaAtacaJineteYLeQuita10PuntosDeVida() {
 
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        Jinete jineteEnemigo = new Jinete(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Jinete jineteEnemigo = new Jinete(negro);
 
         /** soldado ataca a jinete enemigo con 10 puntos de danio. */
         soldado.accionContra(jineteEnemigo);
@@ -22,8 +24,11 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
     @Test
     public void test02SoldadoDeInfanteriaAtacaCatapultaYLeQuita10PuntosDeVida() {
 
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        Catapulta catapultaEnemiga = new Catapulta(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
 
         soldado.accionContra(catapultaEnemiga);
 
@@ -33,8 +38,10 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
     @Test
     public void test03SoldadoDeInfanteriaAtacaOtroSoldadoDeInfanteriaYLeQuita10PuntosDeVida() {
 
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        SoldadoDeInfanteria soldadoEnemigo = new SoldadoDeInfanteria(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        SoldadoDeInfanteria soldadoEnemigo = new SoldadoDeInfanteria(negro);
 
         soldado.accionContra(soldadoEnemigo);
 
@@ -44,8 +51,10 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
     @Test
     public void test04SoldadoDeInfanteriaAtacaCuranderoYLeQuita10PuntosDeVida() {
 
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        Curandero curanderoEnemigo = new Curandero(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Curandero curanderoEnemigo = new Curandero(negro);
 
         soldado.accionContra(curanderoEnemigo);
 
@@ -55,8 +64,10 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
     @Test
     public void test05SoldadoDeInfanteriaNoPuedeAtacarPiezaMuerta() {
 
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        Catapulta catapultaEnemiga = new Catapulta(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
 
         /** ataca 5 veces y la deja en 0 de vida */
         for(int i = 0; i < 5; i++) {
@@ -73,8 +84,9 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
     @Test
     public void test06JineteNoPuedeAtacarUnidadAliada() {
 
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        Jinete jineteAliado = new Jinete(1);
+        Color blanco = new Blanco();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Jinete jineteAliado = new Jinete(blanco);
 
         assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
                 ()->{

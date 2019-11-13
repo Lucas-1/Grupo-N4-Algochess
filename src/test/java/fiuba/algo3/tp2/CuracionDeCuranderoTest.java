@@ -11,9 +11,12 @@ public class CuracionDeCuranderoTest {
     @Test
     public void test01CuranderoCuraJineteAliadoAtacadoPorCatapulta() {
 
-        Jinete jinete = new Jinete(1);
-        Curandero curandero = new Curandero(1);
-        Catapulta catapulta = new Catapulta(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+
+        Jinete jinete = new Jinete(blanco);
+        Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(negro);
 
         catapulta.accionContra(jinete);
 
@@ -24,8 +27,10 @@ public class CuracionDeCuranderoTest {
     @Test
     public void test02CuranderoNoPuedeCurarUnidadEnemiga() {
 
-        Curandero curandero = new Curandero(1);
-        Jinete jinete = new Jinete(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Curandero curandero = new Curandero(blanco);
+        Jinete jinete = new Jinete(negro);
 
         assertThrows(NoPuedeCurarEntidadDelOtroEquipo.class,
                 ()->{
@@ -36,9 +41,11 @@ public class CuracionDeCuranderoTest {
     @Test
     public void test03CuranderoNoPuedeCurarUnidadMuerta() {
 
-        Jinete jinete = new Jinete(1);
-        Curandero curandero = new Curandero(1);
-        Catapulta catapulta = new Catapulta(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jinete jinete = new Jinete(blanco);
+        Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(negro);
 
         catapulta.accionContra(jinete);
         catapulta.accionContra(jinete);
@@ -56,8 +63,10 @@ public class CuracionDeCuranderoTest {
     @Test
     public void test04CuranderoNoPuedeCurarCatapulta() {
 
-        Curandero curandero = new Curandero(1);
-        Catapulta catapulta = new Catapulta(1);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(blanco);
 
         curandero.accionContra(catapulta);
         /** Los puntos de vida de la catapulta no cambian */

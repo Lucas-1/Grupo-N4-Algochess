@@ -4,9 +4,9 @@ public class Jugador {
 
     private int puntos_disponibles;
     private int cantidad_de_entidades;
-    private int color;
+    private Color color;
 
-    public Jugador(int color) {
+    public Jugador(Color color) {
 
         puntos_disponibles = 20;
         cantidad_de_entidades = 0;
@@ -43,10 +43,25 @@ public class Jugador {
         tablero.agregarUnidad(entidad,nuevaPosicionX,nuevaPosicionY);
     }
 
+    public void inicializarEntidades(Tablero tablero) {
 
+        //
+    }
 
     public int getPuntosDisponibles() {
 
         return  puntos_disponibles;
+    }
+
+    public void moverUnaEntidad(Tablero tablero) {
+
+        //
+
+    }
+
+    public void atacar(Tablero tablero) {
+
+        //
+
     }
 }

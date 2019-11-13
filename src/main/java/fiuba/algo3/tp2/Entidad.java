@@ -7,7 +7,7 @@ public abstract class Entidad {
 
     public void accionContra(Entidad entidad) {
 
-        if(atributos.getColor() == entidad.getColor())
+        if(this.esDeMiEquipo(entidad))
             throw new NoPuedeAtacarEntidadDelMismoEquipo();
 
         entidad.sacarVida(atributos.getPuntosDePoder());
@@ -29,8 +29,17 @@ public abstract class Entidad {
         atributos.recibirVida(vidaRecibida);
     }
 
+    public boolean esDeMiEquipo(Entidad otraEntidad) {
 
-    public int getColor() {
+        Color miColor = this.getColor();
+        Color suColor = otraEntidad.getColor();
+
+        return miColor.esDelMismoColor(suColor);
+
+    }
+
+
+    public Color getColor() {
         return atributos.getColor();
     }
 

@@ -5,13 +5,42 @@ public class Algochess {
     private Jugador jugadorBlanco;
     private Jugador jugadorNegro;
     private Tablero tablero;
-    private int estado; /** 0 = en juego | 1 = gana el blanco | 2 = gana el negro */
 
     public Algochess() {
 
-        jugadorBlanco = new Jugador(1);
-        jugadorNegro = new Jugador(2);
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        jugadorBlanco = new Jugador(blanco);
+        jugadorNegro = new Jugador(negro);
         tablero = new Tablero();
-        estado = 0;
     }
+
+    public void inicializarEntidades() {
+
+        jugadorBlanco.inicializarEntidades(tablero);
+        jugadorNegro.inicializarEntidades(tablero);
+    }
+
+    public void Jugar() {
+
+        while(true) {
+
+            jugadorBlanco.moverUnaEntidad(tablero);
+            jugadorBlanco.atacar(tablero);
+
+            if(!jugadorNegro.sigueEnJuego()) {
+               System.out.println("Gano el blanco");
+               break;
+            }
+
+            jugadorNegro.moverUnaEntidad(tablero);
+            jugadorNegro.atacar(tablero);
+
+            if(!jugadorBlanco.sigueEnJuego()) {
+                System.out.println("Gano el negro");
+                break;
+            }
+        }
+    }
+
 }
