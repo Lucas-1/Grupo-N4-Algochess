@@ -4,7 +4,6 @@ public abstract class Entidad {
 
     protected Atributos atributos;
 
-
     public void accionContra(Entidad entidad) {
 
         if(this.esDeMiEquipo(entidad))
@@ -35,9 +34,7 @@ public abstract class Entidad {
         Color suColor = otraEntidad.getColor();
 
         return miColor.esDelMismoColor(suColor);
-
     }
-
 
     public Color getColor() {
         return atributos.getColor();
@@ -51,18 +48,18 @@ public abstract class Entidad {
         return atributos.getPuntosDeVida();
     }
 
-    public int getPosicionX() {
-        return atributos.getPosicionX();
+    public int getPosicionColumna() {
+        return atributos.getPosicionColumna();
     }
 
-    public int getPosicionY() {
-        return atributos.getPosicionY();
+    public int getPosicionFila() {
+        return atributos.getPosicionFila();
     }
 
 
-    public void setPosicion(int nuevaPosicionX,int nuevaPosicionY){
+    public void setPosicion(int nuevaPosicionColumna,int nuevaPosicionFila){
         
-        atributos.setPosicionX(nuevaPosicionX);
-        atributos.setPosicionY(nuevaPosicionY);
+        atributos.setPosicionColumna(nuevaPosicionColumna);
+        atributos.setPosicionFila(nuevaPosicionFila);
     }
 }

@@ -2,45 +2,40 @@ package fiuba.algo3.tp2;
 
 public class Jugador {
 
-    private int puntos_disponibles; //  clase admin de enti
-    private int cantidad_de_entidades; //  clase admin de enti
+    private AdministradorDeEntidades administradorDeEntidades;
     private Color color;
 
     public Jugador(Color color) {
 
-        puntos_disponibles = 20;
-        cantidad_de_entidades = 0;
+        administradorDeEntidades = new AdministradorDeEntidades();
         this.color = color;
     }
 
-    public void insertarEntidadEnPosicion(Entidad entidad, int posicionFila, int posicionColumna, Tablero tablero) {
+    public void insertarEntidad(Entidad entidad, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        if (puntos_disponibles < entidad.getCosto())
-            throw new JugadorNoLeAlcanzaParaEntidadException();
+        administradorDeEntidades.agregarEntidad(entidad, posicionFila,posicionColumna,tablero,color);
 
-        tablero.agregarUnidad(entidad, posicionFila, posicionColumna, color);
-        entidad.setPosicion(posicionFila,posicionColumna);
-        puntos_disponibles = puntos_disponibles - entidad.getCosto();
-        ++cantidad_de_entidades;
     }
 
-    public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
+    public void borrarEntidad(Tablero tablero, int posicionFila, int posicionColumna) {
 
+        Entidad entidad = tablero.getEntidad(posicionFila,posicionColumna);
+        administradorDeEntidades.borrarEntidad(entidad);
         tablero.borrarUnidad(posicionFila, posicionColumna);
-        --cantidad_de_entidades;
     }
 
     public boolean sigueEnJuego() {
 
-        return (cantidad_de_entidades != 0);
+        return administradorDeEntidades.sigueEnJuego();
     }
 
     public void moverEntidad(Entidad entidad,Direccion direccion, Tablero tablero){
 
-        int nuevaPosicionX = entidad.getPosicionX() + direccion.getDireccionX();
-        int nuevaPosicionY = entidad.getPosicionY() + direccion.getDireccionY();
-        tablero.borrarUnidad(entidad.getPosicionX(),entidad.getPosicionY());
-        tablero.agregarUnidad(entidad,nuevaPosicionX,nuevaPosicionY,color);
+        int nuevaPosicionColumna = entidad.getPosicionColumna() + direccion.getDireccionX();
+        int nuevaPosicionFila = entidad.getPosicionFila() + direccion.getDireccionY();
+
+        tablero.borrarUnidad(entidad.getPosicionFila(),entidad.getPosicionColumna());
+        tablero.agregarUnidad(entidad,nuevaPosicionFila,nuevaPosicionColumna,color);
     }
 
     public void inicializarEntidades(Tablero tablero) {
@@ -50,7 +45,7 @@ public class Jugador {
 
     public int getPuntosDisponibles() {
 
-        return  puntos_disponibles;
+        return administradorDeEntidades.getPuntosDisponibles();
     }
 
     public void moverUnaEntidad(Tablero tablero) {

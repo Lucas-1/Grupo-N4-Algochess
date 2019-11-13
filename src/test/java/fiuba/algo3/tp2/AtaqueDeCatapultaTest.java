@@ -14,8 +14,8 @@ public class AtaqueDeCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Catapulta catapulta = new Catapulta(blanco);
-        Jinete jineteEnemigo = new Jinete(negro);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
+        Jinete jineteEnemigo = new Jinete(negro,15,15);
 
         catapulta.accionContra(jineteEnemigo);
 
@@ -26,8 +26,8 @@ public class AtaqueDeCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Catapulta catapulta = new Catapulta(blanco);
-        Catapulta catapultaEnemiga = new Catapulta(negro);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
+        Catapulta catapultaEnemiga = new Catapulta(negro,15,15);
 
         catapulta.accionContra(catapultaEnemiga);
 
@@ -39,8 +39,8 @@ public class AtaqueDeCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Catapulta catapulta = new Catapulta(blanco);
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro,15,15);
 
         catapulta.accionContra(soldado);
 
@@ -52,8 +52,8 @@ public class AtaqueDeCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Catapulta catapulta = new Catapulta(blanco);
-        Curandero curanderoEnemigo = new Curandero(negro);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
+        Curandero curanderoEnemigo = new Curandero(negro,15,15);
 
         catapulta.accionContra(curanderoEnemigo);
 
@@ -64,9 +64,8 @@ public class AtaqueDeCatapultaTest {
     public void test05CatapultaNoPuedeAtacarUnidadAliada() {
 
         Color blanco = new Blanco();
-        Color negro = new Negro();
-        Catapulta catapulta = new Catapulta(blanco);
-        Jinete jineteAliado = new Jinete(blanco);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
+        Jinete jineteAliado = new Jinete(blanco,6,6);
 
         assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
                 ()->{
@@ -79,8 +78,8 @@ public class AtaqueDeCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Catapulta catapulta = new Catapulta(blanco);
-        Jinete jinete = new Jinete(negro);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
+        Jinete jinete = new Jinete(negro,15,15);
 
         catapulta.accionContra(jinete);
         catapulta.accionContra(jinete);

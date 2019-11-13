@@ -4,7 +4,7 @@ public class Abajo extends Direccion {
 
     public Abajo(){
 
-        direccionX = 0;
-        direccionY = -1;
+        direccionColumna = 0;
+        direccionFila = 1;
     }
 }
