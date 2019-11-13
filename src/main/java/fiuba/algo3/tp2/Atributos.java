@@ -1,8 +1,6 @@
 package fiuba.algo3.tp2;
 
 public class Atributos {
-    private int posicionX;
-    private int posicionY;
     private int puntosDeVida;
     private int costo;
     private int puntosDePoder;
@@ -65,19 +63,4 @@ public class Atributos {
         return puntosDeVida;
     }
 
-    public int getPosicionX() {
-        return posicionX;
-    }
-
-    public int getPosicionY() {
-        return posicionY;
-    }
-
-    public void setPosicionX(int nuevaPosicionX) {
-        this.posicionX = nuevaPosicionX;
-    }
-
-    public void setPosicionY(int nuevaPosicionY) {
-        this.posicionY = nuevaPosicionY;
-    }
 }

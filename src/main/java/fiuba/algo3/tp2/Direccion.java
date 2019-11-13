@@ -2,15 +2,12 @@ package fiuba.algo3.tp2;
 
 public class Direccion {
 
-    int direccionX;
-    int direccionY;
-
-    public int getDireccionX(){
-        return direccionX;
+    public Posicion desplazarPosicion(Posicion posicionActual){
+        return posicionActual;
     }
 
-    public int getDireccionY(){
-        return direccionY;
+    public Direccion direccionOpuesta(){
+        return new Direccion();
     }
 
 }

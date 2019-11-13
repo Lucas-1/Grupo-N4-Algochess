@@ -36,11 +36,7 @@ public class Jugador {
     }
 
     public void moverEntidad(Entidad entidad,Direccion direccion, Tablero tablero){
-
-        int nuevaPosicionX = entidad.getPosicionX() + direccion.getDireccionX();
-        int nuevaPosicionY = entidad.getPosicionY() + direccion.getDireccionY();
-        tablero.borrarUnidad(entidad.getPosicionX(),entidad.getPosicionY());
-        tablero.agregarUnidad(entidad,nuevaPosicionX,nuevaPosicionY,color);
+        tablero.moverUnidad(entidad,direccion);
     }
 
     public void inicializarEntidades(Tablero tablero) {

@@ -3,6 +3,8 @@ package fiuba.algo3.tp2;
 public abstract class Entidad {
 
     protected Atributos atributos;
+    protected Movimiento mov;
+    protected Posicion posicion;
 
 
     public void accionContra(Entidad entidad) {
@@ -51,18 +53,19 @@ public abstract class Entidad {
         return atributos.getPuntosDeVida();
     }
 
-    public int getPosicionX() {
-        return atributos.getPosicionX();
-    }
-
-    public int getPosicionY() {
-        return atributos.getPosicionY();
+    public Posicion getPosicion() {
+        return this.posicion;
     }
 
 
     public void setPosicion(int nuevaPosicionX,int nuevaPosicionY){
-        
-        atributos.setPosicionX(nuevaPosicionX);
-        atributos.setPosicionY(nuevaPosicionY);
+
+        this.posicion = new Posicion(nuevaPosicionX,nuevaPosicionY);
+        this.mov = new Movimiento();
+    }
+
+    public void mover(Direccion dir){
+        this.mov.establecerDireccion(dir);
+        this.posicion = this.mov.calcularPosicionSiguiente(this.posicion);
     }
 }
