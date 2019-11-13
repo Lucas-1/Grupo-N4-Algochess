@@ -1,42 +1,52 @@
 package fiuba.algo3.tp2;
 
 public class Atributos {
-    private int posicionX;
-    private int posicionY;
+
+    private int posicionColumna;
+    private int posicionFila;
     private int puntosDeVida;
     private int costo;
     private int puntosDePoder;
     private Color color;
 
 
-    public Atributos(Catapulta catapulta, Color color){
+    public Atributos(Catapulta catapulta, Color color, int posicionFila, int posicionColumna){
 
         costo = 5;
         puntosDeVida = 50;
         puntosDePoder = 20;
         this.color = color;
+        this.setPosicionFila(posicionFila);
+        this.setPosicionColumna(posicionColumna);
     }
-    public Atributos(Curandero curandero, Color color){
+    public Atributos(Curandero curandero, Color color, int posicionFila, int posicionColumna){
 
         costo = 2;
         puntosDeVida = 75;
         puntosDePoder = 15;
         this.color = color;
-
+        this.setPosicionColumna(posicionColumna);
+        this.setPosicionFila(posicionFila);
     }
-    public Atributos(Jinete jinete, Color color){
+
+    public Atributos(Jinete jinete, Color color, int posicionFila, int posicionColumna){
 
         costo = 3;
         puntosDeVida = 100;
         puntosDePoder = 5;
         this.color = color;
+        this.setPosicionFila(posicionFila);
+        this.setPosicionColumna(posicionColumna);
     }
-    public Atributos(SoldadoDeInfanteria soldadoDeInfanteria, Color color){
+
+    public Atributos(SoldadoDeInfanteria soldadoDeInfanteria, Color color, int posicionFila, int posicionColumna){
 
         costo = 1;
         puntosDeVida = 100;
         puntosDePoder = 10;
         this.color = color;
+        this.setPosicionColumna(posicionColumna);
+        this.setPosicionFila(posicionFila);
     }
 
     public Color getColor() {
@@ -65,19 +75,19 @@ public class Atributos {
         return puntosDeVida;
     }
 
-    public int getPosicionX() {
-        return posicionX;
+    public int getPosicionColumna() {
+        return posicionColumna;
     }
 
-    public int getPosicionY() {
-        return posicionY;
+    public int getPosicionFila() {
+        return posicionFila;
     }
 
-    public void setPosicionX(int nuevaPosicionX) {
-        this.posicionX = nuevaPosicionX;
+    public void setPosicionColumna(int nuevaPosicionColumna) {
+        this.posicionColumna = nuevaPosicionColumna;
     }
 
-    public void setPosicionY(int nuevaPosicionY) {
-        this.posicionY = nuevaPosicionY;
+    public void setPosicionFila(int nuevaPosicionFila) {
+        this.posicionFila = nuevaPosicionFila;
     }
 }

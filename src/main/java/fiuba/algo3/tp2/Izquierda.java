@@ -4,7 +4,7 @@ public class Izquierda extends Direccion {
 
     public Izquierda(){
 
-        direccionX = -1;
-        direccionY = 0;
+        direccionColumna = -1;
+        direccionFila = 0;
     }
 }

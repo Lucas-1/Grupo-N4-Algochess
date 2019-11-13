@@ -16,9 +16,9 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
+        jugador.insertarEntidad(catapulta,5,5,tablero);
 
         assertEquals(catapulta, tablero.getCasillero(5,5).getEntidad());
     }
@@ -29,11 +29,11 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
 
         assertThrows(CasilleroDeLadoEnemigoException.class,
             ()->{
-             jugador.insertarEntidadEnPosicion(catapulta, 15, 15, tablero);
+             jugador.insertarEntidad(catapulta, 15, 15, tablero);
          });
     }
 
@@ -43,13 +43,13 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
+        jugador.insertarEntidad(catapulta,5,5,tablero);
 
         assertThrows(CasilleroEstaOcupadoException.class,
                 ()->{
-                    jugador.insertarEntidadEnPosicion(catapulta, 5, 5, tablero);
+                    jugador.insertarEntidad(catapulta, 5, 5, tablero);
                 });
     }
 
@@ -59,9 +59,9 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapulta = new Catapulta(blanco,5,5);
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
+        jugador.insertarEntidad(catapulta,5,5,tablero);
 
         assertEquals(15, jugador.getPuntosDisponibles());
 
@@ -73,22 +73,23 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
-        Catapulta catapulta_2 = new Catapulta(blanco);
-        Catapulta catapulta_3 = new Catapulta(blanco);
-        Catapulta catapulta_4 = new Catapulta(blanco);
+
+        Catapulta catapulta = new Catapulta(blanco,1,5);
+        Catapulta catapulta_2 = new Catapulta(blanco,4,5);
+        Catapulta catapulta_3 = new Catapulta(blanco,4,6);
+        Catapulta catapulta_4 = new Catapulta(blanco,4,7);
 
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero); // gasta 5 puntos
-        jugador.insertarEntidadEnPosicion(catapulta_2,4,5,tablero); // gasta 5 puntos
-        jugador.insertarEntidadEnPosicion(catapulta_3,3,5,tablero); // gasta 5 puntos
-        jugador.insertarEntidadEnPosicion(catapulta_4,2,5,tablero); // gasta 5 puntos
+        jugador.insertarEntidad(catapulta,1,5,tablero); // gasta 5 puntos
+        jugador.insertarEntidad(catapulta_2,4,5,tablero); // gasta 5 puntos
+        jugador.insertarEntidad(catapulta_3,4,6,tablero); // gasta 5 puntos
+        jugador.insertarEntidad(catapulta_4,4,7,tablero); // gasta 5 puntos
 
         // jugador se quedo con 0 puntos despues de gastar 20
 
         assertThrows(JugadorNoLeAlcanzaParaEntidadException.class,
                 ()->{
-                    jugador.insertarEntidadEnPosicion(catapulta, 1, 5, tablero);
+                    jugador.insertarEntidad(catapulta, 5, 5, tablero);
                 });
 
     }

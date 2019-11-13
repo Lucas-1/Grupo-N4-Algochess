@@ -2,15 +2,15 @@ package fiuba.algo3.tp2;
 
 public class Direccion {
 
-    int direccionX;
-    int direccionY;
+    int direccionColumna;
+    int direccionFila;
 
     public int getDireccionX(){
-        return direccionX;
+        return direccionColumna;
     }
 
     public int getDireccionY(){
-        return direccionY;
+        return direccionFila;
     }
 
 }

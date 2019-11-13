@@ -10,6 +10,7 @@ public class Algochess {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+
         jugadorBlanco = new Jugador(blanco);
         jugadorNegro = new Jugador(negro);
         tablero = new Tablero();
