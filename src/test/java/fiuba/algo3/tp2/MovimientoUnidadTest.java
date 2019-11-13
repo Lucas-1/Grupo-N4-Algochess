@@ -10,9 +10,11 @@ public class MovimientoUnidadTest {
 
     @Test
     public void test01UnidadSeMueveALaDerecha(){
-        Jugador jugador = new Jugador(1);
+
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete(1);
+        Jinete jinete = new Jinete(blanco);
 
         jugador.insertarEntidadEnPosicion(jinete,5,5,tablero);
         jugador.moverEntidad(jinete,new Derecha(),tablero);
@@ -22,9 +24,11 @@ public class MovimientoUnidadTest {
 
     @Test
     public void test02UnidadSeMueveALaIzquierda(){
-        Jugador jugador = new Jugador(1);
+
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero(1);
+        Curandero curandero = new Curandero(blanco);
 
         jugador.insertarEntidadEnPosicion(curandero,4,3,tablero);
         jugador.moverEntidad(curandero,new Izquierda(),tablero);
@@ -34,9 +38,11 @@ public class MovimientoUnidadTest {
 
     @Test
     public void test03UnidadSeMueveHaciaArriba(){
-        Jugador jugador = new Jugador(1);
+
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
         jugador.insertarEntidadEnPosicion(soldado,8,10,tablero);
         jugador.moverEntidad(soldado,new Arriba(),tablero);
@@ -46,9 +52,11 @@ public class MovimientoUnidadTest {
 
     @Test
     public void test04UnidadSeMueveHaciaAbajo(){
-        Jugador jugador = new Jugador(1);
+
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
         jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
         jugador.moverEntidad(soldado,new Abajo(),tablero);
@@ -58,10 +66,12 @@ public class MovimientoUnidadTest {
 
     @Test
     public void test05UnidadSeMueveAUnaPosicionOcupada(){
-        Jugador jugador = new Jugador(1);
+
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(1);
-        Jinete jinete = new Jinete(1);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Jinete jinete = new Jinete(blanco);
 
         jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
         jugador.insertarEntidadEnPosicion(jinete,8,6,tablero);

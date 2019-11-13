@@ -6,17 +6,17 @@ public class Atributos {
     private int puntosDeVida;
     private int costo;
     private int puntosDePoder;
-    private int color; /** 1 jugador blanco |  2 jugador negro */
+    private Color color;
 
 
-    public Atributos(Catapulta catapulta, int color){
+    public Atributos(Catapulta catapulta, Color color){
 
         costo = 5;
         puntosDeVida = 50;
         puntosDePoder = 20;
         this.color = color;
     }
-    public Atributos(Curandero curandero, int color){
+    public Atributos(Curandero curandero, Color color){
 
         costo = 2;
         puntosDeVida = 75;
@@ -24,14 +24,14 @@ public class Atributos {
         this.color = color;
 
     }
-    public Atributos(Jinete jinete, int color){
+    public Atributos(Jinete jinete, Color color){
 
         costo = 3;
         puntosDeVida = 100;
         puntosDePoder = 5;
         this.color = color;
     }
-    public Atributos(SoldadoDeInfanteria soldadoDeInfanteria, int color){
+    public Atributos(SoldadoDeInfanteria soldadoDeInfanteria, Color color){
 
         costo = 1;
         puntosDeVida = 100;
@@ -39,7 +39,7 @@ public class Atributos {
         this.color = color;
     }
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 

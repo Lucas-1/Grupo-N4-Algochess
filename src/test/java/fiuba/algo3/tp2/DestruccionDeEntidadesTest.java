@@ -11,10 +11,11 @@ public class DestruccionDeEntidadesTest {
     @Test
     public void test01SeDestuyeUnaEntidadDelJugadorYDesocupaElCasillero() {
 
-        Jugador jugador = new Jugador(1);
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(1);
-        Catapulta catapulta2 = new Catapulta(1);
+        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapulta2 = new Catapulta(blanco);
 
         jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
         jugador.insertarEntidadEnPosicion(catapulta2,6,5,tablero);
@@ -26,9 +27,10 @@ public class DestruccionDeEntidadesTest {
     @Test
     public void testo02SeDestruyenTodasLasUnidadesDelJugadorYPierde() {
 
-        Jugador jugador = new Jugador(1);
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(1);
+        Catapulta catapulta = new Catapulta(blanco);
 
         jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
         jugador.borrarUnidad(tablero,5,5);
