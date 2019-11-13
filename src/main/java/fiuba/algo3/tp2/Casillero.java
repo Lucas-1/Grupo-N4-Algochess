@@ -3,29 +3,38 @@ package fiuba.algo3.tp2;
 public class Casillero {
 
     private Color color;
-    private boolean ocupado;
+    private EstadoCasillero estado;
     private Entidad entidad;
 
     public Casillero(Color color) {
 
         this.color = color;
-        ocupado = false;
+        estado = new Liberado();
+    }
+
+    public boolean esValida(Color unColor) {
+
+        if(estado.estaOcupado())
+            throw new CasilleroEstaOcupadoException();
+
+        if(!color.esDelMismoColor(unColor)) {
+            throw new CasilleroDeLadoEnemigoException();
+        }
+
+        return true;
     }
 
     public void agregarUnidad(Entidad entidad) {
 
-        if(ocupado)
-            throw new CasilleroEstaOcupadoException();
+       if(this.esValida(entidad.getColor())) {
 
-        if(!(color.esDelMismoColor(entidad.getColor())))
-            throw new CasilleroDeLadoEnemigoException();
-
-        this.entidad = entidad;
-        ocupado = true;
+           this.entidad = entidad;
+           estado = new Ocupado();
+       }
     }
 
     public void borrarUnidad() {
-        ocupado = false;
+        estado = new Liberado();
     }
 
     public Entidad getEntidad() {
@@ -33,7 +42,7 @@ public class Casillero {
     }
 
     public boolean estaOcupado() {
-        return ocupado;
+        return estado.estaOcupado();
     }
 
 }

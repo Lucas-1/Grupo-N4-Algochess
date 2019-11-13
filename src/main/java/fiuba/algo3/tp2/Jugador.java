@@ -2,8 +2,8 @@ package fiuba.algo3.tp2;
 
 public class Jugador {
 
-    private int puntos_disponibles;
-    private int cantidad_de_entidades;
+    private int puntos_disponibles; //  clase admin de enti
+    private int cantidad_de_entidades; //  clase admin de enti
     private Color color;
 
     public Jugador(Color color) {
@@ -18,7 +18,7 @@ public class Jugador {
         if (puntos_disponibles < entidad.getCosto())
             throw new JugadorNoLeAlcanzaParaEntidadException();
 
-        tablero.agregarUnidad(entidad, posicionFila, posicionColumna);
+        tablero.agregarUnidad(entidad, posicionFila, posicionColumna, color);
         entidad.setPosicion(posicionFila,posicionColumna);
         puntos_disponibles = puntos_disponibles - entidad.getCosto();
         ++cantidad_de_entidades;
@@ -40,7 +40,7 @@ public class Jugador {
         int nuevaPosicionX = entidad.getPosicionX() + direccion.getDireccionX();
         int nuevaPosicionY = entidad.getPosicionY() + direccion.getDireccionY();
         tablero.borrarUnidad(entidad.getPosicionX(),entidad.getPosicionY());
-        tablero.agregarUnidad(entidad,nuevaPosicionX,nuevaPosicionY);
+        tablero.agregarUnidad(entidad,nuevaPosicionX,nuevaPosicionY,color);
     }
 
     public void inicializarEntidades(Tablero tablero) {
