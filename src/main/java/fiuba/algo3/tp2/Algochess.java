@@ -46,4 +46,16 @@ public class Algochess {
         }
     } */
 
+    // getters para pruebas
+
+    public Jugador getJugadorBlanco() {
+        return jugadorBlanco;
+    }
+
+    public Jugador getJugadorNegro() {
+        return jugadorNegro;
+    }
+
+    public Tablero getTablero() {return tablero; }
+
 }

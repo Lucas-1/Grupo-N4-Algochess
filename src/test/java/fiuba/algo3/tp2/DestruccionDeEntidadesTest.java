@@ -14,11 +14,9 @@ public class DestruccionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
-        Catapulta catapulta2 = new Catapulta(blanco);
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
-        jugador.insertarEntidadEnPosicion(catapulta2,6,5,tablero);
+        jugador.agregarCatapulta(tablero,5,5);
+        jugador.agregarCatapulta(tablero,6,5);
         jugador.borrarUnidad(tablero,5,5);
 
         assertFalse(tablero.casilleroOcupado(5,5));
@@ -30,9 +28,8 @@ public class DestruccionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5,tablero);
+        jugador.agregarCatapulta(tablero,5,5);
         jugador.borrarUnidad(tablero,5,5);
 
         /** jugador 1 se queda sin unidades, pierde. */

@@ -38,4 +38,25 @@ public class Jugador {
         return administradorDeEntidades.getPuntosDisponibles();
     }
 
+    //
+
+    public void agregarCatapulta(Tablero tablero, int posFila, int posColumna) {
+
+        administradorDeEntidades.agregarCatapulta(tablero,color,posFila,posColumna);
+    }
+
+    public void agregarJinete(Tablero tablero, int posFila, int posColumna) {
+
+        administradorDeEntidades.agregarJinete(tablero,color,posFila,posColumna);
+    }
+
+    public void agregarSoldadoInfanteria(Tablero tablero, int posFila, int posColumna) {
+
+        administradorDeEntidades.agregarSoldadoInfanteria(tablero,color,posFila,posColumna);
+    }
+
+    public void agregarCurandero(Tablero tablero, int posFila, int posColumna) {
+
+        administradorDeEntidades.agregarCurandero(tablero,color,posFila,posColumna);
+    }
 }

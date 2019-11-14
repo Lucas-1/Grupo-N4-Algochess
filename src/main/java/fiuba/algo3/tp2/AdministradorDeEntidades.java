@@ -35,17 +35,59 @@ public class AdministradorDeEntidades {
 
     public void agregarEntidad(Entidad entidad, int posicionFila, int posicionColumna ,Tablero tablero, Color color) {
 
-        if(this.tieneSuficientesPuntos(entidad.getCosto())) {
-            tablero.agregarUnidad(entidad,posicionFila,posicionColumna,color);
 
-            entidad.setPosicion(posicionFila,posicionColumna);
-            entidades.add(entidad);
-            puntos_disponibles -= entidad.getCosto();
-        }
+        tablero.agregarUnidad(entidad,posicionFila,posicionColumna,color);
+
+        entidad.setPosicion(posicionFila,posicionColumna);
+        entidades.add(entidad);
+
+
     }
 
     public int getPuntosDisponibles() {
 
         return  puntos_disponibles;
+    }
+
+    //
+
+    public void agregarCatapulta(Tablero tablero, Color color, int posFila, int posColumna) {
+
+        Catapulta catapulta = new Catapulta(color);
+
+        if(tieneSuficientesPuntos(5))
+            this.agregarEntidad(catapulta,posFila,posColumna,tablero,color);
+
+        puntos_disponibles -= 5;
+    }
+
+    public void agregarJinete(Tablero tablero, Color color, int posFila, int posColumna) {
+
+        Jinete jinete = new Jinete(color);
+
+        if(tieneSuficientesPuntos(3))
+            this.agregarEntidad(jinete,posFila,posColumna,tablero,color);
+
+        puntos_disponibles -= 3;
+    }
+
+    public void agregarCurandero(Tablero tablero, Color color, int posFila, int posColumna) {
+
+        Curandero curandero = new Curandero(color);
+
+        if(tieneSuficientesPuntos(2))
+            this.agregarEntidad(curandero,posFila,posColumna,tablero,color);
+
+        puntos_disponibles -= 2;
+    }
+
+    public void agregarSoldadoInfanteria(Tablero tablero, Color color, int posFila, int posColumna) {
+
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(color);
+
+        if(tieneSuficientesPuntos(1))
+            this.agregarEntidad(soldado,posFila,posColumna,tablero,color);
+
+        puntos_disponibles -= 1;
     }
 }
