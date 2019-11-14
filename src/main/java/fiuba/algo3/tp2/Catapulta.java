@@ -9,4 +9,9 @@ public class Catapulta extends Entidad {
     @Override
     public void recibirVida(int vidaRecibida) {
     }
+
+    @Override
+    public void mover(Direccion dir){
+
+    }
 }
