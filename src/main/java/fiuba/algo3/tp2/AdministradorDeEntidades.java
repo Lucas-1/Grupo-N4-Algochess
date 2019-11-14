@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class AdministradorDeEntidades {
 
-    private int puntos_disponibles;
+    private int puntosDisponibles;
     private ArrayList<Entidad> entidades;
 
     public AdministradorDeEntidades() {
 
-        puntos_disponibles = 20;
+        puntosDisponibles = 20;
         entidades = new ArrayList<Entidad>();
     }
 
@@ -22,7 +22,7 @@ public class AdministradorDeEntidades {
 
     public boolean tieneSuficientesPuntos(int costo) {
 
-        if(puntos_disponibles < costo)
+        if(puntosDisponibles < costo)
             throw new JugadorNoLeAlcanzaParaEntidadException();
 
         return true;
@@ -46,7 +46,7 @@ public class AdministradorDeEntidades {
 
     public int getPuntosDisponibles() {
 
-        return  puntos_disponibles;
+        return puntosDisponibles;
     }
 
     //
@@ -58,7 +58,7 @@ public class AdministradorDeEntidades {
         if(tieneSuficientesPuntos(5))
             this.agregarEntidad(catapulta,posFila,posColumna,tablero,color);
 
-        puntos_disponibles -= 5;
+        puntosDisponibles -= 5;
     }
 
     public void agregarJinete(Tablero tablero, Color color, int posFila, int posColumna) {
@@ -68,7 +68,7 @@ public class AdministradorDeEntidades {
         if(tieneSuficientesPuntos(3))
             this.agregarEntidad(jinete,posFila,posColumna,tablero,color);
 
-        puntos_disponibles -= 3;
+        puntosDisponibles -= 3;
     }
 
     public void agregarCurandero(Tablero tablero, Color color, int posFila, int posColumna) {
@@ -78,7 +78,7 @@ public class AdministradorDeEntidades {
         if(tieneSuficientesPuntos(2))
             this.agregarEntidad(curandero,posFila,posColumna,tablero,color);
 
-        puntos_disponibles -= 2;
+        puntosDisponibles -= 2;
     }
 
     public void agregarSoldadoInfanteria(Tablero tablero, Color color, int posFila, int posColumna) {
@@ -88,6 +88,6 @@ public class AdministradorDeEntidades {
         if(tieneSuficientesPuntos(1))
             this.agregarEntidad(soldado,posFila,posColumna,tablero,color);
 
-        puntos_disponibles -= 1;
+        puntosDisponibles -= 1;
     }
 }
