@@ -2,27 +2,27 @@ package fiuba.algo3.tp2;
 
 public class Posicion {
 
-    private int direccionX;
-    private int direccionY;
+    private int direccionFila;
+    private int direccionColumna;
 
-    public Posicion (int dirX, int dirY){
-        direccionX = dirX;
-        direccionY = dirY;
+    public Posicion (int dirFila, int dirCol){
+        direccionColumna = dirCol;
+        direccionFila = dirFila;
     }
 
-    public int getDireccionX() {
-        return direccionX;
+    public int getDireccionColumna() {
+        return direccionColumna;
     }
 
-    public void setDireccionX(int direccionX) {
-        this.direccionX = direccionX;
+    public void setDireccionColumna(int direccionColumna) {
+        this.direccionColumna = direccionColumna;
     }
 
-    public int getDireccionY() {
-        return direccionY;
+    public int getDireccionFila() {
+        return direccionFila;
     }
 
-    public void setDireccionY(int direccionY) {
-        this.direccionY = direccionY;
+    public void setDireccionFila(int direccionFila) {
+        this.direccionFila = direccionFila;
     }
 }

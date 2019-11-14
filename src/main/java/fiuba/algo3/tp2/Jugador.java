@@ -5,65 +5,64 @@ import java.util.List;
 
 public class Jugador {
 
+    private AdministradorDeEntidades administradorDeEntidades;
     private final int POSICION_MI_TABLERO = 0;
     private final int POSICION_TABLERO_ENEMIGO = 1;
-    private int puntos_disponibles; //  clase admin de enti
-    private int cantidad_de_entidades; //  clase admin de enti
     private Color color;
 
     public Jugador(Color color) {
 
-        puntos_disponibles = 20;
-        cantidad_de_entidades = 0;
+        administradorDeEntidades = new AdministradorDeEntidades();
         this.color = color;
     }
 
     public void insertarEntidadEnPosicion(Entidad entidad, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        if (puntos_disponibles < entidad.getCosto())
-            throw new JugadorNoLeAlcanzaParaEntidadException();
-
-        tablero.agregarUnidad(entidad, posicionFila, posicionColumna, color);
-        entidad.setPosicion(posicionFila,posicionColumna);
-        puntos_disponibles = puntos_disponibles - entidad.getCosto();
-        ++cantidad_de_entidades;
+        administradorDeEntidades.agregarEntidad(entidad, posicionFila,posicionColumna,tablero,color);
     }
 
     public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
 
+        Entidad entidad = tablero.getEntidad(posicionFila,posicionColumna);
+        administradorDeEntidades.borrarEntidad(entidad);
         tablero.borrarUnidad(posicionFila, posicionColumna);
-        --cantidad_de_entidades;
     }
 
     public boolean sigueEnJuego() {
 
-        return (cantidad_de_entidades != 0);
+        return administradorDeEntidades.sigueEnJuego();
     }
 
     public void moverEntidad(Entidad entidad,Direccion direccion, Tablero tablero){
+
         tablero.moverUnidad(entidad,direccion);
-    }
-
-    public void inicializarEntidades(Tablero tablero) {
-
-        //
     }
 
     public int getPuntosDisponibles() {
 
-        return  puntos_disponibles;
+        return administradorDeEntidades.getPuntosDisponibles();
     }
 
-    public void moverUnaEntidad(Tablero tablero) {
+    //
 
-        //
+    public void agregarCatapulta(Tablero tablero, int posFila, int posColumna) {
 
+        administradorDeEntidades.agregarCatapulta(tablero,color,posFila,posColumna);
     }
 
-    public void atacar(Tablero tablero) {
+    public void agregarJinete(Tablero tablero, int posFila, int posColumna) {
 
-        //
+        administradorDeEntidades.agregarJinete(tablero,color,posFila,posColumna);
+    }
 
+    public void agregarSoldadoInfanteria(Tablero tablero, int posFila, int posColumna) {
+
+        administradorDeEntidades.agregarSoldadoInfanteria(tablero,color,posFila,posColumna);
+    }
+
+    public void agregarCurandero(Tablero tablero, int posFila, int posColumna) {
+
+        administradorDeEntidades.agregarCurandero(tablero,color,posFila,posColumna);
     }
 
     public Tablero faseInicial(Tablero tablero) {
@@ -82,4 +81,5 @@ public class Jugador {
         tableros.add(POSICION_TABLERO_ENEMIGO, ladoEnemigo);
         return tableros;
     }
+
 }

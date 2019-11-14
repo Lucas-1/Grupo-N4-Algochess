@@ -14,13 +14,14 @@ public class MovimientoUnidadTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete(blanco, 5,5);
+        Jinete jinete = new Jinete(blanco);
 
-        jugador.insertarEntidad(jinete,5,5,tablero);
+        jugador.insertarEntidadEnPosicion(jinete,3,5,tablero);
         jugador.moverEntidad(jinete,new Derecha(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(5,6));
+        assertTrue(tablero.casilleroOcupado(3,6));
     }
+
 
     @Test
     public void test02UnidadSeMueveALaIzquierda(){
@@ -28,12 +29,12 @@ public class MovimientoUnidadTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero(blanco,4,3);
+        Curandero curandero = new Curandero(blanco);
 
-        jugador.insertarEntidad(curandero,4,3,tablero);
+        jugador.insertarEntidadEnPosicion(curandero,3,5,tablero);
         jugador.moverEntidad(curandero,new Izquierda(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(4,2));
+        assertTrue(tablero.casilleroOcupado(3,4));
     }
 
     @Test
@@ -42,9 +43,9 @@ public class MovimientoUnidadTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco,8,10);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
-        jugador.insertarEntidad(soldado,8,10,tablero);
+        jugador.insertarEntidadEnPosicion(soldado,8,10,tablero);
         jugador.moverEntidad(soldado,new Arriba(),tablero);
 
         assertTrue(tablero.casilleroOcupado(7,10));
@@ -56,25 +57,25 @@ public class MovimientoUnidadTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco,8,6);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
-        jugador.insertarEntidad(soldado,8,6,tablero);
+        jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
         jugador.moverEntidad(soldado,new Abajo(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(9,6));
+        assertTrue(tablero.casilleroOcupado(10,6));
     }
 
     @Test
-    public void test05UnidadNoSePuedeMoverAUnaPosicionOcupada(){
+    public void test05UnidadSeMueveAUnaPosicionOcupada(){
 
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco,9,6);
-        Jinete jinete = new Jinete(blanco,9,5);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
+        Jinete jinete = new Jinete(blanco);
 
-        jugador.insertarEntidad(soldado,9,6,tablero);
-        jugador.insertarEntidad(jinete,9,5,tablero);
+        jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
+        jugador.insertarEntidadEnPosicion(jinete,9,5,tablero);
 
         assertThrows(CasilleroEstaOcupadoException.class,
                 ()->{

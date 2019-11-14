@@ -8,7 +8,8 @@ public class Arriba extends Direccion {
 
     @Override
     public Posicion desplazarPosicion(Posicion posicionActual){
-        posicionActual.setDireccionY(posicionActual.getDireccionY() + 1);
+
+        posicionActual.setDireccionFila(posicionActual.getDireccionFila() - 1);
         return posicionActual;
     }
 

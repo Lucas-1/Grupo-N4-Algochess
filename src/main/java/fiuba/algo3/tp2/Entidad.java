@@ -58,9 +58,9 @@ public abstract class Entidad {
     }
 
 
-    public void setPosicion(int nuevaPosicionX,int nuevaPosicionY){
+    public void setPosicion(int nuevaPosicionFila,int nuevaPosicionColumna){
 
-        this.posicion = new Posicion(nuevaPosicionX,nuevaPosicionY);
+        this.posicion = new Posicion(nuevaPosicionFila,nuevaPosicionColumna);
         this.mov = new Movimiento();
     }
 
