@@ -1,21 +1,23 @@
 package fiuba.algo3.tp2;
 
 public class Algochess {
-
-    private Jugador jugadorBlanco;
-    private Jugador jugadorNegro;
-    private Tablero tablero;
+    private AdministradorEventosGeneral administradorEventosGeneral;
 
     public Algochess() {
 
-        Color blanco = new Blanco();
+        administradorEventosGeneral = new AdministradorEventosGeneral();
+        administradorEventosGeneral.iniciarJuego();
+
+
+
+        /*Color blanco = new Blanco();
         Color negro = new Negro();
 
         jugadorBlanco = new Jugador(blanco);
         jugadorNegro = new Jugador(negro);
-        tablero = new Tablero();
+        tablero = new Tablero();*/
     }
-
+/*
     public void inicializarEntidades() {
 
         jugadorBlanco.inicializarEntidades(tablero);
@@ -43,5 +45,5 @@ public class Algochess {
             }
         }
     }
-
+*/
 }

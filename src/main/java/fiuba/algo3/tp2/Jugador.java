@@ -1,7 +1,12 @@
 package fiuba.algo3.tp2;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Jugador {
 
+    private final int POSICION_MI_TABLERO = 0;
+    private final int POSICION_TABLERO_ENEMIGO = 1;
     private int puntos_disponibles; //  clase admin de enti
     private int cantidad_de_entidades; //  clase admin de enti
     private Color color;
@@ -59,5 +64,22 @@ public class Jugador {
 
         //
 
+    }
+
+    public Tablero faseInicial(Tablero tablero) {
+        return colocarPiezasIniciales(tablero);
+    }
+
+    private Tablero colocarPiezasIniciales(Tablero tablero) {
+        // aca coloca las piezas iniciales
+        return tablero;
+    }
+
+    public List<Tablero> realizarTurno(Tablero miLado, Tablero ladoEnemigo) {
+        // mueve piezas
+        List<Tablero> tableros = new ArrayList<Tablero>();
+        tableros.add(POSICION_MI_TABLERO, miLado);
+        tableros.add(POSICION_TABLERO_ENEMIGO, ladoEnemigo);
+        return tableros;
     }
 }
