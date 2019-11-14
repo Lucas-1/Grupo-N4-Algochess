@@ -64,7 +64,7 @@ public class CuracionDeCuranderoTest {
     public void test04CuranderoNoPuedeCurarCatapulta() {
 
         Color blanco = new Blanco();
-        Color negro = new Negro();
+
         Curandero curandero = new Curandero(blanco);
         Catapulta catapulta = new Catapulta(blanco);
 

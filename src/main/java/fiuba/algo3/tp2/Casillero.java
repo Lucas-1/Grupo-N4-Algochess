@@ -37,7 +37,7 @@ public class Casillero {
         if(this.estaOcupado())
             throw new CasilleroEstaOcupadoException();
 
-        this. entidad = entidad;
+        this.entidad = entidad;
         estado = new Ocupado();
     }
 

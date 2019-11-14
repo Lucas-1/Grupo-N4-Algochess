@@ -4,7 +4,7 @@ public class Curandero extends Entidad {
 
 
     public Curandero(Color color) {
-        atributos = new Atributos(this, color);
+        atributos = new AtributosCurandero(color);
     }
 
     @Override

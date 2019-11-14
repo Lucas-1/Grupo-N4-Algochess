@@ -64,7 +64,6 @@ public class AtaqueDeCatapultaTest {
     public void test05CatapultaNoPuedeAtacarUnidadAliada() {
 
         Color blanco = new Blanco();
-        Color negro = new Negro();
         Catapulta catapulta = new Catapulta(blanco);
         Jinete jineteAliado = new Jinete(blanco);
 
