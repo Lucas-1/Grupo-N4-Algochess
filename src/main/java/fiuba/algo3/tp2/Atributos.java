@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2;
 
 public class Atributos {
+
     private int puntosDeVida;
     private int costo;
     private int puntosDePoder;

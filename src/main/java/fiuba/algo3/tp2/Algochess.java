@@ -15,6 +15,7 @@ public class Algochess {
         tablero = new Tablero();
     }
 
+    /*
     public void inicializarEntidades() {
 
         jugadorBlanco.inicializarEntidades(tablero);
@@ -22,6 +23,8 @@ public class Algochess {
     }
 
     public void Jugar() {
+
+        this.inicializarEntidades();
 
         while(true) {
 
@@ -41,6 +44,6 @@ public class Algochess {
                 break;
             }
         }
-    }
+    } */
 
 }

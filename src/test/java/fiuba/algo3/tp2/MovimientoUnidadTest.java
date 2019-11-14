@@ -16,11 +16,12 @@ public class MovimientoUnidadTest {
         Tablero tablero = new Tablero();
         Jinete jinete = new Jinete(blanco);
 
-        jugador.insertarEntidadEnPosicion(jinete,5,5,tablero);
+        jugador.insertarEntidadEnPosicion(jinete,3,5,tablero);
         jugador.moverEntidad(jinete,new Derecha(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(6,5));
+        assertTrue(tablero.casilleroOcupado(3,6));
     }
+
 
     @Test
     public void test02UnidadSeMueveALaIzquierda(){
@@ -30,10 +31,10 @@ public class MovimientoUnidadTest {
         Tablero tablero = new Tablero();
         Curandero curandero = new Curandero(blanco);
 
-        jugador.insertarEntidadEnPosicion(curandero,4,3,tablero);
+        jugador.insertarEntidadEnPosicion(curandero,3,5,tablero);
         jugador.moverEntidad(curandero,new Izquierda(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(3,3));
+        assertTrue(tablero.casilleroOcupado(3,4));
     }
 
     @Test
@@ -47,7 +48,7 @@ public class MovimientoUnidadTest {
         jugador.insertarEntidadEnPosicion(soldado,8,10,tablero);
         jugador.moverEntidad(soldado,new Arriba(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(8,11));
+        assertTrue(tablero.casilleroOcupado(7,10));
     }
 
     @Test
@@ -61,7 +62,7 @@ public class MovimientoUnidadTest {
         jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
         jugador.moverEntidad(soldado,new Abajo(),tablero);
 
-        assertTrue(tablero.casilleroOcupado(9,5));
+        assertTrue(tablero.casilleroOcupado(10,6));
     }
 
     @Test
@@ -74,7 +75,7 @@ public class MovimientoUnidadTest {
         Jinete jinete = new Jinete(blanco);
 
         jugador.insertarEntidadEnPosicion(soldado,9,6,tablero);
-        jugador.insertarEntidadEnPosicion(jinete,8,6,tablero);
+        jugador.insertarEntidadEnPosicion(jinete,9,5,tablero);
 
         assertThrows(CasilleroEstaOcupadoException.class,
                 ()->{
