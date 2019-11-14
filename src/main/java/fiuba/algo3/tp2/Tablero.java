@@ -42,10 +42,10 @@ public class Tablero {
         return casilleros[pos_fila][pos_columna].estaOcupado();
     }
 
-    public boolean esPosicionValida(int pos_fila, int pos_columna, Color color) {
+   /* public boolean esPosicionValida(int pos_fila, int pos_columna, Color color) {
 
         return casilleros[pos_fila][pos_columna].esValida(color);
-    }
+    } */
 
     public Casillero getCasillero(int pos_fila, int pos_columna) {
 
@@ -53,14 +53,26 @@ public class Tablero {
     }
 
     public void moverUnidad(Entidad entidad,Direccion dir){
-        Posicion posicionActual = entidad.getPosicion();
-        Casillero casillero = casilleros[posicionActual.getDireccionX()][posicionActual.getDireccionY()];
-        entidad.mover(dir);
-        casillero.borrarUnidad();
-        posicionActual = entidad.getPosicion();
-        casillero = casilleros[posicionActual.getDireccionX()][posicionActual.getDireccionY()];
-        casillero.agregarUnidad(entidad);
 
+        Posicion posicionActual = entidad.getPosicion();
+
+        Casillero casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
+
+        entidad.mover(dir);
+
+        casillero.borrarUnidad();
+
+        posicionActual = entidad.getPosicion();
+
+        casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
+
+        casillero.setearUnidad(entidad);
+
+    }
+
+    public Entidad getEntidad(int posicionFila, int posicionColumna) {
+
+        return casilleros[posicionFila][posicionColumna].getEntidad();
     }
 
 

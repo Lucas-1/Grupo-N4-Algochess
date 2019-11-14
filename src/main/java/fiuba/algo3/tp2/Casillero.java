@@ -28,20 +28,31 @@ public class Casillero {
 
        if(this.esValida(entidad.getColor())) {
 
-           this.entidad = entidad;
-           estado = new Ocupado();
+           this.setearUnidad(entidad);
        }
     }
 
+    public void setearUnidad(Entidad entidad) {
+
+        if(this.estaOcupado())
+            throw new CasilleroEstaOcupadoException();
+
+        this. entidad = entidad;
+        estado = new Ocupado();
+    }
+
     public void borrarUnidad() {
+
         estado = new Liberado();
     }
 
     public Entidad getEntidad() {
+
         return entidad;
     }
 
     public boolean estaOcupado() {
+
         return estado.estaOcupado();
     }
 
