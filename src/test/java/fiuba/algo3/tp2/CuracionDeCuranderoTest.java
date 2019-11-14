@@ -14,9 +14,9 @@ public class CuracionDeCuranderoTest {
         Color blanco = new Blanco();
         Color negro = new Negro();
 
-        Jinete jinete = new Jinete(blanco,5,5);
-        Curandero curandero = new Curandero(blanco,5,5);
-        Catapulta catapulta = new Catapulta(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(negro);
 
         catapulta.accionContra(jinete);
 
@@ -29,8 +29,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Curandero curandero = new Curandero(blanco,5,5);
-        Jinete jinete = new Jinete(negro,15,15);
+        Curandero curandero = new Curandero(blanco);
+        Jinete jinete = new Jinete(negro);
 
         assertThrows(NoPuedeCurarEntidadDelOtroEquipo.class,
                 ()->{
@@ -43,9 +43,9 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        Curandero curandero = new Curandero(blanco,6,5);
-        Catapulta catapulta = new Catapulta(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(negro);
 
         catapulta.accionContra(jinete);
         catapulta.accionContra(jinete);
@@ -65,8 +65,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
 
-        Curandero curandero = new Curandero(blanco,5,5);
-        Catapulta catapulta = new Catapulta(blanco,6,5);
+        Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(blanco);
 
         curandero.accionContra(catapulta);
         /** Los puntos de vida de la catapulta no cambian */

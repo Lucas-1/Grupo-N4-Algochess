@@ -3,8 +3,8 @@ package fiuba.algo3.tp2;
 public class Curandero extends Entidad {
 
 
-    public Curandero(Color color, int posFila, int posColumna) {
-        atributos = new Atributos(this, color, posFila, posColumna);
+    public Curandero(Color color) {
+        atributos = new Atributos(this, color);
     }
 
     @Override

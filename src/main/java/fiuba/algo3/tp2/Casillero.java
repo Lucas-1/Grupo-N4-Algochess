@@ -24,9 +24,9 @@ public class Casillero {
         return true;
     }
 
-    public void agregarUnidad(Entidad entidad, Color color) {
+    public void agregarUnidad(Entidad entidad) {
 
-       if(this.esValida(color)) {
+       if(this.esValida(entidad.getColor())) {
 
            this.setearUnidad(entidad);
        }
@@ -37,7 +37,7 @@ public class Casillero {
         if(this.estaOcupado())
             throw new CasilleroEstaOcupadoException();
 
-        this. entidad = entidad;
+        this.entidad = entidad;
         estado = new Ocupado();
     }
 

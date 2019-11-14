@@ -13,8 +13,8 @@ public class AtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        Jinete jineteEnemigo = new Jinete(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        Jinete jineteEnemigo = new Jinete(negro);
 
         /** jinete ataca a jinete enemigo con 5 puntos de danio. */
         jinete.accionContra(jineteEnemigo);
@@ -28,8 +28,8 @@ public class AtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        Catapulta catapultaEnemiga = new Catapulta(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
 
         jinete.accionContra(catapultaEnemiga);
 
@@ -41,8 +41,8 @@ public class AtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
 
         jinete.accionContra(soldado);
 
@@ -54,8 +54,8 @@ public class AtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        Curandero curanderoEnemigo = new Curandero(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        Curandero curanderoEnemigo = new Curandero(negro);
 
         jinete.accionContra(curanderoEnemigo);
 
@@ -67,8 +67,8 @@ public class AtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        Catapulta catapultaEnemiga = new Catapulta(negro,15,15);
+        Jinete jinete = new Jinete(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
 
         /** ataca 10 veces y la deja en 0 de vida */
         for(int i = 0; i < 10; i++) {
@@ -87,8 +87,8 @@ public class AtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco,5,5);
-        Jinete jineteAliado = new Jinete(blanco,6,6);
+        Jinete jinete = new Jinete(blanco);
+        Jinete jineteAliado = new Jinete(blanco);
 
         assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
                 ()->{
