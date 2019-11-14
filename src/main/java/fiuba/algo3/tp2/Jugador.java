@@ -70,12 +70,12 @@ public class Jugador {
     }
 
     private Tablero colocarPiezasIniciales(Tablero tablero) {
-        // aca coloca las piezas iniciales
+        // aca coloca las piezas iniciales, hay que ver como resolver la compra de las piezas
         return tablero;
     }
 
     public List<Tablero> realizarTurno(Tablero miLado, Tablero ladoEnemigo) {
-        // mueve piezas
+        // mueve una pieza y devuelve ambos tableros, puede que haya cruzado a territorio enemigo, implementar el movimiento.
         List<Tablero> tableros = new ArrayList<Tablero>();
         tableros.add(POSICION_MI_TABLERO, miLado);
         tableros.add(POSICION_TABLERO_ENEMIGO, ladoEnemigo);
