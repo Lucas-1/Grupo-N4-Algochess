@@ -4,7 +4,17 @@ public class Izquierda extends Direccion {
 
     public Izquierda(){
 
-        direccionColumna = -1;
-        direccionFila = 0;
+
+    }
+
+    @Override
+    public Posicion desplazarPosicion(Posicion posicionActual){
+        posicionActual.setDireccionX(posicionActual.getDireccionX() - 1);
+        return posicionActual;
+    }
+
+    @Override
+    public Direccion direccionOpuesta(){
+        return new Derecha();
     }
 }

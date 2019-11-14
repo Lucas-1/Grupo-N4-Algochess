@@ -50,6 +50,17 @@ public class Tablero {
         return casilleros[posicionFila][posicionColumna].getEntidad();
     }
 
+    public void moverUnidad(Entidad entidad,Direccion dir){
+        Posicion posicionActual = entidad.getPosicion();
+        Casillero casillero = casilleros[posicionActual.getDireccionX()][posicionActual.getDireccionY()];
+        entidad.mover(dir);
+        casillero.borrarUnidad();
+        posicionActual = entidad.getPosicion();
+        casillero = casilleros[posicionActual.getDireccionX()][posicionActual.getDireccionY()];
+        casillero.agregarUnidad(entidad);
+
+    }
+
 
 
 
