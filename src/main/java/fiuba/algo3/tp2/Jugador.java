@@ -63,7 +63,7 @@ public class Jugador {
     public void agregarCurandero(Tablero tablero, int posFila, int posColumna) {
 
         administradorDeEntidades.agregarCurandero(tablero,color,posFila,posColumna);
-    }/*
+    }
 
     public Tablero faseInicial(Tablero tablero) {
         return colocarPiezasIniciales(tablero);
@@ -80,6 +80,6 @@ public class Jugador {
         tableros.add(POSICION_MI_TABLERO, miLado);
         tableros.add(POSICION_TABLERO_ENEMIGO, ladoEnemigo);
         return tableros;
-    }*/
+    }
 
 }
