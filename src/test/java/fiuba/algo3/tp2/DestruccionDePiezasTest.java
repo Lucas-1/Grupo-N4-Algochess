@@ -9,19 +9,19 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class DestruccionDeEntidadesTest {
+public class DestruccionDePiezasTest {
 
 
     @Test
-    public void test01SeDestuyeUnaEntidadDelJugadorYDesocupaElCasillero() {
+    public void test01SeDestuyeUnaPiezaDelJugadorYDesocupaElCasillero() {
 
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
-        jugador.insertarEntidadEnPosicion(soldado,5,5,tablero);
-        jugador.insertarEntidadEnPosicion(soldado,6,5,tablero);
+        jugador.insertarPiezaEnPosicion(soldado,5,5,tablero);
+        jugador.insertarPiezaEnPosicion(soldado,6,5,tablero);
         jugador.borrarUnidad(tablero,5,5);
 
         assertFalse(tablero.casilleroOcupado(5,5));
@@ -35,7 +35,7 @@ public class DestruccionDeEntidadesTest {
         Tablero tablero = new Tablero();
         Jinete jinete = new Jinete(blanco);
 
-        jugador.insertarEntidadEnPosicion(jinete,5,5,tablero);
+        jugador.insertarPiezaEnPosicion(jinete,5,5,tablero);
         jugador.borrarUnidad(tablero,5,5);
 
         /** jugador 1 se queda sin unidades, pierde. */

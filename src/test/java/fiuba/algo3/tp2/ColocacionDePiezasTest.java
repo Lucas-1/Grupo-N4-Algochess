@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
-public class ColocacionDeEntidadesTest {
+public class ColocacionDePiezasTest {
 
 
     @Test
@@ -26,7 +26,7 @@ public class ColocacionDeEntidadesTest {
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
-        jugador.insertarEntidadEnPosicion(soldado, 5,5,tablero);
+        jugador.insertarPiezaEnPosicion(soldado, 5,5,tablero);
 
         assertEquals(true, tablero.casilleroOcupado(5,5));
     }
@@ -42,7 +42,7 @@ public class ColocacionDeEntidadesTest {
 
         assertThrows(CasilleroDeLadoEnemigoException.class,
             ()->{
-             jugador.insertarEntidadEnPosicion(curandero, 15,15,tablero);
+             jugador.insertarPiezaEnPosicion(curandero, 15,15,tablero);
          });
     }
 
@@ -55,11 +55,11 @@ public class ColocacionDeEntidadesTest {
         Catapulta catapulta = new Catapulta(blanco);
 
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
+        jugador.insertarPiezaEnPosicion(catapulta,5,5, tablero);
 
         assertThrows(CasilleroEstaOcupadoException.class,
                 ()->{
-                    jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
+                    jugador.insertarPiezaEnPosicion(catapulta,5,5, tablero);
                 });
     }
 
@@ -72,7 +72,7 @@ public class ColocacionDeEntidadesTest {
         Catapulta catapulta = new Catapulta(blanco);
 
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
+        jugador.insertarPiezaEnPosicion(catapulta,5,5, tablero);
 
         assertEquals(15, jugador.getPuntosDeCompraDisponibles());
 
@@ -90,16 +90,16 @@ public class ColocacionDeEntidadesTest {
         Catapulta catapulta3 = new Catapulta(blanco);
         Catapulta catapulta4 = new Catapulta(blanco);
 
-        jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
-        jugador.insertarEntidadEnPosicion(catapulta1,4,5, tablero);
-        jugador.insertarEntidadEnPosicion(catapulta2,3,5, tablero);
-        jugador.insertarEntidadEnPosicion(catapulta3,2,5, tablero);
+        jugador.insertarPiezaEnPosicion(catapulta,5,5, tablero);
+        jugador.insertarPiezaEnPosicion(catapulta1,4,5, tablero);
+        jugador.insertarPiezaEnPosicion(catapulta2,3,5, tablero);
+        jugador.insertarPiezaEnPosicion(catapulta3,2,5, tablero);
 
         // jugador se quedo con 0 puntos despues de gastar 20
 
         assertThrows(JugadorQuiereUtilizarMasDineroDelDisponibleException.class,
                 ()->{
-                    jugador.insertarEntidadEnPosicion(catapulta4,1,5, tablero);
+                    jugador.insertarPiezaEnPosicion(catapulta4,1,5, tablero);
                 });
 
     }

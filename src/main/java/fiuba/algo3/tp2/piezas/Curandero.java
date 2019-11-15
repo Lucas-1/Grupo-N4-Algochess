@@ -3,7 +3,6 @@ package fiuba.algo3.tp2.piezas;
 import fiuba.algo3.tp2.PuntosDeCuracion;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.excepciones.NoPuedeCurarEntidadDelOtroEquipo;
 
 public class Curandero extends Saludable {
 

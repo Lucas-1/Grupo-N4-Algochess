@@ -3,8 +3,8 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
-import fiuba.algo3.tp2.excepciones.EntidadEstaMuertaException;
-import fiuba.algo3.tp2.excepciones.NoPuedeAtacarEntidadDelMismoEquipo;
+import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
@@ -76,7 +76,7 @@ public class AtaqueDeCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         Jinete jineteAliado = new Jinete(blanco);
 
-        assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
+        assertThrows(NoPuedeAtacarPiezaDelMismoEquipo.class,
                 ()->{
                     catapulta.atacarPieza(jineteAliado);
                 });
@@ -96,7 +96,7 @@ public class AtaqueDeCatapultaTest {
         catapulta.atacarPieza(jinete);
         catapulta.atacarPieza(jinete);
 
-        assertThrows(EntidadEstaMuertaException.class,
+        assertThrows(PiezaEstaMuertaException.class,
                 ()->{
                     catapulta.atacarPieza(jinete);
                 });

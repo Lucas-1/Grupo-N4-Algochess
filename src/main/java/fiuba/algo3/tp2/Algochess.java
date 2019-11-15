@@ -19,17 +19,17 @@ public class Algochess {
         tablero = new Tablero();*/
     }
 
-    /*public void inicializarEntidades() {
+    /*public void inicializarPiezas() {
 
-        jugadorBlanco.inicializarEntidades(tablero);
-        jugadorNegro.inicializarEntidades(tablero);
+        jugadorBlanco.inicializarPiezas(tablero);
+        jugadorNegro.inicializarPiezas(tablero);
     }
 
     public void Jugar() {
-        this.inicializarEntidades();
+        this.inicializarPiezas();
         while(true) {
 
-            jugadorBlanco.moverUnaEntidad(tablero);
+            jugadorBlanco.moverUnaPieza(tablero);
             jugadorBlanco.atacar(tablero);
 
             if(!jugadorNegro.sigueEnJuego()) {
@@ -37,7 +37,7 @@ public class Algochess {
                break;
             }
 
-            jugadorNegro.moverUnaEntidad(tablero);
+            jugadorNegro.moverUnaPieza(tablero);
             jugadorNegro.atacar(tablero);
 
             if(!jugadorBlanco.sigueEnJuego()) {

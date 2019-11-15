@@ -3,8 +3,8 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
-import fiuba.algo3.tp2.excepciones.EntidadEstaMuertaException;
-import fiuba.algo3.tp2.excepciones.NoPuedeCurarEntidadDelOtroEquipo;
+import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.NoPuedeCurarPiezaDelOtroEquipo;
 import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
@@ -40,7 +40,7 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(blanco);
         Jinete jinete = new Jinete(negro);
 
-        assertThrows(NoPuedeCurarEntidadDelOtroEquipo.class,
+        assertThrows(NoPuedeCurarPiezaDelOtroEquipo.class,
                 ()->{
                     curandero.curarPieza(jinete);
                 });
@@ -62,7 +62,7 @@ public class CuracionDeCuranderoTest {
         /** mata al jinete */
         catapulta.atacarPieza(jinete);
 
-        assertThrows(EntidadEstaMuertaException.class,
+        assertThrows(PiezaEstaMuertaException.class,
                 ()->{
                     curandero.curarPieza(jinete);
                 });

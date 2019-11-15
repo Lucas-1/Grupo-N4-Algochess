@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.*;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.excepciones.EntidadEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Movimiento;
 import fiuba.algo3.tp2.movimiento.Posicion;
@@ -19,7 +19,7 @@ public abstract class Pieza {
     public void perderVida(int danioRecibido) {
 
         if(puntosDeVida.estoyMuerta())
-            throw new EntidadEstaMuertaException();
+            throw new PiezaEstaMuertaException();
 
         puntosDeVida.restarPuntos(danioRecibido);
     }
@@ -27,7 +27,7 @@ public abstract class Pieza {
     public void recibirVida(int vidaRecibida) {
 
         if(puntosDeVida.estoyMuerta())
-            throw new EntidadEstaMuertaException();
+            throw new PiezaEstaMuertaException();
 
         puntosDeVida.aumentarPuntos(vidaRecibida);
     }

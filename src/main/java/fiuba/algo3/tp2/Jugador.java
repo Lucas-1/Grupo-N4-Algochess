@@ -24,15 +24,15 @@ public class Jugador {
         this.color = color;
     }
 
-    public void insertarEntidadEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
+    public void insertarPiezaEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        administradorDePiezas.agregarEntidad(pieza, posicionFila,posicionColumna,tablero,color, tienda, billetera);
+        administradorDePiezas.agregarPieza(pieza, posicionFila,posicionColumna,tablero,color, tienda, billetera);
     }
 
     public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
 
-        Pieza pieza = tablero.getEntidad(posicionFila,posicionColumna);
-        administradorDePiezas.borrarEntidad(pieza);
+        Pieza pieza = tablero.getPieza(posicionFila,posicionColumna);
+        administradorDePiezas.borrarPieza(pieza);
         tablero.borrarUnidad(posicionFila, posicionColumna);
     }
 
@@ -41,7 +41,7 @@ public class Jugador {
         return administradorDePiezas.sigueEnJuego();
     }
 
-    public void moverEntidad(Pieza pieza, Direccion direccion, Tablero tablero){
+    public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
         tablero.moverUnidad(pieza,direccion);
     }
 

@@ -83,7 +83,7 @@ public class Tablero {
         casillero.setearUnidad(pieza);
     }
 
-    public Pieza getEntidad(int posicionFila, int posicionColumna) {
+    public Pieza getPieza(int posicionFila, int posicionColumna) {
 
         return casilleros[posicionFila][posicionColumna].getPieza();
     }

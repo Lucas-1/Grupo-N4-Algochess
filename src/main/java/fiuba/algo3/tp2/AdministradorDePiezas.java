@@ -8,29 +8,29 @@ import java.util.ArrayList;
 
 
 public class AdministradorDePiezas {
-    private ArrayList<Pieza> entidades;
+    private ArrayList<Pieza> piezas;
 
     public AdministradorDePiezas() {
-        entidades = new ArrayList<Pieza>();
+        piezas = new ArrayList<Pieza>();
     }
 
     public boolean sigueEnJuego() {
 
-        return !(entidades.isEmpty()); /* Jugador se queda sin entidades, pierde. */
+        return !(piezas.isEmpty()); /* Jugador se queda sin piezas, pierde. */
     }
 
-    public void borrarEntidad(Pieza pieza) {
+    public void borrarPieza(Pieza pieza) {
 
-        entidades.remove(pieza);
+        piezas.remove(pieza);
     }
 
-    public void agregarEntidad(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero, Color color, Tienda tienda, Billetera billetera) {
+    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero, Color color, Tienda tienda, Billetera billetera) {
 
         Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
         tablero.agregarUnidad(piezaComprada,posicionFila,posicionColumna,color);
 
         piezaComprada.setPosicion(posicionFila,posicionColumna);
-        entidades.add(piezaComprada);
+        piezas.add(piezaComprada);
 
 
     }
