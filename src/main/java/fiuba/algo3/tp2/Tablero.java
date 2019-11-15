@@ -1,5 +1,12 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Pieza;
+
 public class Tablero {
 
     private Casillero[][] casilleros;
@@ -42,12 +49,12 @@ public class Tablero {
 
     }
 
-    public void agregarUnidad(Entidad entidad, int posicionFila, int posicionColumna, Color color) {
+    public void agregarUnidad(Pieza pieza, int posicionFila, int posicionColumna, Color color) {
 
         Casillero casillero = casilleros[posicionFila][posicionColumna];
 
         if(casillero.esValida(color))
-            casillero.agregarUnidad(entidad);
+            casillero.agregarUnidad(pieza);
     }
 
     public void borrarUnidad(int posicionFila, int posicionColumna) {
@@ -65,20 +72,20 @@ public class Tablero {
         return casilleros[posicionFila][posicionColumna];
     }
 
-    public void moverUnidad(Entidad entidad,Direccion dir){
+    public void moverUnidad(Pieza pieza, Direccion dir){
 
-        Posicion posicionActual = entidad.getPosicion();
+        Posicion posicionActual = pieza.getPosicion();
         Casillero casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
-        entidad.mover(dir);
+        pieza.mover(dir);
         casillero.borrarUnidad();
-        posicionActual = entidad.getPosicion();
+        posicionActual = pieza.getPosicion();
         casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
-        casillero.setearUnidad(entidad);
+        casillero.setearUnidad(pieza);
     }
 
-    public Entidad getEntidad(int posicionFila, int posicionColumna) {
+    public Pieza getEntidad(int posicionFila, int posicionColumna) {
 
-        return casilleros[posicionFila][posicionColumna].getEntidad();
+        return casilleros[posicionFila][posicionColumna].getPieza();
     }
 
 

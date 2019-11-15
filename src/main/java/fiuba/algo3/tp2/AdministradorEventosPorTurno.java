@@ -1,5 +1,8 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Negro;
+
 import java.util.List;
 
 public class AdministradorEventosPorTurno {

@@ -1,10 +1,18 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.movimiento.EstadoCasillero;
+import fiuba.algo3.tp2.movimiento.Liberado;
+import fiuba.algo3.tp2.movimiento.Ocupado;
+import fiuba.algo3.tp2.piezas.Pieza;
+
 public class Casillero {
 
     private Color color;
     private EstadoCasillero estado;
-    private Entidad entidad;
+    private Pieza pieza;
 
     public Casillero(Color color) {
 
@@ -24,20 +32,20 @@ public class Casillero {
         return true;
     }
 
-    public void agregarUnidad(Entidad entidad) {
+    public void agregarUnidad(Pieza pieza) {
 
-       if(this.esValida(entidad.getColor())) {
+       if(this.esValida(pieza.getColor())) {
 
-           this.setearUnidad(entidad);
+           this.setearUnidad(pieza);
        }
     }
 
-    public void setearUnidad(Entidad entidad) {
+    public void setearUnidad(Pieza pieza) {
 
         if(this.estaOcupado())
             throw new CasilleroEstaOcupadoException();
 
-        this.entidad = entidad;
+        this.pieza = pieza;
         estado = new Ocupado();
     }
 
@@ -46,9 +54,9 @@ public class Casillero {
         estado = new Liberado();
     }
 
-    public Entidad getEntidad() {
+    public Pieza getPieza() {
 
-        return entidad;
+        return pieza;
     }
 
     public boolean estaOcupado() {

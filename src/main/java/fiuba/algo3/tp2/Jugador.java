@@ -1,68 +1,52 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.piezas.Pieza;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
 
-    private AdministradorDeEntidades administradorDeEntidades;
+    private final int CANTIDAD_DINERO_INICIAL = 20;
+    private AdministradorDePiezas administradorDePiezas;
+    private Tienda tienda;
+    private Billetera billetera;
     private final int POSICION_MI_TABLERO = 0;
     private final int POSICION_TABLERO_ENEMIGO = 1;
     private Color color;
 
     public Jugador(Color color) {
-
-        administradorDeEntidades = new AdministradorDeEntidades();
+        tienda = new Tienda();
+        billetera = new Billetera(CANTIDAD_DINERO_INICIAL);
+        administradorDePiezas = new AdministradorDePiezas();
         this.color = color;
     }
 
-    public void insertarEntidadEnPosicion(Entidad entidad, int posicionFila, int posicionColumna, Tablero tablero) {
+    public void insertarEntidadEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        administradorDeEntidades.agregarEntidad(entidad, posicionFila,posicionColumna,tablero,color);
+        administradorDePiezas.agregarEntidad(pieza, posicionFila,posicionColumna,tablero,color, tienda, billetera);
     }
 
     public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
 
-        Entidad entidad = tablero.getEntidad(posicionFila,posicionColumna);
-        administradorDeEntidades.borrarEntidad(entidad);
+        Pieza pieza = tablero.getEntidad(posicionFila,posicionColumna);
+        administradorDePiezas.borrarEntidad(pieza);
         tablero.borrarUnidad(posicionFila, posicionColumna);
     }
 
     public boolean sigueEnJuego() {
 
-        return administradorDeEntidades.sigueEnJuego();
+        return administradorDePiezas.sigueEnJuego();
     }
 
-    public void moverEntidad(Entidad entidad,Direccion direccion, Tablero tablero){
-
-        tablero.moverUnidad(entidad,direccion);
+    public void moverEntidad(Pieza pieza, Direccion direccion, Tablero tablero){
+        tablero.moverUnidad(pieza,direccion);
     }
 
-    public int getPuntosDisponibles() {
-
-        return administradorDeEntidades.getPuntosDisponibles();
-    }
-
-    //
-
-    public void agregarCatapulta(Tablero tablero, int posFila, int posColumna) {
-
-        administradorDeEntidades.agregarCatapulta(tablero,color,posFila,posColumna);
-    }
-
-    public void agregarJinete(Tablero tablero, int posFila, int posColumna) {
-
-        administradorDeEntidades.agregarJinete(tablero,color,posFila,posColumna);
-    }
-
-    public void agregarSoldadoInfanteria(Tablero tablero, int posFila, int posColumna) {
-
-        administradorDeEntidades.agregarSoldadoInfanteria(tablero,color,posFila,posColumna);
-    }
-
-    public void agregarCurandero(Tablero tablero, int posFila, int posColumna) {
-
-        administradorDeEntidades.agregarCurandero(tablero,color,posFila,posColumna);
+    public int getPuntosDeCompraDisponibles() {
+        return billetera.dineroRestante();
     }
 
     public Tablero faseInicial(Tablero tablero) {

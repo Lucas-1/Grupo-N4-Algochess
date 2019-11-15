@@ -1,5 +1,13 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
+import fiuba.algo3.tp2.piezas.Catapulta;
+import fiuba.algo3.tp2.piezas.Curandero;
+import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,8 +24,9 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
-        jugador.agregarCatapulta(tablero, 5,5);
+        jugador.insertarEntidadEnPosicion(soldado, 5,5,tablero);
 
         assertEquals(true, tablero.casilleroOcupado(5,5));
     }
@@ -28,11 +37,12 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
+        Curandero curandero = new Curandero(blanco);
 
 
         assertThrows(CasilleroDeLadoEnemigoException.class,
             ()->{
-             jugador.agregarCatapulta(tablero,15, 15);
+             jugador.insertarEntidadEnPosicion(curandero, 15,15,tablero);
          });
     }
 
@@ -42,13 +52,14 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
+        Catapulta catapulta = new Catapulta(blanco);
 
 
-        jugador.agregarCatapulta(tablero,5,5);
+        jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
 
         assertThrows(CasilleroEstaOcupadoException.class,
                 ()->{
-                    jugador.agregarCatapulta(tablero,5,5);
+                    jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
                 });
     }
 
@@ -58,11 +69,12 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
+        Catapulta catapulta = new Catapulta(blanco);
 
 
-        jugador.agregarCatapulta(tablero,5,5);
+        jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
 
-        assertEquals(15, jugador.getPuntosDisponibles());
+        assertEquals(15, jugador.getPuntosDeCompraDisponibles());
 
     }
 
@@ -72,17 +84,22 @@ public class ColocacionDeEntidadesTest {
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
+        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapulta1 = new Catapulta(blanco);
+        Catapulta catapulta2 = new Catapulta(blanco);
+        Catapulta catapulta3 = new Catapulta(blanco);
+        Catapulta catapulta4 = new Catapulta(blanco);
 
-        jugador.agregarCatapulta(tablero,5,5);
-        jugador.agregarCatapulta(tablero,4,5);
-        jugador.agregarCatapulta(tablero,3,5);
-        jugador.agregarCatapulta(tablero,2,5);
+        jugador.insertarEntidadEnPosicion(catapulta,5,5, tablero);
+        jugador.insertarEntidadEnPosicion(catapulta1,4,5, tablero);
+        jugador.insertarEntidadEnPosicion(catapulta2,3,5, tablero);
+        jugador.insertarEntidadEnPosicion(catapulta3,2,5, tablero);
 
         // jugador se quedo con 0 puntos despues de gastar 20
 
-        assertThrows(JugadorNoLeAlcanzaParaEntidadException.class,
+        assertThrows(JugadorQuiereUtilizarMasDineroDelDisponibleException.class,
                 ()->{
-                    jugador.agregarCatapulta(tablero,1,5);
+                    jugador.insertarEntidadEnPosicion(catapulta4,1,5, tablero);
                 });
 
     }

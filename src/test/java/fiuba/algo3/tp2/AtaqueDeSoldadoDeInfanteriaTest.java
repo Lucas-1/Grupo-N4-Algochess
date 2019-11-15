@@ -1,5 +1,14 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.excepciones.EntidadEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.NoPuedeAtacarEntidadDelMismoEquipo;
+import fiuba.algo3.tp2.piezas.Catapulta;
+import fiuba.algo3.tp2.piezas.Curandero;
+import fiuba.algo3.tp2.piezas.Jinete;
+import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +24,7 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
         Jinete jineteEnemigo = new Jinete(negro);
 
         /** soldado ataca a jinete enemigo con 10 puntos de danio. */
-        soldado.accionContra(jineteEnemigo);
+        soldado.atacarPieza(jineteEnemigo);
 
         /** soldado enemigo pasa de tener 100 puntos de vida a tener 90. */
         assertEquals(90, jineteEnemigo.getPuntosDeVida());
@@ -30,7 +39,7 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Catapulta catapultaEnemiga = new Catapulta(negro);
 
-        soldado.accionContra(catapultaEnemiga);
+        soldado.atacarPieza(catapultaEnemiga);
 
         assertEquals(40, catapultaEnemiga.getPuntosDeVida());
     }
@@ -43,7 +52,7 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         SoldadoDeInfanteria soldadoEnemigo = new SoldadoDeInfanteria(negro);
 
-        soldado.accionContra(soldadoEnemigo);
+        soldado.atacarPieza(soldadoEnemigo);
 
         assertEquals(90, soldadoEnemigo.getPuntosDeVida());
     }
@@ -56,7 +65,7 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Curandero curanderoEnemigo = new Curandero(negro);
 
-        soldado.accionContra(curanderoEnemigo);
+        soldado.atacarPieza(curanderoEnemigo);
 
         assertEquals(65, curanderoEnemigo.getPuntosDeVida());
     }
@@ -71,13 +80,13 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
 
         /** ataca 5 veces y la deja en 0 de vida */
         for(int i = 0; i < 5; i++) {
-            soldado.accionContra(catapultaEnemiga);
+            soldado.atacarPieza(catapultaEnemiga);
         }
 
         /** falla atacar devuelta porque ya esta muerta */
         assertThrows(EntidadEstaMuertaException.class,
                 ()->{
-                    soldado.accionContra(catapultaEnemiga);
+                    soldado.atacarPieza(catapultaEnemiga);
                 });
     }
 
@@ -90,7 +99,7 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
 
         assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
                 ()->{
-                    soldado.accionContra(jineteAliado);
+                    soldado.atacarPieza(jineteAliado);
                 });
     }
 }

@@ -1,5 +1,15 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.movimiento.Abajo;
+import fiuba.algo3.tp2.movimiento.Arriba;
+import fiuba.algo3.tp2.movimiento.Derecha;
+import fiuba.algo3.tp2.movimiento.Izquierda;
+import fiuba.algo3.tp2.piezas.Curandero;
+import fiuba.algo3.tp2.piezas.Jinete;
+import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,5 +1,14 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.excepciones.EntidadEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.NoPuedeAtacarEntidadDelMismoEquipo;
+import fiuba.algo3.tp2.piezas.Catapulta;
+import fiuba.algo3.tp2.piezas.Curandero;
+import fiuba.algo3.tp2.piezas.Jinete;
+import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +26,7 @@ public class AtaqueDeCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         Jinete jineteEnemigo = new Jinete(negro);
 
-        catapulta.accionContra(jineteEnemigo);
+        catapulta.atacarPieza(jineteEnemigo);
 
         assertEquals(80,jineteEnemigo.getPuntosDeVida());
     }
@@ -29,7 +38,7 @@ public class AtaqueDeCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         Catapulta catapultaEnemiga = new Catapulta(negro);
 
-        catapulta.accionContra(catapultaEnemiga);
+        catapulta.atacarPieza(catapultaEnemiga);
 
         assertEquals(30, catapultaEnemiga.getPuntosDeVida());
     }
@@ -42,7 +51,7 @@ public class AtaqueDeCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
 
-        catapulta.accionContra(soldado);
+        catapulta.atacarPieza(soldado);
 
         assertEquals(80, soldado.getPuntosDeVida());
     }
@@ -55,7 +64,7 @@ public class AtaqueDeCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         Curandero curanderoEnemigo = new Curandero(negro);
 
-        catapulta.accionContra(curanderoEnemigo);
+        catapulta.atacarPieza(curanderoEnemigo);
 
         assertEquals(55, curanderoEnemigo.getPuntosDeVida());
     }
@@ -69,7 +78,7 @@ public class AtaqueDeCatapultaTest {
 
         assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
                 ()->{
-                    catapulta.accionContra(jineteAliado);
+                    catapulta.atacarPieza(jineteAliado);
                 });
     }
 
@@ -81,15 +90,15 @@ public class AtaqueDeCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         Jinete jinete = new Jinete(negro);
 
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
 
         assertThrows(EntidadEstaMuertaException.class,
                 ()->{
-                    catapulta.accionContra(jinete);
+                    catapulta.atacarPieza(jinete);
                 });
     }
 }

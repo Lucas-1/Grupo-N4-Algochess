@@ -1,5 +1,13 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.excepciones.EntidadEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.NoPuedeCurarEntidadDelOtroEquipo;
+import fiuba.algo3.tp2.piezas.Catapulta;
+import fiuba.algo3.tp2.piezas.Curandero;
+import fiuba.algo3.tp2.piezas.Jinete;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -18,9 +26,9 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(blanco);
         Catapulta catapulta = new Catapulta(negro);
 
-        catapulta.accionContra(jinete);
+        catapulta.atacarPieza(jinete);
 
-        curandero.accionContra(jinete);
+        curandero.curarPieza(jinete);
         assertEquals(jinete.getPuntosDeVida(), 95);
     }
 
@@ -34,7 +42,7 @@ public class CuracionDeCuranderoTest {
 
         assertThrows(NoPuedeCurarEntidadDelOtroEquipo.class,
                 ()->{
-                    curandero.accionContra(jinete);
+                    curandero.curarPieza(jinete);
                 });
     }
 
@@ -47,16 +55,16 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(blanco);
         Catapulta catapulta = new Catapulta(negro);
 
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
-        catapulta.accionContra(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
+        catapulta.atacarPieza(jinete);
         /** mata al jinete */
-        catapulta.accionContra(jinete);
+        catapulta.atacarPieza(jinete);
 
         assertThrows(EntidadEstaMuertaException.class,
                 ()->{
-                    curandero.accionContra(jinete);
+                    curandero.curarPieza(jinete);
                 });
     }
 
@@ -68,7 +76,7 @@ public class CuracionDeCuranderoTest {
         Curandero curandero = new Curandero(blanco);
         Catapulta catapulta = new Catapulta(blanco);
 
-        curandero.accionContra(catapulta);
+        curandero.curarPieza(catapulta);
         /** Los puntos de vida de la catapulta no cambian */
         assertEquals(50, catapulta.getPuntosDeVida());
     }
