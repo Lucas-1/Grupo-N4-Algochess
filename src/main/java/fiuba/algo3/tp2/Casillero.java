@@ -3,6 +3,7 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.excepciones.CasilleroNoTienePiezaException;
 import fiuba.algo3.tp2.movimiento.EstadoCasillero;
 import fiuba.algo3.tp2.movimiento.Liberado;
 import fiuba.algo3.tp2.movimiento.Ocupado;
@@ -55,6 +56,9 @@ public class Casillero {
     }
 
     public Pieza getPieza() {
+
+        if(!this.estaOcupado())
+            throw new CasilleroNoTienePiezaException();
 
         return pieza;
     }

@@ -14,14 +14,28 @@ public abstract class Pieza {
     protected int precio;
     protected Movimiento mov;
     protected Posicion posicion;
+    protected AtaqueContext ataqueContext;
 
+
+    public abstract void atacar(Pieza pieza, int distanciaConPieza);
+
+
+    public void setAtaqueContext(int distanciaConPieza) {
+
+        if(distanciaConPieza < 3)
+            ataqueContext.setAtaqueStrategy(new AtaqueCercanoStrategy());
+        else if(distanciaConPieza < 6)
+            ataqueContext.setAtaqueStrategy(new AtaqueMediaDistanciaStrategy());
+        else if(distanciaConPieza > 5)
+            ataqueContext.setAtaqueStrategy(new AtaqueLejanoStrategy());
+    }
 
     public void perderVida(int danioRecibido) {
 
         if(puntosDeVida.estoyMuerta())
             throw new PiezaEstaMuertaException();
 
-        puntosDeVida.restarPuntos(danioRecibido);
+        puntosDeVida.quitarVida(danioRecibido);
     }
 
     public void recibirVida(int vidaRecibida) {
@@ -29,16 +43,22 @@ public abstract class Pieza {
         if(puntosDeVida.estoyMuerta())
             throw new PiezaEstaMuertaException();
 
-        puntosDeVida.aumentarPuntos(vidaRecibida);
+        puntosDeVida.aumentarVida(vidaRecibida);
+    }
+
+    public int calcularDistancia(Posicion posPieza) {
+
+        return posicion.calcularDistancia(posPieza);
     }
 
     public boolean esDeMiEquipo(Pieza otraPieza) {
 
-        Color miColor = this.getColor();
-        Color suColor = otraPieza.getColor();
+        return color.esDelMismoColor(otraPieza.getColor());
+    }
 
-        return miColor.esDelMismoColor(suColor);
+    public boolean estoyDelLadoEnemigo() {
 
+        return posicion.estoyDelLadoEnemigo(color);
     }
 
 

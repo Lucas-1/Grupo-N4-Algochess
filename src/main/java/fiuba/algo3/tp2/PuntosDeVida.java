@@ -21,17 +21,22 @@ public class PuntosDeVida {
         vidaActual = 75;
     }
 
+    ////////////////////////////////////////////
 
-    public void restarPuntos(int puntos){
+    public void quitarVida(int puntos){
+
         vidaActual -= puntos;
     }
-    public void aumentarPuntos(int puntos){
+    public void aumentarVida(int puntos){
+
         vidaActual += puntos;
     }
     public int getVidaRestante() {
+
         return vidaActual;
     }
     public boolean estoyMuerta() {
+
         return (vidaActual <= 0);
     }
 }

@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Pieza;
 
 import java.util.ArrayList;
@@ -13,8 +14,6 @@ public class Jugador {
     private AdministradorDePiezas administradorDePiezas;
     private Tienda tienda;
     private Billetera billetera;
-    private final int POSICION_MI_TABLERO = 0;
-    private final int POSICION_TABLERO_ENEMIGO = 1;
     private Color color;
 
     public Jugador(Color color) {
@@ -31,9 +30,18 @@ public class Jugador {
 
     public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
 
-        Pieza pieza = tablero.getPieza(posicionFila,posicionColumna);
+        Pieza pieza = tablero.obtenerPieza(posicionFila,posicionColumna);
         administradorDePiezas.borrarPieza(pieza);
         tablero.borrarUnidad(posicionFila, posicionColumna);
+    }
+
+    public void atacarCon(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
+
+        Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
+        Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
+        int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
+        pieza.atacar(receptor, distanciaEntrePiezas);
+
     }
 
     public boolean sigueEnJuego() {
@@ -42,28 +50,13 @@ public class Jugador {
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
+
         tablero.moverUnidad(pieza,direccion);
     }
 
     public int getPuntosDeCompraDisponibles() {
+
         return billetera.dineroRestante();
-    }
-
-    public Tablero faseInicial(Tablero tablero) {
-        return colocarPiezasIniciales(tablero);
-    }
-
-    private Tablero colocarPiezasIniciales(Tablero tablero) {
-        // aca coloca las piezas iniciales, hay que ver como resolver la compra de las piezas
-        return tablero;
-    }
-
-    public List<Tablero> realizarTurno(Tablero miLado, Tablero ladoEnemigo) {
-        // mueve una pieza y devuelve ambos tableros, puede que haya cruzado a territorio enemigo, implementar el movimiento.
-        List<Tablero> tableros = new ArrayList<Tablero>();
-        tableros.add(POSICION_MI_TABLERO, miLado);
-        tableros.add(POSICION_TABLERO_ENEMIGO, ladoEnemigo);
-        return tableros;
     }
 
 }
