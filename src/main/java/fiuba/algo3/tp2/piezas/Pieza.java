@@ -55,9 +55,9 @@ public abstract class Pieza {
     }
 
 
-    public void setPosicion(int nuevaPosicionFila,int nuevaPosicionColumna){
+    public void setPosicion(Posicion posicion){
 
-        this.posicion = new Posicion(nuevaPosicionFila,nuevaPosicionColumna);
+        this.posicion = new Posicion(posicion);
         this.mov = new Movimiento();
     }
 

@@ -16,27 +16,27 @@ public class DestruccionDePiezasTest {
     public void test01SeDestuyeUnaPiezaDelJugadorYDesocupaElCasillero() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco);
+        Jugador jugador = new Jugador(blanco, "benito");
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
-        jugador.insertarPiezaEnPosicion(soldado,5,5,tablero);
-        jugador.insertarPiezaEnPosicion(soldado,6,5,tablero);
-        jugador.borrarUnidad(tablero,5,5);
+        jugador.insertarPiezaEnPosicion(soldado, ,5, tablero);
+        jugador.insertarPiezaEnPosicion(soldado, ,6, tablero);
+        jugador.borrarUnidad(tablero, ,5);
 
-        assertFalse(tablero.casilleroOcupado(5,5));
+        assertFalse(tablero.casilleroOcupado(5));
     }
 
     @Test
     public void testo02SeDestruyenTodasLasUnidadesDelJugadorYPierde() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco);
+        Jugador jugador = new Jugador(blanco, "benito");
         Tablero tablero = new Tablero();
         Jinete jinete = new Jinete(blanco);
 
-        jugador.insertarPiezaEnPosicion(jinete,5,5,tablero);
-        jugador.borrarUnidad(tablero,5,5);
+        jugador.insertarPiezaEnPosicion(jinete, ,5, tablero);
+        jugador.borrarUnidad(tablero, ,5);
 
         /** jugador 1 se queda sin unidades, pierde. */
         assertFalse(jugador.sigueEnJuego());

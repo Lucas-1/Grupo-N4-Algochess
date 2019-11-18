@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Pieza;
 
 import java.util.ArrayList;
@@ -9,9 +10,11 @@ import java.util.ArrayList;
 
 public class AdministradorDePiezas {
     private ArrayList<Pieza> piezas;
+    private Tienda tienda;
 
     public AdministradorDePiezas() {
         piezas = new ArrayList<Pieza>();
+        tienda = new Tienda();
     }
 
     public boolean sigueEnJuego() {
@@ -24,14 +27,26 @@ public class AdministradorDePiezas {
         piezas.remove(pieza);
     }
 
-    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero, Color color, Tienda tienda, Billetera billetera) {
+    public void agregarPieza(Pieza pieza, Tablero tablero, Posicion posicion, Billetera billetera, Color color) {
 
         Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
-        tablero.agregarUnidad(piezaComprada,posicionFila,posicionColumna,color);
+        tablero.agregarUnidad(piezaComprada, posicion, color);
 
-        piezaComprada.setPosicion(posicionFila,posicionColumna);
+        piezaComprada.setPosicion(posicion);
         piezas.add(piezaComprada);
 
 
+    }
+
+    public void comprarPieza(Pieza pieza, Billetera billetera) {
+        Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
+        piezas.add(piezaComprada);
+    }
+
+    public void acomodarPieza(Posicion posicionInicial, Posicion posicionDeseada, int indexPieza, Tablero tablero, Color color) {
+        Pieza pieza = piezas.get(indexPieza);
+        tablero.agregarUnidad(pieza, posicionDeseada, color);
+        piezas.remove(indexPieza);
+        tablero.borrarUnidad(posicionInicial);
     }
 }

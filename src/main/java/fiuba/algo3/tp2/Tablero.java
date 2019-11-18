@@ -49,43 +49,43 @@ public class Tablero {
 
     }
 
-    public void agregarUnidad(Pieza pieza, int posicionFila, int posicionColumna, Color color) {
+    public void agregarUnidad(Pieza pieza, Posicion posicion, Color color) {
 
-        Casillero casillero = casilleros[posicionFila][posicionColumna];
+        Casillero casillero = casilleros[posicion.getFila()][posicion.getColumna()];
 
         if(casillero.esValida(color))
             casillero.agregarUnidad(pieza);
     }
 
-    public void borrarUnidad(int posicionFila, int posicionColumna) {
+    public void borrarUnidad(Posicion posicion) {
 
-        casilleros[posicionFila][posicionColumna].borrarUnidad();
+        casilleros[posicion.getFila()][posicion.getColumna()].borrarUnidad();
     }
 
-    public boolean casilleroOcupado(int posicionFila, int posicionColumna) {
+    public boolean casilleroOcupado(Posicion posicion) {
 
-        return casilleros[posicionFila][posicionColumna].estaOcupado();
+        return casilleros[posicion.getFila()][posicion.getColumna()].estaOcupado();
     }
 
-    public Casillero getCasillero(int posicionFila, int posicionColumna) {
+    public Casillero getCasillero(Posicion posicion) {
 
-        return casilleros[posicionFila][posicionColumna];
+        return casilleros[posicion.getFila()][posicion.getColumna()];
     }
 
     public void moverUnidad(Pieza pieza, Direccion dir){
 
         Posicion posicionActual = pieza.getPosicion();
-        Casillero casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
+        Casillero casillero = casilleros[posicionActual.getFila()][posicionActual.getColumna()];
         pieza.mover(dir);
         casillero.borrarUnidad();
         posicionActual = pieza.getPosicion();
-        casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
+        casillero = casilleros[posicionActual.getFila()][posicionActual.getColumna()];
         casillero.setearUnidad(pieza);
     }
 
-    public Pieza getPieza(int posicionFila, int posicionColumna) {
+    public Pieza getPieza(Posicion posicion) {
 
-        return casilleros[posicionFila][posicionColumna].getPieza();
+        return casilleros[posicion.getFila()][posicion.getColumna()].getPieza();
     }
 
 

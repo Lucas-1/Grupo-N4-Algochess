@@ -2,27 +2,27 @@ package fiuba.algo3.tp2.movimiento;
 
 public class Posicion {
 
-    private int direccionFila;
-    private int direccionColumna;
+    private int fila;
+    private int columna;
 
-    public Posicion (int dirFila, int dirCol){
-        direccionColumna = dirCol;
-        direccionFila = dirFila;
+    public Posicion (Posicion posicion){
+        columna = posicion.getFila();
+        fila = posicion.getColumna();
     }
 
-    public int getDireccionColumna() {
-        return direccionColumna;
+    public int getColumna() {
+        return columna;
     }
 
-    public void setDireccionColumna(int direccionColumna) {
-        this.direccionColumna = direccionColumna;
+    public void setColumna(int columna) {
+        this.columna = columna;
     }
 
-    public int getDireccionFila() {
-        return direccionFila;
+    public int getFila() {
+        return fila;
     }
 
-    public void setDireccionFila(int direccionFila) {
-        this.direccionFila = direccionFila;
+    public void setFila(int fila) {
+        this.fila = fila;
     }
 }

@@ -1,22 +1,45 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Pieza;
+
 public class Algochess {
 
-    private AdministradorEventosGeneral administradorEventosGeneral;
+    private AdministradorEventos administradorEventos;
     /*private Jugador jugadorBlanco;
     private Jugador jugadorNegro;
     private Tablero tablero;*/
 
-    public Algochess() {
+    public Algochess(Jugador jugador1, Jugador jugador2) {
 
-        administradorEventosGeneral = new AdministradorEventosGeneral();
-        administradorEventosGeneral.iniciarJuego();
+        administradorEventos = new AdministradorEventos(jugador1,jugador2);
+        //administradorEventos.preparativosIniciales();
+
         /*
         Color blanco = new Blanco();
         Color negro = new Negro();
         jugadorBlanco = new Jugador(blanco);
         jugadorNegro = new Jugador(negro);
         tablero = new Tablero();*/
+    }
+    public void jugador1ComprarPieza(Pieza pieza){
+        administradorEventos.jugador1ComprarPieza(pieza);
+    }
+    public void jugador2ComprarPieza(Pieza pieza){
+        administradorEventos.jugador2ComprarPieza(pieza);
+    }
+    public void jugador1AcomodarPieza(Posicion posicionInicial, Posicion posicionDeseada, int posicionPiezaBanco){
+        administradorEventos.jugador1AcomodarPieza(posicionInicial, posicionDeseada, posicionPiezaBanco);
+    }
+    public void jugador2AcomodarPieza(Posicion posicionInicial, Posicion posicionDeseada, int posicionPiezaBanco){
+        administradorEventos.jugador2AcomodarPieza(posicionInicial, posicionDeseada, posicionPiezaBanco);
+    }
+    public void jugador1MoverPieza(Pieza pieza, Direccion direccion){
+        administradorEventos.jugador1MoverPieza(pieza, direccion);
+    }
+    public void jugador2MoverPieza(Pieza pieza, Direccion direccion){
+        administradorEventos.jugador2MoverPieza(pieza, direccion);
     }
 
     /*public void inicializarPiezas() {

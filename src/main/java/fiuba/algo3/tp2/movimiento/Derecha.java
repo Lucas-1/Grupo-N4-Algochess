@@ -4,7 +4,7 @@ public class Derecha extends Direccion{
 
     @Override
     public Posicion desplazarPosicion(Posicion posicionActual){
-        posicionActual.setDireccionColumna(posicionActual.getDireccionColumna() + 1);
+        posicionActual.setColumna(posicionActual.getColumna() + 1);
         return posicionActual;
     }
 

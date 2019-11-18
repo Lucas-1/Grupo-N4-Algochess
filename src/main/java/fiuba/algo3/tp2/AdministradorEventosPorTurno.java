@@ -5,26 +5,30 @@ import fiuba.algo3.tp2.colores.Negro;
 
 import java.util.List;
 
-public class AdministradorEventosPorTurno {
-    /**esta clase se encarga de avisar al jugador que es su face inicial o turno, tambien de actualizar el tablero despues de cada jugada.*/
+public class AdministradorEventosPorTurno {/*
+    //esta clase se encarga de avisar al jugador que es su face inicial o turno, tambien de actualizar el tablero despues de cada jugada.
     private Jugador jugador1;
     private Jugador jugador2;
     private Tablero tablero;
 
-    public AdministradorEventosPorTurno(){
-        jugador1 = new Jugador(new Blanco());
-        jugador2 = new Jugador(new Negro());
+    public AdministradorEventosPorTurno(Jugador jugador1, Jugador jugador2){
+        this.jugador1 = jugador1;
+        this.jugador2 = jugador2;
         tablero = new Tablero();
     }
 
     public void faseInicial() {
-        Tablero tableroJugador1 = tablero.getLadoJugador1();
+
+
+
+
+        /*Tablero tableroJugador1 = tablero.getLadoJugador1();
         Tablero tableroJugador2 = tablero.getLadoJugador2();
 
 
-        // aca faltaria pedirle el nombre a cada jugador
+        // aca faltaria pedirle el nombre a cada jugador o en el constructor directamente
 
-        //el jugador pone piezas iniciales y devuelve su lado actualizado, maybe habria que darle un shop para que las compre.
+        //el jugador pone piezas iniciales y devuelve su lado actualizado
         tableroJugador1 = jugador1.faseInicial(tableroJugador1);
         tableroJugador2 = jugador2.faseInicial(tableroJugador2);
 
@@ -32,7 +36,7 @@ public class AdministradorEventosPorTurno {
         tablero.actualizarLados(tableroJugador1, tableroJugador2);
     }
     public void nuevoTurno() {
-        /** cada jugador devuelve una lista con su tablero en index 0 y tablero enemigo en index 1 */
+        // cada jugador devuelve una lista con su tablero en index 0 y tablero enemigo en index 1
         List<Tablero> tableros = jugador1.realizarTurno(tablero.getLadoJugador1(), tablero.getLadoJugador2()); //el jugador mueve una pieza, necesita ambos tableros por si va a territorio enemigo.
         tablero.actualizarLados(tableros.get(0), tableros.get(1));
         tableros = jugador2.realizarTurno(tablero.getLadoJugador2(), tablero.getLadoJugador1());
@@ -49,5 +53,5 @@ public class AdministradorEventosPorTurno {
         //perdio alguien? hay que verificarlo aca
         return false;
     }
-
+*/
 }
