@@ -1,5 +1,14 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
+import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
+import fiuba.algo3.tp2.piezas.Catapulta;
+import fiuba.algo3.tp2.piezas.Curandero;
+import fiuba.algo3.tp2.piezas.Jinete;
+import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +26,7 @@ public class AtaqueDeJineteTest {
         Jinete jineteEnemigo = new Jinete(negro);
 
         /** jinete ataca a jinete enemigo con 5 puntos de danio. */
-        jinete.accionContra(jineteEnemigo);
+        jinete.atacarPieza(jineteEnemigo);
 
         /**jinete enemigo pasa de tener 100 puntos de vida a tener 95. */
         assertEquals(95, jineteEnemigo.getPuntosDeVida());
@@ -31,7 +40,7 @@ public class AtaqueDeJineteTest {
         Jinete jinete = new Jinete(blanco);
         Catapulta catapultaEnemiga = new Catapulta(negro);
 
-        jinete.accionContra(catapultaEnemiga);
+        jinete.atacarPieza(catapultaEnemiga);
 
         assertEquals(45, catapultaEnemiga.getPuntosDeVida());
     }
@@ -44,7 +53,7 @@ public class AtaqueDeJineteTest {
         Jinete jinete = new Jinete(blanco);
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
 
-        jinete.accionContra(soldado);
+        jinete.atacarPieza(soldado);
 
         assertEquals(95, soldado.getPuntosDeVida());
     }
@@ -57,7 +66,7 @@ public class AtaqueDeJineteTest {
         Jinete jinete = new Jinete(blanco);
         Curandero curanderoEnemigo = new Curandero(negro);
 
-        jinete.accionContra(curanderoEnemigo);
+        jinete.atacarPieza(curanderoEnemigo);
 
         assertEquals(70, curanderoEnemigo.getPuntosDeVida());
     }
@@ -72,13 +81,13 @@ public class AtaqueDeJineteTest {
 
         /** ataca 10 veces y la deja en 0 de vida */
         for(int i = 0; i < 10; i++) {
-            jinete.accionContra(catapultaEnemiga);
+            jinete.atacarPieza(catapultaEnemiga);
         }
 
         /** falla atacar devuelta porque ya esta muerta */
-        assertThrows(EntidadEstaMuertaException.class,
+        assertThrows(PiezaEstaMuertaException.class,
                 ()->{
-                    jinete.accionContra(catapultaEnemiga);
+                    jinete.atacarPieza(catapultaEnemiga);
                 });
     }
 
@@ -90,9 +99,9 @@ public class AtaqueDeJineteTest {
         Jinete jinete = new Jinete(blanco);
         Jinete jineteAliado = new Jinete(blanco);
 
-        assertThrows(NoPuedeAtacarEntidadDelMismoEquipo.class,
+        assertThrows(NoPuedeAtacarPiezaDelMismoEquipo.class,
                 ()->{
-                    jinete.accionContra(jineteAliado);
+                    jinete.atacarPieza(jineteAliado);
                 });
     }
 }

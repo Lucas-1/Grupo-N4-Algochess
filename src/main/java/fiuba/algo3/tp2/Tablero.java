@@ -1,13 +1,22 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Blanco;
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Pieza;
+
+
+import java.util.ArrayList;
+
 public class Tablero {
 
     private Casillero[][] casilleros;
-    private Tablero lado1;
-    private Tablero lado2;
-    /**el tablero tiene a su vez 2 variables tableros que corresponde una a cada jugador*/
 
     public Tablero() {
+
         casilleros = new Casillero[20][20];
         Color blanco = new Blanco();
         Color negro = new Negro();
@@ -24,35 +33,20 @@ public class Tablero {
             for(int columna = 0; columna<20; columna++) {
                 casilleros[fila][columna] = new Casillero(negro);
             }
-        }/*
-        /**al tener estos lados, podriamos sacar el tema de los colores ya que hay 2 tableros, cada uno sabe cual es el suyo*//*
-        lado1 = new Tablero(new Blanco());
-        lado2 = new Tablero(new Negro());*/
-    }/*
-    public Tablero(Color color){
-
-        /**le puse overflow al constructor para poder crear un tablero de menor tamaño, obviamente si vamos a usar esto no tiene sentido
-         * que se le pase un color, asique habria que resolverlo de otra forma la construccion de los lados, capaz con el patron multiton*//*
-        casilleros = new Casillero[10][20];
-        for(int fila = 0; fila<10; fila++) {
-            for(int columna = 0; columna<20; columna++) {
-                casilleros[fila][columna] = new Casillero(color);
-            }
         }
+    }
 
-    }*/
-
-    public void agregarUnidad(Entidad entidad, int posicionFila, int posicionColumna, Color color) {
+    public void agregarUnidad(Pieza pieza, int posicionFila, int posicionColumna, Color color) {
 
         Casillero casillero = casilleros[posicionFila][posicionColumna];
 
         if(casillero.esValida(color))
-            casillero.agregarUnidad(entidad);
+            casillero.agregarPieza(pieza);
     }
 
     public void borrarUnidad(int posicionFila, int posicionColumna) {
 
-        casilleros[posicionFila][posicionColumna].borrarUnidad();
+        casilleros[posicionFila][posicionColumna].borrarPieza();
     }
 
     public boolean casilleroOcupado(int posicionFila, int posicionColumna) {
@@ -60,38 +54,78 @@ public class Tablero {
         return casilleros[posicionFila][posicionColumna].estaOcupado();
     }
 
-    public Casillero getCasillero(int posicionFila, int posicionColumna) {
+    public void obtenerContiguos(Posicion posicion, ArrayList<Pieza> contiguos) {
 
-        return casilleros[posicionFila][posicionColumna];
+        int posFila = posicion.getPosicionFila();
+        int posColumna = posicion.getPosicionColumna();
+
+        // posicion donde ataco
+        if(this.estaDentroDelMapa(posFila,posColumna)) {
+
+            Pieza pieza = casilleros[posFila][posColumna].getPieza();
+            if(pieza != null && !contiguos.contains(pieza))
+                contiguos.add(pieza);
+        }
+
+        // abajo
+        if(this.estaDentroDelMapa(posFila+1,posColumna)) {
+
+            Pieza pieza = casilleros[posFila+1][posColumna].getPieza();
+            if(pieza != null && !contiguos.contains(pieza))
+                contiguos.add(pieza);
+        }
+
+        //arriba
+        if(this.estaDentroDelMapa(posFila-1,posColumna)){
+
+            Pieza pieza = casilleros[posFila-1][posColumna].getPieza();
+            if(pieza != null && !contiguos.contains(pieza))
+                contiguos.add(pieza);
+        }
+
+        //derecha
+        if(this.estaDentroDelMapa(posFila, posColumna+1)) {
+
+            Pieza pieza = casilleros[posFila][posColumna+1].getPieza();
+            if(pieza != null && !contiguos.contains(pieza))
+                contiguos.add(pieza);
+        }
+
+        //izquierda
+        if(this.estaDentroDelMapa(posFila,posColumna-1)) {
+
+            Pieza pieza = casilleros[posFila][posColumna-1].getPieza();
+            if(pieza != null && !contiguos.contains(pieza))
+                contiguos.add(pieza);
+        }
     }
 
-    public void moverUnidad(Entidad entidad,Direccion dir){
+    public boolean estaDentroDelMapa(int posFila, int posColumna) {
 
-        Posicion posicionActual = entidad.getPosicion();
-        Casillero casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
-        entidad.mover(dir);
-        casillero.borrarUnidad();
-        posicionActual = entidad.getPosicion();
-        casillero = casilleros[posicionActual.getDireccionFila()][posicionActual.getDireccionColumna()];
-        casillero.setearUnidad(entidad);
+        return ((posFila >= 0 && posFila <= 19) && (posColumna >= 0 && posColumna <= 19));
     }
 
-    public Entidad getEntidad(int posicionFila, int posicionColumna) {
+    public void moverPieza(Pieza pieza, Direccion direccion) {
 
-        return casilleros[posicionFila][posicionColumna].getEntidad();
+        Posicion posicionOriginal = pieza.getPosicion();
+        Posicion posicionNueva = direccion.calcularSiguientePosicion(pieza.getPosicion());
+
+        if(this.estaDentroDelMapa(posicionNueva.getPosicionFila(),posicionNueva.getPosicionColumna())) {
+
+            if(!this.casilleroOcupado(posicionNueva.getPosicionFila(),posicionNueva.getPosicionColumna())) {
+                pieza.mover(direccion);
+                casilleros[posicionOriginal.getPosicionFila()][posicionOriginal.getPosicionColumna()].borrarPieza();
+                casilleros[posicionNueva.getPosicionFila()][posicionNueva.getPosicionColumna()].setPieza(pieza);
+            } else {
+                throw new CasilleroEstaOcupadoException();
+            }
+        }
     }
 
-/*
-    public Tablero getLadoJugador1() {
-        return lado1;
+    public Pieza obtenerPieza(int posicionFila, int posicionColumna) {
+
+        return casilleros[posicionFila][posicionColumna].getPieza();
     }
 
-    public Tablero getLadoJugador2() {
-        return lado2;
-    }
 
-    public void actualizarLados(Tablero tableroJugador1, Tablero tableroJugador2) {
-        lado1 = tableroJugador1;
-        lado2 = tableroJugador2;
-    }*/
 }

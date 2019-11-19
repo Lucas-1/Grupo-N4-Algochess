@@ -1,59 +1,58 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.piezas.Pieza;
+
 public class Casillero {
 
     private Color color;
-    private EstadoCasillero estado;
-    private Entidad entidad;
+    private Pieza pieza;
 
     public Casillero(Color color) {
 
         this.color = color;
-        estado = new Liberado();
+        pieza = null;
     }
 
     public boolean esValida(Color unColor) {
 
-        if(estado.estaOcupado())
+        if(pieza != null)
             throw new CasilleroEstaOcupadoException();
 
-        if(!color.esDelMismoColor(unColor)) {
+        if(!color.esDelMismoColor(unColor))
             throw new CasilleroDeLadoEnemigoException();
-        }
+
 
         return true;
     }
 
-    public void agregarUnidad(Entidad entidad) {
+    public void agregarPieza(Pieza pieza) {
 
-       if(this.esValida(entidad.getColor())) {
+       if(this.esValida(pieza.getColor()))
+           this.pieza = pieza;
 
-           this.setearUnidad(entidad);
-       }
     }
 
-    public void setearUnidad(Entidad entidad) {
+    public void setPieza(Pieza pieza) {
 
-        if(this.estaOcupado())
-            throw new CasilleroEstaOcupadoException();
-
-        this.entidad = entidad;
-        estado = new Ocupado();
+        this.pieza = pieza;
     }
 
-    public void borrarUnidad() {
+    public void borrarPieza() {
 
-        estado = new Liberado();
+        pieza = null;
     }
 
-    public Entidad getEntidad() {
+    public Pieza getPieza() {
 
-        return entidad;
+        return pieza;
     }
 
     public boolean estaOcupado() {
 
-        return estado.estaOcupado();
+        return pieza != null;
     }
 
 }
