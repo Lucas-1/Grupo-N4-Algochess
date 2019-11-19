@@ -5,8 +5,7 @@ import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
 import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
-import fiuba.algo3.tp2.movimiento.Abajo;
-import fiuba.algo3.tp2.movimiento.Arriba;
+import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
@@ -158,8 +157,8 @@ public class AtaqueDeSoldadoDeInfanteriaTest {
         jugadorBlanco.insertarPiezaEnPosicion(soldado,9,9,tablero);
         jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,12,9,tablero);
 
-        jugadorBlanco.moverPieza(soldado, new Abajo(),tablero);
-        jugadorBlanco.moverPieza(soldado, new Abajo(),tablero); // posicion pasa a ser Fila:11 - Columna:9
+        jugadorBlanco.moverPieza(soldado, Direccion.abajo(),tablero);
+        jugadorBlanco.moverPieza(soldado, Direccion.abajo(),tablero); // posicion pasa a ser Fila:11 - Columna:9
 
         jugadorBlanco.atacarCon(soldado,12,9,tablero);
 

@@ -4,51 +4,52 @@ import fiuba.algo3.tp2.colores.Color;
 
 public class Posicion {
 
-    private int direccionFila;
-    private int direccionColumna;
+    private int posicionFila;
+    private int posicionColumna;
 
-    public Posicion (int dirFila, int dirCol){
-        direccionColumna = dirCol;
-        direccionFila = dirFila;
+    public Posicion (int posFila, int posColumna){
+
+        posicionColumna = posColumna;
+        posicionFila = posFila;
     }
 
     public int calcularDistancia(Posicion posicion) {
 
-        int distanciaColumna = Math.abs(direccionColumna - posicion.getDireccionColumna());
-        int distanciaFila = Math.abs(direccionFila - posicion.getDireccionFila());
+        int distanciaColumna = Math.abs(posicionColumna - posicion.getPosicionColumna());
+        int distanciaFila = Math.abs(posicionFila - posicion.getPosicionFila());
 
-        System.out.println(distanciaColumna + distanciaFila);
         return distanciaColumna + distanciaFila;
     }
 
     public boolean estoyDelLadoEnemigo(Color color) {
 
-        if(direccionFila >= 10  & color.esBlanco())
+        if(posicionFila >= 10  & color.esBlanco())
             return true;
 
-        if(direccionFila <= 9 & color.esNegro())
+        if(posicionFila <= 9 & color.esNegro())
             return true;
 
         return false;
     }
 
-    public int getDireccionColumna() {
+    public int getPosicionColumna() {
 
-        return direccionColumna;
+        return posicionColumna;
     }
 
-    public void setDireccionColumna(int direccionColumna) {
+    public int getPosicionFila() {
 
-        this.direccionColumna = direccionColumna;
+        return posicionFila;
     }
 
-    public int getDireccionFila() {
+    public void setPosicionColumna(int posColumna) {
 
-        return direccionFila;
+        this.posicionColumna = posColumna;
     }
 
-    public void setDireccionFila(int direccionFila) {
 
-        this.direccionFila = direccionFila;
+    public void setPosicionFila(int posFila) {
+
+        this.posicionFila = posFila;
     }
 }

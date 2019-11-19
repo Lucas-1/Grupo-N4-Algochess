@@ -70,16 +70,16 @@ public class AtaqueDeCatapultaTest {
     }
 
     @Test
-    public void test05CatapultaNoPuedeAtacarUnidadAliada() {
+    public void test05CatapultaPuedeAtacarUnidadAliada() {
 
         Color blanco = new Blanco();
         Catapulta catapulta = new Catapulta(blanco);
         Jinete jineteAliado = new Jinete(blanco);
 
-        assertThrows(NoPuedeAtacarPiezaDelMismoEquipo.class,
-                ()->{
-                    catapulta.atacarPieza(jineteAliado);
-                });
+        catapulta.atacarPieza(jineteAliado);
+
+        assertEquals(80, jineteAliado.getPuntosDeVida());
+
     }
 
     @Test
@@ -100,5 +100,44 @@ public class AtaqueDeCatapultaTest {
                 ()->{
                     catapulta.atacarPieza(jinete);
                 });
+    }
+
+    @Test
+    public void test07CatapultaNoPuedeAtacarPiezaADistanciaMedia() {
+
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
+        Catapulta catapulta = new Catapulta(blanco);
+        jugadorBlanco.insertarPiezaEnPosicion(catapulta,9,9,tablero);
+
+        Jinete jinete = new Jinete(negro);
+        jugadorNegro.insertarPiezaEnPosicion(jinete,13,9, tablero);
+
+        jugadorBlanco.atacarCon(catapulta,13,9,tablero);
+        assertEquals(100, jinete.getPuntosDeVida());
+    }
+
+    @Test
+    public  void test08CatapultaNoPuedeAtacarPiezaDistanciaCorta() {
+
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
+        Catapulta catapulta = new Catapulta(blanco);
+        jugadorBlanco.insertarPiezaEnPosicion(catapulta,9,9,tablero);
+
+        Jinete jinete = new Jinete(negro);
+        jugadorNegro.insertarPiezaEnPosicion(jinete,10,9, tablero);
+
+        jugadorBlanco.atacarCon(catapulta,10,9,tablero);
+        assertEquals(100, jinete.getPuntosDeVida());
+
     }
 }

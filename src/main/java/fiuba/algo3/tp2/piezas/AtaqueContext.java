@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
+import java.util.ArrayList;
+
 public class AtaqueContext {
 
     AtaqueStrategy ataqueStrategy;
@@ -20,10 +22,14 @@ public class AtaqueContext {
 
     }
 
-    public void atacar(Catapulta catapulta, Pieza receptor, int danio) {
+    public void atacar(Catapulta catapulta, Pieza receptor,ArrayList<Pieza> contiguas) {
 
-        ataqueStrategy.atacar(catapulta,receptor, danio);
+        ataqueStrategy.atacar(catapulta,receptor,contiguas);
 
     }
 
+    public void atacar(Curandero curandero, Pieza pieza) {
+
+        ataqueStrategy.atacar(curandero,pieza);
+    }
 }

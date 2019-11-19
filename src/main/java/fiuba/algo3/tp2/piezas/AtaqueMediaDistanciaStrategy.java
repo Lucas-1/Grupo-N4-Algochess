@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
+import java.util.ArrayList;
+
 public class AtaqueMediaDistanciaStrategy implements AtaqueStrategy {
 
 
@@ -17,9 +19,15 @@ public class AtaqueMediaDistanciaStrategy implements AtaqueStrategy {
     }
 
     @Override
-    public void atacar(Catapulta catapulta, Pieza receptor, int danio) {
+    public void atacar(Catapulta catapulta, Pieza receptor, ArrayList<Pieza> contiguas) {
 
-        // no ataca en distancia media
+        // no ataca distancia media
+    }
 
+
+    @Override
+    public void atacar(Curandero curandero, Pieza pieza) {
+
+        // no cura en distancia media
     }
 }

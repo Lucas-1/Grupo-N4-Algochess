@@ -4,6 +4,8 @@ import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 
+import java.util.ArrayList;
+
 public class SoldadoDeInfanteria extends Pieza {
 
     private static final int PRECIO = 1;
@@ -19,7 +21,7 @@ public class SoldadoDeInfanteria extends Pieza {
     }
 
 
-    public void atacar(Pieza pieza, int distanciaConPieza) {
+    public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
         this.setAtaqueContext(distanciaConPieza);
 

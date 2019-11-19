@@ -4,9 +4,7 @@ import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Pieza;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class Jugador {
 
@@ -17,6 +15,7 @@ public class Jugador {
     private Color color;
 
     public Jugador(Color color) {
+
         tienda = new Tienda();
         billetera = new Billetera(CANTIDAD_DINERO_INICIAL);
         administradorDePiezas = new AdministradorDePiezas();
@@ -40,8 +39,8 @@ public class Jugador {
         Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
         Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
         int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
-        pieza.atacar(receptor, distanciaEntrePiezas);
-
+        ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posicionFila,posicionColumna,tablero);
+        pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
     }
 
     public boolean sigueEnJuego() {
@@ -51,7 +50,7 @@ public class Jugador {
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
 
-        tablero.moverUnidad(pieza,direccion);
+        tablero.moverPieza(pieza,direccion);
     }
 
     public int getPuntosDeCompraDisponibles() {

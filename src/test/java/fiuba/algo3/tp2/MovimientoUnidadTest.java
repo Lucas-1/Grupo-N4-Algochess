@@ -3,20 +3,18 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
-import fiuba.algo3.tp2.movimiento.Abajo;
-import fiuba.algo3.tp2.movimiento.Arriba;
-import fiuba.algo3.tp2.movimiento.Derecha;
-import fiuba.algo3.tp2.movimiento.Izquierda;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
-import org.junit.Test;
+import fiuba.algo3.tp2.movimiento.Direccion;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MovimientoUnidadTest {
+
 
     @Test
     public void test01UnidadSeMueveALaDerecha(){
@@ -27,7 +25,7 @@ public class MovimientoUnidadTest {
         Jinete jinete = new Jinete(blanco);
 
         jugador.insertarPiezaEnPosicion(jinete,3,5,tablero);
-        jugador.moverPieza(jinete,new Derecha(),tablero);
+        jugador.moverPieza(jinete,Direccion.derecha(),tablero);
 
         assertTrue(tablero.casilleroOcupado(3,6));
     }
@@ -42,7 +40,7 @@ public class MovimientoUnidadTest {
         Curandero curandero = new Curandero(blanco);
 
         jugador.insertarPiezaEnPosicion(curandero,3,5,tablero);
-        jugador.moverPieza(curandero,new Izquierda(),tablero);
+        jugador.moverPieza(curandero,Direccion.izquierda(),tablero);
 
         assertTrue(tablero.casilleroOcupado(3,4));
     }
@@ -56,7 +54,7 @@ public class MovimientoUnidadTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
         jugador.insertarPiezaEnPosicion(soldado,8,10,tablero);
-        jugador.moverPieza(soldado,new Arriba(),tablero);
+        jugador.moverPieza(soldado,Direccion.arriba(),tablero);
 
         assertTrue(tablero.casilleroOcupado(7,10));
     }
@@ -70,13 +68,13 @@ public class MovimientoUnidadTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
         jugador.insertarPiezaEnPosicion(soldado,9,6,tablero);
-        jugador.moverPieza(soldado,new Abajo(),tablero);
+        jugador.moverPieza(soldado,Direccion.abajo(),tablero);
 
         assertTrue(tablero.casilleroOcupado(10,6));
     }
 
     @Test
-    public void test05UnidadSeMueveAUnaPosicionOcupada(){
+    public void test05UnidadNoSePuedeMoverAUnaPosicionOcupada(){
 
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
@@ -89,7 +87,7 @@ public class MovimientoUnidadTest {
 
         assertThrows(CasilleroEstaOcupadoException.class,
                 ()->{
-                    jugador.moverPieza(jinete,new Derecha(), tablero);
+                    jugador.moverPieza(jinete,Direccion.derecha(), tablero);
                 });
 
 

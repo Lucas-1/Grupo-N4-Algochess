@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
+import java.util.ArrayList;
+
 public class AtaqueCercanoStrategy implements AtaqueStrategy {
 
 
@@ -7,7 +9,6 @@ public class AtaqueCercanoStrategy implements AtaqueStrategy {
     public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
 
         receptor.perderVida(danio);
-
     }
 
     @Override
@@ -18,10 +19,16 @@ public class AtaqueCercanoStrategy implements AtaqueStrategy {
     }
 
     @Override
-    public void atacar(Catapulta catapulta, Pieza receptor, int danio) {
+    public void atacar(Catapulta catapulta, Pieza receptor, ArrayList<Pieza> contiguas) {
 
 
-        // catapulta no ataca en distancia cercana
-
+        // no ataca de cerca
     }
+
+    @Override
+    public void atacar(Curandero curandero, Pieza pieza) {
+
+        curandero.curarPieza(pieza);
+    }
+
 }

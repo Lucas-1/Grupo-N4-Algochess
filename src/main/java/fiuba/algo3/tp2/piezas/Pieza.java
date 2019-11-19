@@ -4,30 +4,30 @@ import fiuba.algo3.tp2.*;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import fiuba.algo3.tp2.movimiento.Direccion;
-import fiuba.algo3.tp2.movimiento.Movimiento;
 import fiuba.algo3.tp2.movimiento.Posicion;
+
+import java.util.ArrayList;
 
 public abstract class Pieza {
 
     protected PuntosDeVida puntosDeVida;
     protected Color color;
     protected int precio;
-    protected Movimiento mov;
     protected Posicion posicion;
     protected AtaqueContext ataqueContext;
 
 
-    public abstract void atacar(Pieza pieza, int distanciaConPieza);
-
+    public abstract void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas);
 
     public void setAtaqueContext(int distanciaConPieza) {
 
-        if(distanciaConPieza < 3)
+        if(distanciaConPieza < 3) {
             ataqueContext.setAtaqueStrategy(new AtaqueCercanoStrategy());
-        else if(distanciaConPieza < 6)
+        } else if(distanciaConPieza < 6) {
             ataqueContext.setAtaqueStrategy(new AtaqueMediaDistanciaStrategy());
-        else if(distanciaConPieza > 5)
+        } else {
             ataqueContext.setAtaqueStrategy(new AtaqueLejanoStrategy());
+        }
     }
 
     public void perderVida(int danioRecibido) {
@@ -75,15 +75,14 @@ public abstract class Pieza {
     }
 
 
-    public void setPosicion(int nuevaPosicionFila,int nuevaPosicionColumna){
+    public void mover(Direccion direccion) {
 
-        this.posicion = new Posicion(nuevaPosicionFila,nuevaPosicionColumna);
-        this.mov = new Movimiento();
+        posicion = direccion.calcularSiguientePosicion(posicion);
     }
 
-    public void mover(Direccion dir){
-        this.mov.establecerDireccion(dir);
-        this.posicion = this.mov.calcularPosicionSiguiente(this.posicion);
+    public void setPosicion(Posicion posicion) {
+
+        this.posicion = posicion;
     }
 
     public Pieza serComprada(Billetera billetera) {
