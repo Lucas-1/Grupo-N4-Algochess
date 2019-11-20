@@ -9,6 +9,11 @@ public class Posicion {
         columna = posicion.getFila();
         fila = posicion.getColumna();
     }
+    public Posicion(int fila, int columna){
+        this.fila = fila;
+        this.columna = columna;
+
+    }
 
     public int getColumna() {
         return columna;
