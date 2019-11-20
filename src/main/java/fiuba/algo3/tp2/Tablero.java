@@ -13,24 +13,27 @@ import java.util.ArrayList;
 
 public class Tablero {
 
+    private static final int LIMITE_SUPERIOR = 20;
+    private static final int LIMITE_INFERIOR = 0;
+
     private Casillero[][] casilleros;
 
     public Tablero() {
 
-        casilleros = new Casillero[20][20];
+        casilleros = new Casillero[LIMITE_SUPERIOR][LIMITE_SUPERIOR];
         Color blanco = new Blanco();
         Color negro = new Negro();
 
         /* Primeras 10 filas color blanco */
-        for(int fila = 0; fila<10; fila++) {
-            for(int columna = 0; columna<20; columna++) {
+        for(int fila = LIMITE_INFERIOR; fila<LIMITE_SUPERIOR/2; fila++) {
+            for(int columna = LIMITE_INFERIOR; columna<LIMITE_SUPERIOR; columna++) {
                 casilleros[fila][columna] = new Casillero(blanco);
             }
         }
 
         /* Siguientes 10 filas color negro */
-        for(int fila = 10; fila<20; fila++) {
-            for(int columna = 0; columna<20; columna++) {
+        for(int fila = LIMITE_SUPERIOR/2; fila<LIMITE_SUPERIOR; fila++) {
+            for(int columna = LIMITE_INFERIOR; columna<LIMITE_SUPERIOR; columna++) {
                 casilleros[fila][columna] = new Casillero(negro);
             }
         }
@@ -39,12 +42,10 @@ public class Tablero {
     public void agregarUnidad(Pieza pieza, int posicionFila, int posicionColumna, Color color) {
 
         Casillero casillero = casilleros[posicionFila][posicionColumna];
-
-        if(casillero.esValida(color))
-            casillero.agregarPieza(pieza);
+        casillero.agregarPieza(pieza);
     }
 
-    public void borrarUnidad(int posicionFila, int posicionColumna) {
+    public void borrarPieza(int posicionFila, int posicionColumna) {
 
         casilleros[posicionFila][posicionColumna].borrarPieza();
     }
@@ -54,7 +55,7 @@ public class Tablero {
         return casilleros[posicionFila][posicionColumna].estaOcupado();
     }
 
-    public void obtenerContiguos(Posicion posicion, ArrayList<Pieza> contiguos) {
+    public void obtenerContiguos(Posicion posicion, PiezasContiguas contiguos) {
 
         int posFila = posicion.getPosicionFila();
         int posColumna = posicion.getPosicionColumna();
@@ -63,62 +64,105 @@ public class Tablero {
         if(this.estaDentroDelMapa(posFila,posColumna)) {
 
             Pieza pieza = casilleros[posFila][posColumna].getPieza();
-            if(pieza != null && !contiguos.contains(pieza))
-                contiguos.add(pieza);
+            if(pieza != null && !contiguos.contiene(pieza))
+                contiguos.agregar(pieza);
         }
 
         // abajo
         if(this.estaDentroDelMapa(posFila+1,posColumna)) {
 
             Pieza pieza = casilleros[posFila+1][posColumna].getPieza();
-            if(pieza != null && !contiguos.contains(pieza))
-                contiguos.add(pieza);
+            if(pieza != null && !contiguos.contiene(pieza))
+                contiguos.agregar(pieza);
         }
 
         //arriba
         if(this.estaDentroDelMapa(posFila-1,posColumna)){
 
             Pieza pieza = casilleros[posFila-1][posColumna].getPieza();
-            if(pieza != null && !contiguos.contains(pieza))
-                contiguos.add(pieza);
+            if(pieza != null && !contiguos.contiene(pieza))
+                contiguos.agregar(pieza);
         }
 
         //derecha
         if(this.estaDentroDelMapa(posFila, posColumna+1)) {
 
             Pieza pieza = casilleros[posFila][posColumna+1].getPieza();
-            if(pieza != null && !contiguos.contains(pieza))
-                contiguos.add(pieza);
+            if(pieza != null && !contiguos.contiene(pieza))
+                contiguos.agregar(pieza);
         }
 
         //izquierda
         if(this.estaDentroDelMapa(posFila,posColumna-1)) {
 
             Pieza pieza = casilleros[posFila][posColumna-1].getPieza();
-            if(pieza != null && !contiguos.contains(pieza))
-                contiguos.add(pieza);
+            if(pieza != null && !contiguos.contiene(pieza))
+                contiguos.agregar(pieza);
         }
     }
 
     public boolean estaDentroDelMapa(int posFila, int posColumna) {
 
-        return ((posFila >= 0 && posFila <= 19) && (posColumna >= 0 && posColumna <= 19));
+        return ((posFila >= LIMITE_INFERIOR && posFila < LIMITE_SUPERIOR) && (posColumna >= LIMITE_INFERIOR && posColumna < LIMITE_SUPERIOR));
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion) {
 
-        Posicion posicionOriginal = pieza.getPosicion();
+        Posicion posicionActual = pieza.getPosicion();
         Posicion posicionNueva = direccion.calcularSiguientePosicion(pieza.getPosicion());
 
         if(this.estaDentroDelMapa(posicionNueva.getPosicionFila(),posicionNueva.getPosicionColumna())) {
 
             if(!this.casilleroOcupado(posicionNueva.getPosicionFila(),posicionNueva.getPosicionColumna())) {
+
                 pieza.mover(direccion);
-                casilleros[posicionOriginal.getPosicionFila()][posicionOriginal.getPosicionColumna()].borrarPieza();
+                casilleros[posicionActual.getPosicionFila()][posicionActual.getPosicionColumna()].borrarPieza();
+                posicionNueva = pieza.getPosicion();
                 casilleros[posicionNueva.getPosicionFila()][posicionNueva.getPosicionColumna()].setPieza(pieza);
-            } else {
-                throw new CasilleroEstaOcupadoException();
             }
+        }
+    }
+
+    public void obtenerSoldadosContiguos(int posFila, int posColumna, Color color, PiezasContiguas batallon) {
+
+        // posicion de soldado original
+        if(this.estaDentroDelMapa(posFila,posColumna)) {
+
+            Pieza pieza = casilleros[posFila][posColumna].getPieza();
+            if(pieza != null && !batallon.contiene(pieza))
+                pieza.unirseABatallon(batallon,color);
+        }
+
+        // abajo
+        if(this.estaDentroDelMapa(posFila+1,posColumna)) {
+
+            Pieza pieza = casilleros[posFila+1][posColumna].getPieza();
+            if(pieza != null && !batallon.contiene(pieza))
+                pieza.unirseABatallon(batallon,color);
+        }
+
+        //arriba
+        if(this.estaDentroDelMapa(posFila-1,posColumna)){
+
+            Pieza pieza = casilleros[posFila-1][posColumna].getPieza();
+            if(pieza != null && !batallon.contiene(pieza))
+                pieza.unirseABatallon(batallon,color);
+        }
+
+        //derecha
+        if(this.estaDentroDelMapa(posFila, posColumna+1)) {
+
+            Pieza pieza = casilleros[posFila][posColumna+1].getPieza();
+            if(pieza != null && !batallon.contiene(pieza))
+                pieza.unirseABatallon(batallon,color);
+        }
+
+        //izquierda
+        if(this.estaDentroDelMapa(posFila,posColumna-1)) {
+
+            Pieza pieza = casilleros[posFila][posColumna-1].getPieza();
+            if(pieza != null && !batallon.contiene(pieza))
+                pieza.unirseABatallon(batallon,color);
         }
     }
 
@@ -126,6 +170,5 @@ public class Tablero {
 
         return casilleros[posicionFila][posicionColumna].getPieza();
     }
-
 
 }

@@ -8,30 +8,25 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-    private final int CANTIDAD_DINERO_INICIAL = 20;
     private AdministradorDePiezas administradorDePiezas;
-    private Tienda tienda;
-    private Billetera billetera;
     private Color color;
 
     public Jugador(Color color) {
 
-        tienda = new Tienda();
-        billetera = new Billetera(CANTIDAD_DINERO_INICIAL);
         administradorDePiezas = new AdministradorDePiezas();
         this.color = color;
     }
 
     public void insertarPiezaEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        administradorDePiezas.agregarPieza(pieza, posicionFila,posicionColumna,tablero,color, tienda, billetera);
+        administradorDePiezas.agregarPieza(pieza, posicionFila,posicionColumna,tablero,color);
     }
 
-    public void borrarUnidad(Tablero tablero, int posicionFila, int posicionColumna) {
+    public void borrarPieza(Tablero tablero, int posicionFila, int posicionColumna) {
 
         Pieza pieza = tablero.obtenerPieza(posicionFila,posicionColumna);
         administradorDePiezas.borrarPieza(pieza);
-        tablero.borrarUnidad(posicionFila, posicionColumna);
+        tablero.borrarPieza(posicionFila, posicionColumna);
     }
 
     public void atacarCon(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
@@ -50,12 +45,33 @@ public class Jugador {
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
 
-        tablero.moverPieza(pieza,direccion);
+        Posicion posiscion = pieza.getPosicion();
+
+
+        if(pieza.esSoldado()) {
+
+            ArrayList<Pieza> batallon = administradorDePiezas.obtenerSoldadosContiguos(posiscion.getPosicionFila(),posiscion.getPosicionColumna(),tablero,color);
+
+            if(batallon.size() == 3) {
+
+                for(int i = 0; i < 3; i++)
+                    tablero.moverPieza(batallon.get(i),direccion);
+
+            } else {
+                tablero.moverPieza(pieza,direccion);
+            }
+
+        } else {
+
+            tablero.moverPieza(pieza,direccion);
+        }
+
     }
 
+    //
     public int getPuntosDeCompraDisponibles() {
 
-        return billetera.dineroRestante();
+        return administradorDePiezas.getPuntosDeCompraDisponibles();
     }
 
 }

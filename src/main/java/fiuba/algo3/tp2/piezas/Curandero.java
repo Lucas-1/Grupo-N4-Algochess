@@ -1,9 +1,8 @@
 package fiuba.algo3.tp2.piezas;
 
-import fiuba.algo3.tp2.PuntosDeCuracion;
+import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 import fiuba.algo3.tp2.excepciones.NoPuedeCurarPiezaDelOtroEquipo;
 
 import java.util.ArrayList;
@@ -11,19 +10,13 @@ import java.util.ArrayList;
 public class Curandero extends Pieza {
 
     private static final int PRECIO = 2;
-    private int curacion;
+    private static final int CURACION = 15;
 
     public Curandero(Color color) {
 
         this.precio = PRECIO;
         this.color = color;
         this.puntosDeVida = new PuntosDeVida(this);
-        curacion = 15;
-    }
-
-    public void atacarPieza(Pieza pieza) {
-
-        // curandero no puede atacar
     }
 
     public void curarPieza(Pieza pieza) {
@@ -31,7 +24,7 @@ public class Curandero extends Pieza {
         if(!this.esDeMiEquipo(pieza))
             throw new NoPuedeCurarPiezaDelOtroEquipo();
 
-        pieza.recibirVida(curacion);
+        pieza.recibirVida(CURACION);
     }
 
     @Override
@@ -40,5 +33,15 @@ public class Curandero extends Pieza {
         this.setAtaqueContext(distanciaConPieza);
         ataqueContext.atacar(this, pieza);
 
+    }
+
+    @Override
+    public void unirseABatallon(PiezasContiguas batallon, Color color) {
+
+    }
+
+    @Override
+    public boolean esSoldado() {
+        return false;
     }
 }

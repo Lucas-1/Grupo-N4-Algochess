@@ -10,13 +10,20 @@ import java.util.ArrayList;
 
 public class AdministradorDePiezas {
 
+    private final int CANTIDAD_DINERO_INICIAL = 20;
+
     private ArrayList<Pieza> piezas;
-    private ArrayList<Pieza> contiguas;
+    private PiezasContiguas piezasContiguas;
+    private Billetera billetera;
+    private Tienda tienda;
+
 
     public AdministradorDePiezas() {
 
         piezas = new ArrayList<Pieza>();
-        contiguas = new ArrayList<Pieza>();
+        piezasContiguas = new PiezasContiguas();
+        billetera = new Billetera(CANTIDAD_DINERO_INICIAL);
+        tienda = new Tienda();
     }
 
     public boolean sigueEnJuego() {
@@ -29,29 +36,27 @@ public class AdministradorDePiezas {
         piezas.remove(pieza);
     }
 
-    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero, Color color, Tienda tienda, Billetera billetera) {
-
-        Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
-        tablero.agregarUnidad(piezaComprada,posicionFila,posicionColumna,color);
+    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero, Color color) {
 
         Posicion posicion = new Posicion(posicionFila,posicionColumna);
-        piezaComprada.setPosicion(posicion);
-        piezas.add(piezaComprada);
+        Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
+        tablero.agregarUnidad(piezaComprada, posicionFila, posicionColumna, color);
+        pieza.setPosicion(posicion);
+        piezas.add(pieza);
     }
 
     public ArrayList<Pieza> obtenerPiezasContiguas(int posFila, int posColumna, Tablero tablero) {
 
-        contiguas.clear();
+        return piezasContiguas.obtenerPiezasContiguas(posFila,posColumna,tablero);
+    }
 
-        Posicion posicion = new Posicion(posFila, posColumna);
-        tablero.obtenerContiguos(posicion,contiguas);
+    public ArrayList<Pieza> obtenerSoldadosContiguos(int posFila, int posColumna, Tablero tablero, Color color) {
 
-        int i = 0;
-        while(i < contiguas.size()) {
-            tablero.obtenerContiguos(contiguas.get(i).getPosicion(),contiguas);
-            i++;
-        }
+        return  piezasContiguas.obtenerSoldadosContiguos(posFila, posColumna, color, tablero);
+    }
 
-        return contiguas;
+    public int getPuntosDeCompraDisponibles() {
+
+        return billetera.dineroRestante();
     }
 }

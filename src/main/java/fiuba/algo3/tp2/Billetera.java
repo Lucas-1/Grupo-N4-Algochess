@@ -7,14 +7,12 @@ public class Billetera {
     private int dineroDisponible;
 
     public Billetera(int dineroInicial){
+
         dineroDisponible = dineroInicial;
     }
 
-    public void agregarDinero(int cantidad){
-        dineroDisponible += cantidad;
-    }
-
     public void retirarDinero(int cantidad) {
+
         if(saldoSuficienteParaRetirar(cantidad))
             dineroDisponible -= cantidad;
     }
@@ -28,6 +26,7 @@ public class Billetera {
     }
 
     public int dineroRestante() {
+
         return dineroDisponible;
     }
 }

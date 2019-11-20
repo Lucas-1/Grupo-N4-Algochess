@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
+import fiuba.algo3.tp2.Billetera;
+import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
@@ -29,8 +31,19 @@ public class Jinete extends Pieza {
     @Override
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
-        //
+        // depende las que la rodean. meter strategy
     }
+
+    @Override
+    public void unirseABatallon(PiezasContiguas batallon, Color color) {
+
+    }
+
+    @Override
+    public boolean esSoldado() {
+        return false;
+    }
+
 }
 
 

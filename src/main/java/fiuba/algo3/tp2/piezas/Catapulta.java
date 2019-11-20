@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
+import fiuba.algo3.tp2.Billetera;
+import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
@@ -33,8 +35,18 @@ public class Catapulta extends Pieza {
     }
 
     @Override
-    public void mover(Direccion dir) {
+    public void unirseABatallon(PiezasContiguas batallon, Color color) {
 
+    }
+
+    @Override
+    public void mover(Direccion direccion) {
+
+    }
+
+    @Override
+    public boolean esSoldado() {
+        return false;
     }
 
     public void atacarPieza(Pieza pieza) {

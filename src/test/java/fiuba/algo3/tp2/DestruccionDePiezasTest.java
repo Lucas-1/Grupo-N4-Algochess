@@ -22,7 +22,7 @@ public class DestruccionDePiezasTest {
 
         jugador.insertarPiezaEnPosicion(soldado,5,5,tablero);
         jugador.insertarPiezaEnPosicion(soldado,6,5,tablero);
-        jugador.borrarUnidad(tablero,5,5);
+        jugador.borrarPieza(tablero,5,5);
 
         assertFalse(tablero.casilleroOcupado(5,5));
     }
@@ -36,7 +36,7 @@ public class DestruccionDePiezasTest {
         Jinete jinete = new Jinete(blanco);
 
         jugador.insertarPiezaEnPosicion(jinete,5,5,tablero);
-        jugador.borrarUnidad(tablero,5,5);
+        jugador.borrarPieza(tablero,5,5);
 
         /** jugador 1 se queda sin unidades, pierde. */
         assertFalse(jugador.sigueEnJuego());

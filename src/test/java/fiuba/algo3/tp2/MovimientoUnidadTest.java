@@ -3,6 +3,7 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
@@ -10,6 +11,7 @@ import fiuba.algo3.tp2.movimiento.Direccion;
 import org.junit.jupiter.api.Test;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -85,12 +87,24 @@ public class MovimientoUnidadTest {
         jugador.insertarPiezaEnPosicion(soldado,9,6,tablero);
         jugador.insertarPiezaEnPosicion(jinete,9,5,tablero);
 
-        assertThrows(CasilleroEstaOcupadoException.class,
-                ()->{
-                    jugador.moverPieza(jinete,Direccion.derecha(), tablero);
-                });
+        jugador.moverPieza(soldado,Direccion.izquierda(),tablero);
 
+        assertEquals(true,tablero.casilleroOcupado(9,5));
 
+    }
+
+    @Test
+    public void test06CatapultaNoSePuedeMover() {
+
+        Color blanco = new Blanco();
+        Jugador jugador = new Jugador(blanco);
+        Tablero tablero = new Tablero();
+        Catapulta catapulta = new Catapulta(blanco);
+
+        jugador.insertarPiezaEnPosicion(catapulta,9,6,tablero);
+        jugador.moverPieza(catapulta,Direccion.abajo(),tablero);
+
+        assertTrue(tablero.casilleroOcupado(9,6));
     }
 
 }

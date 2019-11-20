@@ -10,9 +10,14 @@ import java.util.ArrayList;
 
 public abstract class Pieza {
 
+   private final static int LIMITE_DISTANCIA_CERCA = 2;
+   private final static int LIMITE_DISTANCIA_MEDIA = 5;
+
     protected PuntosDeVida puntosDeVida;
     protected Color color;
+
     protected int precio;
+
     protected Posicion posicion;
     protected AtaqueContext ataqueContext;
 
@@ -21,27 +26,26 @@ public abstract class Pieza {
 
     public void setAtaqueContext(int distanciaConPieza) {
 
-        if(distanciaConPieza < 3) {
+        if(distanciaConPieza <= LIMITE_DISTANCIA_CERCA) {
+
             ataqueContext.setAtaqueStrategy(new AtaqueCercanoStrategy());
-        } else if(distanciaConPieza < 6) {
-            ataqueContext.setAtaqueStrategy(new AtaqueMediaDistanciaStrategy());
-        } else {
-            ataqueContext.setAtaqueStrategy(new AtaqueLejanoStrategy());
+
+            } else if(distanciaConPieza <= LIMITE_DISTANCIA_MEDIA) {
+
+                ataqueContext.setAtaqueStrategy(new AtaqueMediaDistanciaStrategy());
+
+              } else {
+
+                ataqueContext.setAtaqueStrategy(new AtaqueLejanoStrategy());
         }
     }
 
     public void perderVida(int danioRecibido) {
 
-        if(puntosDeVida.estoyMuerta())
-            throw new PiezaEstaMuertaException();
-
         puntosDeVida.quitarVida(danioRecibido);
     }
 
     public void recibirVida(int vidaRecibida) {
-
-        if(puntosDeVida.estoyMuerta())
-            throw new PiezaEstaMuertaException();
 
         puntosDeVida.aumentarVida(vidaRecibida);
     }
@@ -61,19 +65,28 @@ public abstract class Pieza {
         return posicion.estoyDelLadoEnemigo(color);
     }
 
+    public Pieza serComprada(Billetera billetera) {
+
+        billetera.retirarDinero(this.precio);
+        return this;
+    }
+
+    public abstract void unirseABatallon(PiezasContiguas batallon, Color color);
 
     public Color getColor() {
+
         return color;
     }
 
     public int getPuntosDeVida() {
+
         return puntosDeVida.getVidaRestante();
     }
 
     public Posicion getPosicion() {
+
         return this.posicion;
     }
-
 
     public void mover(Direccion direccion) {
 
@@ -85,8 +98,6 @@ public abstract class Pieza {
         this.posicion = posicion;
     }
 
-    public Pieza serComprada(Billetera billetera) {
-        billetera.retirarDinero(this.precio);
-        return this;
-    }
+    public abstract boolean esSoldado();
+
 }
