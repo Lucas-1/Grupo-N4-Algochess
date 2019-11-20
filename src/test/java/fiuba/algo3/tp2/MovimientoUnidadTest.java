@@ -85,7 +85,7 @@ public class MovimientoUnidadTest {
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Jinete jinete = new Jinete(blanco);
 
-        jugador.insertarPiezaEnPosicion(soldado, new Posicion(5,4), tablero);
+        jugador.insertarPiezaEnPosicion(soldado, new Posicion(5,6), tablero);
         jugador.insertarPiezaEnPosicion(jinete, new Posicion(5,5), tablero);
 
         assertThrows(CasilleroEstaOcupadoException.class,
