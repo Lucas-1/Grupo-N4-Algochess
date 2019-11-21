@@ -15,11 +15,10 @@ public class PiezasContiguas {
         piezas = new ArrayList<Pieza>();
     }
 
-    public ArrayList<Pieza> obtenerPiezasContiguas(int posFila, int posColumna, Tablero tablero) {
+    public ArrayList<Pieza> obtenerPiezasContiguas(Posicion posicion, Tablero tablero) {
 
         piezas.clear();
 
-        Posicion posicion = new Posicion(posFila, posColumna);
         tablero.obtenerContiguos(posicion, this);
 
         int i = 0;
@@ -32,25 +31,6 @@ public class PiezasContiguas {
         return piezas;
     }
 
-    public ArrayList<Pieza> obtenerSoldadosContiguos(int posFila, int posColumna, Color color , Tablero tablero) {
-
-        piezas.clear();
-        tablero.obtenerSoldadosContiguos(posFila,posColumna,color, this);
-
-        int i = 0;
-
-        while (i < piezas.size()) {
-            tablero.obtenerSoldadosContiguos(piezas.get(i).getPosicion().getPosicionFila(),piezas.get(i).getPosicion().getPosicionColumna(), color,this);
-            i++;
-        }
-
-        return piezas;
-    }
-
-    public boolean batallonLleno() {
-
-        return (piezas.size() == 3);
-    }
 
     public boolean contiene(Pieza pieza) {
 

@@ -143,7 +143,7 @@ public class TipoDeAtaqueDeSoldadoDeInfanteriaTest {
     }
 
     @Test
-    public void test07SoldadoDeLadoEnemigoPierde5PorcientoDeAtaque() {
+    public void test07SoldadoDeLadoEnemigoRecive5PorcientoMasDeAtaque() {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
@@ -155,14 +155,14 @@ public class TipoDeAtaqueDeSoldadoDeInfanteriaTest {
         Catapulta catapultaEnemiga = new Catapulta(negro);
 
         jugadorBlanco.insertarPiezaEnPosicion(soldado,9,9,tablero);
-        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,12,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,18,9,tablero);
 
         jugadorBlanco.moverPieza(soldado, Direccion.abajo(),tablero);
         jugadorBlanco.moverPieza(soldado, Direccion.abajo(),tablero); // posicion pasa a ser Fila:11 - Columna:9
 
-        jugadorBlanco.atacarCon(soldado,12,9,tablero);
+        jugadorNegro.atacarCon(catapultaEnemiga,11,9,tablero);
 
-        assertEquals(41, catapultaEnemiga.getPuntosDeVida());
+        assertEquals(80, soldado.getPuntosDeVida());
     }
 
     @Test

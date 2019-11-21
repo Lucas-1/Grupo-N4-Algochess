@@ -36,7 +36,7 @@ public class Curandero extends Pieza {
     }
 
     @Override
-    public void unirseABatallon(PiezasContiguas batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Color color) {
 
     }
 

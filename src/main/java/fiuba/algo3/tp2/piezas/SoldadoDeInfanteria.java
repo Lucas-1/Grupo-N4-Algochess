@@ -22,25 +22,19 @@ public class SoldadoDeInfanteria extends Pieza {
 
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
-        int danio = DANIO_SOLDADO;
-
         this.setAtaque(distanciaConPieza);
 
         if (this.esDeMiEquipo(pieza))
             throw new NoPuedeAtacarPiezaDelMismoEquipo();
 
-        if (this.estoyDelLadoEnemigo())
-            danio = (int) (DANIO_SOLDADO * 0.95);
-
-
-        ataque.atacar(this, pieza, danio);
+        ataque.atacar(this, pieza, DANIO_SOLDADO);
 
     }
 
     @Override
-    public void unirseABatallon(PiezasContiguas batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Color color) {
 
-        if(!batallon.batallonLleno() && color.esDelMismoColor(this.color))
+        if(!batallon.estaLleno() && color.esDelMismoColor(this.color))
             batallon.agregar(this);
     }
 

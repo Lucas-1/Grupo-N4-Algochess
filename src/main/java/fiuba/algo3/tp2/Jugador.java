@@ -34,7 +34,7 @@ public class Jugador {
         Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
         Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
         int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
-        ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posicionFila,posicionColumna,tablero);
+        ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posReceptor,tablero);
         pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
     }
 
@@ -47,25 +47,14 @@ public class Jugador {
 
         Posicion posiscion = pieza.getPosicion();
 
-
         if(pieza.esSoldado()) {
 
-            ArrayList<Pieza> batallon = administradorDePiezas.obtenerSoldadosContiguos(posiscion.getPosicionFila(),posiscion.getPosicionColumna(),tablero,color);
-
-            if(batallon.size() == 3) {
-
-                for(int i = 0; i < 3; i++)
-                    tablero.moverPieza(batallon.get(i),direccion);
-
-            } else {
-                tablero.moverPieza(pieza,direccion);
-            }
+            administradorDePiezas.moverBatallon(posiscion,tablero,color,direccion);
 
         } else {
 
-            tablero.moverPieza(pieza,direccion);
+            tablero.moverPieza(pieza, direccion);
         }
-
     }
 
     //
@@ -73,5 +62,4 @@ public class Jugador {
 
         return administradorDePiezas.getPuntosDeCompraDisponibles();
     }
-
 }

@@ -58,18 +58,13 @@ public abstract class Pieza {
         return color.esDelMismoColor(otraPieza.getColor());
     }
 
-    public boolean estoyDelLadoEnemigo() {
-
-        return posicion.estoyDelLadoEnemigo(color);
-    }
-
     public Pieza serComprada(Billetera billetera) {
 
         billetera.retirarDinero(this.precio);
         return this;
     }
 
-    public abstract void unirseABatallon(PiezasContiguas batallon, Color color);
+    public abstract void unirseABatallon(Batallon batallon, Color color);
 
     public Color getColor() {
 

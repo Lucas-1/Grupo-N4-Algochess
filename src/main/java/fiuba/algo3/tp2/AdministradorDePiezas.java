@@ -2,7 +2,9 @@ package fiuba.algo3.tp2;
 
 
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Batallon;
 import fiuba.algo3.tp2.piezas.Pieza;
 
 import java.util.ArrayList;
@@ -16,12 +18,14 @@ public class AdministradorDePiezas {
     private PiezasContiguas piezasContiguas;
     private Billetera billetera;
     private Tienda tienda;
+    private Batallon batallon;
 
 
     public AdministradorDePiezas() {
 
         piezas = new ArrayList<Pieza>();
         piezasContiguas = new PiezasContiguas();
+        batallon = new Batallon();
         billetera = new Billetera(CANTIDAD_DINERO_INICIAL);
         tienda = new Tienda();
     }
@@ -45,18 +49,20 @@ public class AdministradorDePiezas {
         piezas.add(pieza);
     }
 
-    public ArrayList<Pieza> obtenerPiezasContiguas(int posFila, int posColumna, Tablero tablero) {
+    public ArrayList<Pieza> obtenerPiezasContiguas(Posicion posicion, Tablero tablero) {
 
-        return piezasContiguas.obtenerPiezasContiguas(posFila,posColumna,tablero);
+        return piezasContiguas.obtenerPiezasContiguas(posicion,tablero);
     }
 
-    public ArrayList<Pieza> obtenerSoldadosContiguos(int posFila, int posColumna, Tablero tablero, Color color) {
+    public void moverBatallon(Posicion posicion, Tablero tablero, Color color, Direccion direccion) {
 
-        return  piezasContiguas.obtenerSoldadosContiguos(posFila, posColumna, color, tablero);
+        batallon.moverBatallon(posicion,color,tablero, direccion);
     }
 
     public int getPuntosDeCompraDisponibles() {
 
         return billetera.dineroRestante();
     }
+
+
 }

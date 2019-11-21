@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Batallon;
 import fiuba.algo3.tp2.piezas.Pieza;
 
 public class Tablero {
@@ -119,7 +120,10 @@ public class Tablero {
         }
     }
 
-    public void obtenerSoldadosContiguos(int posFila, int posColumna, Color color, PiezasContiguas batallon) {
+    public void obtenerSoldadosContiguos(Posicion posicion, Color color, Batallon batallon) {
+
+        int posFila = posicion.getPosicionFila();
+        int posColumna = posicion.getPosicionColumna();
 
         // posicion de soldado original
         if(this.estaDentroDelMapa(posFila,posColumna)) {
