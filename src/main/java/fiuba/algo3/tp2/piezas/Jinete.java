@@ -69,6 +69,10 @@ public class Jinete extends Danina {
         this.DANIO_JINETE = danio;
     }
 
+    public static int getDanio() {
+        return DANIO_JINETE;
+    }
+
 }
 
 

@@ -52,4 +52,8 @@ public class SoldadoDeInfanteria extends Danina {
             jinete.setRangoCercano();
         }
     }
+
+    public static int getDanio() {
+        return DANIO_SOLDADO;
+    }
 }

@@ -40,11 +40,11 @@ public class AdministradorDePiezas {
         piezas.remove(pieza);
     }
 
-    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero, Color color) {
+    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
         Posicion posicion = new Posicion(posicionFila,posicionColumna);
         Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
-        tablero.agregarUnidad(piezaComprada, posicionFila, posicionColumna, color);
+        tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);
         pieza.setPosicion(posicion);
         piezas.add(pieza);
     }

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public interface RangoDeAlcance {
 
-    void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio);
+    void atacar(SoldadoDeInfanteria soldado, Pieza receptor);
 
-    void atacar(Jinete jinete, Pieza receptor, int danio);
+    void atacar(Jinete jinete, Pieza receptor);
 
     void atacar(Catapulta catapulta, Pieza receptor, ArrayList<Pieza> contiguas);
 

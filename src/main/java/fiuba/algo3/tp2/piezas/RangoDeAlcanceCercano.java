@@ -6,13 +6,13 @@ public class RangoDeAlcanceCercano implements RangoDeAlcance {
 
 
     @Override
-    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
+    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor) {
 
-        receptor.perderVida(danio);
+        receptor.perderVida(soldado.getDanio());
     }
 
     @Override
-    public void atacar(Jinete jinete, Pieza receptor, int danio) {
+    public void atacar(Jinete jinete, Pieza receptor) {
 
         if(jinete.calcularDistancia(receptor.getPosicion()) <= 2){
             receptor.perderVida(danio);

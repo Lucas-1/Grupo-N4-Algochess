@@ -7,12 +7,12 @@ public class Ataque {
 
     public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio, RangoDeAlcance rangoDeAlcance) {
 
-        rangoDeAlcance.atacar(soldado, receptor, danio);
+        rangoDeAlcance.atacar(soldado, receptor);
     }
 
     public void atacar(Jinete jinete, Pieza receptor, int danio, RangoDeAlcance rangoDeAlcance) {
 
-        rangoDeAlcance.atacar(jinete,receptor, danio);
+        rangoDeAlcance.atacar(jinete,receptor);
 
     }
 
