@@ -22,7 +22,7 @@ public class Jugador {
 
     public void insertarPiezaEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        administradorDePiezas.agregarPieza(pieza, posicionFila,posicionColumna,tablero,color);
+        administradorDePiezas.agregarPieza(pieza, posicionFila,posicionColumna,tablero);
     }
 
     public void borrarPieza(Tablero tablero, int posicionFila, int posicionColumna) {

@@ -36,7 +36,7 @@ public class Tablero {
         }
     }
 
-    public void agregarUnidad(Pieza pieza, int posicionFila, int posicionColumna, Color color) {
+    public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna) {
 
         Casillero casillero = casilleros[posicionFila][posicionColumna];
         casillero.agregarPieza(pieza);

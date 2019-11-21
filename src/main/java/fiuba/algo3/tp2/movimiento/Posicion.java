@@ -32,14 +32,6 @@ public class Posicion {
         return false;
     }
 
-    public int restarAtaqueLadoEnemigo( int danio, Color color) {
-
-        if(this.estoyDelLadoEnemigo(color))
-            return (int)(danio*0.95);
-
-        return 0;
-    }
-
     public int getPosicionColumna() {
 
         return posicionColumna;
