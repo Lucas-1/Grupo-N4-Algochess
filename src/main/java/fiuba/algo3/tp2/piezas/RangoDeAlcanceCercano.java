@@ -26,9 +26,9 @@ public class RangoDeAlcanceCercano implements RangoDeAlcance {
     }
 
     @Override
-    public void curar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza receptor) {
 
-        curandero.curarPieza(pieza);
+        receptor.recibirVida(curandero.getCuracion());
     }
 
 }

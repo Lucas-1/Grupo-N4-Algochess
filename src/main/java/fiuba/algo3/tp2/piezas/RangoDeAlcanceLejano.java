@@ -28,7 +28,7 @@ public class RangoDeAlcanceLejano implements RangoDeAlcance {
     }
 
     @Override
-    public void curar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza receptor) {
 
         // no cura distancia lejos
     }

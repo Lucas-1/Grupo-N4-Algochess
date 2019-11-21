@@ -26,7 +26,7 @@ public class RangoDeAlcanceMediaDistancia implements RangoDeAlcance {
 
 
     @Override
-    public void curar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza receptor) {
 
         // no cura en distancia media
     }

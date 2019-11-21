@@ -19,16 +19,12 @@ public class Curandero extends Saludable {
         this.puntosDeVida = new PuntosDeVida(this);
     }
 
-    public void curarPieza(Pieza pieza) {
+    @Override
+    public void curar(Pieza pieza, int distanciaConPieza) {
 
         if(!this.esDeMiEquipo(pieza))
             throw new NoPuedeCurarPiezaDelOtroEquipo();
 
-        pieza.recibirVida(CURACION);
-    }
-
-    @Override
-    public void curar(Pieza pieza, int distanciaConPieza) {
 
         this.setRangoDeAlcance(distanciaConPieza);
         curacion.curar(this, pieza, this.rangoDeAlcance);
@@ -43,5 +39,9 @@ public class Curandero extends Saludable {
     @Override
     public boolean esSoldado() {
         return false;
+    }
+
+    public int getCuracion() {
+        return this.CURACION;
     }
 }
