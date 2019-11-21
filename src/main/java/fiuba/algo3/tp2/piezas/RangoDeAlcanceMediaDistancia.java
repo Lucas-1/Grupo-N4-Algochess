@@ -14,7 +14,7 @@ public class RangoDeAlcanceMediaDistancia implements RangoDeAlcance {
     @Override
     public void atacar(Jinete jinete, Pieza receptor) {
 
-        receptor.perderVida(danio);
+        receptor.perderVida(jinete.getDanio());
 
     }
 
@@ -26,7 +26,7 @@ public class RangoDeAlcanceMediaDistancia implements RangoDeAlcance {
 
 
     @Override
-    public void curar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza receptor) {
 
         // no cura en distancia media
     }
