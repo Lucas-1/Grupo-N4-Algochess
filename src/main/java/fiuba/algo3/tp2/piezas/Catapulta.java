@@ -49,4 +49,13 @@ public class Catapulta extends Danina {
     public static int getDanioCatapulta() {
         return DANIO_CATAPULTA;
     }
+
+    @Override
+
+    public void setRangoJineteCercano(Jinete jinete){
+        if(!jinete.esDeMiEquipo(this)){
+            jinete.setDanio(5);
+            jinete.setRangoCercano();
+        }
+    }
 }

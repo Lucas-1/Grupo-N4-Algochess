@@ -37,6 +37,8 @@ public abstract class Pieza {
         }
     }
 
+    public abstract void setRangoJineteCercano(Jinete jinete);
+
 
     public void perderVida(int danioRecibido) {
         danioRecibido = this.aplicarBonificacionesAlDanioRecibido(danioRecibido);

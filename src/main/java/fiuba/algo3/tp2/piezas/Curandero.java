@@ -44,4 +44,11 @@ public class Curandero extends Saludable {
     public boolean esSoldado() {
         return false;
     }
+
+    public void setRangoJineteCercano(Jinete jinete){
+        if(!jinete.esDeMiEquipo(this)){
+            jinete.setDanio(5);
+            jinete.setRangoCercano();
+        }
+    }
 }

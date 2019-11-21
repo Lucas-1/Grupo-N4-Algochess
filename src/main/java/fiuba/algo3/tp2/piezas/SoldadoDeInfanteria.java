@@ -41,4 +41,15 @@ public class SoldadoDeInfanteria extends Danina {
     public boolean esSoldado() {
         return  true;
     }
+
+    public void setRangoJineteCercano(Jinete jinete){
+        if(jinete.esDeMiEquipo(this)){
+            jinete.setDanio(15);
+            jinete.setRangoMediaDistancia();
+        }
+        if(!jinete.esDeMiEquipo(this)){
+            jinete.setDanio(5);
+            jinete.setRangoCercano();
+        }
+    }
 }
