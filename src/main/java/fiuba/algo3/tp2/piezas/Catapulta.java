@@ -46,7 +46,7 @@ public class Catapulta extends Danina {
         return false;
     }
 
-    public static int getDanioCatapulta() {
+    public static int getDanio() {
         return DANIO_CATAPULTA;
     }
 }

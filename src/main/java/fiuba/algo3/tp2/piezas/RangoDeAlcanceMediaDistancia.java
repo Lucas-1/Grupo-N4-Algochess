@@ -6,13 +6,13 @@ public class RangoDeAlcanceMediaDistancia implements RangoDeAlcance {
 
 
     @Override
-    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
+    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor) {
 
         // no ataca a distancia media
     }
 
     @Override
-    public void atacar(Jinete jinete, Pieza receptor, int danio) {
+    public void atacar(Jinete jinete, Pieza receptor) {
 
         // depende de las piezas que lo rodean //
 

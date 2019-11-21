@@ -41,4 +41,8 @@ public class SoldadoDeInfanteria extends Danina {
     public boolean esSoldado() {
         return  true;
     }
+
+    public static int getDanio() {
+        return DANIO_SOLDADO;
+    }
 }

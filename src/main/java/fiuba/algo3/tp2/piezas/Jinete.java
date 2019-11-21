@@ -42,6 +42,10 @@ public class Jinete extends Danina {
         return false;
     }
 
+    public static int getDanio() {
+        return DANIO_JINETE;
+    }
+
 }
 
 

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class RangoDeAlcanceLejano implements RangoDeAlcance {
 
     @Override
-    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
+    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor) {
 
         // no ataca distancia lejos
     }
 
     @Override
-    public void atacar(Jinete jinete, Pieza receptor, int danio) {
+    public void atacar(Jinete jinete, Pieza receptor) {
 
         // no ataca distancia lejos
     }
@@ -23,7 +23,7 @@ public class RangoDeAlcanceLejano implements RangoDeAlcance {
         for(int i=0; i < contiguas.size(); i++) {
 
             Pieza pieza = contiguas.get(i);
-            pieza.perderVida(catapulta.getDanioCatapulta());
+            pieza.perderVida(catapulta.getDanio());
         }
     }
 
