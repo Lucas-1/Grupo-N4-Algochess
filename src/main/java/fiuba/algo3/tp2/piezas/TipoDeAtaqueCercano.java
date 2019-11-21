@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.piezas;
 
 import java.util.ArrayList;
 
-public class AtaqueCercanoStrategy implements AtaqueStrategy {
+public class TipoDeAtaqueCercano implements TipoDeAtaque {
 
 
     @Override

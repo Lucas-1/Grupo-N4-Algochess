@@ -9,7 +9,7 @@ import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class AtaqueContiguoCatapultaTest {
+public class TipoDeAtaqueContiguoCatapultaTest {
 
     @Test
     public void test01CatapultaAtacaPiezaYDaniaALaSiguientePiezaContigua() {

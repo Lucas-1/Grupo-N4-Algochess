@@ -1,10 +1,8 @@
 package fiuba.algo3.tp2.piezas;
 
-import fiuba.algo3.tp2.Billetera;
 import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 import fiuba.algo3.tp2.movimiento.Direccion;
 
 import java.util.ArrayList;
@@ -19,14 +17,14 @@ public class Catapulta extends Pieza {
         precio = PRECIO;
         this.color = color;
         puntosDeVida = new PuntosDeVida(this);
-        ataqueContext = new AtaqueContext();
+        ataque = new Ataque();
     }
 
     @Override
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
-        this.setAtaqueContext(distanciaConPieza);
-        ataqueContext.atacar(this, pieza,contiguas);
+        this.setAtaque(distanciaConPieza);
+        ataque.atacar(this, pieza,contiguas);
     }
 
     @Override

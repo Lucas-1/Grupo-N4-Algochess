@@ -2,7 +2,6 @@ package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.*;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 
@@ -19,24 +18,24 @@ public abstract class Pieza {
     protected int precio;
 
     protected Posicion posicion;
-    protected AtaqueContext ataqueContext;
+    protected Ataque ataque;
 
 
     public abstract void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas);
 
-    public void setAtaqueContext(int distanciaConPieza) {
+    public void setAtaque(int distanciaConPieza) {
 
         if(distanciaConPieza <= LIMITE_DISTANCIA_CERCA) {
 
-            ataqueContext.setAtaqueStrategy(new AtaqueCercanoStrategy());
+            ataque.setTipoDeAtaque(new TipoDeAtaqueCercano());
 
             } else if(distanciaConPieza <= LIMITE_DISTANCIA_MEDIA) {
 
-                ataqueContext.setAtaqueStrategy(new AtaqueMediaDistanciaStrategy());
+                ataque.setTipoDeAtaque(new TipoDeAtaqueMediaDistancia());
 
               } else {
 
-                ataqueContext.setAtaqueStrategy(new AtaqueLejanoStrategy());
+                ataque.setTipoDeAtaque(new TipoDeAtaqueLejano());
         }
     }
 

@@ -17,14 +17,14 @@ public class SoldadoDeInfanteria extends Pieza {
         this.precio = PRECIO;
         this.color = color;
         puntosDeVida = new PuntosDeVida(this);
-        ataqueContext = new AtaqueContext();
+        ataque = new Ataque();
     }
 
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
         int danio = DANIO_SOLDADO;
 
-        this.setAtaqueContext(distanciaConPieza);
+        this.setAtaque(distanciaConPieza);
 
         if (this.esDeMiEquipo(pieza))
             throw new NoPuedeAtacarPiezaDelMismoEquipo();
@@ -33,7 +33,7 @@ public class SoldadoDeInfanteria extends Pieza {
             danio = (int) (DANIO_SOLDADO * 0.95);
 
 
-        ataqueContext.atacar(this, pieza, danio);
+        ataque.atacar(this, pieza, danio);
 
     }
 

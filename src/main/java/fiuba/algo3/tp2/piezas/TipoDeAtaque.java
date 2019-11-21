@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.piezas;
 
 import java.util.ArrayList;
 
-public interface AtaqueStrategy {
+public interface TipoDeAtaque {
 
     public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio);
 

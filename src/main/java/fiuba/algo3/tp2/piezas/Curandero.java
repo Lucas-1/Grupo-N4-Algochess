@@ -30,8 +30,8 @@ public class Curandero extends Pieza {
     @Override
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
-        this.setAtaqueContext(distanciaConPieza);
-        ataqueContext.atacar(this, pieza);
+        this.setAtaque(distanciaConPieza);
+        ataque.atacar(this, pieza);
 
     }
 

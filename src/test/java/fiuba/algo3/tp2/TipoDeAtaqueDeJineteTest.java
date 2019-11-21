@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AtaqueDeJineteTest {
+public class TipoDeAtaqueDeJineteTest {
 
     @Test
     public void test01JineteAtacaOtroJineteYLeQuita5PuntosDeVida() {
