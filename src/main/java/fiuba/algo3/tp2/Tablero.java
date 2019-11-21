@@ -3,13 +3,9 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
-import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Pieza;
-
-
-import java.util.ArrayList;
 
 public class Tablero {
 
@@ -115,7 +111,7 @@ public class Tablero {
 
             if(!this.casilleroOcupado(posicionNueva.getPosicionFila(),posicionNueva.getPosicionColumna())) {
 
-                pieza.mover(direccion);
+                pieza.moverA(posicionNueva);
                 casilleros[posicionActual.getPosicionFila()][posicionActual.getPosicionColumna()].borrarPieza();
                 posicionNueva = pieza.getPosicion();
                 casilleros[posicionNueva.getPosicionFila()][posicionNueva.getPosicionColumna()].setPieza(pieza);

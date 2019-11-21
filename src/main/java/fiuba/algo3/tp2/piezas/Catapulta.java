@@ -3,7 +3,7 @@ package fiuba.algo3.tp2.piezas;
 import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.movimiento.Posicion;
 
 import java.util.ArrayList;
 
@@ -38,7 +38,7 @@ public class Catapulta extends Pieza {
     }
 
     @Override
-    public void mover(Direccion direccion) {
+    public void moverA(Posicion posicionNueva) {
 
     }
 

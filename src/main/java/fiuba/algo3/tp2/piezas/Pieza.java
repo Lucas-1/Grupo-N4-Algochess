@@ -2,7 +2,6 @@ package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.*;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 
 import java.util.ArrayList;
@@ -87,9 +86,9 @@ public abstract class Pieza {
         return this.posicion;
     }
 
-    public void mover(Direccion direccion) {
+    public void moverA(Posicion posicionNueva) {
 
-        posicion = direccion.calcularSiguientePosicion(posicion);
+        posicion = posicionNueva;
     }
 
     public void setPosicion(Posicion posicion) {
