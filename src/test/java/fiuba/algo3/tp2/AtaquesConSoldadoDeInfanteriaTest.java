@@ -15,7 +15,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class TipoDeAtaqueDeSoldadoDeInfanteriaTest {
+public class AtaquesConSoldadoDeInfanteriaTest {
     @Test
     public void test01SoldadoDeInfanteriaAtacaJineteYLeQuita10PuntosDeVida() {
 
@@ -162,7 +162,7 @@ public class TipoDeAtaqueDeSoldadoDeInfanteriaTest {
 
         jugadorNegro.atacarCon(catapultaEnemiga,11,9,tablero);
 
-        assertEquals(80, soldado.getPuntosDeVida());
+        assertEquals(79, soldado.getPuntosDeVida());
     }
 
     @Test

@@ -21,15 +21,22 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
 
-        Jinete jinete = new Jinete(blanco);
         Curandero curandero = new Curandero(blanco);
-        Catapulta catapulta = new Catapulta(negro);
+        Jinete jineteAliado = new Jinete(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
 
-        catapulta.atacarPieza(jinete);
+        jugadorBlanco.insertarPiezaEnPosicion(jineteAliado,1,1,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(curandero,2,2,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,19,19,tablero);
 
-        curandero.curarPieza(jinete);
-        assertEquals(jinete.getPuntosDeVida(), 95);
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+
+        jugadorBlanco.curarCon(curandero, 1, 1, tablero);
+        assertEquals(jineteAliado.getPuntosDeVida(), 95);
     }
 
     @Test
@@ -37,12 +44,20 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
         Curandero curandero = new Curandero(blanco);
-        Jinete jinete = new Jinete(negro);
+        Jinete jineteEnemigo = new Jinete(negro);
+
+        jugadorBlanco.insertarPiezaEnPosicion(curandero,9,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(jineteEnemigo,10,9,tablero);
+
 
         assertThrows(NoPuedeCurarPiezaDelOtroEquipo.class,
                 ()->{
-                    curandero.curarPieza(jinete);
+                    jugadorBlanco.curarCon(curandero, 10, 9, tablero);
                 });
     }
 
@@ -51,20 +66,28 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jinete jinete = new Jinete(blanco);
-        Curandero curandero = new Curandero(blanco);
-        Catapulta catapulta = new Catapulta(negro);
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
 
-        catapulta.atacarPieza(jinete);
-        catapulta.atacarPieza(jinete);
-        catapulta.atacarPieza(jinete);
-        catapulta.atacarPieza(jinete);
-        /** mata al jinete */
-        catapulta.atacarPieza(jinete);
+        Curandero curandero = new Curandero(blanco);
+        Jinete jineteAliado = new Jinete(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
+
+        jugadorBlanco.insertarPiezaEnPosicion(jineteAliado,1,1,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(curandero,2,2,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,19,19,tablero);
+
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+
 
         assertThrows(PiezaEstaMuertaException.class,
                 ()->{
-                    curandero.curarPieza(jinete);
+                    jugadorBlanco.curarCon(curandero, 1, 1, tablero);
                 });
     }
 
@@ -72,12 +95,26 @@ public class CuracionDeCuranderoTest {
     public void test04CuranderoNoPuedeCurarCatapulta() {
 
         Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
 
         Curandero curandero = new Curandero(blanco);
-        Catapulta catapulta = new Catapulta(blanco);
+        Catapulta catapultaAliada = new Catapulta(blanco);
+        Catapulta catapultaEnemiga = new Catapulta(negro);
 
-        curandero.curarPieza(catapulta);
+        jugadorBlanco.insertarPiezaEnPosicion(catapultaAliada,1,1,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(curandero,5,5,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,19,19,tablero);
+
+        jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+
+
         /** Los puntos de vida de la catapulta no cambian */
-        assertEquals(50, catapulta.getPuntosDeVida());
+        jugadorBlanco.curarCon(curandero, 1, 1, tablero);
+
+
+        assertEquals(30, catapultaAliada.getPuntosDeVida());
     }
 }

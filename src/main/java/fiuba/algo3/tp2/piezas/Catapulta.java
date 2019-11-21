@@ -1,16 +1,15 @@
 package fiuba.algo3.tp2.piezas;
 
-import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.movimiento.Posicion;
 
 import java.util.ArrayList;
 
-public class Catapulta extends Pieza {
+public class Catapulta extends Danina {
 
     private static final int PRECIO = 5;
-    private static final int DANIO = 20;
+    private static final int DANIO_CATAPULTA = 20;
 
     public Catapulta(Color color) {
 
@@ -23,8 +22,8 @@ public class Catapulta extends Pieza {
     @Override
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
-        this.setAtaque(distanciaConPieza);
-        ataque.atacar(this, pieza,contiguas);
+        this.setRangoDeAlcance(distanciaConPieza);
+        ataque.atacar(this, pieza,contiguas, this.rangoDeAlcance);
     }
 
     @Override
@@ -47,8 +46,7 @@ public class Catapulta extends Pieza {
         return false;
     }
 
-    public void atacarPieza(Pieza pieza) {
-
-        pieza.perderVida(DANIO);
+    public static int getDanioCatapulta() {
+        return DANIO_CATAPULTA;
     }
 }

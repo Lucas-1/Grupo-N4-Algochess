@@ -15,18 +15,24 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class TipoDeAtaqueDeJineteTest {
+public class AtaquesConJineteTest {
 
     @Test
     public void test01JineteAtacaOtroJineteYLeQuita5PuntosDeVida() {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
         Jinete jinete = new Jinete(blanco);
         Jinete jineteEnemigo = new Jinete(negro);
 
-        /** jinete ataca a jinete enemigo con 5 puntos de danio. */
-        jinete.atacarPieza(jineteEnemigo);
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(jineteEnemigo,10,9,tablero);
+
+        jugadorBlanco.atacarCon(jinete,10,9,tablero);
 
         /**jinete enemigo pasa de tener 100 puntos de vida a tener 95. */
         assertEquals(95, jineteEnemigo.getPuntosDeVida());
@@ -37,10 +43,17 @@ public class TipoDeAtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
         Jinete jinete = new Jinete(blanco);
         Catapulta catapultaEnemiga = new Catapulta(negro);
 
-        jinete.atacarPieza(catapultaEnemiga);
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,10,9,tablero);
+
+        jugadorBlanco.atacarCon(jinete,10,9,tablero);
 
         assertEquals(45, catapultaEnemiga.getPuntosDeVida());
     }
@@ -50,12 +63,19 @@ public class TipoDeAtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
         Jinete jinete = new Jinete(blanco);
-        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
+        Jinete soldadoEnemigo = new Jinete(negro);
 
-        jinete.atacarPieza(soldado);
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(soldadoEnemigo,10,9,tablero);
 
-        assertEquals(95, soldado.getPuntosDeVida());
+        jugadorBlanco.atacarCon(jinete,10,9,tablero);
+
+        assertEquals(95, soldadoEnemigo.getPuntosDeVida());
     }
 
     @Test
@@ -63,10 +83,17 @@ public class TipoDeAtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
         Jinete jinete = new Jinete(blanco);
         Curandero curanderoEnemigo = new Curandero(negro);
 
-        jinete.atacarPieza(curanderoEnemigo);
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(curanderoEnemigo,10,9,tablero);
+
+        jugadorBlanco.atacarCon(jinete,10,9,tablero);
 
         assertEquals(70, curanderoEnemigo.getPuntosDeVida());
     }
@@ -76,18 +103,26 @@ public class TipoDeAtaqueDeJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Tablero tablero = new Tablero();
+
         Jinete jinete = new Jinete(blanco);
         Catapulta catapultaEnemiga = new Catapulta(negro);
 
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,10,9,tablero);
+
+
         /** ataca 10 veces y la deja en 0 de vida */
         for(int i = 0; i < 10; i++) {
-            jinete.atacarPieza(catapultaEnemiga);
+            jugadorBlanco.atacarCon(jinete, 10, 9, tablero);
         }
 
         /** falla atacar devuelta porque ya esta muerta */
         assertThrows(PiezaEstaMuertaException.class,
                 ()->{
-                    jinete.atacarPieza(catapultaEnemiga);
+                    jugadorBlanco.atacarCon(jinete, 10, 9, tablero);
                 });
     }
 
@@ -95,13 +130,17 @@ public class TipoDeAtaqueDeJineteTest {
     public void test06JineteNoPuedeAtacarUnidadAliada() {
 
         Color blanco = new Blanco();
-        Color negro = new Negro();
         Jinete jinete = new Jinete(blanco);
-        Jinete jineteAliado = new Jinete(blanco);
+        SoldadoDeInfanteria soldadoAliado = new SoldadoDeInfanteria(blanco);
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Tablero tablero = new Tablero();
+
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(soldadoAliado,8,9,tablero);
 
         assertThrows(NoPuedeAtacarPiezaDelMismoEquipo.class,
                 ()->{
-                    jinete.atacarPieza(jineteAliado);
+                    jugadorBlanco.atacarCon(jinete,8,9,tablero);
                 });
     }
 }

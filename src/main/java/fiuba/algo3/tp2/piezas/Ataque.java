@@ -4,32 +4,26 @@ import java.util.ArrayList;
 
 public class Ataque {
 
-    TipoDeAtaque tipoDeAtaque;
 
-    public void setTipoDeAtaque(TipoDeAtaque tipoDeAtaque) {
+    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio, RangoDeAlcance rangoDeAlcance) {
 
-        this.tipoDeAtaque = tipoDeAtaque;
+        rangoDeAlcance.atacar(soldado, receptor, danio);
     }
 
-    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
+    public void atacar(Jinete jinete, Pieza receptor, int danio, RangoDeAlcance rangoDeAlcance) {
 
-        tipoDeAtaque.atacar(soldado, receptor, danio);
-    }
-
-    public void atacar(Jinete jinete, Pieza receptor, int danio) {
-
-        tipoDeAtaque.atacar(jinete,receptor, danio);
+        rangoDeAlcance.atacar(jinete,receptor, danio);
 
     }
 
-    public void atacar(Catapulta catapulta, Pieza receptor,ArrayList<Pieza> contiguas) {
+    public void atacar(Catapulta catapulta, Pieza receptor,ArrayList<Pieza> contiguas, RangoDeAlcance rangoDeAlcance) {
 
-        tipoDeAtaque.atacar(catapulta,receptor,contiguas);
+        rangoDeAlcance.atacar(catapulta,receptor,contiguas);
 
     }
 
-    public void atacar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza pieza, RangoDeAlcance rangoDeAlcance) {
 
-        tipoDeAtaque.atacar(curandero,pieza);
+        rangoDeAlcance.curar(curandero,pieza);
     }
 }

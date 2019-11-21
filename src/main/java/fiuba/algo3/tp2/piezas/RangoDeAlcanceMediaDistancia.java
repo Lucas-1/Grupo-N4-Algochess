@@ -2,33 +2,32 @@ package fiuba.algo3.tp2.piezas;
 
 import java.util.ArrayList;
 
-public class TipoDeAtaqueCercano implements TipoDeAtaque {
+public class RangoDeAlcanceMediaDistancia implements RangoDeAlcance {
 
 
     @Override
     public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
 
-        receptor.perderVida(danio);
+        // no ataca a distancia media
     }
 
     @Override
     public void atacar(Jinete jinete, Pieza receptor, int danio) {
 
-        // jinete depende de las piezas que lo rodean
+        // depende de las piezas que lo rodean //
 
     }
 
     @Override
     public void atacar(Catapulta catapulta, Pieza receptor, ArrayList<Pieza> contiguas) {
 
-
-        // no ataca de cerca
+        // no ataca distancia media
     }
+
 
     @Override
-    public void atacar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza pieza) {
 
-        curandero.curarPieza(pieza);
+        // no cura en distancia media
     }
-
 }

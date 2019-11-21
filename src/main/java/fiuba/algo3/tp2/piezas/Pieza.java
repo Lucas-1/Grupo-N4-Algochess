@@ -8,39 +8,50 @@ import java.util.ArrayList;
 
 public abstract class Pieza {
 
-   private final static int LIMITE_DISTANCIA_CERCA = 2;
-   private final static int LIMITE_DISTANCIA_MEDIA = 5;
+   protected final static int LIMITE_DISTANCIA_CERCA = 2;
+   protected final static int LIMITE_DISTANCIA_MEDIA = 5;
 
     protected PuntosDeVida puntosDeVida;
     protected Color color;
-
+    protected RangoDeAlcance rangoDeAlcance;
     protected int precio;
 
     protected Posicion posicion;
-    protected Ataque ataque;
 
 
-    public abstract void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas);
 
-    public void setAtaque(int distanciaConPieza) {
+
+    public void setRangoDeAlcance(int distanciaConPieza) {
 
         if(distanciaConPieza <= LIMITE_DISTANCIA_CERCA) {
 
-            ataque.setTipoDeAtaque(new TipoDeAtaqueCercano());
+            rangoDeAlcance = new RangoDeAlcanceCercano();
 
-            } else if(distanciaConPieza <= LIMITE_DISTANCIA_MEDIA) {
+        } else if(distanciaConPieza <= LIMITE_DISTANCIA_MEDIA) {
 
-                ataque.setTipoDeAtaque(new TipoDeAtaqueMediaDistancia());
+            rangoDeAlcance = new RangoDeAlcanceMediaDistancia();
 
-              } else {
+        } else {
 
-                ataque.setTipoDeAtaque(new TipoDeAtaqueLejano());
+            rangoDeAlcance = new RangoDeAlcanceLejano();
         }
     }
 
-    public void perderVida(int danioRecibido) {
 
+    public void perderVida(int danioRecibido) {
+        danioRecibido = this.aplicarBonificacionesAlDanioRecibido(danioRecibido);
         puntosDeVida.quitarVida(danioRecibido);
+    }
+
+    protected int aplicarBonificacionesAlDanioRecibido(int danioRecibido){
+        if ( this.estoyDelLadoEnemigo())
+            danioRecibido += danioRecibido * 0.05;
+
+        return danioRecibido;
+    }
+
+    protected boolean estoyDelLadoEnemigo(){
+        return this.posicion.estoyDelLadoEnemigo(this.color);
     }
 
     public void recibirVida(int vidaRecibida) {

@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.piezas;
 
 import java.util.ArrayList;
 
-public class TipoDeAtaqueLejano implements TipoDeAtaque {
+public class RangoDeAlcanceLejano implements RangoDeAlcance {
 
     @Override
     public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio) {
@@ -19,17 +19,16 @@ public class TipoDeAtaqueLejano implements TipoDeAtaque {
     @Override
     public void atacar(Catapulta catapulta, Pieza receptor, ArrayList<Pieza> contiguas) {
 
-        int i = 0;
-        while(i < contiguas.size()) {
+
+        for(int i=0; i < contiguas.size(); i++) {
 
             Pieza pieza = contiguas.get(i);
-            catapulta.atacarPieza(pieza);
-            i++;
+            pieza.perderVida(catapulta.getDanioCatapulta());
         }
     }
 
     @Override
-    public void atacar(Curandero curandero, Pieza pieza) {
+    public void curar(Curandero curandero, Pieza pieza) {
 
         // no cura distancia lejos
     }

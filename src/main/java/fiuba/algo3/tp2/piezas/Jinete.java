@@ -8,23 +8,15 @@ import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 
 import java.util.ArrayList;
 
-public class Jinete extends Pieza {
+public class Jinete extends Danina {
 
     private static final int PRECIO = 3;
-    private int danio;
+    private static final int DANIO_JINETE = 5;
 
     public Jinete(Color color) {
         this.precio = PRECIO;
         this.color = color;
         this.puntosDeVida = new PuntosDeVida(this);
-        danio = 5;
-    }
-    public void atacarPieza(Pieza pieza) {
-
-        if(this.esDeMiEquipo(pieza))
-            throw new NoPuedeAtacarPiezaDelMismoEquipo();
-
-        pieza.perderVida(danio);
     }
 
 
@@ -32,6 +24,12 @@ public class Jinete extends Pieza {
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
         // depende las que la rodean. meter strategy
+
+
+        if(this.esDeMiEquipo(pieza))
+            throw new NoPuedeAtacarPiezaDelMismoEquipo();
+
+        pieza.perderVida(DANIO_JINETE);
     }
 
     @Override

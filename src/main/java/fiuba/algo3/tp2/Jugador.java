@@ -3,7 +3,10 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Danina;
 import fiuba.algo3.tp2.piezas.Pieza;
+import fiuba.algo3.tp2.piezas.Saludable;
+
 import java.util.ArrayList;
 
 public class Jugador {
@@ -29,13 +32,22 @@ public class Jugador {
         tablero.borrarPieza(posicionFila, posicionColumna);
     }
 
-    public void atacarCon(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
+    public void atacarCon(Danina pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
         Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
         Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
         int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
         ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posReceptor,tablero);
         pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
+    }
+
+
+    public void curarCon(Saludable pieza, int posicionFila, int posicionColumna, Tablero tablero){
+
+        Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
+        Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
+        int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
+        pieza.curar(receptor, distanciaEntrePiezas);
     }
 
     public boolean sigueEnJuego() {
