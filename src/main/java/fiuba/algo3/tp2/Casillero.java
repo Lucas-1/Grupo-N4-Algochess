@@ -3,6 +3,7 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.tp2.piezas.Batallon;
 import fiuba.algo3.tp2.piezas.Pieza;
 
 public class Casillero {
@@ -55,4 +56,9 @@ public class Casillero {
         return pieza != null;
     }
 
+    public void agregarPiezaAContiguos(PiezasContiguas contiguas) {
+
+        if(pieza != null)
+            contiguas.agregar(pieza);
+    }
 }

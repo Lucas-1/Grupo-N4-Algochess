@@ -39,6 +39,7 @@ public class PiezasContiguas {
 
     public void agregar(Pieza pieza) {
 
-        piezas.add(pieza);
+        if(!this.contiene(pieza))
+            piezas.add(pieza);
     }
 }

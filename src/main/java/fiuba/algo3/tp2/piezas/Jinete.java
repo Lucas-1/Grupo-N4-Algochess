@@ -41,13 +41,8 @@ public class Jinete extends Danina {
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Pieza pieza) {
 
-    }
-
-    @Override
-    public boolean esSoldado() {
-        return false;
     }
 
     protected void setRangoCercano(){
@@ -59,6 +54,7 @@ public class Jinete extends Danina {
     }
 
     public void setRangoJineteCercano(Jinete jinete){
+
         if(!jinete.esDeMiEquipo(this) && jinete != this){
             jinete.setDanio(5);
             jinete.setRangoCercano();

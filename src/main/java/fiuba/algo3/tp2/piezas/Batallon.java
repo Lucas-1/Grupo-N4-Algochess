@@ -18,31 +18,38 @@ public class Batallon {
         soldados = new ArrayList<Pieza>();
     }
 
-    public boolean estaLleno() {
+    public boolean estaCompleto() {
 
         return (soldados.size() == TAMANIO_MAX_BATALLON);
     }
 
-    public void moverBatallon(Posicion posicion, Color color , Tablero tablero, Direccion direccion) {
+    public void moverSoldadosEnBatallon(Tablero tablero, Direccion direccion) {
+
+        for(int i = 0; i<TAMANIO_MAX_BATALLON; i++)
+            tablero.moverPieza(soldados.get(i),direccion);
+    }
+
+    public void armadoBatallon(Pieza pieza, Direccion direccion, ArrayList<Pieza> piezas) {
 
         soldados.clear();
-        tablero.obtenerSoldadosContiguos(posicion,color,this);
+        pieza.unirseABatallon(this,pieza);
 
         int i = 0;
-        while (i < soldados.size()) {
-            tablero.obtenerSoldadosContiguos(soldados.get(i).getPosicion(),color,this);
+        while(i < soldados.size()) {
+
+            Pieza soldadoActual = soldados.get(i);
+            for(int j = 0; j<piezas.size(); j++)
+                (piezas.get(j)).unirseABatallon(this,soldadoActual);
             i++;
         }
+    }
 
-        if(soldados.size() == TAMANIO_MAX_BATALLON) {
+    public void moverBatallon(Pieza pieza, Direccion direccion, Tablero tablero) {
 
-            for(int j = 0; j < TAMANIO_MAX_BATALLON; j++)
-                tablero.moverPieza(soldados.get(j),direccion);
-
-        } else {
-
-            tablero.moverPieza(soldados.get(0),direccion);
-        }
+        if(this.estaCompleto())
+            this.moverSoldadosEnBatallon(tablero, direccion);
+         else
+            tablero.moverPieza(pieza,direccion);
     }
 
     public boolean contiene(Pieza pieza) {
@@ -52,6 +59,8 @@ public class Batallon {
 
     public void agregar(Pieza pieza) {
 
-        soldados.add(pieza);
+        if(!this.contiene(pieza) && !this.estaCompleto())
+            soldados.add(pieza);
     }
+
 }

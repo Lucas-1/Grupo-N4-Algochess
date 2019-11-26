@@ -54,9 +54,10 @@ public class AdministradorDePiezas {
         return piezasContiguas.obtenerPiezasContiguas(posicion,tablero);
     }
 
-    public void moverBatallon(Posicion posicion, Tablero tablero, Color color, Direccion direccion) {
+    public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero) {
 
-        batallon.moverBatallon(posicion,color,tablero, direccion);
+        batallon.armadoBatallon(pieza, direccion,piezas);
+        batallon.moverBatallon(pieza,direccion,tablero);
     }
 
     public int getPuntosDeCompraDisponibles() {

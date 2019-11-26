@@ -67,16 +67,7 @@ public class Jugador {
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
 
-        Posicion posiscion = pieza.getPosicion();
-
-        if(pieza.esSoldado()) {
-
-            administradorDePiezas.moverBatallon(posiscion,tablero,color,direccion);
-
-        } else {
-
-            tablero.moverPieza(pieza, direccion);
-        }
+        administradorDePiezas.moverPieza(pieza, direccion, tablero);
     }
 
     //

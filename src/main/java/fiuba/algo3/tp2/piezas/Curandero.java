@@ -35,19 +35,16 @@ public class Curandero extends Saludable {
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Pieza pieza) {
 
-    }
-
-    @Override
-    public boolean esSoldado() {
-        return false;
     }
 
     public void setRangoJineteCercano(Jinete jinete){
+
         if(!jinete.esDeMiEquipo(this)){
             jinete.setDanio(5);
             jinete.setRangoCercano();
         }
     }
+
 }
