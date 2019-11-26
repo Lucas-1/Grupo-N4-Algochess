@@ -19,29 +19,32 @@ public class Curandero extends Saludable {
         this.puntosDeVida = new PuntosDeVida(this);
     }
 
+    public int getCuracion() {
+        return this.CURACION;
+
+    }
+
     @Override
     public void curar(Pieza pieza, int distanciaConPieza) {
 
         if(!this.esDeMiEquipo(pieza))
             throw new NoPuedeCurarPiezaDelOtroEquipo();
-
-
         this.setRangoDeAlcance(distanciaConPieza);
         curacion.curar(this, pieza, this.rangoDeAlcance);
 
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Pieza pieza) {
 
     }
 
-    @Override
-    public boolean esSoldado() {
-        return false;
+    public void setRangoJineteCercano(Jinete jinete){
+
+        if(!jinete.esDeMiEquipo(this)){
+            jinete.setDanio(5);
+            jinete.setRangoCercano();
+        }
     }
 
-    public int getCuracion() {
-        return this.CURACION;
-    }
 }

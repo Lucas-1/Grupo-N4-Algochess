@@ -4,6 +4,7 @@ import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Danina;
+import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.Pieza;
 import fiuba.algo3.tp2.piezas.Saludable;
 
@@ -41,6 +42,15 @@ public class Jugador {
         pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
     }
 
+    public void atacarCon(Jinete jinete, int posicionFila, int posicionColumna, Tablero tablero) {
+
+        Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
+        Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
+        int distanciaEntrePiezas = jinete.calcularDistancia(posReceptor);
+        ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(jinete.getPosicion(),tablero);
+        jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
+    }
+
 
     public void curarCon(Saludable pieza, int posicionFila, int posicionColumna, Tablero tablero){
 
@@ -57,16 +67,7 @@ public class Jugador {
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
 
-        Posicion posiscion = pieza.getPosicion();
-
-        if(pieza.esSoldado()) {
-
-            administradorDePiezas.moverBatallon(posiscion,tablero,color,direccion);
-
-        } else {
-
-            tablero.moverPieza(pieza, direccion);
-        }
+        administradorDePiezas.moverPieza(pieza, direccion, tablero);
     }
 
     //

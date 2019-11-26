@@ -18,9 +18,6 @@ public abstract class Pieza {
 
     protected Posicion posicion;
 
-
-
-
     public void setRangoDeAlcance(int distanciaConPieza) {
 
         if(distanciaConPieza <= LIMITE_DISTANCIA_CERCA) {
@@ -36,6 +33,8 @@ public abstract class Pieza {
             rangoDeAlcance = new RangoDeAlcanceLejano();
         }
     }
+
+    public abstract void setRangoJineteCercano(Jinete jinete);
 
 
     public void perderVida(int danioRecibido) {
@@ -75,7 +74,12 @@ public abstract class Pieza {
         return this;
     }
 
-    public abstract void unirseABatallon(Batallon batallon, Color color);
+    public abstract void unirseABatallon(Batallon batallon, Pieza pieza);
+
+    public boolean esContiguo(Pieza pieza) {
+
+        return posicion.esContigua(pieza.getPosicion());
+    }
 
     public Color getColor() {
 
@@ -101,7 +105,5 @@ public abstract class Pieza {
 
         this.posicion = posicion;
     }
-
-    public abstract boolean esSoldado();
 
 }

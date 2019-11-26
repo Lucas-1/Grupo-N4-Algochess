@@ -14,7 +14,10 @@ public class RangoDeAlcanceCercano implements RangoDeAlcance {
     @Override
     public void atacar(Jinete jinete, Pieza receptor) {
 
-        // jinete depende de las piezas que lo rodean
+        if(jinete.calcularDistancia(receptor.getPosicion()) <= 2){
+            receptor.perderVida(jinete.getDanio());
+        }
+
 
     }
 
@@ -29,6 +32,7 @@ public class RangoDeAlcanceCercano implements RangoDeAlcance {
     public void curar(Curandero curandero, Pieza receptor) {
 
         receptor.recibirVida(curandero.getCuracion());
+
     }
 
 }

@@ -32,6 +32,17 @@ public class Posicion {
         return false;
     }
 
+    public boolean esContigua(Posicion posicion) {
+
+        int distancia = this.calcularDistancia(posicion);
+        return (distancia <= 1);
+    }
+
+    public boolean esValida() {
+
+        return ((posicionFila >= 0 && posicionFila < 20) && (posicionColumna >= 0 && posicionColumna < 20));
+    }
+
     public int getPosicionColumna() {
 
         return posicionColumna;

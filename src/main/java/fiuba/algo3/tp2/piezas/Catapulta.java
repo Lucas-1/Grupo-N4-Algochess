@@ -32,7 +32,7 @@ public class Catapulta extends Danina {
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Pieza pieza) {
 
     }
 
@@ -41,12 +41,16 @@ public class Catapulta extends Danina {
 
     }
 
-    @Override
-    public boolean esSoldado() {
-        return false;
-    }
-
     public static int getDanio() {
         return DANIO_CATAPULTA;
+    }
+
+    @Override
+
+    public void setRangoJineteCercano(Jinete jinete){
+        if(!jinete.esDeMiEquipo(this)){
+            jinete.setDanio(5);
+            jinete.setRangoCercano();
+        }
     }
 }

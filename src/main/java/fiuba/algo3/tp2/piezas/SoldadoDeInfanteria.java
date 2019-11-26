@@ -31,18 +31,26 @@ public class SoldadoDeInfanteria extends Danina {
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Color color) {
+    public void unirseABatallon(Batallon batallon, Pieza pieza) {
 
-        if(!batallon.estaLleno() && color.esDelMismoColor(this.color))
+        if(this.esContiguo(pieza))
             batallon.agregar(this);
     }
 
-    @Override
-    public boolean esSoldado() {
-        return  true;
+    public void setRangoJineteCercano(Jinete jinete){
+
+        if(jinete.esDeMiEquipo(this)){
+            jinete.setDanio(15);
+            jinete.setRangoMediaDistancia();
+        }
+        if(!jinete.esDeMiEquipo(this)){
+            jinete.setDanio(5);
+            jinete.setRangoCercano();
+        }
     }
 
     public static int getDanio() {
+
         return DANIO_SOLDADO;
     }
 }
