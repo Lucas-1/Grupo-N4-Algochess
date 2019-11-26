@@ -23,7 +23,7 @@ public class RangoDeAlcanceLejano implements RangoDeAlcance {
         for(int i=0; i < contiguas.size(); i++) {
 
             Pieza pieza = contiguas.get(i);
-            pieza.perderVida(catapulta.getDanio());
+            catapulta.atacar(pieza);
         }
     }
 

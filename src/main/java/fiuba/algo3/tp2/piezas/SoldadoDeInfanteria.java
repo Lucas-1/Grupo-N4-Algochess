@@ -15,6 +15,7 @@ public class SoldadoDeInfanteria extends Danina {
 
         this.precio = PRECIO;
         this.color = color;
+        this.puntosDeDanio = DANIO_SOLDADO;
         puntosDeVida = new PuntosDeVida(this);
         ataque = new Ataque();
     }
@@ -26,7 +27,7 @@ public class SoldadoDeInfanteria extends Danina {
         if (this.esDeMiEquipo(pieza))
             throw new NoPuedeAtacarPiezaDelMismoEquipo();
 
-        ataque.atacar(this, pieza, DANIO_SOLDADO, this.rangoDeAlcance);
+        ataque.atacar(this, pieza, this.rangoDeAlcance);
 
     }
 
@@ -40,17 +41,10 @@ public class SoldadoDeInfanteria extends Danina {
     public void setRangoJineteCercano(Jinete jinete){
 
         if(jinete.esDeMiEquipo(this)){
-            jinete.setDanio(15);
             jinete.setRangoMediaDistancia();
         }
         if(!jinete.esDeMiEquipo(this)){
-            jinete.setDanio(5);
             jinete.setRangoCercano();
         }
-    }
-
-    public static int getDanio() {
-
-        return DANIO_SOLDADO;
     }
 }

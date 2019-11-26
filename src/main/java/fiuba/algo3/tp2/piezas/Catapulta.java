@@ -15,6 +15,7 @@ public class Catapulta extends Danina {
 
         precio = PRECIO;
         this.color = color;
+        this.puntosDeDanio = DANIO_CATAPULTA;
         puntosDeVida = new PuntosDeVida(this);
         ataque = new Ataque();
     }
@@ -41,15 +42,10 @@ public class Catapulta extends Danina {
 
     }
 
-    public static int getDanio() {
-        return DANIO_CATAPULTA;
-    }
-
     @Override
 
     public void setRangoJineteCercano(Jinete jinete){
         if(!jinete.esDeMiEquipo(this)){
-            jinete.setDanio(5);
             jinete.setRangoCercano();
         }
     }

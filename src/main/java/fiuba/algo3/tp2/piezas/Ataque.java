@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Ataque {
 
 
-    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, int danio, RangoDeAlcance rangoDeAlcance) {
+    public void atacar(SoldadoDeInfanteria soldado, Pieza receptor, RangoDeAlcance rangoDeAlcance) {
 
         rangoDeAlcance.atacar(soldado, receptor);
     }
 
-    public void atacar(Jinete jinete, Pieza receptor, int danio, RangoDeAlcance rangoDeAlcance) {
+    public void atacar(Jinete jinete, Pieza receptor, RangoDeAlcance rangoDeAlcance) {
 
         rangoDeAlcance.atacar(jinete,receptor);
 

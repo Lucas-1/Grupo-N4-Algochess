@@ -36,7 +36,7 @@ public class CuracionDeCuranderoTest {
         jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
 
         jugadorBlanco.curarCon(curandero, 1, 1, tablero);
-        assertEquals(jineteAliado.getPuntosDeVida(), 95);
+        assertEquals(95, jineteAliado.getPuntosDeVida());
     }
 
     @Test

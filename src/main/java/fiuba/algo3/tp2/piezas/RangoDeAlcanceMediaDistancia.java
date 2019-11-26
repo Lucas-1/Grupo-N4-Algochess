@@ -14,7 +14,7 @@ public class RangoDeAlcanceMediaDistancia implements RangoDeAlcance {
     @Override
     public void atacar(Jinete jinete, Pieza receptor) {
 
-        receptor.perderVida(jinete.getDanio());
+        jinete.atacar(receptor, new AtaqueConArco());
 
     }
 

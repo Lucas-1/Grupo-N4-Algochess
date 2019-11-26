@@ -16,12 +16,8 @@ public class Curandero extends Saludable {
         this.curacion = new Ataque();
         this.precio = PRECIO;
         this.color = color;
+        this.puntosDeCuracion = CURACION;
         this.puntosDeVida = new PuntosDeVida(this);
-    }
-
-    public int getCuracion() {
-        return this.CURACION;
-
     }
 
     @Override
@@ -42,7 +38,6 @@ public class Curandero extends Saludable {
     public void setRangoJineteCercano(Jinete jinete){
 
         if(!jinete.esDeMiEquipo(this)){
-            jinete.setDanio(5);
             jinete.setRangoCercano();
         }
     }

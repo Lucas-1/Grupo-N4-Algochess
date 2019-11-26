@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2.piezas;
 
-import fiuba.algo3.tp2.Billetera;
-import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
@@ -11,7 +9,6 @@ import java.util.ArrayList;
 public class Jinete extends Danina {
 
     private static final int PRECIO = 3;
-    private static int DANIO_JINETE = 15;
 
     public Jinete(Color color) {
         this.precio = PRECIO;
@@ -37,7 +34,15 @@ public class Jinete extends Danina {
             throw new NoPuedeAtacarPiezaDelMismoEquipo();
 
 
-        ataque.atacar(this, pieza, DANIO_JINETE, this.rangoDeAlcance);
+        ataque.atacar(this, pieza, this.rangoDeAlcance);
+    }
+
+    public void atacar(Pieza pieza, TipoDeAtaque tipoDeAtaque){
+        tipoDeAtaque.atacar(pieza);
+    }
+
+    @Override
+    public void atacar(Pieza pieza) {
     }
 
     @Override
@@ -56,17 +61,8 @@ public class Jinete extends Danina {
     public void setRangoJineteCercano(Jinete jinete){
 
         if(!jinete.esDeMiEquipo(this) && jinete != this){
-            jinete.setDanio(5);
             jinete.setRangoCercano();
         }
-    }
-
-    public void setDanio(int danio){
-        this.DANIO_JINETE = danio;
-    }
-
-    public static int getDanio() {
-        return DANIO_JINETE;
     }
 
 }
