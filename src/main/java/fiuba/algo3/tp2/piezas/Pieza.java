@@ -74,11 +74,23 @@ public abstract class Pieza {
         return this;
     }
 
-    public abstract void unirseABatallon(Batallon batallon, Pieza pieza);
+    public abstract void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza);
+
+    public abstract void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza);
 
     public boolean esContiguo(Pieza pieza) {
 
         return posicion.esContigua(pieza.getPosicion());
+    }
+
+    public boolean esContiguoVerticalmente(Pieza pieza) {
+
+        return  posicion.alineadoVerticalmente(pieza.getPosicion());
+    }
+
+    public boolean esContiguoHorizontalmente(Pieza pieza) {
+
+        return  posicion.alineadoHorizontalmente(pieza.getPosicion());
     }
 
     public Color getColor() {

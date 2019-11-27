@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.PuntosDeVida;
+import fiuba.algo3.tp2.TipoDeBatallon;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeCurarPiezaDelOtroEquipo;
 
@@ -35,7 +36,11 @@ public class Curandero extends Saludable {
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Pieza pieza) {
+    public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
+
+    }
+    @Override
+    public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
 
     }
 

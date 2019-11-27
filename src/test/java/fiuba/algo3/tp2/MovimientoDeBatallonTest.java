@@ -187,4 +187,25 @@ public class MovimientoDeBatallonTest {
         assertEquals(true,tablero.casilleroOcupado(5,5));
         assertEquals(true,tablero.casilleroOcupado(6,4));
     }
+
+    @Test
+    public void test09BatallonNoAlineadoNoSeMueve() {
+
+        Jugador jugadorBlanco = new Jugador(new Blanco());
+        Tablero tablero = new Tablero();
+
+        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
+        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria(new Blanco());
+        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria(new Blanco());
+
+        jugadorBlanco.insertarPiezaEnPosicion(soldado1,3,3,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(soldado2,3,4,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(soldado3,4,4,tablero);
+
+        jugadorBlanco.moverPieza(soldado1, Direccion.arriba(), tablero);
+
+        assertEquals(true,tablero.casilleroOcupado(2,3));
+        assertEquals(true,tablero.casilleroOcupado(3,4));
+        assertEquals(true,tablero.casilleroOcupado(4,4));
+    }
 }

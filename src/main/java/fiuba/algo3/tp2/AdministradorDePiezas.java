@@ -56,7 +56,7 @@ public class AdministradorDePiezas {
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero) {
 
-        batallon.armadoBatallon(pieza, direccion,piezas);
+        batallon.armadoBatallon(pieza,piezas);
         batallon.moverBatallon(pieza,direccion,tablero);
     }
 

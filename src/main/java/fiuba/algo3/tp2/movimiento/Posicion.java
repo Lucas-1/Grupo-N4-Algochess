@@ -23,13 +23,7 @@ public class Posicion {
 
     public boolean estoyDelLadoEnemigo(Color color) {
 
-        if(posicionFila >= 10  & color.esBlanco())
-            return true;
-
-        if(posicionFila <= 9 & color.esNegro())
-            return true;
-
-        return false;
+        return  color.estoyDelLadoEnemigo(this);
     }
 
     public boolean esContigua(Posicion posicion) {
@@ -43,6 +37,23 @@ public class Posicion {
         return ((posicionFila >= 0 && posicionFila < 20) && (posicionColumna >= 0 && posicionColumna < 20));
     }
 
+    public boolean alineadoVerticalmente(Posicion posicion) {
+
+        boolean mismaColumna = (posicionColumna == posicion.getPosicionColumna());
+        boolean filaContigua = (Math.abs(posicionFila - posicion.getPosicionFila()) <= 1);
+
+        return (mismaColumna && filaContigua);
+    }
+
+
+    public boolean alineadoHorizontalmente(Posicion posicion) {
+
+        boolean mismaFila = (posicionFila == posicion.getPosicionFila());
+        boolean columnaContigua = (Math.abs(posicionColumna - posicion.getPosicionColumna()) <= 1);
+
+        return (mismaFila && columnaContigua);
+    }
+
     public int getPosicionColumna() {
 
         return posicionColumna;
@@ -53,4 +64,13 @@ public class Posicion {
         return posicionFila;
     }
 
+    public boolean ladoNegro() {
+
+        return (posicionFila >= 10);
+    }
+
+    public boolean ladoBlanco() {
+
+        return  (posicionFila < 10);
+    }
 }

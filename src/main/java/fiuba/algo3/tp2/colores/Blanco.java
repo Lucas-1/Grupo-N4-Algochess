@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.colores;
 
+import fiuba.algo3.tp2.movimiento.Posicion;
+
 public class Blanco implements Color{
 
     @Override
@@ -15,6 +17,12 @@ public class Blanco implements Color{
     @Override
     public boolean esDelMismoColor(Color unColor) {
         return unColor.esBlanco();
+    }
+
+    @Override
+    public boolean estoyDelLadoEnemigo(Posicion posicion) {
+
+        return posicion.ladoNegro();
     }
 
 }
