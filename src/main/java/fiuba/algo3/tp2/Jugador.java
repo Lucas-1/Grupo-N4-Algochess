@@ -75,4 +75,8 @@ public class Jugador {
 
         return administradorDePiezas.getPuntosDeCompraDisponibles();
     }
+
+    public void comprarPieza(Pieza pieza) {
+        administradorDePiezas.comprarPieza(pieza);
+    }
 }

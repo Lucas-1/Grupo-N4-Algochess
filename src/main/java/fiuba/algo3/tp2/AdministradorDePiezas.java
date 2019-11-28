@@ -66,4 +66,8 @@ public class AdministradorDePiezas {
     }
 
 
+    public void comprarPieza(Pieza pieza) {
+        tienda.comprarPieza(pieza,this.billetera);
+        piezas.add(pieza);
+    }
 }
