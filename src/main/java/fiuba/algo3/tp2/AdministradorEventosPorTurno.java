@@ -1,11 +1,46 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.colores.Blanco;
-import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.piezas.Pieza;
 
-import java.util.List;
+public class AdministradorEventosPorTurno {
+    private Turno turno;
+    private Jugador jugadorConTurno;
 
-public class AdministradorEventosPorTurno {/*
+    public AdministradorEventosPorTurno(Jugador jugadorBlanco, Jugador jugadorNegro){
+        this.turno = new Turno(jugadorBlanco, jugadorNegro);
+        this.jugadorConTurno = turno.getJugadorConTurno();
+
+    }
+
+    public void actualizarInformacionJugador() {
+        turno.actualizarInformacionJugador(this.jugadorConTurno);
+    }
+
+    public void pasarASiguienteTurno() {
+        turno.pasarASiguiente();
+    }
+
+    public void jugadorComprarPieza(Pieza pieza) {
+        jugadorConTurno.comprarPieza(pieza);
+    }
+
+    public boolean terminoLaFase(FaseInicial faseDeJuego) {
+        return turno.turnosInicialesCumplidos();
+    }
+
+    public boolean terminoLaFase(FaseDeBatalla faseDeJuego) {
+        return !jugadorConTurno.sigueEnJuego();
+    }
+
+    public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero) {
+        jugadorConTurno.moverPieza(pieza,direccion,tablero);
+    }
+
+
+
+
+    /*
     //esta clase se encarga de avisar al jugador que es su face inicial o turno, tambien de actualizar el tablero despues de cada jugada.
     private Jugador jugador1;
     private Jugador jugador2;

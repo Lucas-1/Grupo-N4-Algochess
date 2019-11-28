@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
@@ -7,31 +8,56 @@ import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 
 public class PuntosDeVida {
     private int vidaActual;
+    private final int VIDA_INICIAL_SOLDADO = 100;
+    private final int VIDA_INICIAL_JINETE = 100;
+    private final int VIDA_INICIAL_CATAPULTA = 50;
+    private final int VIDA_INICIAL_CURANDERO = 75;
 
-    public PuntosDeVida(SoldadoDeInfanteria soldado){
-        vidaActual = 100;
-    }
-    public PuntosDeVida(Jinete jinete){
-        vidaActual = 100;
-    }
-    public PuntosDeVida(Catapulta catapulta){
-        vidaActual = 50;
-    }
-    public PuntosDeVida(Curandero curandero){
-        vidaActual = 75;
+    public PuntosDeVida(SoldadoDeInfanteria soldado) {
+
+        vidaActual = VIDA_INICIAL_SOLDADO;
     }
 
+    public PuntosDeVida(Jinete jinete) {
 
-    public void restarPuntos(int puntos){
+        vidaActual = VIDA_INICIAL_JINETE;
+    }
+
+    public PuntosDeVida(Catapulta catapulta) {
+
+        vidaActual = VIDA_INICIAL_CATAPULTA;
+    }
+
+    public PuntosDeVida(Curandero curandero) {
+
+        vidaActual = VIDA_INICIAL_CURANDERO;
+    }
+
+    ////////////////////////////////////////////
+
+    public void quitarVida(int puntos){
+
+        if(this.estoyMuerta())
+            throw new PiezaEstaMuertaException();
+
         vidaActual -= puntos;
     }
-    public void aumentarPuntos(int puntos){
+
+    public void aumentarVida(int puntos){
+
+        if(this.estoyMuerta())
+            throw new PiezaEstaMuertaException();
+
         vidaActual += puntos;
     }
+
     public int getVidaRestante() {
+
         return vidaActual;
     }
+
     public boolean estoyMuerta() {
+
         return (vidaActual <= 0);
     }
 }

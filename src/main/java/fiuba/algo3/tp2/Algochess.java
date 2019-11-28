@@ -1,3 +1,8 @@
+/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
+/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
+/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
+/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
+/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
 package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.movimiento.Direccion;
@@ -6,14 +11,14 @@ import fiuba.algo3.tp2.piezas.Pieza;
 
 public class Algochess {
 
-    private AdministradorEventos administradorEventos;
+    private AdministradorEventosGenerales administradorEventos;
     /*private Jugador jugadorBlanco;
     private Jugador jugadorNegro;
     private Tablero tablero;*/
 
-    public Algochess(Jugador jugador1, Jugador jugador2) {
+    public Algochess() {
 
-        administradorEventos = new AdministradorEventos(jugador1,jugador2);
+        administradorEventos = new AdministradorEventosGenerales();
         //administradorEventos.preparativosIniciales();
 
         /*
@@ -23,23 +28,21 @@ public class Algochess {
         jugadorNegro = new Jugador(negro);
         tablero = new Tablero();*/
     }
-    public void jugador1ComprarPieza(Pieza pieza){
-        administradorEventos.jugador1ComprarPieza(pieza);
+
+    public void iniciarJuego(Jugador jugadorBlanco, Jugador jugadorNegro){
+        administradorEventos.iniciarJuego(jugadorBlanco,jugadorNegro);
     }
-    public void jugador2ComprarPieza(Pieza pieza){
-        administradorEventos.jugador2ComprarPieza(pieza);
+
+    public void jugadorComprarPieza(Pieza pieza){
+        administradorEventos.jugadorComprarPieza(pieza);
     }
-    public void jugador1AcomodarPieza(Posicion posicionInicial, Posicion posicionDeseada, int posicionPiezaBanco){
-        administradorEventos.jugador1AcomodarPieza(posicionInicial, posicionDeseada, posicionPiezaBanco);
+
+    public void terminarTurno(){
+        administradorEventos.terminarTurno();
     }
-    public void jugador2AcomodarPieza(Posicion posicionInicial, Posicion posicionDeseada, int posicionPiezaBanco){
-        administradorEventos.jugador2AcomodarPieza(posicionInicial, posicionDeseada, posicionPiezaBanco);
-    }
-    public void jugador1MoverPieza(Pieza pieza, Direccion direccion){
-        administradorEventos.jugador1MoverPieza(pieza, direccion);
-    }
-    public void jugador2MoverPieza(Pieza pieza, Direccion direccion){
-        administradorEventos.jugador2MoverPieza(pieza, direccion);
+
+    public void moverPieza(Pieza pieza, Direccion direccion){
+        administradorEventos.moverPieza(pieza,direccion);
     }
 
     /*public void inicializarPiezas() {
