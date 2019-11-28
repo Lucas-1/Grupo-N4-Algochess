@@ -208,4 +208,27 @@ public class MovimientoDeBatallonTest {
         assertEquals(true,tablero.casilleroOcupado(3,4));
         assertEquals(true,tablero.casilleroOcupado(4,4));
     }
+
+    @Test
+    public void test10SoloSoldadosAlineadosFormanBatallonYSeMueven() {
+
+        Jugador jugadorBlanco = new Jugador(new Blanco());
+        Tablero tablero = new Tablero();
+
+        SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
+        SoldadoDeInfanteria soldado2 = new SoldadoDeInfanteria(new Blanco());
+        SoldadoDeInfanteria soldado3 = new SoldadoDeInfanteria(new Blanco());
+        SoldadoDeInfanteria soldado4 = new SoldadoDeInfanteria(new Blanco());
+
+        jugadorBlanco.insertarPiezaEnPosicion(soldado1,3,3,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(soldado2,3,4,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(soldado3,2,3,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(soldado4,1,3,tablero);
+
+        jugadorBlanco.moverPieza(soldado1, Direccion.izquierda(), tablero);
+
+        assertEquals(true,tablero.casilleroOcupado(3,2));
+        assertEquals(true,tablero.casilleroOcupado(2,2));
+        assertEquals(true,tablero.casilleroOcupado(1,2));
+    }
 }

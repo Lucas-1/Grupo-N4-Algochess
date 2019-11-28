@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.PuntosDeVida;
+import fiuba.algo3.tp2.TipoDeBatallon;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 
@@ -46,7 +47,11 @@ public class Jinete extends Danina {
     }
 
     @Override
-    public void unirseABatallon(Batallon batallon, Pieza pieza) {
+    public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
+
+    }
+    @Override
+    public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
 
     }
 

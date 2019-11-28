@@ -1,66 +1,37 @@
 package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.Tablero;
-import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.TipoDeBatallon;
 import fiuba.algo3.tp2.movimiento.Direccion;
-import fiuba.algo3.tp2.movimiento.Posicion;
 
 import java.util.ArrayList;
 
 public class Batallon {
 
-    private final int TAMANIO_MAX_BATALLON = 3;
-
-    private ArrayList<Pieza> soldados;
-
-    public Batallon() {
-
-        soldados = new ArrayList<Pieza>();
-    }
+    TipoDeBatallon tipoDeBatallon;
 
     public boolean estaCompleto() {
 
-        return (soldados.size() == TAMANIO_MAX_BATALLON);
+        return tipoDeBatallon.estaCompleto();
     }
 
-    public void moverSoldadosEnBatallon(Tablero tablero, Direccion direccion) {
+    public void armadoBatallon(Pieza pieza, ArrayList<Pieza> piezas) {
 
-        for(int i = 0; i<TAMANIO_MAX_BATALLON; i++)
-            tablero.moverPieza(soldados.get(i),direccion);
-    }
+        tipoDeBatallon = new BatallonVertical();
+        tipoDeBatallon.armarBatallon(pieza,piezas);
 
-    public void armadoBatallon(Pieza pieza, Direccion direccion, ArrayList<Pieza> piezas) {
+        if(this.estaCompleto())
+            return;
 
-        soldados.clear();
-        pieza.unirseABatallon(this,pieza);
+        tipoDeBatallon = new BatallonHorizontal();
+        tipoDeBatallon.armarBatallon(pieza,piezas);
 
-        int i = 0;
-        while(i < soldados.size()) {
-
-            Pieza soldadoActual = soldados.get(i);
-            for(int j = 0; j<piezas.size(); j++)
-                (piezas.get(j)).unirseABatallon(this,soldadoActual);
-            i++;
-        }
+        if(this.estaCompleto())
+            return;
     }
 
     public void moverBatallon(Pieza pieza, Direccion direccion, Tablero tablero) {
 
-        if(this.estaCompleto())
-            this.moverSoldadosEnBatallon(tablero, direccion);
-         else
-            tablero.moverPieza(pieza,direccion);
+        tipoDeBatallon.moverBatallon(pieza,tablero,direccion);
     }
-
-    public boolean contiene(Pieza pieza) {
-
-        return soldados.contains(pieza);
-    }
-
-    public void agregar(Pieza pieza) {
-
-        if(!this.contiene(pieza) && !this.estaCompleto())
-            soldados.add(pieza);
-    }
-
 }
