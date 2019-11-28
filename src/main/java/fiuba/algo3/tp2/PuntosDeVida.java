@@ -8,25 +8,29 @@ import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 
 public class PuntosDeVida {
     private int vidaActual;
+    private final int VIDA_INICIAL_SOLDADO = 100;
+    private final int VIDA_INICIAL_JINETE = 100;
+    private final int VIDA_INICIAL_CATAPULTA = 50;
+    private final int VIDA_INICIAL_CURANDERO = 75;
 
     public PuntosDeVida(SoldadoDeInfanteria soldado) {
 
-        vidaActual = 100;
+        vidaActual = VIDA_INICIAL_SOLDADO;
     }
 
     public PuntosDeVida(Jinete jinete) {
 
-        vidaActual = 100;
+        vidaActual = VIDA_INICIAL_JINETE;
     }
 
     public PuntosDeVida(Catapulta catapulta) {
 
-        vidaActual = 50;
+        vidaActual = VIDA_INICIAL_CATAPULTA;
     }
 
     public PuntosDeVida(Curandero curandero) {
 
-        vidaActual = 75;
+        vidaActual = VIDA_INICIAL_CURANDERO;
     }
 
     ////////////////////////////////////////////
