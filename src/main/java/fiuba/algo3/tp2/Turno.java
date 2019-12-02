@@ -19,19 +19,23 @@ public class Turno{
     }
 
     public Jugador getJugadorConTurno() {
+
         return turno.getJugadorConTurno();
     }
 
     public void pasarASiguiente(){
+
         turno.pasarASiguiente();
         this.cantidadDeTurnosJugados++;
     }
 
     public void actualizarInformacionJugador(Jugador jugadorConTurno){
+
         turno.actualizarInformacionJugador(jugadorConTurno);
     }
 
     public boolean turnosInicialesCumplidos() {
+
         return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_INICIAL);
     }
 }

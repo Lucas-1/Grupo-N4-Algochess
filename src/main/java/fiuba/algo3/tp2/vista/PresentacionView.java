@@ -15,18 +15,20 @@ public class PresentacionView {
     Stage stage;
 
     public PresentacionView(Stage stage,Scene scene){
+
         this.stage = stage;
 
         Background background = new Background(new BackgroundImage(new Image("bg-presentacion.jpg"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                new BackgroundSize(1366, 768, false, false, false, false)));
+                new BackgroundSize(1366,768 , false, false, false, false)));
 
         StackPane presentacion = new StackPane();
         Text textoPresentacion = new Text("Bienvenido a AlgoChess");
         textoPresentacion.setFill(Color.WHITE);
         textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,70));
+
         Button comenzar = new Button("Comenzar juego");
         presentacion.setAlignment(textoPresentacion, Pos.CENTER);
         presentacion.setAlignment(comenzar,Pos.BOTTOM_CENTER);

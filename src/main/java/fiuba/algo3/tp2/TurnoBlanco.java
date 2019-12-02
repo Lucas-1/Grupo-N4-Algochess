@@ -9,16 +9,19 @@ public class TurnoBlanco extends Turno{
 
     @Override
     public Jugador getJugadorConTurno(){
+
         return this.jugadorBlanco;
     }
 
     @Override
     public void pasarASiguiente(){
+
         this.turno = new TurnoNegro(jugadorBlanco, jugadorNegro);
     }
 
     @Override
     public void actualizarInformacionJugador(Jugador jugadorConTurno) {
+
         this.jugadorBlanco = jugadorConTurno;
     }
 }
