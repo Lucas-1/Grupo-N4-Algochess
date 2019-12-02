@@ -8,7 +8,7 @@ import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Batallon;
 import fiuba.algo3.tp2.piezas.Pieza;
 
-public class Tablero {
+public class Tablero extends Observable {
 
     private static final int LIMITE_SUPERIOR = 20;
     private static final int LIMITE_INFERIOR = 0;
@@ -93,11 +93,16 @@ public class Tablero {
                 casilleros[posicionNueva.getPosicionFila()][posicionNueva.getPosicionColumna()].setPieza(pieza);
             }
         }
+        this.notifyObservers();
     }
 
     public Pieza obtenerPieza(int posicionFila, int posicionColumna) {
 
         return casilleros[posicionFila][posicionColumna].getPieza();
+    }
+
+    public int obtenerTamanioTablero(){
+        return this.LIMITE_SUPERIOR;
     }
 
 }

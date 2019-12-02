@@ -78,10 +78,6 @@ public abstract class Pieza {
 
     public abstract void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza);
 
-    public boolean esContiguo(Pieza pieza) {
-
-        return posicion.esContigua(pieza.getPosicion());
-    }
 
     public boolean esContiguoVerticalmente(Pieza pieza) {
 
