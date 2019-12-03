@@ -3,12 +3,13 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
+import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
+import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
-import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
-import fiuba.algo3.tp2.piezas.Catapulta;
-import fiuba.algo3.tp2.piezas.Curandero;
-import fiuba.algo3.tp2.piezas.Jinete;
-import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Catapulta;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Curandero;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Jinete;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

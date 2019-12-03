@@ -1,8 +1,8 @@
 package fiuba.algo3.tp2;
 
-import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.movimiento.Posicion;
-import fiuba.algo3.tp2.piezas.Pieza;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 
 import java.util.ArrayList;
 

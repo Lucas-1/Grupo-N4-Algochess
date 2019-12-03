@@ -3,11 +3,10 @@ package fiuba.algo3.tp2;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;
-import fiuba.algo3.tp2.excepciones.*;
+import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
+import fiuba.algo3.tp2.juego.Algochess;
 import fiuba.algo3.tp2.movimiento.Direccion;
-import fiuba.algo3.tp2.piezas.Catapulta;
-import fiuba.algo3.tp2.piezas.Curandero;
-import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -148,30 +147,4 @@ public class FasesDeJuegoTest {
 
         assertFalse(juego.casilleroOcupado(15,15));
     }
-    /*@Test
-    public void test12JuegoTerminaCuandoUnJugadorSeQuedaSinPiezas(){
-        Color blanco = new Blanco();
-        Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
-        SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
-        Catapulta catapultaBlanca = new Catapulta(blanco);
-        Algochess juego = new Algochess();
-
-        juego.iniciarJuego(jugadorBlanco,jugadorNegro);
-        juego.jugadorComprarPieza(catapultaBlanca,2,2);
-        juego.terminarTurno();
-        juego.jugadorComprarPieza(soldadoNegro,12,12);
-        juego.terminarTurno();
-        for(int i = 0; i<4; i++){
-            juego.atacarCon(catapultaBlanca, 12,12);
-            juego.terminarTurno();
-            juego.terminarTurno();
-        }
-
-        assertThrows(ElJuegoYaTerminoException.class,
-                ()->{
-                    juego.moverPieza(catapultaBlanca, Direccion.derecha());
-                });
-    }*/
 }

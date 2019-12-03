@@ -2,8 +2,10 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.piezas.Jinete;
-import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
+import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
+import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Jinete;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

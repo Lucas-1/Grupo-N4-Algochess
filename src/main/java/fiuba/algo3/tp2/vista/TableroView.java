@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.Observer;
-import fiuba.algo3.tp2.Tablero;
+import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.layout.*;
