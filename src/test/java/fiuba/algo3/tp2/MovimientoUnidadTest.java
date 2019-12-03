@@ -10,7 +10,6 @@ import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import org.junit.jupiter.api.Test;
-import org.testng.Assert;
 
 
 import static org.junit.Assert.assertEquals;
@@ -126,7 +125,7 @@ public class MovimientoUnidadTest {
         juego.moverPieza(soldadoBlanco, Direccion.derecha());
         juego.moverPieza(soldadoBlanco, Direccion.derecha());
 
-        Assert.assertTrue(juego.casilleroOcupado(2,3));
+        assertTrue(juego.casilleroOcupado(2,3));
 
     }
 

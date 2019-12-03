@@ -10,7 +10,6 @@ import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
-import org.testng.Assert;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -149,7 +148,7 @@ public class CuracionDeCuranderoTest {
         juego.curarCon(curanderoBlanco, 3, 3);
 
 
-        Assert.assertEquals(soldadoBlanco.getPuntosDeVida(), 75);
+        assertEquals(soldadoBlanco.getPuntosDeVida(), 75);
 
 
     }

@@ -11,7 +11,7 @@ import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.testng.Assert.*;
+import static org.junit.Assert.*;
 
 public class FasesDeJuegoTest {
 

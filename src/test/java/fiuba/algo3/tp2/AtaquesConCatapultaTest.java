@@ -9,7 +9,6 @@ import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
-import org.testng.Assert;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -284,7 +283,7 @@ public class AtaquesConCatapultaTest {
         juego.atacarCon(catapultaBlanca, 14,14);
         juego.atacarCon(catapultaBlanca, 14,14);
 
-        Assert.assertEquals(80, soldadoNegro.getPuntosDeVida());
+        assertEquals(80, soldadoNegro.getPuntosDeVida());
 
 
     }
