@@ -1,8 +1,3 @@
-/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
-/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
-/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
-/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
-/**faltaria todavia resolver el ataque de las piezas, y como administrar la compra y posicionamiento de las piezas, dejo el codigo viejo comentado por si lo quieren reutilizar*/
 package fiuba.algo3.tp2.flujoDelJuego;
 
 import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeJuego;
@@ -71,20 +66,4 @@ public class AdministradorEventosGenerales {
     public boolean casilleroOcupado(int fila, int columna) {
         return tablero.casilleroOcupado(fila,columna);
     }
-
-    /*public void iniciarJuego(){
-        while(administradorEventosPorTurno.juegoContinua()){
-            administradorEventosPorTurno.nuevoTurno();
-        }
-    }
-
-    public void preparativosIniciales(){
-        administradorEventosPorTurno.faseInicial();
-    }
-
-    public void mostrarResultado() {
-        // implementar, podria ser con el nombre del jugador
-    }*/
-
-
 }
