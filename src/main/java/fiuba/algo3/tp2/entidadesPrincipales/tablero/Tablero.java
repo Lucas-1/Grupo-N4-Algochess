@@ -43,7 +43,10 @@ public class Tablero extends Observable {
         casilleros[posicionFila][posicionColumna].agregarPieza(pieza);
     }
 
-    public void borrarPieza(int posicionFila, int posicionColumna) {
+    public void borrarPieza(Posicion posicion) {
+
+        int posicionFila = posicion.getPosicionFila();
+        int posicionColumna = posicion.getPosicionColumna();
 
         casilleros[posicionFila][posicionColumna].borrarPieza();
     }

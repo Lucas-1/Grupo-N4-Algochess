@@ -40,14 +40,16 @@ public abstract class Pieza {
 
 
     public void perderVida(int danioRecibido) {
+
         danioRecibido = this.aplicarBonificacionesAlDanioRecibido(danioRecibido);
         puntosDeVida.quitarVida(danioRecibido);
         if(puntosDeVida.estoyMuerta())
             this.administradorDePiezas.borrarPieza(this);
     }
 
-    protected int aplicarBonificacionesAlDanioRecibido(int danioRecibido){
-        if ( this.estoyDelLadoEnemigo())
+    protected int aplicarBonificacionesAlDanioRecibido(int danioRecibido) {
+
+        if (this.estoyDelLadoEnemigo())
             danioRecibido += danioRecibido * 0.05;
 
         return danioRecibido;
@@ -75,6 +77,11 @@ public abstract class Pieza {
     public Pieza serComprada(Billetera billetera) {
         billetera.retirarDinero(this.precio);
         return this;
+    }
+
+    public boolean estaMuerta() {
+
+        return puntosDeVida.estoyMuerta();
     }
 
     public abstract void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza);

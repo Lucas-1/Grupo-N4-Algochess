@@ -32,7 +32,8 @@ public class Jugador {
 
         Pieza pieza = tablero.obtenerPieza(posicionFila,posicionColumna);
         administradorDePiezas.borrarPieza(pieza);
-        tablero.borrarPieza(posicionFila, posicionColumna);
+
+        tablero.borrarPieza(new Posicion(posicionFila,posicionColumna));
     }
 
     public void atacarCon(Danina pieza, int posicionFila, int posicionColumna, Tablero tablero) {
@@ -70,6 +71,11 @@ public class Jugador {
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
 
         administradorDePiezas.moverPieza(pieza, direccion, tablero);
+    }
+
+    public void actualizarPiezas(Tablero tablero) {
+
+        administradorDePiezas.actualizarPiezas(tablero);
     }
 
     //
