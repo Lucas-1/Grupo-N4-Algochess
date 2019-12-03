@@ -269,7 +269,8 @@ public class AtaquesConCatapultaTest {
     }
 
     @Test
-    public void test12JugadorSoloPuedeAtacarCon1PiezaPorTurno(){
+    public void test12JugadorSoloPuedeAtacarCon1PiezaPorTurno() {
+
         Color blanco = new Blanco();
         Color negro = new Negro();
         Jugador jugadorBlanco = new Jugador(blanco);
@@ -287,7 +288,17 @@ public class AtaquesConCatapultaTest {
         juego.atacarCon(catapultaBlanca, 14,14);
 
         assertEquals(80, soldadoNegro.getPuntosDeVida());
+    }
 
+    @Test
+    public void test13CatapultaAtacaCasilleroVacioNoPasaNada() {
 
+        Color blanco = new Blanco();
+        Catapulta catapulta = new Catapulta(blanco);
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Tablero tablero = new Tablero();
+
+        jugadorBlanco.insertarPiezaEnPosicion(catapulta,9,9,tablero);
+        jugadorBlanco.atacarCon(catapulta,14,14,tablero);
     }
 }

@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
 
 public class Casillero {
 
@@ -18,6 +19,7 @@ public class Casillero {
     }
 
     public boolean puedoAgregarla(Color unColor) {
+
         try {
             if(pieza != null)
                 throw new CasilleroEstaOcupadoException("No podes colocar una pieza en un casillero ocupado");
@@ -25,7 +27,9 @@ public class Casillero {
 
             if (!color.esDelMismoColor(unColor))
                 throw new CasilleroDeLadoEnemigoException("No podes colocar piezas en el lado enemigo");
-        }catch (CasilleroEstaOcupadoException | CasilleroDeLadoEnemigoException e){
+
+        }   catch (CasilleroEstaOcupadoException | CasilleroDeLadoEnemigoException e) {
+
             System.out.println(e.getMessage());
             return false;
         }
@@ -37,7 +41,6 @@ public class Casillero {
 
        if(this.puedoAgregarla(pieza.getColor()))
            this.pieza = pieza;
-
     }
 
     public void setPieza(Pieza pieza) {
@@ -51,6 +54,9 @@ public class Casillero {
     }
 
     public Pieza getPieza() {
+
+        if(pieza == null)
+            throw  new CasilleroEstaVacioException("La posicion indicada esta vacia");
 
         return pieza;
     }

@@ -142,4 +142,17 @@ public class AtaquesConJineteTest {
 
         assertEquals(soldadoAliado.getPuntosDeVida(), 100);
     }
+
+    @Test
+    public void test07JineteAtacaCasilleroVacioNoPasaNada() {
+
+        Color blanco = new Blanco();
+        Jinete jinete = new Jinete(blanco);
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Tablero tablero = new Tablero();
+
+        jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
+        jugadorBlanco.atacarCon(jinete,10,10,tablero);
+
+    }
 }

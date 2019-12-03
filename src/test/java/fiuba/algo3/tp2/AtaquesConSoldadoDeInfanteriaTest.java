@@ -201,7 +201,17 @@ public class AtaquesConSoldadoDeInfanteriaTest {
         jugadorBlanco.atacarCon(soldado,18,9,tablero);
         assertEquals(50, catapultaEnemiga.getPuntosDeVida());
 
+    }
+
+    @Test
+    public void test10SoldadoAtacaPosicionVaciaNoPasaNada() {
+
+        Jugador jugador = new Jugador(new Blanco());
+        SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(new Blanco());
+        Tablero tablero = new Tablero();
 
 
+        jugador.insertarPiezaEnPosicion(soldado,3,3,tablero);
+        jugador.atacarCon(soldado,5,5,tablero);
     }
 }

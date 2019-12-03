@@ -11,6 +11,7 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Curandero;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Jinete;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
 import fiuba.algo3.tp2.juego.Algochess;
+import javafx.scene.control.Tab;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -124,7 +125,8 @@ public class CuracionDeCuranderoTest {
     }
 
     @Test
-    public void test05JugadorSoloPuedeCurarCon1PiezaPorTurno(){
+    public void test05JugadorSoloPuedeCurarCon1PiezaPorTurno() {
+
         Color blanco = new Blanco();
         Color negro = new Negro();
         Jugador jugadorBlanco = new Jugador(blanco);
@@ -149,9 +151,17 @@ public class CuracionDeCuranderoTest {
         juego.curarCon(curanderoBlanco, 3, 3);
         juego.curarCon(curanderoBlanco, 3, 3);
 
-
         assertEquals(soldadoBlanco.getPuntosDeVida(), 75);
+    }
 
+    @Test
+    public void test06CuranderoCuraPosicionVaciaNoPasaNada() {
 
+        Jugador jugador = new Jugador(new Blanco());
+        Tablero tablero = new Tablero();
+        Curandero cura = new Curandero(new Blanco());
+
+        jugador.insertarPiezaEnPosicion(cura,5,5,tablero);
+        jugador.curarCon(cura,9,9,tablero);
     }
 }

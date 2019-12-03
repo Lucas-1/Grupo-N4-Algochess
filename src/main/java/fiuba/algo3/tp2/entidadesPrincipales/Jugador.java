@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.entidadesPrincipales;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.administrador.AdministradorDePiezas;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
@@ -38,29 +39,47 @@ public class Jugador {
 
     public void atacarCon(Danina pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
-        Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
-        int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
-        ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posReceptor,tablero);
-        pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
+        try {
+
+            Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
+            Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
+            int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
+            ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posReceptor, tablero);
+            pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
+
+        } catch (CasilleroEstaVacioException e ) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void atacarCon(Jinete jinete, int posicionFila, int posicionColumna, Tablero tablero) {
 
-        Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
-        Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
-        int distanciaEntrePiezas = jinete.calcularDistancia(posReceptor);
-        ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(jinete.getPosicion(),tablero);
-        jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
+        try {
+
+            Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
+            Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
+            int distanciaEntrePiezas = jinete.calcularDistancia(posReceptor);
+            ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(jinete.getPosicion(), tablero);
+            jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
+
+        } catch (CasilleroEstaVacioException e ) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
     public void curarCon(Saludable pieza, int posicionFila, int posicionColumna, Tablero tablero){
 
+        try {
+
         Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
         Posicion posReceptor = new Posicion(posicionFila,posicionColumna);
         int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
         pieza.curar(receptor, distanciaEntrePiezas);
+
+        } catch (CasilleroEstaVacioException e ) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public boolean sigueEnJuego() {
