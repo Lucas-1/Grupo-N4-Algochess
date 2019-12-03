@@ -137,10 +137,8 @@ public class AtaquesConJineteTest {
 
         jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
         jugadorBlanco.insertarPiezaEnPosicion(soldadoAliado,8,9,tablero);
+        jugadorBlanco.atacarCon(jinete,8,9,tablero);
 
-        assertThrows(NoPuedeAtacarPiezaDelMismoEquipo.class,
-                ()->{
-                    jugadorBlanco.atacarCon(jinete,8,9,tablero);
-                });
+        assertEquals(soldadoAliado.getPuntosDeVida(), 100);
     }
 }

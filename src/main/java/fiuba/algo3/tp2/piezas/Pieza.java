@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.piezas;
 
 import fiuba.algo3.tp2.*;
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
 import fiuba.algo3.tp2.movimiento.Posicion;
 
 import java.util.ArrayList;
@@ -69,7 +70,6 @@ public abstract class Pieza {
     }
 
     public Pieza serComprada(Billetera billetera) {
-
         billetera.retirarDinero(this.precio);
         return this;
     }

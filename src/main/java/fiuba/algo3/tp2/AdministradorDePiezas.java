@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.piezas.Batallon;
@@ -43,7 +44,13 @@ public class AdministradorDePiezas {
     public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
         Posicion posicion = new Posicion(posicionFila,posicionColumna);
-        Pieza piezaComprada = tienda.comprarPieza(pieza, billetera);
+        Pieza piezaComprada;
+        try{
+            piezaComprada = tienda.comprarPieza(pieza, billetera);
+        }catch (JugadorQuiereUtilizarMasDineroDelDisponibleException e){
+            System.out.println(e.getMessage());
+            return;
+        }
         tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);
         pieza.setPosicion(posicion);
         piezas.add(pieza);
@@ -63,11 +70,5 @@ public class AdministradorDePiezas {
     public int getPuntosDeCompraDisponibles() {
 
         return billetera.dineroRestante();
-    }
-
-
-    public void comprarPieza(Pieza pieza) {
-        tienda.comprarPieza(pieza,this.billetera);
-        piezas.add(pieza);
     }
 }

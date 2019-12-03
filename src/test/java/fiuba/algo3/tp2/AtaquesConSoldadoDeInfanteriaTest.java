@@ -125,7 +125,7 @@ public class AtaquesConSoldadoDeInfanteriaTest {
     }
 
     @Test
-    public void test06JineteNoPuedeAtacarUnidadAliada() {
+    public void test06SoldadoDeInfanteriaNoPuedeAtacarUnidadAliada() {
 
         Color blanco = new Blanco();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -135,11 +135,9 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         jugadorBlanco.insertarPiezaEnPosicion(soldado,9,9,tablero);
         jugadorBlanco.insertarPiezaEnPosicion(jineteAliado,8,9,tablero);
+        jugadorBlanco.atacarCon(soldado,8,9,tablero);
 
-        assertThrows(NoPuedeAtacarPiezaDelMismoEquipo.class,
-                ()->{
-                    jugadorBlanco.atacarCon(soldado,8,9,tablero);
-                });
+        assertEquals(jineteAliado.getPuntosDeVida(), 100);
     }
 
     @Test

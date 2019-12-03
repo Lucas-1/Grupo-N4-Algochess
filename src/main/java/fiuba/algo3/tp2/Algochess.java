@@ -7,7 +7,10 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
+import fiuba.algo3.tp2.piezas.Catapulta;
+import fiuba.algo3.tp2.piezas.Danina;
 import fiuba.algo3.tp2.piezas.Pieza;
+import fiuba.algo3.tp2.piezas.Saludable;
 
 public class Algochess {
 
@@ -33,8 +36,8 @@ public class Algochess {
         administradorEventos.iniciarJuego(jugadorBlanco,jugadorNegro);
     }
 
-    public void jugadorComprarPieza(Pieza pieza){
-        administradorEventos.jugadorComprarPieza(pieza);
+    public void jugadorComprarPieza(Pieza pieza, int fila, int columna){
+        administradorEventos.jugadorComprarPieza(pieza, fila, columna);
     }
 
     public void terminarTurno(){
@@ -43,6 +46,19 @@ public class Algochess {
 
     public void moverPieza(Pieza pieza, Direccion direccion){
         administradorEventos.moverPieza(pieza,direccion);
+    }
+
+    public void atacarCon(Danina pieza, int fila, int columna) {
+        administradorEventos.atacarCon(pieza, fila, columna);
+    }
+
+    public void curarCon(Saludable pieza, int fila, int columna){
+        administradorEventos.curarCon(pieza,fila,columna);
+    }
+
+    /**metodo para testing solamente*/
+    public boolean casilleroOcupado(int fila, int columna) {
+        return administradorEventos.casilleroOcupado(fila,columna);
     }
 
     /*public void inicializarPiezas() {

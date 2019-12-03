@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.piezas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.TipoDeBatallon;
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.ElJuegoYaTerminoException;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 
 import java.util.ArrayList;
@@ -24,9 +25,13 @@ public class SoldadoDeInfanteria extends Danina {
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
 
         this.setRangoDeAlcance(distanciaConPieza);
-
-        if (this.esDeMiEquipo(pieza))
-            throw new NoPuedeAtacarPiezaDelMismoEquipo();
+        try{
+            if (this.esDeMiEquipo(pieza))
+                throw new NoPuedeAtacarPiezaDelMismoEquipo("Esa pieza es de tu equipo");
+        }catch (NoPuedeAtacarPiezaDelMismoEquipo e){
+            System.out.println(e.getMessage());
+            return;
+        }
 
         ataque.atacar(this, pieza, this.rangoDeAlcance);
 

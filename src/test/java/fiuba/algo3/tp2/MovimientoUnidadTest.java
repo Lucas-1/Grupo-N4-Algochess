@@ -2,6 +2,7 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
 import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
@@ -9,6 +10,7 @@ import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import org.junit.jupiter.api.Test;
+import org.testng.Assert;
 
 
 import static org.junit.Assert.assertEquals;
@@ -105,6 +107,27 @@ public class MovimientoUnidadTest {
         jugador.moverPieza(catapulta,Direccion.abajo(),tablero);
 
         assertTrue(tablero.casilleroOcupado(9,6));
+    }
+
+
+    @Test
+    public void test07JugadorSoloPuedeMover1PiezaPorTurno(){
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
+        Algochess juego = new Algochess();
+
+        juego.iniciarJuego(jugadorBlanco,jugadorNegro);
+        juego.jugadorComprarPieza(soldadoBlanco,2,2);
+        juego.terminarTurno();
+        juego.terminarTurno();
+        juego.moverPieza(soldadoBlanco, Direccion.derecha());
+        juego.moverPieza(soldadoBlanco, Direccion.derecha());
+
+        Assert.assertTrue(juego.casilleroOcupado(2,3));
+
     }
 
 }

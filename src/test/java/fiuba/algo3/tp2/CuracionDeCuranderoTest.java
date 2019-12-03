@@ -8,7 +8,9 @@ import fiuba.algo3.tp2.excepciones.NoPuedeCurarPiezaDelOtroEquipo;
 import fiuba.algo3.tp2.piezas.Catapulta;
 import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
+import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
+import org.testng.Assert;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -49,16 +51,18 @@ public class CuracionDeCuranderoTest {
         Tablero tablero = new Tablero();
 
         Curandero curandero = new Curandero(blanco);
+        Catapulta catapulta = new Catapulta(blanco);
         Jinete jineteEnemigo = new Jinete(negro);
 
         jugadorBlanco.insertarPiezaEnPosicion(curandero,9,9,tablero);
+        jugadorBlanco.insertarPiezaEnPosicion(catapulta, 2,2,tablero);
         jugadorNegro.insertarPiezaEnPosicion(jineteEnemigo,10,9,tablero);
 
+        jugadorBlanco.atacarCon(catapulta,10,9,tablero);
 
-        assertThrows(NoPuedeCurarPiezaDelOtroEquipo.class,
-                ()->{
-                    jugadorBlanco.curarCon(curandero, 10, 9, tablero);
-                });
+        jugadorBlanco.curarCon(curandero, 10, 9, tablero);
+
+        assertEquals( 95, jineteEnemigo.getPuntosDeVida());
     }
 
     @Test
@@ -116,5 +120,37 @@ public class CuracionDeCuranderoTest {
 
 
         assertEquals(30, catapultaAliada.getPuntosDeVida());
+    }
+
+    @Test
+    public void test05JugadorSoloPuedeCurarCon1PiezaPorTurno(){
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Curandero curanderoBlanco = new Curandero(blanco);
+        SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
+        Catapulta catapultaNegra = new Catapulta(negro);
+        Algochess juego = new Algochess();
+
+        juego.iniciarJuego(jugadorBlanco,jugadorNegro);
+        juego.jugadorComprarPieza(curanderoBlanco,2,2);
+        juego.jugadorComprarPieza(soldadoBlanco, 3,3);
+        juego.terminarTurno();
+        juego.jugadorComprarPieza(catapultaNegra, 14,14);
+        juego.terminarTurno();
+        juego.terminarTurno();
+        juego.atacarCon(catapultaNegra, 3,3);
+        juego.terminarTurno();
+        juego.terminarTurno();
+        juego.atacarCon(catapultaNegra, 3,3);
+        juego.terminarTurno();
+        juego.curarCon(curanderoBlanco, 3, 3);
+        juego.curarCon(curanderoBlanco, 3, 3);
+
+
+        Assert.assertEquals(soldadoBlanco.getPuntosDeVida(), 75);
+
+
     }
 }

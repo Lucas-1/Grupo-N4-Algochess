@@ -2,7 +2,9 @@ package fiuba.algo3.tp2;
 
 import fiuba.algo3.tp2.excepciones.ElJuegoYaTerminoException;
 import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.piezas.Danina;
 import fiuba.algo3.tp2.piezas.Pieza;
+import fiuba.algo3.tp2.piezas.Saludable;
 
 public class FaseFinalDeJuego extends FaseDeJuego{
 
@@ -10,27 +12,32 @@ public class FaseFinalDeJuego extends FaseDeJuego{
     }
 
     @Override
-    public void jugadorComprarPieza(Pieza pieza){
-        throw new ElJuegoYaTerminoException();
-    }
-
-    @Override
-    public FaseDeJuego pasarASiguiente() {
-        throw new ElJuegoYaTerminoException();
+    public void jugadorComprarPieza(Pieza pieza, int fila, int columna, Tablero tablero){
+        throw new ElJuegoYaTerminoException("El juego ya termino");
     }
 
     @Override
     public void pasarASiguienteTurno(){
-        throw new ElJuegoYaTerminoException();
+
     }
 
     @Override
     public FaseDeJuego cambiarDeFaseSiEsNecesario() {
-        throw new ElJuegoYaTerminoException();
+        return this;
     }
 
     @Override
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero) {
-        throw new ElJuegoYaTerminoException();
+        throw new ElJuegoYaTerminoException("El juego ya termino");
+    }
+
+    @Override
+    public void atacarCon(Danina pieza, int fila, int columna, Tablero tablero) {
+        throw new ElJuegoYaTerminoException("El juego ya termino");
+    }
+
+    @Override
+    public void curarCon(Saludable pieza, int fila, int columna, Tablero tablero) {
+        throw new ElJuegoYaTerminoException("El juego ya termino");
     }
 }

@@ -23,10 +23,10 @@ public class Turno{
         return turno.getJugadorConTurno();
     }
 
-    public void pasarASiguiente(){
+    public Jugador pasarASiguiente(){
 
-        turno.pasarASiguiente();
         this.cantidadDeTurnosJugados++;
+        return turno.pasarASiguiente();
     }
 
     public void actualizarInformacionJugador(Jugador jugadorConTurno){
@@ -37,5 +37,9 @@ public class Turno{
     public boolean turnosInicialesCumplidos() {
 
         return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_INICIAL);
+    }
+
+    public boolean hayAlgunJugadorMuerto() {
+        return this.turno.hayAlgunJugadorMuerto();
     }
 }

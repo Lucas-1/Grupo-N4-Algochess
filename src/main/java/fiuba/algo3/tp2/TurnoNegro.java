@@ -13,14 +13,20 @@ public class TurnoNegro extends Turno {
         return this.jugadorNegro;
     }
     @Override
-    public void pasarASiguiente(){
+    public Jugador pasarASiguiente(){
 
         this.turno = new TurnoBlanco(jugadorBlanco, jugadorNegro);
+        return this.turno.getJugadorConTurno();
     }
 
     @Override
     public void actualizarInformacionJugador(Jugador jugadorConTurno) {
 
         this.jugadorNegro = jugadorConTurno;
+    }
+
+    @Override
+    public boolean hayAlgunJugadorMuerto() {
+        return (!jugadorBlanco.sigueEnJuego() && jugadorNegro.sigueEnJuego());
     }
 }

@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.piezas;
 import fiuba.algo3.tp2.PuntosDeVida;
 import fiuba.algo3.tp2.TipoDeBatallon;
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.excepciones.ElJuegoYaTerminoException;
 import fiuba.algo3.tp2.excepciones.NoPuedeCurarPiezaDelOtroEquipo;
 
 import java.util.ArrayList;
@@ -23,9 +24,12 @@ public class Curandero extends Saludable {
 
     @Override
     public void curar(Pieza pieza, int distanciaConPieza) {
-
-        if(!this.esDeMiEquipo(pieza))
-            throw new NoPuedeCurarPiezaDelOtroEquipo();
+        try{
+            if(!this.esDeMiEquipo(pieza))
+                throw new NoPuedeCurarPiezaDelOtroEquipo("Esa pieza es enemiga");
+        }catch (NoPuedeCurarPiezaDelOtroEquipo e){
+            System.out.println(e.getMessage());
+        }
         this.setRangoDeAlcance(distanciaConPieza);
         curacion.curar(this, pieza, this.rangoDeAlcance);
 

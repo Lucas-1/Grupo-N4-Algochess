@@ -1,15 +1,22 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.excepciones.YaNoSePuedeAtacarEsteTurnoException;
+import fiuba.algo3.tp2.excepciones.YaNoSePuedeCurarEsteTurnoException;
+import fiuba.algo3.tp2.excepciones.YaSeMovioUnaPiezaEsteTurnoException;
 import fiuba.algo3.tp2.movimiento.Direccion;
+import fiuba.algo3.tp2.piezas.Danina;
 import fiuba.algo3.tp2.piezas.Pieza;
+import fiuba.algo3.tp2.piezas.Saludable;
 
 public class AdministradorEventosPorTurno {
     private Turno turno;
     private Jugador jugadorConTurno;
+    private LimitacionesDeJugadorPorTurno limitaciones;
 
     public AdministradorEventosPorTurno(Jugador jugadorBlanco, Jugador jugadorNegro){
         this.turno = new Turno(jugadorBlanco, jugadorNegro);
         this.jugadorConTurno = turno.getJugadorConTurno();
+        this.limitaciones = new LimitacionesDeJugadorPorTurno();
 
     }
 
@@ -18,11 +25,12 @@ public class AdministradorEventosPorTurno {
     }
 
     public void pasarASiguienteTurno() {
-        turno.pasarASiguiente();
+        jugadorConTurno = turno.pasarASiguiente();
+        limitaciones.reiniciarLimitaciones();
     }
 
-    public void jugadorComprarPieza(Pieza pieza) {
-        jugadorConTurno.comprarPieza(pieza);
+    public void jugadorComprarPieza(Pieza pieza, int fila, int columna, Tablero tablero) {
+        jugadorConTurno.insertarPiezaEnPosicion(pieza, fila, columna, tablero);
     }
 
     public boolean terminoLaFase(FaseInicial faseDeJuego) {
@@ -30,11 +38,47 @@ public class AdministradorEventosPorTurno {
     }
 
     public boolean terminoLaFase(FaseDeBatalla faseDeJuego) {
-        return !jugadorConTurno.sigueEnJuego();
+        return this.turno.hayAlgunJugadorMuerto();
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero) {
+        try{
+            if(!limitaciones.puedoRealizarMovimiento())
+                throw new YaSeMovioUnaPiezaEsteTurnoException("Solo se puede mover 1 pieza por turno");
+        }catch (YaSeMovioUnaPiezaEsteTurnoException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
         jugadorConTurno.moverPieza(pieza,direccion,tablero);
+        limitaciones.limitarMovimiento();
+    }
+
+    public void atacarCon(Danina pieza, int fila, int columna, Tablero tablero) {
+        try{
+            if (!limitaciones.puedoRealizarAtaque())
+                throw new YaNoSePuedeAtacarEsteTurnoException("Solo se puede atacar/curar 1 vez por turno");
+        }catch (YaNoSePuedeAtacarEsteTurnoException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        jugadorConTurno.atacarCon(pieza, fila, columna, tablero);
+        limitaciones.limitarAtaque();
+    }
+
+    public void curarCon(Saludable pieza, int fila, int columna, Tablero tablero) {
+        try{
+            if(!limitaciones.puedoRealizarCuracion())
+                throw new YaNoSePuedeCurarEsteTurnoException("Solo se puede atacar/curar 1 vez por turno");
+        }catch (YaNoSePuedeCurarEsteTurnoException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+
+
+        jugadorConTurno.curarCon(pieza,fila,columna,tablero);
+        limitaciones.limitarCuracion();
     }
 
 

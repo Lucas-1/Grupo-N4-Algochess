@@ -9,6 +9,8 @@ import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.Jinete;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
+import org.testng.Assert;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -219,25 +221,25 @@ public class AtaquesConCatapultaTest {
         Catapulta catapulta = new Catapulta(blanco);
         jugadorBlanco.insertarPiezaEnPosicion(catapulta,1,1,tablero);
 
-        Jinete jinete = new Jinete(negro);
-        jugadorNegro.insertarPiezaEnPosicion(jinete,11,11,tablero);
-        Jinete jinete2 = new Jinete(negro);
-        jugadorNegro.insertarPiezaEnPosicion(jinete2,11,12,tablero);
-        Jinete jinete3= new Jinete(negro);
-        jugadorNegro.insertarPiezaEnPosicion(jinete3,11,13,tablero);
-        Jinete jinete4 = new Jinete(negro);
-        jugadorNegro.insertarPiezaEnPosicion(jinete4,12,12,tablero);
-        Jinete jinete5 = new Jinete(negro);
-        jugadorNegro.insertarPiezaEnPosicion(jinete5,12,11,tablero);
+        SoldadoDeInfanteria soldadoDeInfanteria = new SoldadoDeInfanteria(negro);
+        jugadorNegro.insertarPiezaEnPosicion(soldadoDeInfanteria,11,11,tablero);
+        SoldadoDeInfanteria soldadoDeInfanteria1 = new SoldadoDeInfanteria(negro);
+        jugadorNegro.insertarPiezaEnPosicion(soldadoDeInfanteria1,11,12,tablero);
+        SoldadoDeInfanteria soldadoDeInfanteria2= new SoldadoDeInfanteria(negro);
+        jugadorNegro.insertarPiezaEnPosicion(soldadoDeInfanteria2,11,13,tablero);
+        SoldadoDeInfanteria soldadoDeInfanteria3 = new SoldadoDeInfanteria(negro);
+        jugadorNegro.insertarPiezaEnPosicion(soldadoDeInfanteria3,12,12,tablero);
+        SoldadoDeInfanteria soldadoDeInfanteria4 = new SoldadoDeInfanteria(negro);
+        jugadorNegro.insertarPiezaEnPosicion(soldadoDeInfanteria4,12,11,tablero);
 
 
         jugadorBlanco.atacarCon(catapulta,11,11,tablero);
 
-        assertEquals(80,jinete.getPuntosDeVida());
-        assertEquals(80,jinete2.getPuntosDeVida());
-        assertEquals(80,jinete3.getPuntosDeVida());
-        assertEquals(80,jinete4.getPuntosDeVida());
-        assertEquals(80,jinete5.getPuntosDeVida());
+        assertEquals(80,soldadoDeInfanteria.getPuntosDeVida());
+        assertEquals(80,soldadoDeInfanteria1.getPuntosDeVida());
+        assertEquals(80,soldadoDeInfanteria2.getPuntosDeVida());
+        assertEquals(80,soldadoDeInfanteria3.getPuntosDeVida());
+        assertEquals(80,soldadoDeInfanteria4.getPuntosDeVida());
     }
 
     @Test
@@ -262,5 +264,28 @@ public class AtaquesConCatapultaTest {
 
         assertEquals(80,jineteAliado.getPuntosDeVida());
         assertEquals(80,soldado.getPuntosDeVida());
+    }
+
+    @Test
+    public void test12JugadorSoloPuedeAtacarCon1PiezaPorTurno(){
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
+        Catapulta catapultaBlanca = new Catapulta(blanco);
+        SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
+        Algochess juego = new Algochess();
+
+        juego.iniciarJuego(jugadorBlanco,jugadorNegro);
+        juego.jugadorComprarPieza(catapultaBlanca,2,2);
+        juego.terminarTurno();
+        juego.jugadorComprarPieza(soldadoNegro, 14,14);
+        juego.terminarTurno();
+        juego.atacarCon(catapultaBlanca, 14,14);
+        juego.atacarCon(catapultaBlanca, 14,14);
+
+        Assert.assertEquals(80, soldadoNegro.getPuntosDeVida());
+
+
     }
 }

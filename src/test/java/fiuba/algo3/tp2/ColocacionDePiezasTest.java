@@ -11,8 +11,7 @@ import fiuba.algo3.tp2.piezas.Curandero;
 import fiuba.algo3.tp2.piezas.SoldadoDeInfanteria;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
@@ -40,32 +39,13 @@ public class ColocacionDePiezasTest {
         Tablero tablero = new Tablero();
         Curandero curandero = new Curandero(blanco);
 
+        jugador.insertarPiezaEnPosicion(curandero, 15,15, tablero);
 
-        assertThrows(CasilleroDeLadoEnemigoException.class,
-            ()->{
-             jugador.insertarPiezaEnPosicion(curandero, 15,15, tablero);
-         });
+        assertFalse(tablero.casilleroOcupado(15,15));
     }
 
     @Test
-    public void test03JugadorNoPuedeColocarPiezaEnCasilleroOcupado() {
-
-        Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco);
-        Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(blanco);
-
-
-        jugador.insertarPiezaEnPosicion(catapulta, 5,5,tablero);
-
-        assertThrows(CasilleroEstaOcupadoException.class,
-                ()->{
-                    jugador.insertarPiezaEnPosicion(catapulta, 5,5, tablero);
-                });
-    }
-
-    @Test
-    public void test04ColocarUnaCatapultaResta5PuntosAlJugador() {
+    public void test03ColocarUnaCatapultaResta5PuntosAlJugador() {
 
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
@@ -80,7 +60,7 @@ public class ColocacionDePiezasTest {
     }
 
     @Test
-    public void test05JugadorSeQuedaSinPuntosYNoPuedeAgregarCatapulta() {
+    public void test04JugadorSeQuedaSinPuntosYNoPuedeAgregarCatapulta() {
 
         Color blanco = new Blanco();
         Jugador jugador = new Jugador(blanco);
@@ -97,11 +77,9 @@ public class ColocacionDePiezasTest {
         jugador.insertarPiezaEnPosicion(catapulta3, 2,5, tablero);
 
         // jugador se quedo con 0 puntos despues de gastar 20
+        jugador.insertarPiezaEnPosicion(catapulta4, 1,5, tablero);
 
-        assertThrows(JugadorQuiereUtilizarMasDineroDelDisponibleException.class,
-                ()->{
-                    jugador.insertarPiezaEnPosicion(catapulta4, 1,5, tablero);
-                });
+        assertFalse(tablero.casilleroOcupado(1,5));
 
     }
 

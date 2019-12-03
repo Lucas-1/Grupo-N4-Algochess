@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2;
 
+import fiuba.algo3.tp2.excepciones.ElJuegoYaTerminoException;
 import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
 
 public class Billetera {
@@ -18,9 +19,9 @@ public class Billetera {
     }
 
     private boolean saldoSuficienteParaRetirar(int cantidad) {
-
         if(dineroDisponible < cantidad)
-            throw new JugadorQuiereUtilizarMasDineroDelDisponibleException();
+            throw new JugadorQuiereUtilizarMasDineroDelDisponibleException("No tenes suficiente dinero");
+
 
         return true;
     }

@@ -8,5 +8,4 @@ public class Tienda {
 
         return pieza.serComprada(billetera);
     }
-
 }
