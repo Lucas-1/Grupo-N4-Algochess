@@ -12,26 +12,20 @@ public abstract class Pieza {
    protected final static int LIMITE_DISTANCIA_CERCA = 2;
    protected final static int LIMITE_DISTANCIA_MEDIA = 5;
 
-    public PuntosDeVida puntosDeVida;
+    protected PuntosDeVida puntosDeVida;
     protected Color color;
     protected RangoDeAlcance rangoDeAlcance;
     protected int precio;
-
     protected Posicion posicion;
-    private AdministradorDePiezas administradorDePiezas;
 
     public void setRangoDeAlcance(int distanciaConPieza) {
-
         if(distanciaConPieza <= LIMITE_DISTANCIA_CERCA) {
-
             rangoDeAlcance = new RangoDeAlcanceCercano();
 
         } else if(distanciaConPieza <= LIMITE_DISTANCIA_MEDIA) {
-
             rangoDeAlcance = new RangoDeAlcanceMediaDistancia();
 
         } else {
-
             rangoDeAlcance = new RangoDeAlcanceLejano();
         }
     }
@@ -40,15 +34,11 @@ public abstract class Pieza {
 
 
     public void perderVida(int danioRecibido) {
-
         danioRecibido = this.aplicarBonificacionesAlDanioRecibido(danioRecibido);
         puntosDeVida.quitarVida(danioRecibido);
-        if(puntosDeVida.estoyMuerta())
-            this.administradorDePiezas.borrarPieza(this);
     }
 
     protected int aplicarBonificacionesAlDanioRecibido(int danioRecibido) {
-
         if (this.estoyDelLadoEnemigo())
             danioRecibido += danioRecibido * 0.05;
 
@@ -60,17 +50,14 @@ public abstract class Pieza {
     }
 
     public void recibirVida(int vidaRecibida) {
-
         puntosDeVida.aumentarVida(vidaRecibida);
     }
 
     public int calcularDistancia(Posicion posPieza) {
-
         return posicion.calcularDistancia(posPieza);
     }
 
     public boolean esDeMiEquipo(Pieza otraPieza) {
-
         return color.esDelMismoColor(otraPieza.getColor());
     }
 
@@ -80,7 +67,6 @@ public abstract class Pieza {
     }
 
     public boolean estaMuerta() {
-
         return puntosDeVida.estoyMuerta();
     }
 
@@ -90,41 +76,30 @@ public abstract class Pieza {
 
 
     public boolean esContiguoVerticalmente(Pieza pieza) {
-
         return  posicion.alineadoVerticalmente(pieza.getPosicion());
     }
 
     public boolean esContiguoHorizontalmente(Pieza pieza) {
-
         return  posicion.alineadoHorizontalmente(pieza.getPosicion());
     }
 
     public Color getColor() {
-
         return color;
     }
 
     public int getPuntosDeVida() {
-
         return puntosDeVida.getVidaRestante();
     }
 
     public Posicion getPosicion() {
-
         return this.posicion;
     }
 
     public void moverA(Posicion posicionNueva) {
-
         posicion = posicionNueva;
     }
 
     public void setPosicion(Posicion posicion) {
-
         this.posicion = posicion;
-    }
-
-    public void setAdministradorDePiezas(AdministradorDePiezas administradorDePiezas) {
-        this.administradorDePiezas  = administradorDePiezas;
     }
 }

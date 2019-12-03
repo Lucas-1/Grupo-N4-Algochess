@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.flujoDelJuego;
 
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
+import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 
 public class Turno{
 
@@ -21,23 +22,19 @@ public class Turno{
     }
 
     public Jugador getJugadorConTurno() {
-
         return turno.getJugadorConTurno();
     }
 
     public Jugador pasarASiguiente(){
-
         this.cantidadDeTurnosJugados++;
         return turno.pasarASiguiente();
     }
 
-    public void actualizarInformacionJugador(Jugador jugadorConTurno){
-
-        turno.actualizarInformacionJugador(jugadorConTurno);
+    public void actualizarInformacionJugador(Jugador jugadorConTurno, Tablero tablero){
+        turno.actualizarInformacionJugador(jugadorConTurno, tablero);
     }
 
     public boolean turnosInicialesCumplidos() {
-
         return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_INICIAL);
     }
 

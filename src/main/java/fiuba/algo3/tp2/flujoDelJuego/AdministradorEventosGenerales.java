@@ -38,7 +38,7 @@ public class AdministradorEventosGenerales {
     }
 
     public void terminarTurno() {
-        faseDeJuego.actualizarInformacionJugador();
+        faseDeJuego.actualizarInformacionJugador(this.tablero);
         faseDeJuego.pasarASiguienteTurno();
         faseDeJuego = faseDeJuego.cambiarDeFaseSiEsNecesario();
     }

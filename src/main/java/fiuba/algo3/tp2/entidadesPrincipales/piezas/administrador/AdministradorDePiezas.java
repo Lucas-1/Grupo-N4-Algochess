@@ -57,7 +57,6 @@ public class AdministradorDePiezas {
         tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);
         pieza.setPosicion(posicion);
         piezas.add(pieza);
-        pieza.setAdministradorDePiezas(this);
     }
 
     public ArrayList<Pieza> obtenerPiezasContiguas(Posicion posicion, Tablero tablero) {
@@ -72,12 +71,9 @@ public class AdministradorDePiezas {
     }
 
     public void actualizarPiezas(Tablero tablero) {
-
         for(int i = 0; i<piezas.size(); i++) {
-
             Pieza pieza = piezas.get(i);
             if(pieza.estaMuerta()) {
-
                 this.borrarPieza(pieza);
                 tablero.borrarPieza(pieza.getPosicion());
             }

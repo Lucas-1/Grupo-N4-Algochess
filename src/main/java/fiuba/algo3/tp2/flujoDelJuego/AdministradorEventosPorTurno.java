@@ -24,8 +24,8 @@ public class AdministradorEventosPorTurno {
 
     }
 
-    public void actualizarInformacionJugador() {
-        turno.actualizarInformacionJugador(this.jugadorConTurno);
+    public void actualizarInformacionJugador(Tablero tablero) {
+        turno.actualizarInformacionJugador(this.jugadorConTurno, tablero);
     }
 
     public void pasarASiguienteTurno() {

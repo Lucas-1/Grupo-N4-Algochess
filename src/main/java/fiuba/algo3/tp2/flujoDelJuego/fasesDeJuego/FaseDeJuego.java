@@ -11,8 +11,8 @@ public abstract class FaseDeJuego {
 
     protected AdministradorEventosPorTurno administradorEventosPorTurno;
 
-    public void actualizarInformacionJugador(){
-        administradorEventosPorTurno.actualizarInformacionJugador();
+    public void actualizarInformacionJugador(Tablero tablero){
+        administradorEventosPorTurno.actualizarInformacionJugador(tablero);
     }
 
     public void jugadorComprarPieza(Pieza pieza, int fila, int columna, Tablero tablero) {
