@@ -67,6 +67,20 @@ public class AdministradorDePiezas {
         batallon.moverBatallon(pieza,direccion,tablero);
     }
 
+    public void actualizarPiezas(Tablero tablero) {
+
+        for(int i = 0; i<piezas.size(); i++) {
+
+            Pieza pieza = piezas.get(i);
+            if(pieza.estaMuerta()) {
+
+                this.borrarPieza(pieza);
+                tablero.borrarPieza(pieza.getPosicion());
+            }
+        }
+    }
+
+
     public int getPuntosDeCompraDisponibles() {
 
         return billetera.dineroRestante();
