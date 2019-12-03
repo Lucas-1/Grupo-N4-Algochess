@@ -30,4 +30,6 @@ public abstract class FaseDeJuego {
     public abstract void atacarCon(Danina pieza, int fila, int columna, Tablero tablero);
 
     public abstract void curarCon(Saludable pieza, int fila, int columna, Tablero tablero);
+
+    public abstract void acomodarPieza(Pieza pieza, int fila, int columna, Tablero tablero);
 }

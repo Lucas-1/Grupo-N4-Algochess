@@ -124,6 +124,8 @@ public class MovimientoUnidadTest {
         juego.jugadorComprarPieza(soldadoBlanco,2,2);
         juego.terminarTurno();
         juego.terminarTurno();
+        juego.terminarTurno();
+        juego.terminarTurno();
         juego.moverPieza(soldadoBlanco, Direccion.derecha());
         juego.moverPieza(soldadoBlanco, Direccion.derecha());
 

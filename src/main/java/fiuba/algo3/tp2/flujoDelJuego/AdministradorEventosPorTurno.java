@@ -6,7 +6,8 @@ import fiuba.algo3.tp2.excepciones.YaNoSePuedeAtacarEsteTurnoException;
 import fiuba.algo3.tp2.excepciones.YaNoSePuedeCurarEsteTurnoException;
 import fiuba.algo3.tp2.excepciones.YaSeMovioUnaPiezaEsteTurnoException;
 import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeBatalla;
-import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseInicial;
+import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeCompra;
+import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeDistribucion;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
@@ -37,8 +38,11 @@ public class AdministradorEventosPorTurno {
         jugadorConTurno.insertarPiezaEnPosicion(pieza, fila, columna, tablero);
     }
 
-    public boolean terminoLaFase(FaseInicial faseDeJuego) {
-        return turno.turnosInicialesCumplidos();
+    public boolean terminoLaFase(FaseDeCompra faseDeJuego) {
+        return turno.turnosDeCompraCumplidos();
+    }
+    public boolean terminoLaFase(FaseDeDistribucion faseDeJuego){
+        return turno.turnosDeDistribucionCumplidos();
     }
 
     public boolean terminoLaFase(FaseDeBatalla faseDeJuego) {
@@ -83,5 +87,9 @@ public class AdministradorEventosPorTurno {
 
         jugadorConTurno.curarCon(pieza,fila,columna,tablero);
         limitaciones.limitarCuracion();
+    }
+
+    public void acomodarPieza(Pieza pieza, int fila, int columna, Tablero tablero) {
+        tablero.acomodarPieza(pieza, fila, columna, tablero);
     }
 }

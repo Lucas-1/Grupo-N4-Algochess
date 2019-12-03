@@ -284,6 +284,8 @@ public class AtaquesConCatapultaTest {
         juego.terminarTurno();
         juego.jugadorComprarPieza(soldadoNegro, 14,14);
         juego.terminarTurno();
+        juego.terminarTurno();
+        juego.terminarTurno();
         juego.atacarCon(catapultaBlanca, 14,14);
         juego.atacarCon(catapultaBlanca, 14,14);
 

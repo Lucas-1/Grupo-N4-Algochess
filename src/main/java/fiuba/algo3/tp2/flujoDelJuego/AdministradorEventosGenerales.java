@@ -1,7 +1,7 @@
 package fiuba.algo3.tp2.flujoDelJuego;
 
 import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeJuego;
-import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseInicial;
+import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeCompra;
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.ElJuegoYaTerminoException;
@@ -21,7 +21,7 @@ public class AdministradorEventosGenerales {
     }
 
     public void iniciarJuego(Jugador jugadorBlanco, Jugador jugadorNegro){
-        this.faseDeJuego = new FaseInicial(jugadorBlanco,jugadorNegro);
+        this.faseDeJuego = new FaseDeCompra(jugadorBlanco,jugadorNegro);
     }
 
     public void jugadorComprarPieza(Pieza pieza, int fila, int columna) {
@@ -65,5 +65,9 @@ public class AdministradorEventosGenerales {
     /**metodo para testing solamente*/
     public boolean casilleroOcupado(int fila, int columna) {
         return tablero.casilleroOcupado(fila,columna);
+    }
+
+    public void acomodarPieza(Pieza pieza, int fila, int columna) {
+        faseDeJuego.acomodarPieza(pieza, fila, columna, tablero);
     }
 }

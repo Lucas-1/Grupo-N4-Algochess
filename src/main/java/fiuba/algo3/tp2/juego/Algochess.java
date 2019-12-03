@@ -41,6 +41,10 @@ public class Algochess {
         administradorEventos.curarCon(pieza,fila,columna);
     }
 
+    public void acomodarPieza(Pieza pieza, int fila, int columna){
+        administradorEventos.acomodarPieza(pieza, fila, columna);
+    }
+
     /**metodo para testing solamente*/
     public boolean casilleroOcupado(int fila, int columna) {
         return administradorEventos.casilleroOcupado(fila,columna);

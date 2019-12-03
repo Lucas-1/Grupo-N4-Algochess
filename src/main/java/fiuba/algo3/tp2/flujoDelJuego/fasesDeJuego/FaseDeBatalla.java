@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego;
 
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.NoSePuedeComprarPiezasEnFaseDeBatallaException;
+import fiuba.algo3.tp2.excepciones.NoSePuedenAcomodarPiezasEnEstaFaseDelJuegoException;
 import fiuba.algo3.tp2.flujoDelJuego.AdministradorEventosPorTurno;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
@@ -48,5 +49,14 @@ public class FaseDeBatalla extends FaseDeJuego{
     public void curarCon(Saludable pieza, int fila, int columna, Tablero tablero) {
         this.administradorEventosPorTurno.curarCon(pieza,fila,columna,tablero);
 
+    }
+
+    @Override
+    public void acomodarPieza(Pieza pieza, int fila, int columna, Tablero tablero) {
+        try{
+            throw new NoSePuedenAcomodarPiezasEnEstaFaseDelJuegoException("No te encontras en fase de distribucion");
+        }catch (NoSePuedenAcomodarPiezasEnEstaFaseDelJuegoException e){
+            System.out.println(e.getMessage());
+        }
     }
 }

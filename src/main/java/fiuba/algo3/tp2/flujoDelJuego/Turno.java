@@ -9,7 +9,8 @@ public class Turno{
     protected Jugador jugadorNegro;
     protected Turno turno;
     protected int cantidadDeTurnosJugados;
-    private final static int TURNOS_DE_FASE_INICIAL = 2;
+    private final static int TURNOS_DE_FASE_DE_COMPRA = 2;
+    private final static int TURNOS_DE_FASE_DE_DISTRIBUCION = 4;
 
 
     Turno(){
@@ -34,10 +35,12 @@ public class Turno{
         turno.actualizarInformacionJugador(jugadorConTurno, tablero);
     }
 
-    public boolean turnosInicialesCumplidos() {
-        return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_INICIAL);
+    public boolean turnosDeCompraCumplidos() {
+        return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_DE_COMPRA);
     }
-
+    public boolean turnosDeDistribucionCumplidos() {
+        return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_DE_DISTRIBUCION);
+    }
     public boolean hayAlgunJugadorMuerto() {
         return this.turno.hayAlgunJugadorMuerto();
     }

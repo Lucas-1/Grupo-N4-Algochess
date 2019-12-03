@@ -143,6 +143,8 @@ public class CuracionDeCuranderoTest {
         juego.jugadorComprarPieza(catapultaNegra, 14,14);
         juego.terminarTurno();
         juego.terminarTurno();
+        juego.terminarTurno();
+        juego.terminarTurno();
         juego.atacarCon(catapultaNegra, 3,3);
         juego.terminarTurno();
         juego.terminarTurno();

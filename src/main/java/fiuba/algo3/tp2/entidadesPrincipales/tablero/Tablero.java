@@ -110,4 +110,8 @@ public class Tablero extends Observable {
         return this.LIMITE_SUPERIOR;
     }
 
+    public void acomodarPieza(Pieza pieza, int fila, int columna, Tablero tablero) {
+        this.borrarPieza(pieza.getPosicion());
+        this.agregarPieza(pieza, fila, columna);
+    }
 }
