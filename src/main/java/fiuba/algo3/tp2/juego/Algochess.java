@@ -1,11 +1,14 @@
 package fiuba.algo3.tp2.juego;
 
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
+import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.flujoDelJuego.AdministradorEventosGenerales;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Saludable;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableCell;
 
 public class Algochess {
 
@@ -43,6 +46,12 @@ public class Algochess {
 
     public void acomodarPieza(Pieza pieza, int fila, int columna){
         administradorEventos.acomodarPieza(pieza, fila, columna);
+    }
+
+    //
+    public Tablero getTablero() {
+
+        return administradorEventos.getTablero();
     }
 
     /**metodo para testing solamente*/

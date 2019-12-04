@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 
+import fiuba.algo3.tp2.juego.Algochess;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,7 +17,7 @@ public class PresentacionView {
 
     Stage stage;
 
-    public PresentacionView(Stage stage,Scene scene){
+    public PresentacionView(Stage stage, Scene scene, Algochess algochess){
 
         this.stage = stage;
 
@@ -45,8 +46,10 @@ public class PresentacionView {
         comenzar.setMaxWidth(200);
 
         comenzar.setOnAction(e-> {
+
             stage.setMaximized(true);
-            stage.setScene(scene);
+            Scene entradaNombres = new Scene(new EntradaDeNombresView(stage,algochess,scene));
+            stage.setScene(entradaNombres);
         });
 
         presentacion.getChildren().add(textoPresentacion);

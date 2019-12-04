@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.Observer;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
+import fiuba.algo3.tp2.juego.Algochess;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.layout.*;
@@ -19,14 +20,14 @@ public class TableroView extends Group implements Observer {
     private PiezasView piezas;
     private StackPane[][] casilleros;
 
-    public TableroView(Tablero tablero) {
+    public TableroView(Algochess algochess) {
 
+        this.tablero = algochess.getTablero();
         tableroView = new GridPane();
         ancho = anchoCasillero * tablero.obtenerTamanioTablero();
         largo = largoCasillero * tablero.obtenerTamanioTablero();
         casilleros = new StackPane[(int)ancho][(int)largo];
         piezas = new PiezasView();
-        this.tablero = tablero;
 
         for(int i = 0; i < tablero.obtenerTamanioTablero()/2; i++){
             for(int j = 0; j < tablero.obtenerTamanioTablero(); j++){

@@ -62,6 +62,16 @@ public class AdministradorEventosGenerales {
         }
     }
 
+    public Tablero getTablero(){
+
+        return  tablero;
+    }
+
+    public void cambiarNombreNegro(String nombre) {
+
+
+    }
+
     /**metodo para testing solamente*/
     public boolean casilleroOcupado(int fila, int columna) {
         return tablero.casilleroOcupado(fila,columna);
