@@ -8,7 +8,6 @@ public class Direccion {
     private static Direccion izquierda;
 
     static {
-
         arriba = new Direccion(-1, 0);
         abajo = new Direccion(1, 0);
         derecha = new Direccion(0, 1);
@@ -19,16 +18,13 @@ public class Direccion {
     private int direccionColumna;
 
     public Direccion(int direccionFila, int direccionColumna) {
-
         this.direccionFila = direccionFila;
         this.direccionColumna = direccionColumna;
     }
 
     public Posicion calcularSiguientePosicion(Posicion posicion ) {
-
         int nuevaFila = posicion.getPosicionFila() + this.direccionFila;
         int nuevaColumna = posicion.getPosicionColumna() + this.direccionColumna;
-
         Posicion nuevaPosicion = new Posicion(nuevaFila,nuevaColumna);
         return nuevaPosicion;
     }

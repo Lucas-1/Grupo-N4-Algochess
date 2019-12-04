@@ -12,7 +12,6 @@ public class Curandero extends Saludable {
     private static final int CURACION = 15;
 
     public Curandero(Color color) {
-
         this.curacion = new Ataque();
         this.precio = PRECIO;
         this.color = color;
@@ -35,15 +34,12 @@ public class Curandero extends Saludable {
 
     @Override
     public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
-
     }
     @Override
     public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
-
     }
 
     public void setRangoJineteCercano(Jinete jinete){
-
         if(!jinete.esDeMiEquipo(this)){
             jinete.setRangoCercano();
         }

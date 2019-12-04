@@ -20,19 +20,16 @@ public class Jugador {
     private String nombre;
 
     public Jugador(Color color, String nombre) {
-
         administradorDePiezas = new AdministradorDePiezas();
         this.color = color;
         this.nombre = nombre;
     }
 
     public void insertarPiezaEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
-
         administradorDePiezas.agregarPieza(pieza, posicionFila,posicionColumna,tablero);
     }
 
     public void borrarPieza(Tablero tablero, int posicionFila, int posicionColumna) {
-
         Pieza pieza = tablero.obtenerPieza(posicionFila,posicionColumna);
         administradorDePiezas.borrarPieza(pieza);
 
@@ -40,7 +37,6 @@ public class Jugador {
     }
 
     public void atacarCon(Danina pieza, int posicionFila, int posicionColumna, Tablero tablero) {
-
         try {
 
             Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
@@ -55,7 +51,6 @@ public class Jugador {
     }
 
     public void atacarCon(Jinete jinete, int posicionFila, int posicionColumna, Tablero tablero) {
-
         try {
 
             Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
@@ -71,7 +66,6 @@ public class Jugador {
 
 
     public void curarCon(Saludable pieza, int posicionFila, int posicionColumna, Tablero tablero){
-
         try {
 
         Pieza receptor = tablero.obtenerPieza(posicionFila,posicionColumna);
@@ -85,23 +79,19 @@ public class Jugador {
     }
 
     public boolean sigueEnJuego() {
-
         return administradorDePiezas.sigueEnJuego();
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero){
-
         administradorDePiezas.moverPieza(pieza, direccion, tablero);
     }
 
     public void actualizarPiezas(Tablero tablero) {
-
         administradorDePiezas.actualizarPiezas(tablero);
     }
 
     //
     public int getPuntosDeCompraDisponibles() {
-
         return administradorDePiezas.getPuntosDeCompraDisponibles();
     }
 }

@@ -8,12 +8,10 @@ public class Billetera {
     private int dineroDisponible;
 
     public Billetera(int dineroInicial){
-
         dineroDisponible = dineroInicial;
     }
 
     public void retirarDinero(int cantidad) {
-
         if(saldoSuficienteParaRetirar(cantidad))
             dineroDisponible -= cantidad;
     }
@@ -22,12 +20,10 @@ public class Billetera {
         if(dineroDisponible < cantidad)
             throw new JugadorQuiereUtilizarMasDineroDelDisponibleException("No tenes suficiente dinero");
 
-
         return true;
     }
 
     public int dineroRestante() {
-
         return dineroDisponible;
     }
 }

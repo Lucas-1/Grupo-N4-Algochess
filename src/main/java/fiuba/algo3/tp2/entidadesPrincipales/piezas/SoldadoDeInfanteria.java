@@ -14,7 +14,6 @@ public class SoldadoDeInfanteria extends Danina {
     private static final int DANIO_SOLDADO = 10;
 
     public SoldadoDeInfanteria(Color color) {
-
         this.precio = PRECIO;
         this.color = color;
         this.puntosDeDanio = DANIO_SOLDADO;
@@ -23,7 +22,6 @@ public class SoldadoDeInfanteria extends Danina {
     }
 
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
-
         this.setRangoDeAlcance(distanciaConPieza);
         try{
             if (this.esDeMiEquipo(pieza))
@@ -39,20 +37,17 @@ public class SoldadoDeInfanteria extends Danina {
 
     @Override
     public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
-
         if(this.esContiguoHorizontalmente(pieza))
             batallon.agregar(this);
     }
 
     @Override
     public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
-
         if(this.esContiguoVerticalmente(pieza))
             batallon.agregar(this);
     }
 
     public void setRangoJineteCercano(Jinete jinete){
-
         if(jinete.esDeMiEquipo(this)){
             jinete.setRangoMediaDistancia();
         }

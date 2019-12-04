@@ -17,27 +17,22 @@ public class PuntosDeVida {
 
 
     public PuntosDeVida(SoldadoDeInfanteria soldado) {
-
         vidaActual = VIDA_INICIAL_SOLDADO;
     }
 
     public PuntosDeVida(Jinete jinete) {
-
         vidaActual = VIDA_INICIAL_JINETE;
     }
 
     public PuntosDeVida(Catapulta catapulta) {
-
         vidaActual = VIDA_INICIAL_CATAPULTA;
     }
 
     public PuntosDeVida(Curandero curandero) {
-
         vidaActual = VIDA_INICIAL_CURANDERO;
     }
 
     public void quitarVida(int puntos){
-
         if(this.estoyMuerta())
             throw new PiezaEstaMuertaException();
 
@@ -45,7 +40,6 @@ public class PuntosDeVida {
     }
 
     public void aumentarVida(int puntos){
-
         if(this.estoyMuerta())
             throw new PiezaEstaMuertaException();
 
@@ -53,12 +47,10 @@ public class PuntosDeVida {
     }
 
     public int getVidaRestante() {
-
         return vidaActual;
     }
 
     public boolean estoyMuerta() {
-
         return (vidaActual <= 0);
     }
 }

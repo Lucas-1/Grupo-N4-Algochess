@@ -18,7 +18,6 @@ public class Tablero extends Observable {
     private Casillero[][] casilleros;
 
     public Tablero() {
-
         casilleros = new Casillero[LIMITE_SUPERIOR][LIMITE_SUPERIOR];
         Color blanco = new Blanco();
         Color negro = new Negro();
@@ -39,12 +38,10 @@ public class Tablero extends Observable {
     }
 
     public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna) {
-
         casilleros[posicionFila][posicionColumna].agregarPieza(pieza);
     }
 
     public void borrarPieza(Posicion posicion) {
-
         int posicionFila = posicion.getPosicionFila();
         int posicionColumna = posicion.getPosicionColumna();
 
@@ -52,12 +49,10 @@ public class Tablero extends Observable {
     }
 
     public boolean casilleroOcupado(int posicionFila, int posicionColumna) {
-
         return casilleros[posicionFila][posicionColumna].estaOcupado();
     }
 
     public void obtenerContiguos(Posicion posicion, PiezasContiguas contiguos) {
-
         int posFila = posicion.getPosicionFila();
         int posColumna = posicion.getPosicionColumna();
 
@@ -78,13 +73,11 @@ public class Tablero extends Observable {
     }
 
     public boolean estaDentroDelMapa(int posFila, int posColumna) {
-
         Posicion posicion = new Posicion(posFila,posColumna);
         return posicion.esValida();
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion) {
-
         Posicion posicionActual = pieza.getPosicion();
         Posicion posicionNueva = direccion.calcularSiguientePosicion(pieza.getPosicion());
 
@@ -102,7 +95,6 @@ public class Tablero extends Observable {
     }
 
     public Pieza obtenerPieza(int posicionFila, int posicionColumna) {
-
         return casilleros[posicionFila][posicionColumna].getPieza();
     }
 

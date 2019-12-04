@@ -13,7 +13,6 @@ public class Aplicacion extends Application {
     }
 
     public void start(Stage stage){
-
         stage.setTitle("AlgoChess");
         Tablero tablero = new Tablero();
 

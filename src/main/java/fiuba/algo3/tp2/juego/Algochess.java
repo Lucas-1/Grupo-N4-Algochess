@@ -12,9 +12,7 @@ public class Algochess {
     private AdministradorEventosGenerales administradorEventos;
 
     public Algochess() {
-
         administradorEventos = new AdministradorEventosGenerales();
-
     }
 
     public void iniciarJuego(Jugador jugadorBlanco, Jugador jugadorNegro){

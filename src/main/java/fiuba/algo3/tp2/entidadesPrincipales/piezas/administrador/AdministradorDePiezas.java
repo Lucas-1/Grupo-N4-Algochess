@@ -26,7 +26,6 @@ public class AdministradorDePiezas {
 
 
     public AdministradorDePiezas() {
-
         piezas = new ArrayList<Pieza>();
         piezasContiguas = new PiezasContiguas();
         batallon = new Batallon();
@@ -35,12 +34,10 @@ public class AdministradorDePiezas {
     }
 
     public boolean sigueEnJuego() {
-
         return !(piezas.isEmpty()); /* Jugador se queda sin piezas, pierde. */
     }
 
     public void borrarPieza(Pieza pieza) {
-
         piezas.remove(pieza);
     }
 
@@ -60,12 +57,10 @@ public class AdministradorDePiezas {
     }
 
     public ArrayList<Pieza> obtenerPiezasContiguas(Posicion posicion, Tablero tablero) {
-
         return piezasContiguas.obtenerPiezasContiguas(posicion,tablero);
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero) {
-
         batallon.armadoBatallon(pieza,piezas);
         batallon.moverBatallon(pieza,direccion,tablero);
     }
@@ -82,7 +77,6 @@ public class AdministradorDePiezas {
 
 
     public int getPuntosDeCompraDisponibles() {
-
         return billetera.dineroRestante();
     }
 }

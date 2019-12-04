@@ -11,12 +11,10 @@ public class Batallon {
     TipoDeBatallon tipoDeBatallon;
 
     public boolean estaCompleto() {
-
         return tipoDeBatallon.estaCompleto();
     }
 
     public void armadoBatallon(Pieza pieza, ArrayList<Pieza> piezas) {
-
         tipoDeBatallon = new BatallonVertical();
         tipoDeBatallon.armarBatallon(pieza,piezas);
 
@@ -31,7 +29,6 @@ public class Batallon {
     }
 
     public void moverBatallon(Pieza pieza, Direccion direccion, Tablero tablero) {
-
         tipoDeBatallon.moverBatallon(pieza,tablero,direccion);
     }
 }
