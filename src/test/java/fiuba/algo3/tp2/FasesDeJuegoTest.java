@@ -21,8 +21,8 @@ public class FasesDeJuegoTest {
     public void test01JugadorBlancoPuedeComprarPiezasEnLaFaseDeCompra(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
 
@@ -35,8 +35,8 @@ public class FasesDeJuegoTest {
     public void test02JugadorNegroPuedeComprarPiezasEnLaFaseDeCompra(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
 
@@ -50,8 +50,8 @@ public class FasesDeJuegoTest {
     public void test03JugadorBlancoNoPuedeComprarPiezasEnElTurnoDelNegro(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
 
@@ -66,8 +66,8 @@ public class FasesDeJuegoTest {
     public void test04JugadorNegroNoPuedeComprarPiezasEnElTurnoDelBlanco(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
 
@@ -81,8 +81,8 @@ public class FasesDeJuegoTest {
     public void test05JugadorBlancoNoPuedeMoverPiezasEnLaFaseDeCompra(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
 
@@ -96,8 +96,8 @@ public class FasesDeJuegoTest {
     public void test06JugadorNegroNoPuedeMoverPiezasEnLaFaseDeCompra(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
 
@@ -113,8 +113,8 @@ public class FasesDeJuegoTest {
     public void test07JugadorNegroNoPuedeAcomodarPiezasEnLaFaseDeCompra(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
 
@@ -130,8 +130,8 @@ public class FasesDeJuegoTest {
     public void test08JugadorBlancoNoPuedeComprarPiezasEnLaFaseDeBatalla(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
@@ -152,8 +152,8 @@ public class FasesDeJuegoTest {
     public void test09JugadorNegroNoPuedeComprarPiezasEnLaFaseDeBatalla(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
@@ -175,8 +175,8 @@ public class FasesDeJuegoTest {
     public void test10JugadorNegroNoPuedeAcomodarPiezasEnLaFaseDeBatalla(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
 
@@ -196,8 +196,8 @@ public class FasesDeJuegoTest {
     public void test11JugadorNegroNoPuedeComprarPiezasEnLaFaseDeDistribucion(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
@@ -217,8 +217,8 @@ public class FasesDeJuegoTest {
     public void test12JugadorNegroNoPuedeMoverPiezasEnLaFaseDeDistribucion(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
@@ -238,8 +238,8 @@ public class FasesDeJuegoTest {
     public void test13JugadorNegroNoPuedeAtacarPiezasEnLaFaseDeDistribucion(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Catapulta catapultaNegra = new Catapulta(negro);
         Algochess juego = new Algochess();
@@ -259,8 +259,8 @@ public class FasesDeJuegoTest {
     public void test14JugadorNegroPuedeAcomodarPiezasEnLaFaseDeDistribucion(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();

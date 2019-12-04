@@ -25,8 +25,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Curandero curandero = new Curandero(blanco);
@@ -48,8 +48,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Curandero curandero = new Curandero(blanco);
@@ -72,8 +72,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Curandero curandero = new Curandero(blanco);
@@ -102,8 +102,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Curandero curandero = new Curandero(blanco);
@@ -129,8 +129,8 @@ public class CuracionDeCuranderoTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Curandero curanderoBlanco = new Curandero(blanco);
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Catapulta catapultaNegra = new Catapulta(negro);
@@ -159,7 +159,7 @@ public class CuracionDeCuranderoTest {
     @Test
     public void test06CuranderoCuraPosicionVaciaNoPasaNada() {
 
-        Jugador jugador = new Jugador(new Blanco());
+        Jugador jugador = new Jugador(new Blanco(), "benito");
         Tablero tablero = new Tablero();
         Curandero cura = new Curandero(new Blanco());
 

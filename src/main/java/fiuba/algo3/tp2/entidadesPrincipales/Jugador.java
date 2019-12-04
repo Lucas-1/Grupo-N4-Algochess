@@ -17,11 +17,13 @@ public class Jugador {
 
     private AdministradorDePiezas administradorDePiezas;
     private Color color;
+    private String nombre;
 
-    public Jugador(Color color) {
+    public Jugador(Color color, String nombre) {
 
         administradorDePiezas = new AdministradorDePiezas();
         this.color = color;
+        this.nombre = nombre;
     }
 
     public void insertarPiezaEnPosicion(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {

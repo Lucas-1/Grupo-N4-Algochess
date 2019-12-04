@@ -14,8 +14,8 @@ public class RangoJineteTest {
 
     @Test
     public void test01JineteConAliadoCercaAtacaDistanciaMedia(){
-        Jugador jugadorBlanco = new Jugador(new Blanco());
-        Jugador jugadorNegro = new Jugador(new Negro());
+        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorNegro = new Jugador(new Negro(), "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(new Blanco());
@@ -32,8 +32,8 @@ public class RangoJineteTest {
 
     @Test
     public void test02JineteAisladoAtacaDistanciaMedia(){
-        Jugador jugadorBlanco = new Jugador(new Blanco());
-        Jugador jugadorNegro = new Jugador(new Negro());
+        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorNegro = new Jugador(new Negro(), "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(new Blanco());
@@ -48,8 +48,8 @@ public class RangoJineteTest {
 
     @Test
     public void test03JineteConRivalCercaAtacaDistanciaCercana() {
-        Jugador jugadorBlanco = new Jugador(new Blanco());
-        Jugador jugadorNegro = new Jugador(new Negro());
+        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorNegro = new Jugador(new Negro(), "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(new Blanco());
@@ -65,8 +65,8 @@ public class RangoJineteTest {
 
     @Test
     public void test04JineteConRivalCercaNoPuedeAtacarRivalADistanciaMedia() {
-        Jugador jugadorBlanco = new Jugador(new Blanco());
-        Jugador jugadorNegro = new Jugador(new Negro());
+        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorNegro = new Jugador(new Negro(), "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(new Blanco());

@@ -23,8 +23,8 @@ public class AtaquesConJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(blanco);
@@ -44,8 +44,8 @@ public class AtaquesConJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(blanco);
@@ -64,8 +64,8 @@ public class AtaquesConJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(blanco);
@@ -84,8 +84,8 @@ public class AtaquesConJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(blanco);
@@ -104,8 +104,8 @@ public class AtaquesConJineteTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco);
-        Jugador jugadorNegro = new Jugador(negro);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorNegro = new Jugador(negro, "martinez");
         Tablero tablero = new Tablero();
 
         Jinete jinete = new Jinete(blanco);
@@ -133,7 +133,7 @@ public class AtaquesConJineteTest {
         Color blanco = new Blanco();
         Jinete jinete = new Jinete(blanco);
         SoldadoDeInfanteria soldadoAliado = new SoldadoDeInfanteria(blanco);
-        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
         Tablero tablero = new Tablero();
 
         jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
@@ -148,7 +148,7 @@ public class AtaquesConJineteTest {
 
         Color blanco = new Blanco();
         Jinete jinete = new Jinete(blanco);
-        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorBlanco = new Jugador(blanco, "benito");
         Tablero tablero = new Tablero();
 
         jugadorBlanco.insertarPiezaEnPosicion(jinete,9,9,tablero);
