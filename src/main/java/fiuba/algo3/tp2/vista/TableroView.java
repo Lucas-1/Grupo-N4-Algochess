@@ -20,6 +20,7 @@ public class TableroView extends Group implements Observer {
     private StackPane[][] casilleros;
 
     public TableroView(Tablero tablero) {
+
         tableroView = new GridPane();
         ancho = anchoCasillero * tablero.obtenerTamanioTablero();
         largo = largoCasillero * tablero.obtenerTamanioTablero();
@@ -58,6 +59,7 @@ public class TableroView extends Group implements Observer {
     }
 
     public void agregarPiezas(Tablero tablero){
+
         for(int i = 0;i < tablero.obtenerTamanioTablero();i++){
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
                 piezas.dibujar(tablero.obtenerPieza(i,j),casilleros[i][j]);
@@ -66,6 +68,7 @@ public class TableroView extends Group implements Observer {
     }
 
     public void borrarPiezas(Tablero tablero){
+
         for(int i = 0;i < tablero.obtenerTamanioTablero();i++){
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
                 casilleros[i][j].getChildren().removeAll();
@@ -74,6 +77,7 @@ public class TableroView extends Group implements Observer {
     }
 
     public void change(){
+
         this.borrarPiezas(tablero);
         this.agregarPiezas(tablero);
     }

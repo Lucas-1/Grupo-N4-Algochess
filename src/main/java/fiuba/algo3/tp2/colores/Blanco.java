@@ -21,6 +21,7 @@ public class Blanco implements Color{
 
     @Override
     public boolean estoyDelLadoEnemigo(Posicion posicion) {
+
         return posicion.ladoNegro();
     }
 

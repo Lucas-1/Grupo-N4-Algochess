@@ -14,6 +14,7 @@ public class Catapulta extends Danina {
     private static final int DANIO_CATAPULTA = 20;
 
     public Catapulta(Color color) {
+
         precio = PRECIO;
         this.color = color;
         this.puntosDeDanio = DANIO_CATAPULTA;
@@ -23,23 +24,28 @@ public class Catapulta extends Danina {
 
     @Override
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
+
         this.setRangoDeAlcance(distanciaConPieza);
         ataque.atacar(this, pieza,contiguas, this.rangoDeAlcance);
     }
 
     @Override
     public void recibirVida(int vidaRecibida) {
+
     }
 
     @Override
     public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
+
     }
     @Override
     public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
+
     }
 
     @Override
     public void moverA(Posicion posicionNueva) {
+
     }
 
     @Override

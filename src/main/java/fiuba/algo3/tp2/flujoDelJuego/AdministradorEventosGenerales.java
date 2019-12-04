@@ -17,6 +17,7 @@ public class AdministradorEventosGenerales {
 
     public AdministradorEventosGenerales(){
         this.tablero = new Tablero();
+
     }
 
     public void iniciarJuego(Jugador jugadorBlanco, Jugador jugadorNegro){

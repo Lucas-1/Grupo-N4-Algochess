@@ -18,7 +18,7 @@ public class DestruccionDePiezasTest {
     public void test01SeDestuyeUnaPiezaDelJugadorYDesocupaElCasillero() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
@@ -33,7 +33,7 @@ public class DestruccionDePiezasTest {
     public void testo02SeDestruyenTodasLasUnidadesDelJugadorYPierde() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Jinete jinete = new Jinete(blanco);
 

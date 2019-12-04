@@ -20,7 +20,7 @@ public class ColocacionDePiezasTest {
     public void test01JugadorPuedeColocarPiezaEnSuTerritorio() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
@@ -33,7 +33,7 @@ public class ColocacionDePiezasTest {
     public void test02JugadorNoPuedeColocarPiezaEnTerritorioEnemigo() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Curandero curandero = new Curandero(blanco);
 
@@ -46,7 +46,7 @@ public class ColocacionDePiezasTest {
     public void test03ColocarUnaCatapultaResta5PuntosAlJugador() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Catapulta catapulta = new Catapulta(blanco);
 
@@ -61,7 +61,7 @@ public class ColocacionDePiezasTest {
     public void test04JugadorSeQuedaSinPuntosYNoPuedeAgregarCatapulta() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Catapulta catapulta = new Catapulta(blanco);
         Catapulta catapulta1 = new Catapulta(blanco);

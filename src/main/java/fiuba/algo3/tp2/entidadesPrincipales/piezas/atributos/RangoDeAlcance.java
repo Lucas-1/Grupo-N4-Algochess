@@ -12,5 +12,6 @@ public interface RangoDeAlcance {
 
     void atacar(Catapulta catapulta, Pieza receptor, ArrayList<Pieza> contiguas);
 
-    void curar(Curandero curandero, Pieza receptor);
+    void curar(Curandero curandero, Pieza receptor
+    );
 }

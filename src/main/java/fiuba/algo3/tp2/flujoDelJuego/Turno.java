@@ -14,6 +14,7 @@ public class Turno{
 
 
     Turno(){
+
     }
 
     Turno(Jugador jugadorBlanco, Jugador jugadorNegro){
@@ -37,11 +38,9 @@ public class Turno{
     public boolean turnosDeCompraCumplidos() {
         return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_DE_COMPRA);
     }
-
     public boolean turnosDeDistribucionCumplidos() {
         return (this.cantidadDeTurnosJugados >= TURNOS_DE_FASE_DE_DISTRIBUCION);
     }
-
     public boolean hayAlgunJugadorMuerto() {
         return this.turno.hayAlgunJugadorMuerto();
     }

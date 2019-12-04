@@ -10,6 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 public class PresentacionView {
 
@@ -22,14 +23,27 @@ public class PresentacionView {
         VBox presentacion = new VBox();
 
         presentacion.setAlignment(Pos.CENTER);
-        presentacion.setSpacing(75);
+        presentacion.setSpacing(50);
 
-        Text textoPresentacion = new Text("Bienvenido a AlgoChess");
-        textoPresentacion.setFill(Color.BLACK);
-        textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,64));
+        Background fondo = new Background(new BackgroundImage(new Image("bg-presentacion.jpg"),
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                new BackgroundSize(1920, 1080, false, false, false, false)));
 
-        Button comenzar = new Button("Comenzar juego");
+
+        presentacion.setBackground(fondo);
+
+
+        Text textoPresentacion = new Text("AlgoChess");
+        textoPresentacion.setFill(Color.WHITE);
+        textoPresentacion.setStroke(Color.BLACK);
+        textoPresentacion.setStrokeWidth(2);
+        textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,80));
+
+        Button comenzar = new Button("Jugar");
         comenzar.setMaxWidth(200);
+
         comenzar.setOnAction(e-> {
             stage.setMaximized(true);
             stage.setScene(scene);

@@ -11,10 +11,12 @@ public class PiezasContiguas {
     private ArrayList<Pieza> piezas;
 
     public PiezasContiguas() {
+
         piezas = new ArrayList<Pieza>();
     }
 
     public ArrayList<Pieza> obtenerPiezasContiguas(Posicion posicion, Tablero tablero) {
+
         piezas.clear();
 
         tablero.obtenerContiguos(posicion, this);
@@ -31,10 +33,12 @@ public class PiezasContiguas {
 
 
     public boolean contiene(Pieza pieza) {
+
         return piezas.contains(pieza);
     }
 
     public void agregar(Pieza pieza) {
+
         if(!this.contiene(pieza))
             piezas.add(pieza);
     }

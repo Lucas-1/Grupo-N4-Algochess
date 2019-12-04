@@ -23,8 +23,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -42,8 +42,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -62,8 +62,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -82,8 +82,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -102,7 +102,7 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorBlanco = new Jugador(blanco);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -122,8 +122,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -149,8 +149,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -168,8 +168,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -192,8 +192,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -216,8 +216,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -249,8 +249,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         Catapulta catapulta = new Catapulta(blanco);
@@ -273,8 +273,8 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Catapulta catapultaBlanca = new Catapulta(blanco);
         SoldadoDeInfanteria soldadoNegro = new SoldadoDeInfanteria(negro);
         Algochess juego = new Algochess();
@@ -297,7 +297,7 @@ public class AtaquesConCatapultaTest {
 
         Color blanco = new Blanco();
         Catapulta catapulta = new Catapulta(blanco);
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorBlanco = new Jugador(blanco);
         Tablero tablero = new Tablero();
 
         jugadorBlanco.insertarPiezaEnPosicion(catapulta,9,9,tablero);

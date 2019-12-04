@@ -15,7 +15,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test01TresSoldadosFormanBatallonYSeMuevenJuntosHaciaArriba() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -37,7 +37,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test02TresSoldadosFormanBatallonYSeMuevenJuntosHaciaAbajo() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -59,7 +59,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test03TresSoldadosFormanBatallonYSeMuevenParaLaIzquierda() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -81,7 +81,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test04TresSoldadosFormanBatallonYSeMuevenParaLaDerecha() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -103,7 +103,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test05DosSoldadosNoFormanBatallonSoloSeMueveUno() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -121,7 +121,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test06BatallonSeMueveExceptoElQueTieneLaPosicionBloqueada() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -144,7 +144,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test07BatallonSeDisuelveLuegoDeMovimientoObstruidoYSoloSeMueveUno() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -169,7 +169,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test08CuatroSoldadosContiguosSoloSeMueven3() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());
@@ -193,7 +193,7 @@ public class MovimientoDeBatallonTest {
     @Test
     public void test09BatallonNoAlineadoNoSeMueve() {
 
-        Jugador jugadorBlanco = new Jugador(new Blanco(), "benito");
+        Jugador jugadorBlanco = new Jugador(new Blanco());
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado1 = new SoldadoDeInfanteria(new Blanco());

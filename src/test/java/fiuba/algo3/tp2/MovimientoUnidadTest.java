@@ -25,7 +25,7 @@ public class MovimientoUnidadTest {
     public void test01UnidadSeMueveALaDerecha(){
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Jinete jinete = new Jinete(blanco);
 
@@ -40,7 +40,7 @@ public class MovimientoUnidadTest {
     public void test02UnidadSeMueveALaIzquierda(){
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Curandero curandero = new Curandero(blanco);
 
@@ -54,7 +54,7 @@ public class MovimientoUnidadTest {
     public void test03UnidadSeMueveHaciaArriba(){
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
@@ -68,7 +68,7 @@ public class MovimientoUnidadTest {
     public void test04UnidadSeMueveHaciaAbajo(){
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
 
@@ -82,7 +82,7 @@ public class MovimientoUnidadTest {
     public void test05UnidadNoSePuedeMoverAUnaPosicionOcupada(){
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Jinete jinete = new Jinete(blanco);
@@ -100,7 +100,7 @@ public class MovimientoUnidadTest {
     public void test06CatapultaNoSePuedeMover() {
 
         Color blanco = new Blanco();
-        Jugador jugador = new Jugador(blanco, "benito");
+        Jugador jugador = new Jugador(blanco);
         Tablero tablero = new Tablero();
         Catapulta catapulta = new Catapulta(blanco);
 
@@ -115,8 +115,8 @@ public class MovimientoUnidadTest {
     public void test07JugadorSoloPuedeMover1PiezaPorTurno(){
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         SoldadoDeInfanteria soldadoBlanco = new SoldadoDeInfanteria(blanco);
         Algochess juego = new Algochess();
 

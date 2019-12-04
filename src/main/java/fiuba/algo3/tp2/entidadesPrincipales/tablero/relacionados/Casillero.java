@@ -19,14 +19,17 @@ public class Casillero {
     }
 
     public boolean puedoAgregarla(Color unColor) {
+
         try {
             if(pieza != null)
                 throw new CasilleroEstaOcupadoException("No podes colocar una pieza en un casillero ocupado");
+
 
             if (!color.esDelMismoColor(unColor))
                 throw new CasilleroDeLadoEnemigoException("No podes colocar piezas en el lado enemigo");
 
         }   catch (CasilleroEstaOcupadoException | CasilleroDeLadoEnemigoException e) {
+
             System.out.println(e.getMessage());
             return false;
         }
@@ -35,19 +38,23 @@ public class Casillero {
     }
 
     public void agregarPieza(Pieza pieza) {
+
        if(this.puedoAgregarla(pieza.getColor()))
            this.pieza = pieza;
     }
 
     public void setPieza(Pieza pieza) {
+
         this.pieza = pieza;
     }
 
     public void borrarPieza() {
+
         pieza = null;
     }
 
     public Pieza getPieza() {
+
         if(pieza == null)
             throw  new CasilleroEstaVacioException("La posicion indicada esta vacia");
 
@@ -55,10 +62,12 @@ public class Casillero {
     }
 
     public boolean estaOcupado() {
+
         return pieza != null;
     }
 
     public void agregarPiezaAContiguos(PiezasContiguas contiguas) {
+
         if(pieza != null)
             contiguas.agregar(pieza);
     }

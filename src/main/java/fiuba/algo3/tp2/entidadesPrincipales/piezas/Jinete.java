@@ -21,6 +21,7 @@ public class Jinete extends Danina {
 
     @Override
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {
+
         this.setRangoMediaDistancia();
 
         int i = 0;
@@ -51,9 +52,11 @@ public class Jinete extends Danina {
 
     @Override
     public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
+
     }
     @Override
     public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
+
     }
 
     protected void setRangoCercano(){
@@ -65,6 +68,7 @@ public class Jinete extends Danina {
     }
 
     public void setRangoJineteCercano(Jinete jinete){
+
         if(!jinete.esDeMiEquipo(this) && jinete != this){
             jinete.setRangoCercano();
         }

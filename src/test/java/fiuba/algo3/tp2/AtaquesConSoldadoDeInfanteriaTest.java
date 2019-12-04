@@ -22,8 +22,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -43,8 +43,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -63,8 +63,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -83,8 +83,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -103,8 +103,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -131,7 +131,7 @@ public class AtaquesConSoldadoDeInfanteriaTest {
         Color blanco = new Blanco();
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
         Jinete jineteAliado = new Jinete(blanco);
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
+        Jugador jugadorBlanco = new Jugador(blanco);
         Tablero tablero = new Tablero();
 
         jugadorBlanco.insertarPiezaEnPosicion(soldado,9,9,tablero);
@@ -146,8 +146,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -169,8 +169,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -188,8 +188,8 @@ public class AtaquesConSoldadoDeInfanteriaTest {
 
         Color blanco = new Blanco();
         Color negro = new Negro();
-        Jugador jugadorBlanco = new Jugador(blanco, "benito");
-        Jugador jugadorNegro = new Jugador(negro, "martinez");
+        Jugador jugadorBlanco = new Jugador(blanco);
+        Jugador jugadorNegro = new Jugador(negro);
         Tablero tablero = new Tablero();
 
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(blanco);
@@ -206,7 +206,7 @@ public class AtaquesConSoldadoDeInfanteriaTest {
     @Test
     public void test10SoldadoAtacaPosicionVaciaNoPasaNada() {
 
-        Jugador jugador = new Jugador(new Blanco(), "benito");
+        Jugador jugador = new Jugador(new Blanco());
         SoldadoDeInfanteria soldado = new SoldadoDeInfanteria(new Blanco());
         Tablero tablero = new Tablero();
 
