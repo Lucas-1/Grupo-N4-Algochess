@@ -2,9 +2,7 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
@@ -19,13 +17,9 @@ public class Aplicacion extends Application {
         stage.setTitle("AlgoChess");
         Algochess algochess = new Algochess();
 
-        TableroView vistaTablero = new TableroView(algochess);
+        JuegoView vistaJuego = new JuegoView(algochess);
 
-        BorderPane juego = new BorderPane();
-        juego.setPadding(new Insets(25,25,25,25));
-        juego.setCenter(vistaTablero);
-
-        Scene juegoPrincipal = new Scene(juego,1920,1080);
+        Scene juegoPrincipal = new Scene(vistaJuego,1366,768);
 
         PresentacionView presentacion = new PresentacionView(stage,juegoPrincipal);
         Scene bienvenidos = new Scene(presentacion);
