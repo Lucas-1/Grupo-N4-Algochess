@@ -43,6 +43,7 @@ public class AdministradorEventosGenerales {
         faseDeJuego.actualizarInformacionJugador(this.tablero);
         faseDeJuego.pasarASiguienteTurno();
         faseDeJuego = faseDeJuego.cambiarDeFaseSiEsNecesario();
+        logger.log(Level.FINEST, "Fin del turno.");
     }
 
     public void moverPieza(Pieza pieza, Direccion direccion) {
@@ -50,7 +51,9 @@ public class AdministradorEventosGenerales {
             faseDeJuego.moverPieza(pieza, direccion, this.tablero);
         }catch (ElJuegoYaTerminoException e){
             logger.log(Level.SEVERE, e.getMessage());
+            return;
         }
+        logger.log(Level.FINEST, "Se Movió una pieza.");
     }
 
     public void atacarCon(Danina pieza, int fila, int columna) {
@@ -58,7 +61,9 @@ public class AdministradorEventosGenerales {
             faseDeJuego.atacarCon(pieza, fila, columna, this.tablero);
         }catch (ElJuegoYaTerminoException e){
             logger.log(Level.SEVERE, e.getMessage());
+            return;
         }
+        logger.log(Level.FINEST, "Se Realizó un ataque.");
     }
 
     public void curarCon(Saludable pieza, int fila, int columna) {
