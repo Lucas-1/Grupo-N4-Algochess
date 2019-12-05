@@ -26,7 +26,7 @@ public class PresentacionView extends VBox {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                new BackgroundSize(1920, 1080, false, false, false, false)));
+                new BackgroundSize(1280, 720, false, false, false, false)));
 
         this.setBackground(fondo);
 
@@ -41,8 +41,8 @@ public class PresentacionView extends VBox {
 
         comenzar.setOnAction(e-> {
 
-            stage.setMaximized(true);
-            Scene entradaNombres = new Scene(new EntradaDeNombresView(stage,scene),1920,1080);
+            stage.setFullScreen(false);
+            Scene entradaNombres = new Scene(new EntradaDeNombresView(stage,scene),1280,720);
             stage.setScene(entradaNombres);
         });
 

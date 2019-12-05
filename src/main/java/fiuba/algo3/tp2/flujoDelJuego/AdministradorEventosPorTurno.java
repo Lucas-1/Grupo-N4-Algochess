@@ -13,12 +13,19 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Saludable;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
+
 public class AdministradorEventosPorTurno {
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( AdministradorEventosPorTurno.class.getName() );
     private Turno turno;
     private Jugador jugadorConTurno;
     private LimitacionesDeJugadorPorTurno limitaciones;
 
     public AdministradorEventosPorTurno(Jugador jugadorBlanco, Jugador jugadorNegro){
+        logger.addHandler(streamHandler);
         this.turno = new Turno(jugadorBlanco, jugadorNegro);
         this.jugadorConTurno = turno.getJugadorConTurno();
         this.limitaciones = new LimitacionesDeJugadorPorTurno();
@@ -54,7 +61,7 @@ public class AdministradorEventosPorTurno {
             if(!limitaciones.puedoRealizarMovimiento())
                 throw new YaSeMovioUnaPiezaEsteTurnoException("Solo se puede mover 1 pieza por turno");
         }catch (YaSeMovioUnaPiezaEsteTurnoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
             return;
         }
 
@@ -67,7 +74,7 @@ public class AdministradorEventosPorTurno {
             if (!limitaciones.puedoRealizarAtaque())
                 throw new YaNoSePuedeAtacarEsteTurnoException("Solo se puede atacar/curar 1 vez por turno");
         }catch (YaNoSePuedeAtacarEsteTurnoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
             return;
         }
 
@@ -80,7 +87,7 @@ public class AdministradorEventosPorTurno {
             if(!limitaciones.puedoRealizarCuracion())
                 throw new YaNoSePuedeCurarEsteTurnoException("Solo se puede atacar/curar 1 vez por turno");
         }catch (YaNoSePuedeCurarEsteTurnoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
             return;
         }
 

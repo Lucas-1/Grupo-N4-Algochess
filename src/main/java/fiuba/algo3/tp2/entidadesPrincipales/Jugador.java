@@ -12,15 +12,20 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Saludable;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
 public class Jugador {
 
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( Jugador.class.getName() );
     private AdministradorDePiezas administradorDePiezas;
     private Color color;
     private String nombre;
 
     public Jugador(Color color, String nombre) {
-
+        logger.addHandler(streamHandler);
         administradorDePiezas = new AdministradorDePiezas();
         this.color = color;
         this.nombre = nombre;
@@ -57,7 +62,7 @@ public class Jugador {
             pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
 
         } catch (CasilleroEstaVacioException e ) {
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -72,7 +77,7 @@ public class Jugador {
             jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
 
         } catch (CasilleroEstaVacioException e ) {
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -87,7 +92,7 @@ public class Jugador {
         pieza.curar(receptor, distanciaEntrePiezas);
 
         } catch (CasilleroEstaVacioException e ) {
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 

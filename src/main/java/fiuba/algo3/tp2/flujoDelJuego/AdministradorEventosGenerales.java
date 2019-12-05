@@ -10,12 +10,19 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Saludable;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
+
 public class AdministradorEventosGenerales {
     /** esta clase se encarga de mandar las fases correspondientes y darles instrucciones*/
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( AdministradorEventosGenerales.class.getName() );
     private Tablero tablero;
     private FaseDeJuego faseDeJuego;
 
     public AdministradorEventosGenerales(){
+        logger.addHandler(streamHandler);
         this.tablero = new Tablero();
 
     }
@@ -28,7 +35,7 @@ public class AdministradorEventosGenerales {
         try {
             faseDeJuego.jugadorComprarPieza(pieza, fila, columna, this.tablero);
         }catch (ElJuegoYaTerminoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -42,7 +49,7 @@ public class AdministradorEventosGenerales {
         try{
             faseDeJuego.moverPieza(pieza, direccion, this.tablero);
         }catch (ElJuegoYaTerminoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -50,7 +57,7 @@ public class AdministradorEventosGenerales {
         try{
             faseDeJuego.atacarCon(pieza, fila, columna, this.tablero);
         }catch (ElJuegoYaTerminoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -58,7 +65,7 @@ public class AdministradorEventosGenerales {
         try{
             faseDeJuego.curarCon(pieza, fila, columna, this.tablero);
         }catch (ElJuegoYaTerminoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
