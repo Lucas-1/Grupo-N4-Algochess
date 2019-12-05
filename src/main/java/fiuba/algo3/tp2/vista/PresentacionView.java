@@ -1,7 +1,5 @@
 package fiuba.algo3.tp2.vista;
 
-
-import fiuba.algo3.tp2.juego.Algochess;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,18 +11,16 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-public class PresentacionView {
+public class PresentacionView extends VBox {
 
     Stage stage;
 
-    public PresentacionView(Stage stage, Scene scene, Algochess algochess){
+    public PresentacionView(Stage stage, Scene scene){
 
         this.stage = stage;
 
-        VBox presentacion = new VBox();
-
-        presentacion.setAlignment(Pos.CENTER);
-        presentacion.setSpacing(50);
+        this.setAlignment(Pos.CENTER);
+        this.setSpacing(50);
 
         Background fondo = new Background(new BackgroundImage(new Image("bg-presentacion.jpg"),
                 BackgroundRepeat.NO_REPEAT,
@@ -32,9 +28,7 @@ public class PresentacionView {
                 BackgroundPosition.DEFAULT,
                 new BackgroundSize(1920, 1080, false, false, false, false)));
 
-
-        presentacion.setBackground(fondo);
-
+        this.setBackground(fondo);
 
         Text textoPresentacion = new Text("AlgoChess");
         textoPresentacion.setFill(Color.WHITE);
@@ -48,18 +42,12 @@ public class PresentacionView {
         comenzar.setOnAction(e-> {
 
             stage.setMaximized(true);
-            Scene entradaNombres = new Scene(new EntradaDeNombresView(stage,algochess,scene));
+            Scene entradaNombres = new Scene(new EntradaDeNombresView(stage,scene),1920,1080);
             stage.setScene(entradaNombres);
         });
 
-        presentacion.getChildren().add(textoPresentacion);
-        presentacion.getChildren().add(comenzar);
-
-        Scene bienvenidos = new Scene(presentacion);
-        stage.setScene(bienvenidos);
-
-
-        stage.show();
+        this.getChildren().add(textoPresentacion);
+        this.getChildren().add(comenzar);
     }
 
 

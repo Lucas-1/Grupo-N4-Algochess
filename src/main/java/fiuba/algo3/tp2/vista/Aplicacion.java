@@ -14,21 +14,23 @@ public class Aplicacion extends Application {
         launch(args);
     }
 
-    public void start(Stage stage){
+    public void start(Stage stage) {
 
         stage.setTitle("AlgoChess");
         Algochess algochess = new Algochess();
+
         TableroView vistaTablero = new TableroView(algochess);
 
         BorderPane juego = new BorderPane();
-
-        juego.setPadding(new Insets(100,100,100,100));
+        juego.setPadding(new Insets(25,25,25,25));
         juego.setCenter(vistaTablero);
 
-        Scene juegoPrincipal = new Scene(juego);
+        Scene juegoPrincipal = new Scene(juego,1920,1080);
 
-        new PresentacionView(stage,juegoPrincipal,algochess);
+        PresentacionView presentacion = new PresentacionView(stage,juegoPrincipal);
+        Scene bienvenidos = new Scene(presentacion);
 
+        stage.setScene(bienvenidos);
         stage.setMaximized(true);
         stage.show();
     }
