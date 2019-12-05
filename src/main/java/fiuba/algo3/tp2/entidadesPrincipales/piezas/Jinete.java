@@ -16,6 +16,7 @@ public class Jinete extends Danina {
         this.color = color;
         this.puntosDeVida = new PuntosDeVida(this);
         ataque = new Ataque();
+        nombre = "Jinete";
     }
 
 
@@ -25,15 +26,15 @@ public class Jinete extends Danina {
         this.setRangoMediaDistancia();
 
         int i = 0;
-        while (i < contiguas.size()){
+        while (i < contiguas.size()) {
             contiguas.get(i).setRangoJineteCercano(this);
             i++;
         }
 
-        try{
-            if(this.esDeMiEquipo(pieza))
+        try {
+            if (this.esDeMiEquipo(pieza))
                 throw new NoPuedeAtacarPiezaDelMismoEquipo("Esa pieza es de tu equipo");
-        }catch (NoPuedeAtacarPiezaDelMismoEquipo e){
+        } catch (NoPuedeAtacarPiezaDelMismoEquipo e) {
             System.out.println(e.getMessage());
             return;
         }
@@ -42,7 +43,7 @@ public class Jinete extends Danina {
         ataque.atacar(this, pieza, this.rangoDeAlcance);
     }
 
-    public void atacar(Pieza pieza, TipoDeAtaque tipoDeAtaque){
+    public void atacar(Pieza pieza, TipoDeAtaque tipoDeAtaque) {
         tipoDeAtaque.atacar(pieza);
     }
 
@@ -54,25 +55,27 @@ public class Jinete extends Danina {
     public void unirseABatallonHorizontal(TipoDeBatallon batallon, Pieza pieza) {
 
     }
+
     @Override
     public void unirseABatallonVertical(TipoDeBatallon batallon, Pieza pieza) {
 
     }
 
-    protected void setRangoCercano(){
+    protected void setRangoCercano() {
         this.rangoDeAlcance = new RangoDeAlcanceCercano();
     }
 
-    protected void setRangoMediaDistancia(){
+    protected void setRangoMediaDistancia() {
         this.rangoDeAlcance = new RangoDeAlcanceMediaDistancia();
     }
 
-    public void setRangoJineteCercano(Jinete jinete){
+    public void setRangoJineteCercano(Jinete jinete) {
 
-        if(!jinete.esDeMiEquipo(this) && jinete != this){
+        if (!jinete.esDeMiEquipo(this) && jinete != this) {
             jinete.setRangoCercano();
         }
     }
+
 
 }
 

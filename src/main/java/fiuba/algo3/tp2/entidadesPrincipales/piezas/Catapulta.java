@@ -20,6 +20,7 @@ public class Catapulta extends Danina {
         this.puntosDeDanio = DANIO_CATAPULTA;
         puntosDeVida = new PuntosDeVida(this);
         ataque = new Ataque();
+        nombre = "Catapulta";
     }
 
     @Override

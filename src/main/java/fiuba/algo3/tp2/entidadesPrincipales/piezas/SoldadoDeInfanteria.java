@@ -20,6 +20,7 @@ public class SoldadoDeInfanteria extends Danina {
         this.puntosDeDanio = DANIO_SOLDADO;
         puntosDeVida = new PuntosDeVida(this);
         ataque = new Ataque();
+        nombre = "Soldado";
     }
 
     public void atacar(Pieza pieza, int distanciaConPieza, ArrayList<Pieza> contiguas) {

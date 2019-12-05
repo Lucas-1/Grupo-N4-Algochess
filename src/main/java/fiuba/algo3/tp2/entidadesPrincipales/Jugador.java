@@ -111,4 +111,10 @@ public class Jugador {
 
         return administradorDePiezas.getPuntosDeCompraDisponibles();
     }
+
+    public String getNombre(){
+        return this.nombre;
+    }
+
+
 }

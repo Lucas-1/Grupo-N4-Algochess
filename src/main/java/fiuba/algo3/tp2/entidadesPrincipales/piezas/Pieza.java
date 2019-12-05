@@ -17,6 +17,7 @@ public abstract class Pieza {
     protected RangoDeAlcance rangoDeAlcance;
     protected int precio;
     protected Posicion posicion;
+    protected String nombre;
 
     public void setRangoDeAlcance(int distanciaConPieza) {
         if(distanciaConPieza <= LIMITE_DISTANCIA_CERCA) {
@@ -101,5 +102,9 @@ public abstract class Pieza {
 
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
+    }
+
+    public String getNombre(){
+        return this.nombre;
     }
 }
