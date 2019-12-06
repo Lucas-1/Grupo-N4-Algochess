@@ -6,12 +6,18 @@ import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.NoPuedeAtacarPiezaDelMismoEquipo;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
 public class Jinete extends Danina {
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( Jinete.class.getName() );
 
     private static final int PRECIO = 3;
 
     public Jinete(Color color) {
+        logger.addHandler(streamHandler);
         this.precio = PRECIO;
         this.color = color;
         this.puntosDeVida = new PuntosDeVida(this);
@@ -34,8 +40,8 @@ public class Jinete extends Danina {
         try {
             if (this.esDeMiEquipo(pieza))
                 throw new NoPuedeAtacarPiezaDelMismoEquipo("Esa pieza es de tu equipo");
-        } catch (NoPuedeAtacarPiezaDelMismoEquipo e) {
-            System.out.println(e.getMessage());
+        }catch (NoPuedeAtacarPiezaDelMismoEquipo e){
+            logger.log(Level.SEVERE, e.getMessage());
             return;
         }
 
@@ -69,13 +75,11 @@ public class Jinete extends Danina {
         this.rangoDeAlcance = new RangoDeAlcanceMediaDistancia();
     }
 
-    public void setRangoJineteCercano(Jinete jinete) {
-
-        if (!jinete.esDeMiEquipo(this) && jinete != this) {
+    public void setRangoJineteCercano(Jinete jinete){
+        if(!jinete.esDeMiEquipo(this) && jinete != this){
             jinete.setRangoCercano();
         }
     }
-
 
 }
 

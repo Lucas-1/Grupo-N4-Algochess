@@ -4,14 +4,21 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Saludable;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
-import fiuba.algo3.tp2.excepciones.NoSePuedeRealizarEstaAccionEnLaFaseDeCompraException;
 import fiuba.algo3.tp2.excepciones.NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException;
+import fiuba.algo3.tp2.flujoDelJuego.AdministradorEventosGenerales;
 import fiuba.algo3.tp2.flujoDelJuego.AdministradorEventosPorTurno;
 import fiuba.algo3.tp2.movimiento.Direccion;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
+
 public class FaseDeDistribucion extends FaseDeJuego {
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( FaseDeDistribucion.class.getName() );
 
     public FaseDeDistribucion(AdministradorEventosPorTurno administradorEventosPorTurno){
+        logger.addHandler(streamHandler);
         this.administradorEventosPorTurno = administradorEventosPorTurno;
     }
 
@@ -31,7 +38,7 @@ public class FaseDeDistribucion extends FaseDeJuego {
         try{
             throw new NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException("No podes mover piezas en la fase de distribucion, proba acomodando la pieza");
         }catch (NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -40,7 +47,7 @@ public class FaseDeDistribucion extends FaseDeJuego {
         try{
             throw new NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException("No podes atacar en la fase de distribucion");
         }catch (NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -49,7 +56,7 @@ public class FaseDeDistribucion extends FaseDeJuego {
         try{
             throw new NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException("No podes curar piezas en la fase de distribucion");
         }catch (NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -63,7 +70,7 @@ public class FaseDeDistribucion extends FaseDeJuego {
         try{
             throw new NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException("No podes comprar piezas en la fase de distribucion");
         }catch (NoSePuedeRealizarEstaAccionEnLaFaseDeDistribucionException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 }

@@ -7,13 +7,18 @@ import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
 
-public class Casillero {
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
+public class Casillero {
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( Casillero.class.getName() );
     private Color color;
     private Pieza pieza;
 
     public Casillero(Color color) {
-
+        logger.addHandler(streamHandler);
         this.color = color;
         pieza = null;
     }
@@ -29,8 +34,7 @@ public class Casillero {
                 throw new CasilleroDeLadoEnemigoException("No podes colocar piezas en el lado enemigo");
 
         }   catch (CasilleroEstaOcupadoException | CasilleroDeLadoEnemigoException e) {
-
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
             return false;
         }
 

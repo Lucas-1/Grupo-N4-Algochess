@@ -12,9 +12,15 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.batallon.Batallon;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
 
 
 public class AdministradorDePiezas {
+
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( AdministradorDePiezas.class.getName() );
 
     private final int CANTIDAD_DINERO_INICIAL = 20;
 
@@ -26,7 +32,7 @@ public class AdministradorDePiezas {
 
 
     public AdministradorDePiezas() {
-
+        logger.addHandler(streamHandler);
         piezas = new ArrayList<Pieza>();
         piezasContiguas = new PiezasContiguas();
         batallon = new Batallon();
@@ -51,7 +57,7 @@ public class AdministradorDePiezas {
         try{
             piezaComprada = tienda.comprarPieza(pieza, billetera);
         }catch (JugadorQuiereUtilizarMasDineroDelDisponibleException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
             return;
         }
         tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);

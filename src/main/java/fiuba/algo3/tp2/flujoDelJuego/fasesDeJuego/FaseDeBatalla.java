@@ -3,16 +3,24 @@ package fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.NoSePuedeComprarPiezasEnFaseDeBatallaException;
 import fiuba.algo3.tp2.excepciones.NoSePuedenAcomodarPiezasEnEstaFaseDelJuegoException;
+import fiuba.algo3.tp2.flujoDelJuego.AdministradorEventosGenerales;
 import fiuba.algo3.tp2.flujoDelJuego.AdministradorEventosPorTurno;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Saludable;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
+
 public class FaseDeBatalla extends FaseDeJuego{
+    private StreamHandler streamHandler = new StreamHandler();
+    private static final Logger logger = Logger.getLogger( FaseDeBatalla.class.getName() );
 
 
     public FaseDeBatalla(AdministradorEventosPorTurno administradorEventosPorTurno) {
+        logger.addHandler(streamHandler);
         this.administradorEventosPorTurno = administradorEventosPorTurno;
     }
     @Override
@@ -20,7 +28,7 @@ public class FaseDeBatalla extends FaseDeJuego{
         try{
             throw new NoSePuedeComprarPiezasEnFaseDeBatallaException("La fase inicial ya termino");
         }catch (NoSePuedeComprarPiezasEnFaseDeBatallaException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 
@@ -56,7 +64,7 @@ public class FaseDeBatalla extends FaseDeJuego{
         try{
             throw new NoSePuedenAcomodarPiezasEnEstaFaseDelJuegoException("No te encontras en fase de distribucion");
         }catch (NoSePuedenAcomodarPiezasEnEstaFaseDelJuegoException e){
-            System.out.println(e.getMessage());
+            logger.log(Level.SEVERE, e.getMessage());
         }
     }
 }

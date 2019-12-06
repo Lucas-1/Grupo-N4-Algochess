@@ -33,6 +33,9 @@ build
 bin
 libs
 
+# Jar
+src/main/resources/META-INF
+
 # Otros
 out/*
 README.md
