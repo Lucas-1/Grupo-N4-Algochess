@@ -73,6 +73,8 @@ public class PresentacionView extends VBox {
 
         comenzar.setOnAction(e-> {
             if(entradaBlanco.getText() != null && entradaNegro.getText() != null) {
+                algochess.cargarNombreBlanco(entradaBlanco.getText());
+                algochess.cargarNombreNegro(entradaNegro.getText());
                 stage.setMaximized(true);
                 stage.setScene(scene);
             }
