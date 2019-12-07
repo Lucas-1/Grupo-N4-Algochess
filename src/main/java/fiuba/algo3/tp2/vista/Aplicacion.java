@@ -20,7 +20,7 @@ public class Aplicacion extends Application {
         JuegoView vistaJuego = new JuegoView(algochess);
         Scene juegoPrincipal = new Scene(vistaJuego);
 
-        PresentacionView presentacion = new PresentacionView(stage,juegoPrincipal);
+        PresentacionView presentacion = new PresentacionView(algochess,stage,juegoPrincipal);
         Scene bienvenidos = new Scene(presentacion);
 
         stage.setScene(bienvenidos);

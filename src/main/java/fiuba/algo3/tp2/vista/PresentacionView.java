@@ -1,8 +1,11 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.juego.Algochess;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -11,14 +14,16 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
+
 public class PresentacionView extends VBox {
 
     Stage stage;
+    Algochess juego;
 
-    public PresentacionView(Stage stage, Scene scene){
+    public PresentacionView(Algochess algochess,Stage stage, Scene scene){
 
         this.stage = stage;
-
+        juego = algochess;
         this.setAlignment(Pos.CENTER);
         this.setSpacing(50);
 
@@ -36,17 +41,38 @@ public class PresentacionView extends VBox {
         textoPresentacion.setStrokeWidth(2);
         textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,80));
 
-        Button comenzar = new Button("Jugar");
+        HBox elementosNegro = new HBox();
+        elementosNegro.setAlignment(Pos.CENTER);
+        elementosNegro.setSpacing(100);
+
+        Label mensajeNegro = new Label("Jugador negro:");
+        TextField entradaNegro = new TextField();
+
+        elementosNegro.getChildren().addAll(mensajeNegro, entradaNegro);
+
+        HBox elementosBlanco = new HBox();
+        elementosBlanco.setAlignment(Pos.CENTER);
+        elementosBlanco.setSpacing(100);
+
+        Label mensaje = new Label("Jugador blanco:");
+        TextField entradaBlanco = new TextField();
+
+        elementosBlanco.getChildren().addAll(mensaje, entradaBlanco);
+
+
+        Button comenzar = new Button("Jugar!");
         comenzar.setMaxWidth(200);
 
         comenzar.setOnAction(e-> {
-
-            stage.setMaximized(true);
-            Scene entradaNombres = new Scene(new EntradaDeNombresView(stage,scene),1366,768);
-            stage.setScene(entradaNombres);
+            if(entradaBlanco.getText() != null && entradaNegro.getText() != null) {
+                stage.setMaximized(true);
+                stage.setScene(scene);
+            }
         });
 
         this.getChildren().add(textoPresentacion);
+        this.getChildren().add(elementosBlanco);
+        this.getChildren().add(elementosNegro);
         this.getChildren().add(comenzar);
     }
 
