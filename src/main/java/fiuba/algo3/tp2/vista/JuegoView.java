@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
 public class JuegoView extends Group {
+
     private BorderPane interfaz;
     private Algochess algochess;
     private TableroView vistaTablero;
@@ -18,6 +19,7 @@ public class JuegoView extends Group {
     private TextField consola;
 
     public JuegoView(Algochess algochess){
+
         this.algochess = algochess;
         interfaz = new BorderPane();
         vistaTablero = new TableroView(algochess);

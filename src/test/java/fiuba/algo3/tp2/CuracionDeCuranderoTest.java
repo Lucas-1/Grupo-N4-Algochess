@@ -124,6 +124,7 @@ public class CuracionDeCuranderoTest {
         assertEquals(30, catapultaAliada.getPuntosDeVida());
     }
 
+    /*
     @Test
     public void test05JugadorSoloPuedeCurarCon1PiezaPorTurno() {
 
@@ -154,7 +155,7 @@ public class CuracionDeCuranderoTest {
         juego.curarCon(curanderoBlanco, 3, 3);
 
         assertEquals(soldadoBlanco.getPuntosDeVida(), 75);
-    }
+    }*/
 
     @Test
     public void test06CuranderoCuraPosicionVaciaNoPasaNada() {
