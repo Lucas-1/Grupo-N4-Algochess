@@ -9,14 +9,13 @@ import fiuba.algo3.tp2.vista.handlers.BotonDerechaEventHandler;
 import fiuba.algo3.tp2.vista.handlers.BotonIzquierdaEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 
-public class ControlesView extends Group {
+public class ControlesView extends VBox {
 
     Jugador jugador;
     VBox controles;
@@ -62,10 +61,11 @@ public class ControlesView extends Group {
         mando.setPrefHeight(150);
         mando.getChildren().addAll(botonAbajo,botonArriba,botonAtacar,botonDerecha,botonIzquierda);
 
-        controles.setSpacing(10);
+        controles.setSpacing(50);
         controles.getChildren().add(nombre);
         controles.getChildren().add(piezaActual);
         controles.getChildren().add(mando);
+        this.setPrefWidth(363);
         this.getChildren().add(controles);
     }
 

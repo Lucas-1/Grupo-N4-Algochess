@@ -18,13 +18,13 @@ public class Aplicacion extends Application {
         Algochess algochess = new Algochess();
 
         JuegoView vistaJuego = new JuegoView(algochess);
-        Scene juegoPrincipal = new Scene(vistaJuego,1280,720);
+        Scene juegoPrincipal = new Scene(vistaJuego);
 
         PresentacionView presentacion = new PresentacionView(stage,juegoPrincipal);
-        Scene bienvenidos = new Scene(presentacion, 1280, 720);
+        Scene bienvenidos = new Scene(presentacion);
 
         stage.setScene(bienvenidos);
-        stage.setFullScreen(false);
+        stage.setMaximized(true);
         stage.show();
     }
 }

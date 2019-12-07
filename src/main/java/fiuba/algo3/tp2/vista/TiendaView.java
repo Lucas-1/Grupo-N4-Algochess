@@ -29,12 +29,11 @@ public class TiendaView extends Group {
     }
 
     private void delimitarTamanioDelContenedor() {
-        this.vistaTienda.setMaxWidth(200);
-        this.vistaTienda.setMinHeight(800);
+        this.vistaTienda.setPrefWidth(363);
         this.vistaTienda.setAlignment(Pos.CENTER);
         this.vistaTienda.setGridLinesVisible(true);
         this.vistaTienda.setVgap(50);
-        this.vistaTienda.setPadding(new Insets(0,5,0,5));
+        this.vistaTienda.setPadding(new Insets(50,5,0,5));
     }
 
 
@@ -48,11 +47,6 @@ public class TiendaView extends Group {
 
         tiendaIcono.setFitWidth(75);
         tiendaIcono.setFitHeight(75);
-
-
-
-
-
 
         this.vistaTienda.add(tiendaIcono, 0,0);
         this.vistaTienda.add(soldado, 0, 1);

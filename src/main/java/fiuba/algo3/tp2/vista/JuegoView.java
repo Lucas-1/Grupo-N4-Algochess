@@ -1,13 +1,11 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.juego.Algochess;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 
 public class JuegoView extends Group {
     private BorderPane interfaz;
@@ -17,24 +15,24 @@ public class JuegoView extends Group {
     private ControlesView controlesBlanco;
     private ControlesView controlesNegro;
     private MenuBar menuBar;
-    private TextArea consola;
+    private TextField consola;
 
     public JuegoView(Algochess algochess){
         this.algochess = algochess;
         interfaz = new BorderPane();
-        controlesBlanco = new ControlesView(algochess);
-        controlesNegro = new ControlesView(algochess);
         vistaTablero = new TableroView(algochess);
         vistaTienda = new TiendaView();
+        controlesBlanco = new ControlesView(this.algochess);
+        controlesNegro = new ControlesView(this.algochess);
         menuBar = new MenuBar();
-        consola = new TextArea();
+        consola = new TextField();
+        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-tienda.jpg"), BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        interfaz.setBackground(new Background(imagenDeFondo));
 
 
         interfaz.setCenter(vistaTablero);
-        interfaz.setPadding(Insets.EMPTY);
         interfaz.setLeft(controlesBlanco);
         interfaz.setRight(vistaTienda);
-        interfaz.setTop(menuBar);
         interfaz.setBottom(consola);
 
 

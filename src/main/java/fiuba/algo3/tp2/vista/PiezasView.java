@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class PiezasView  {
@@ -19,21 +20,21 @@ public class PiezasView  {
         this.soldadoImagen = new ImageView(new Image("file:src/recursos/soldadoPlaceholder.png"));
     }
 
-    public void dibujar(Pieza pieza, StackPane casillero){
+    public void dibujar(Pieza pieza, Pane casillero){
 
     }
 
-    public void dibujar(Jinete jinete,StackPane casillero){
+    public void dibujar(Jinete jinete,Pane casillero){
 
         casillero.getChildren().add(this.jineteImagen);
     }
 
-    public void dibujar(Catapulta catapulta,StackPane casillero) {
+    public void dibujar(Catapulta catapulta,Pane casillero) {
 
         casillero.getChildren().add(this.catapultaImagen);
     }
 
-    public void dibujar(Curandero curandero,StackPane casillero){
+    public void dibujar(Curandero curandero, Pane casillero){
 
         casillero.getChildren().add(this.curanderoImagen);
     }

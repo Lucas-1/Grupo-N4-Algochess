@@ -35,6 +35,7 @@ libs
 
 # Jar
 src/main/resources/META-INF
+src/main/resources/META-INF/*
 
 # Otros
 out/*

@@ -32,13 +32,13 @@ public class Jinete extends Danina {
         this.setRangoMediaDistancia();
 
         int i = 0;
-        while (i < contiguas.size()) {
+        while (i < contiguas.size()){
             contiguas.get(i).setRangoJineteCercano(this);
             i++;
         }
 
-        try {
-            if (this.esDeMiEquipo(pieza))
+        try{
+            if(this.esDeMiEquipo(pieza))
                 throw new NoPuedeAtacarPiezaDelMismoEquipo("Esa pieza es de tu equipo");
         }catch (NoPuedeAtacarPiezaDelMismoEquipo e){
             logger.log(Level.SEVERE, e.getMessage());
@@ -49,7 +49,7 @@ public class Jinete extends Danina {
         ataque.atacar(this, pieza, this.rangoDeAlcance);
     }
 
-    public void atacar(Pieza pieza, TipoDeAtaque tipoDeAtaque) {
+    public void atacar(Pieza pieza, TipoDeAtaque tipoDeAtaque){
         tipoDeAtaque.atacar(pieza);
     }
 
