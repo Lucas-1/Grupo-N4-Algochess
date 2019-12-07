@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
 
 public class FasesDeJuegoTest {
 
-
+    /*
     @Test
-    public void test01JugadorBlancoPuedeComprarPiezasEnLaFaseDeCompra(){
+    public void test01JugadorBlancoPuedeComprarPiezasEnLaFaseDeCompra() {
         Color blanco = new Blanco();
         Color negro = new Negro();
         Jugador jugadorBlanco = new Jugador(blanco);
@@ -275,6 +275,6 @@ public class FasesDeJuegoTest {
         juego.acomodarPieza(soldadoNegro,16,16);
 
         assertFalse(juego.casilleroOcupado(18,18));
-    }
+    }*/
 
 }

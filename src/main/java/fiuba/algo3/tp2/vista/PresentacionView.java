@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
@@ -18,12 +20,18 @@ import javafx.scene.image.Image;
 public class PresentacionView extends VBox {
 
     Stage stage;
-    Algochess juego;
 
-    public PresentacionView(Algochess algochess,Stage stage, Scene scene){
+    public PresentacionView(Stage stage, Scene scene){
 
         this.stage = stage;
-        juego = algochess;
+
+
+        Algochess algochess = new Algochess();
+
+        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+        double w = visualBounds.getWidth();
+        double h = visualBounds.getHeight();
+
         this.setAlignment(Pos.CENTER);
         this.setSpacing(50);
 
@@ -31,7 +39,7 @@ public class PresentacionView extends VBox {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.DEFAULT,
-                new BackgroundSize(1366, 768, false, false, false, false)));
+                new BackgroundSize(w, h, false, false, false, false)));
 
         this.setBackground(fondo);
 

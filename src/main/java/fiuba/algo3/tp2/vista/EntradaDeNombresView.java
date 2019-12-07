@@ -15,7 +15,7 @@ public class EntradaDeNombresView extends VBox {
 
     private Stage stage;
 
-    public EntradaDeNombresView(Stage stage, Scene juego) {
+    public EntradaDeNombresView(Stage stage, Scene juego, Algochess algochess) {
 
         this.stage = stage;
         this.setAlignment(Pos.CENTER);
@@ -35,8 +35,9 @@ public class EntradaDeNombresView extends VBox {
 
         enviarNegro.setOnAction(e -> {
 
-            System.out.println("Nombre negro: " + entrada.getText());
-            // algochess.cargarNombreNegro(nombreNegro);
+            String nombreNegro = entrada.getText();
+            System.out.println("Nombre negro: " + nombreNegro);
+            algochess.cargarNombreNegro(nombreNegro);
 
             mensaje.setText("Ingrese el nombre del jugador blanco:");
 
@@ -46,8 +47,9 @@ public class EntradaDeNombresView extends VBox {
 
             enviarBlanco.setOnAction(ee -> {
 
-                System.out.println("Nombre blanco: " + entrada.getText());
-                // algochess.cargarNombreBlanco(nombreBlanco);
+                String nombreBlanco = entrada.getText();
+                System.out.println("Nombre blanco: " + nombreBlanco);
+                algochess.cargarNombreBlanco(nombreBlanco);
                 stage.setScene(juego);
             });
 

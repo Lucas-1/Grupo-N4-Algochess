@@ -268,6 +268,7 @@ public class AtaquesConCatapultaTest {
         assertEquals(80,soldado.getPuntosDeVida());
     }
 
+    /*
     @Test
     public void test12JugadorSoloPuedeAtacarCon1PiezaPorTurno() {
 
@@ -290,7 +291,7 @@ public class AtaquesConCatapultaTest {
         juego.atacarCon(catapultaBlanca, 14,14);
 
         assertEquals(80, soldadoNegro.getPuntosDeVida());
-    }
+    }*/
 
     @Test
     public void test13CatapultaAtacaCasilleroVacioNoPasaNada() {
