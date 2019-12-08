@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.juego.Algochess;
+import fiuba.algo3.tp2.vista.handlers.BotonJugarEventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
@@ -73,14 +74,9 @@ public class PresentacionView extends VBox {
         Button comenzar = new Button("Jugar!");
         comenzar.setMaxWidth(200);
 
-        comenzar.setOnAction(e-> {
-            if(entradaBlanco.getText() != null && entradaNegro.getText() != null) {
-                algochess.cargarNombreBlanco(entradaBlanco.getText());
-                algochess.cargarNombreNegro(entradaNegro.getText());
-                stage.setMaximized(true);
-                stage.setScene(scene);
-            }
-        });
+        BotonJugarEventHandler botonJugar = new BotonJugarEventHandler(algochess,entradaBlanco,entradaNegro,stage,scene);
+        comenzar.setOnAction(botonJugar);
+
         this.getChildren().add(textoPresentacion);
         this.getChildren().add(elementosBlanco);
         this.getChildren().add(elementosNegro);
