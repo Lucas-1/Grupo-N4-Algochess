@@ -26,8 +26,8 @@ public class PresentacionView extends VBox {
 
         this.stage = stage;
 
-
         Algochess algochess = new Algochess();
+
 
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
         double w = visualBounds.getWidth();
