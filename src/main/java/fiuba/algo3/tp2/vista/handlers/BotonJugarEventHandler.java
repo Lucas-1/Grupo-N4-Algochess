@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCombination;
 import javafx.stage.Stage;
 
 
@@ -56,7 +57,8 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
             algochess.cargarNombreNegro(nombreNegro);
 
             stage.setScene(escenaJuego);
-            stage.setMaximized(true);
+            stage.setFullScreenExitHint("");
+            stage.setFullScreen(true);
         }
 
     }
