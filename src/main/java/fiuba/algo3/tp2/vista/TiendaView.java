@@ -37,8 +37,11 @@ public class TiendaView extends Group {
         ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop-open.png", 200, 200, false, false));
         ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado.png", 200, 200, false, false));
         ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete.png", 200, 200, false, false));
-        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero.png", 200, 200, false, false));
+        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero.png"));
         ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta.png", 200, 200, false, false));
+
+        curandero.setFitWidth(200);
+        curandero.setFitHeight(200);
 
         tiendaIcono.setFitWidth(100);
         tiendaIcono.setFitHeight(100);

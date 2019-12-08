@@ -28,11 +28,6 @@ public class PresentacionView extends VBox {
 
         Algochess algochess = new Algochess();
 
-
-        Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-        double w = visualBounds.getWidth();
-        double h = visualBounds.getHeight();
-
         this.setAlignment(Pos.CENTER);
         this.setSpacing(50);
 
