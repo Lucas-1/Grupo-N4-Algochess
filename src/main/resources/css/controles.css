@@ -1,7 +1,12 @@
+.text{
+    -fx-stroke: #000;
+    -fx-stroke-width: 1px;
+}
+
 .label {
     -fx-font-size: 30px;
     -fx-text-fill: -fx-text-inner-color;
-    -fx-text-inner-color: #ff8000;
+    -fx-text-inner-color: #ffffff;
     -fx-border-style: hidden hidden solid hidden;
     -fx-border-width: 3;
     -fx-border-color: #ff8000;
@@ -10,10 +15,10 @@
 
 #jugador-label{
     -fx-border-style: hidden hidden hidden hidden;
-    -fx-text-inner-color: #5eff00;
+    -fx-text-inner-color: #8fff7b;
 }
 
 #pieza-label{
     -fx-border-style: hidden hidden hidden hidden;
-    -fx-text-inner-color: #00aeff;
+    -fx-text-inner-color: #ddbb96;
 }
