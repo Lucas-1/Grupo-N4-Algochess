@@ -24,7 +24,8 @@ public class Aplicacion extends Application {
         Scene bienvenidos = new Scene(presentacion);
 
         bienvenidos.getStylesheets().add("css/presentacion.css");
-        stage.setMaximized(true);
+        stage.setFullScreenExitHint("");
+        stage.setFullScreen(true);
         stage.setScene(bienvenidos);
         stage.show();
     }

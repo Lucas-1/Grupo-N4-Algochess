@@ -39,8 +39,8 @@ public class PresentacionView extends VBox {
         Background fondo = new Background(new BackgroundImage(new Image("bg-presentacion.jpg"),
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.DEFAULT,
-                new BackgroundSize(w, h, false, false, false, false)));
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT));
 
         this.setBackground(fondo);
 
