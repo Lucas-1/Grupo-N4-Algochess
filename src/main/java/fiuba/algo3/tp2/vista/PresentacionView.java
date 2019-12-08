@@ -43,27 +43,29 @@ public class PresentacionView extends VBox {
 
         this.setBackground(fondo);
 
-        Text textoPresentacion = new Text("AlgoChess");
-        textoPresentacion.setFill(Color.WHITE);
+        Text textoPresentacion = new Text("AlgoChess !");
+        textoPresentacion.setFill(Color.LAVENDER);
         textoPresentacion.setStroke(Color.BLACK);
         textoPresentacion.setStrokeWidth(2);
-        textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,80));
+        textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,120));
 
         HBox elementosNegro = new HBox();
         elementosNegro.setAlignment(Pos.CENTER);
-        elementosNegro.setSpacing(100);
+        elementosNegro.setSpacing(50);
 
         Label mensajeNegro = new Label("Jugador negro:");
         TextField entradaNegro = new TextField();
+        entradaNegro.setPromptText("escriba un nombre");
 
         elementosNegro.getChildren().addAll(mensajeNegro, entradaNegro);
 
         HBox elementosBlanco = new HBox();
         elementosBlanco.setAlignment(Pos.CENTER);
-        elementosBlanco.setSpacing(100);
+        elementosBlanco.setSpacing(50);
 
         Label mensaje = new Label("Jugador blanco:");
         TextField entradaBlanco = new TextField();
+        entradaBlanco.setPromptText("escriba un nombre");
 
         elementosBlanco.getChildren().addAll(mensaje, entradaBlanco);
 
@@ -79,12 +81,9 @@ public class PresentacionView extends VBox {
                 stage.setScene(scene);
             }
         });
-
         this.getChildren().add(textoPresentacion);
         this.getChildren().add(elementosBlanco);
         this.getChildren().add(elementosNegro);
         this.getChildren().add(comenzar);
     }
-
-
 }

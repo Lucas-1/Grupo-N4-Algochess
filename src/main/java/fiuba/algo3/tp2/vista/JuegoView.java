@@ -28,7 +28,7 @@ public class JuegoView extends Group {
         controlesNegro = new ControlesView(this.algochess);
         menuBar = new MenuBar();
         consola = new TextField();
-        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-tienda.jpg"), BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         interfaz.setBackground(new Background(imagenDeFondo));
 
 

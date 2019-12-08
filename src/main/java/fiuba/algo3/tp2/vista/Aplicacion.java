@@ -23,8 +23,9 @@ public class Aplicacion extends Application {
         PresentacionView presentacion = new PresentacionView(stage,juegoPrincipal);
         Scene bienvenidos = new Scene(presentacion);
 
-        stage.setScene(bienvenidos);
+        bienvenidos.getStylesheets().add("css/presentacion.css");
         stage.setMaximized(true);
+        stage.setScene(bienvenidos);
         stage.show();
     }
 }

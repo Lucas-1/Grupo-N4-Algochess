@@ -20,7 +20,7 @@ public class TiendaView extends Group {
     public TiendaView() {
         this.vistaTienda = new GridPane();
         this.delimitarTamanioDelContenedor();
-        this.agregarTexturaContenedor();
+        //this.agregarTexturaContenedor();
         this.llenarContenedor();
         this.addView(vistaTienda);
     }
@@ -57,11 +57,11 @@ public class TiendaView extends Group {
         this.habilitarMoverPiezaAlTablero();
     }
 
-    private void agregarTexturaContenedor() {
-        Image textura = new Image("file:src/main/resources/bg-tienda.jpg");
+    /*private void agregarTexturaContenedor() {
+        Image textura = new Image("file:src/main/resources/bg-madera.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(textura, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.vistaTienda.setBackground(new Background(imagenDeFondo));
-    }
+    }*/
 
     private void habilitarMoverPiezaAlTablero() {
         Image soldado = new Image("file:src/main/resources/soldadoPlaceholder.png");

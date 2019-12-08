@@ -26,7 +26,7 @@ public class Jugador {
 
     public Jugador(Color color, String nombre) {
         logger.addHandler(streamHandler);
-        administradorDePiezas = new AdministradorDePiezas();
+        this.administradorDePiezas = new AdministradorDePiezas();
         this.color = color;
         this.nombre = nombre;
     }
