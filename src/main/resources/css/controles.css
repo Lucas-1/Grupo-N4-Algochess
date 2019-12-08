@@ -1,0 +1,19 @@
+.label {
+    -fx-font-size: 30px;
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-text-inner-color: #ff8000;
+    -fx-border-style: hidden hidden solid hidden;
+    -fx-border-width: 3;
+    -fx-border-color: #ff8000;
+    -fx-font-weight: 800;
+}
+
+#jugador-label{
+    -fx-border-style: hidden hidden hidden hidden;
+    -fx-text-inner-color: #5eff00;
+}
+
+#pieza-label{
+    -fx-border-style: hidden hidden hidden hidden;
+    -fx-text-inner-color: #00aeff;
+}

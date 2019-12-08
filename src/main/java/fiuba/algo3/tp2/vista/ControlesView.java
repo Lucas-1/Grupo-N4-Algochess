@@ -10,6 +10,10 @@ import fiuba.algo3.tp2.vista.handlers.BotonIzquierdaEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -19,8 +23,8 @@ public class ControlesView extends VBox {
 
     Jugador jugador;
     VBox controles;
-    Text nombre;
-    Text piezaActual;
+    Label nombre;
+    Label piezaActual;
     BotonArribaEventHandler botonArribaEventHandler;
     BotonAbajoEventHandler botonAbajoEventHandler;
     BotonDerechaEventHandler botonDerechaEventHandler;
@@ -28,13 +32,39 @@ public class ControlesView extends VBox {
 
     public ControlesView(Algochess algochess){
         controles = new VBox();
-        nombre = new Text("Jugador: ");
-        piezaActual = new Text("Pieza: ");
-        Button botonArriba = new Button("Arriba");
-        Button botonAbajo = new Button("Abajo");
-        Button botonDerecha = new Button("Derecha") ;
-        Button botonIzquierda = new Button("Izquierda");
-        Button botonAtacar = new Button("Atacar!");
+        HBox boxJugador = new HBox();
+        HBox boxPieza = new HBox();
+        nombre = new Label("Turno de: ");
+        piezaActual = new Label("Pieza seleccionada: ");
+
+        Label nombreJugadorConTurno = new Label("pepe");
+        Label nombrePiezaSeleccionada = new Label("jinete");
+
+        nombreJugadorConTurno.setId("jugador-label");
+        nombrePiezaSeleccionada.setId("pieza-label");
+
+        Button botonArriba = new Button();
+        Button botonAbajo = new Button();
+        Button botonDerecha = new Button() ;
+        Button botonIzquierda = new Button();
+        Button botonAtacar = new Button();
+
+        controles.getStylesheets().add("css/controles.css");
+
+        Image flechaIzquierda = new Image("file:src/main/resources/ic-arrow-left.png", 80, 80, false, false);
+        Image flechaDerecha = new Image("file:src/main/resources/ic-arrow-right.png", 80,80,false,false);
+        Image flechaArriba = new Image("file:src/main/resources/ic-arrow-up.png", 80,80,false,false);
+        Image flechaAbajo = new Image("file:src/main/resources/ic-arrow-down.png", 80,80,false,false);
+        Image espadasCruzadas = new Image("file:src/main/resources/ic-swords.png", 80,80,false,false);
+
+
+
+        botonIzquierda.setGraphic(new ImageView(flechaIzquierda));
+        botonDerecha.setGraphic(new ImageView(flechaDerecha));
+        botonArriba.setGraphic(new ImageView(flechaArriba));
+        botonAbajo.setGraphic(new ImageView(flechaAbajo));
+        botonAtacar.setGraphic(new ImageView(espadasCruzadas));
+
 
         botonArribaEventHandler = new BotonArribaEventHandler(algochess);
         botonAbajoEventHandler = new BotonAbajoEventHandler(algochess);
@@ -58,12 +88,14 @@ public class ControlesView extends VBox {
         mando.setMargin(botonAbajo, new Insets(0, 0, 10, 0));
         mando.setMargin(botonIzquierda, new Insets(0, 0, 0, 10));
         mando.setPrefWidth(250);
-        mando.setPrefHeight(150);
+        mando.setPrefHeight(350);
         mando.getChildren().addAll(botonAbajo,botonArriba,botonAtacar,botonDerecha,botonIzquierda);
 
         controles.setSpacing(50);
-        controles.getChildren().add(nombre);
-        controles.getChildren().add(piezaActual);
+        boxJugador.getChildren().addAll(nombre, nombreJugadorConTurno);
+        controles.getChildren().add(boxJugador);
+        boxPieza.getChildren().addAll(piezaActual, nombrePiezaSeleccionada);
+        controles.getChildren().add(boxPieza);
         controles.getChildren().add(mando);
         this.setPrefWidth(363);
         this.getChildren().add(controles);
@@ -71,7 +103,7 @@ public class ControlesView extends VBox {
 
     public void setPiezaAMover(Pieza pieza){
         if(pieza != null){
-            piezaActual = new Text(piezaActual + pieza.getNombre());
+            piezaActual = new Label(piezaActual + pieza.getNombre());
             botonAbajoEventHandler.setPieza(pieza);
             botonArribaEventHandler.setPieza(pieza);
             botonDerechaEventHandler.setPieza(pieza);

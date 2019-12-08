@@ -77,7 +77,7 @@ public class TiendaView extends Group {
             event.consume();
         });
         vistaTienda.getChildren().get(3).setOnDragDetected(event -> {
-            Dragboard db = vistaTienda.getChildren().get(3).startDragAndDrop(TransferMode.COPY);
+            Dragboard db = vistaTienda.getChildren().get(2).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
             cb.putImage(curandero);
 
