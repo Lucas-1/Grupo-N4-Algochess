@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.vista;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -20,7 +21,6 @@ public class TiendaView extends Group {
     public TiendaView() {
         this.vistaTienda = new GridPane();
         this.delimitarTamanioDelContenedor();
-        //this.agregarTexturaContenedor();
         this.llenarContenedor();
         this.addView(vistaTienda);
     }
@@ -29,7 +29,7 @@ public class TiendaView extends Group {
     }
 
     private void delimitarTamanioDelContenedor() {
-        this.vistaTienda.setPrefWidth(363);
+        this.vistaTienda.setPrefWidth(500);
         this.vistaTienda.setAlignment(Pos.CENTER);
         this.vistaTienda.setGridLinesVisible(true);
         this.vistaTienda.setVgap(50);
@@ -38,36 +38,36 @@ public class TiendaView extends Group {
 
 
     private void llenarContenedor() {
-        ImageView soldado = new ImageView(new Image("file:src/main/resources/soldadoPlaceholder.png"));
-        ImageView curandero = new ImageView(new Image("file:src/main/resources/curanderoPlaceholder.png"));
-        ImageView jinete = new ImageView(new Image("file:src/main/resources/jinetePlaceholder.png"));
-        ImageView catapulta = new ImageView(new Image("file:src/main/resources/catapultaPlaceholder.png"));
-        ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop.png"));
+        ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop-open.png", 200, 200, false, false));
+        ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado.png", 200, 200, false, false));
+        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero.png", 200, 200, false, false));
+        ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete.png", 200, 200, false, false));
+        ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta.png", 200, 200, false, false));
 
 
-        tiendaIcono.setFitWidth(75);
-        tiendaIcono.setFitHeight(75);
+
+        tiendaIcono.setFitWidth(100);
+        tiendaIcono.setFitHeight(100);
+
+        soldado.setCursor(Cursor.CLOSED_HAND);
+        curandero.setCursor(Cursor.CLOSED_HAND);
+        jinete.setCursor(Cursor.CLOSED_HAND);
+        catapulta.setCursor(Cursor.CLOSED_HAND);
 
         this.vistaTienda.add(tiendaIcono, 0,0);
         this.vistaTienda.add(soldado, 0, 1);
-        this.vistaTienda.add(curandero, 0, 2);
-        this.vistaTienda.add(jinete, 0, 3);
-        this.vistaTienda.add(catapulta, 0, 4);
+        this.vistaTienda.add(curandero, 1, 1);
+        this.vistaTienda.add(jinete, 0, 2);
+        this.vistaTienda.add(catapulta, 1, 2);
 
         this.habilitarMoverPiezaAlTablero();
     }
 
-    /*private void agregarTexturaContenedor() {
-        Image textura = new Image("file:src/main/resources/bg-madera.jpg");
-        BackgroundImage imagenDeFondo = new BackgroundImage(textura, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.vistaTienda.setBackground(new Background(imagenDeFondo));
-    }*/
-
     private void habilitarMoverPiezaAlTablero() {
-        Image soldado = new Image("file:src/main/resources/soldadoPlaceholder.png");
-        Image curandero = new Image("file:src/main/resources/curanderoPlaceholder.png");
-        Image jinete = new Image("file:src/main/resources/jinetePlaceholder.png");
-        Image catapulta = new Image("file:src/main/resources/catapultaPlaceholder.png");
+        Image soldado = new Image("file:src/main/resources/ic-soldado.png", 40, 40, false, false);
+        Image curandero = new Image("file:src/main/resources/ic-curandero.png", 40, 40, false, false);
+        Image jinete = new Image("file:src/main/resources/ic-jinete.png", 40, 40, false, false);
+        Image catapulta = new Image("file:src/main/resources/ic-catapulta.png", 40, 40, false, false);
 
         vistaTienda.getChildren().get(2).setOnDragDetected(event -> {
             Dragboard db = vistaTienda.getChildren().get(1).startDragAndDrop(TransferMode.COPY);
