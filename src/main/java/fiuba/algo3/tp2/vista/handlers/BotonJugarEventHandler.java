@@ -55,8 +55,8 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
             algochess.cargarNombreBlanco(nombreBlanco);
             algochess.cargarNombreNegro(nombreNegro);
 
-            stage.setMaximized(true);
             stage.setScene(escenaJuego);
+            stage.setMaximized(true);
         }
 
     }

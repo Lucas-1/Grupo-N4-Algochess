@@ -31,9 +31,10 @@ public class ControlesView extends VBox {
     BotonIzquierdaEventHandler botonIzquierdaEventHandler;
 
     public ControlesView(Algochess algochess){
-        controles = new VBox();
-        HBox boxJugador = new HBox();
-        HBox boxPieza = new HBox();
+        this.controles = new VBox();
+        controles.setId("controles");
+        VBox boxJugador = new VBox();
+        VBox boxPieza = new VBox();
         nombre = new Label("Turno de: ");
         piezaActual = new Label("Pieza seleccionada: ");
 

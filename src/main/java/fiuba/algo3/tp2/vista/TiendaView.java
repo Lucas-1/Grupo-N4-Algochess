@@ -1,6 +1,5 @@
 package fiuba.algo3.tp2.vista;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -20,22 +19,14 @@ public class TiendaView extends Group {
     HBox segundaHBox;
 
     public TiendaView() {
-        /*this.vistaTienda = new GridPane();
-        this.delimitarTamanioDelContenedor();
-        this.llenarContenedor();
-        this.addView(vistaTienda);*/
-
-
 
         vistaTienda = new VBox();
 
-        this.metodoTest();
-
-
+        this.prepararLaTienda();
 
     }
 
-    private void metodoTest() {
+    private void prepararLaTienda() {
 
         tiendaHBox = new HBox();
         primeraHBox = new HBox();

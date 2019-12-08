@@ -22,3 +22,11 @@
     -fx-border-style: hidden hidden hidden hidden;
     -fx-text-inner-color: #ddbb96;
 }
+
+#controles{
+
+    -fx-border-style: dotted;
+    -fx-border-color: transparent;
+    -fx-border-width: 5;
+    -fx-border-insets: 10;
+}
