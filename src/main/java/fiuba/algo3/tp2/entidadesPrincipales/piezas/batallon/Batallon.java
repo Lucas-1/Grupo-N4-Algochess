@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Batallon {
 
-    TipoDeBatallon tipoDeBatallon;
+    private TipoDeBatallon tipoDeBatallon;
 
     public boolean estaCompleto() {
 
@@ -25,9 +25,6 @@ public class Batallon {
 
         tipoDeBatallon = new BatallonHorizontal();
         tipoDeBatallon.armarBatallon(pieza,piezas);
-
-        if(this.estaCompleto())
-            return;
     }
 
     public void moverBatallon(Pieza pieza, Direccion direccion, Tablero tablero) {
