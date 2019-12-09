@@ -15,12 +15,12 @@
 
 #jugador-label{
     -fx-border-style: hidden hidden hidden hidden;
-    -fx-text-inner-color: #8fff7b;
+    -fx-text-inner-color: #00f5ff;
 }
 
 #pieza-label{
     -fx-border-style: hidden hidden hidden hidden;
-    -fx-text-inner-color: #ddbb96;
+    -fx-text-inner-color: hotpink;
 }
 
 #controles{

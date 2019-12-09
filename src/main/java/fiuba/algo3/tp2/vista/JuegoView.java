@@ -31,7 +31,7 @@ public class JuegoView extends VBox {
         controlesNegro = new ControlesView(this.algochess);
         menuBar = new MenuBar();
         consola = new TextField();
-        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.REPEAT,BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.png"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         interfaz.setCenter(vistaTablero);
         interfaz.setLeft(controles);
