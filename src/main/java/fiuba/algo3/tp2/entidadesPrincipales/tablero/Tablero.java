@@ -1,7 +1,6 @@
 package fiuba.algo3.tp2.entidadesPrincipales.tablero;
 
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.relacionados.Casillero;
-import fiuba.algo3.tp2.Observable;
 import fiuba.algo3.tp2.PiezasContiguas;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
@@ -10,7 +9,7 @@ import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 
-public class Tablero extends Observable {
+public class Tablero{
 
     private static final int LIMITE_SUPERIOR = 20;
     private static final int LIMITE_INFERIOR = 0;
@@ -98,7 +97,6 @@ public class Tablero extends Observable {
                 casilleros[posicionNueva.getPosicionFila()][posicionNueva.getPosicionColumna()].setPieza(pieza);
             }
         }
-        this.notifyObservers();
     }
 
     public Pieza obtenerPieza(int posicionFila, int posicionColumna) {

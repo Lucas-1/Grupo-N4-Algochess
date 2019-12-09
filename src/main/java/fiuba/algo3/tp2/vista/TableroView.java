@@ -22,6 +22,7 @@ public class TableroView extends Group {
     private Tablero tablero;
     private GridPane tableroView;
     private Pane[][] casilleros;
+    private PiezasView piezasView;
 
     public TableroView(Algochess algochess) {
 
@@ -30,6 +31,7 @@ public class TableroView extends Group {
         ancho = ANCHO_CASILLERO * tablero.obtenerTamanioTablero();
         largo = LARGO_CASILLERO * tablero.obtenerTamanioTablero();
         casilleros = new Pane[(int)ancho][(int)largo];
+        piezasView = new PiezasView();
 
         for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
             for(int j = 0; j < tablero.obtenerTamanioTablero()/2; j++){
@@ -57,11 +59,11 @@ public class TableroView extends Group {
 
         tableroView.setGridLinesVisible(true);
         tableroView.setPadding(new Insets(10));
-        this.addView(tableroView);
+        this.getChildren().add(tableroView);
     }
 
-    private void addView(GridPane tableroView) {
-        this.getChildren().add(tableroView);
+    private void addView(ImageView imagen,int fila,int columna) {
+        this.tableroView.add(imagen,fila,columna);
     }
 
     private void setearRecibirPieza(Pane casillero){
@@ -77,10 +79,12 @@ public class TableroView extends Group {
         casillero.setOnDragDropped(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                Image casilleroOcupado = event.getDragboard().getImage();
-                ImageView imagen = new ImageView(casilleroOcupado);
+                String piezaNuevaString = event.getDragboard().getString();
+                Image piezaNuevaImg = event.getDragboard().getImage();
+                ImageView piezaNueva = new ImageView(piezaNuevaImg);
                 casillero.getChildren().clear();
-                casillero.getChildren().add(imagen);
+                casillero.getChildren().add(piezaNueva);
+                piezasView.dibujar(piezaNuevaString,tablero,tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
             }
         });
     }

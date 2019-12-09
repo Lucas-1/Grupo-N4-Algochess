@@ -82,6 +82,7 @@ public class TiendaView extends Group {
         primeraHBox.getChildren().get(0).setOnDragDetected(event -> {
             Dragboard db = primeraHBox.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
+            cb.putString("soldado");
             cb.putImage(soldado);
             db.setContent(cb);
             event.consume();
@@ -89,24 +90,24 @@ public class TiendaView extends Group {
         primeraHBox.getChildren().get(1).setOnDragDetected(event -> {
             Dragboard db = primeraHBox.getChildren().get(1).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
+            cb.putString("jinete");
             cb.putImage(jinete);
-
             db.setContent(cb);
             event.consume();
         });
         segundaHBox.getChildren().get(0).setOnDragDetected(event -> {
             Dragboard db = segundaHBox.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
+            cb.putString("curandero");
             cb.putImage(curandero);
-
             db.setContent(cb);
             event.consume();
         });
         segundaHBox.getChildren().get(1).setOnDragDetected(event -> {
             Dragboard db = segundaHBox.getChildren().get(1).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
+            cb.putString("catapulta");
             cb.putImage(catapulta);
-
             db.setContent(cb);
             event.consume();
         });
