@@ -17,14 +17,19 @@ public class Aplicacion extends Application {
         stage.setTitle("AlgoChess");
         Algochess algochess = new Algochess();
 
-        JuegoView vistaJuego = new JuegoView(algochess);
-        Scene juegoPrincipal = new Scene(vistaJuego);
+        FaseDeCompraView faseCompras = new FaseDeCompraView(stage,algochess);
+        Scene comprarPiezas = new Scene(faseCompras);
 
-        PresentacionView presentacion = new PresentacionView(stage,juegoPrincipal);
+        //JuegoView vistaJuego = new JuegoView(algochess,stage);
+        //Scene juegoPrincipal = new Scene(vistaJuego);
+
+        PresentacionView presentacion = new PresentacionView(stage,comprarPiezas);
         Scene bienvenidos = new Scene(presentacion);
 
+        bienvenidos.getStylesheets().add("css/presentacion.css");
+        stage.setFullScreenExitHint("");
+        stage.setFullScreen(true);
         stage.setScene(bienvenidos);
-        stage.setMaximized(true);
         stage.show();
     }
 }
