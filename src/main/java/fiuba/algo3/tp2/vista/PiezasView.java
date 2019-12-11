@@ -35,10 +35,10 @@ public class PiezasView  {
 
     private HashMap iniciarMapDeImagenes(){
         HashMap mapDeImagenes = new HashMap();
-        mapDeImagenes.put("Soldado",new Image("file:src/main/resources/ic-soldado.png", 200, 200, false, false));
-        mapDeImagenes.put("Jinete",new Image("file:src/main/resources/ic-jinete.png", 200, 200, false, false));
-        mapDeImagenes.put("Curandero",new Image("file:src/main/resources/ic-curandero.png", 200, 200, false, false));
-        mapDeImagenes.put("Catapulta",new Image("file:src/main/resources/ic-catapulta.png", 200, 200, false, false));
+        mapDeImagenes.put("Soldado",new Image("file:src/main/resources/ic-soldado.png",40, 40, false, false));
+        mapDeImagenes.put("Jinete",new Image("file:src/main/resources/ic-jinete.png", 40, 40, false, false));
+        mapDeImagenes.put("Curandero",new Image("file:src/main/resources/ic-curandero.png", 40, 40, false, false));
+        mapDeImagenes.put("Catapulta",new Image("file:src/main/resources/ic-catapulta.png", 40, 40, false, false));
         return mapDeImagenes;
     }
 

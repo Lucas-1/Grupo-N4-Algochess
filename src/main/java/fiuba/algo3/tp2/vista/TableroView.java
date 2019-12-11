@@ -3,6 +3,7 @@ package fiuba.algo3.tp2.vista;
 import fiuba.algo3.tp2.Observer;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -44,8 +45,8 @@ public class TableroView extends Group implements Observer {
         piezasView = new PiezasView();
         this.control = control;
 
-        for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
-            for(int j = 0; j < tablero.obtenerTamanioTablero()/2; j++){
+        for(int i = 0; i < tablero.obtenerTamanioTablero()/2; i++){
+            for(int j = 0; j < tablero.obtenerTamanioTablero(); j++){
                 Pane v = new Pane();
                 v.setMinHeight(LARGO_CASILLERO);
                 v.setMinWidth(ANCHO_CASILLERO);
@@ -56,8 +57,8 @@ public class TableroView extends Group implements Observer {
             }
         }
 
-        for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
-            for(int j = tablero.obtenerTamanioTablero()/2; j < tablero.obtenerTamanioTablero(); j++){
+        for(int i = tablero.obtenerTamanioTablero()/2; i < tablero.obtenerTamanioTablero(); i++){
+            for(int j = 0; j < tablero.obtenerTamanioTablero(); j++){
                 Pane v = new Pane();
                 v.setMinHeight(LARGO_CASILLERO);
                 v.setMinWidth(ANCHO_CASILLERO);
@@ -112,7 +113,7 @@ public class TableroView extends Group implements Observer {
     }
 
     private void actualizarCasilleroDeInterfaz(Pieza pieza,int fila,int columna){
-        Pane casilleroNuevo = new Pane();
+        Pane casilleroNuevo;
         ObservableList<Node> casilleros = tableroView.getChildren();
         for(Node casillero: casilleros){
             if(fila == tableroView.getRowIndex(casillero) && columna == tableroView.getColumnIndex(casillero)){
@@ -128,8 +129,11 @@ public class TableroView extends Group implements Observer {
     private void actualizarVistaTablero(){
         for(int i = 0;i < tablero.obtenerTamanioTablero();i++){
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
-                if(tablero.obtenerPieza(i,j)!= null) {
-                    actualizarCasilleroDeInterfaz(tablero.obtenerPieza(i, j), i, j);
+                try {
+                    casilleros[i][j].getChildren().clear();
+                    casilleros[i][j].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
+                } catch (CasilleroEstaVacioException e){
+
                 }
             }
         }
