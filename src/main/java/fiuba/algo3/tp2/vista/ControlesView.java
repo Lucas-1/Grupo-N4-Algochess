@@ -104,7 +104,6 @@ public class ControlesView extends VBox {
 
     public void setPiezaAMover(Pieza pieza){
         if(pieza != null){
-            piezaActual = new Label(piezaActual + pieza.getNombre());
             botonAbajoEventHandler.setPieza(pieza);
             botonArribaEventHandler.setPieza(pieza);
             botonDerechaEventHandler.setPieza(pieza);

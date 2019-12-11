@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.juego;
 
+import fiuba.algo3.tp2.Observable;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Negro;
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
@@ -14,7 +15,7 @@ import javafx.scene.control.TableCell;
 
 import java.util.LinkedList;
 
-public class Algochess {
+public class Algochess{
 
     //private AdministradorEventosGenerales administradorEventos;
 
@@ -27,7 +28,7 @@ public class Algochess {
         //administradorEventos = new AdministradorEventosGenerales();
 
         tablero = new Tablero();
-        jugadores = new LinkedList<Jugador>();
+        jugadores = new LinkedList();
     }
 
     public void iniciarJuego(Jugador jugadorBlanco, Jugador jugadorNegro){
@@ -62,6 +63,8 @@ public class Algochess {
 
         Jugador actual = jugadores.getFirst();
         actual.moverPieza(pieza,direccion,tablero);
+        System.out.println("Pieza se movió");
+
     }
 
     public void terminarTurno(){

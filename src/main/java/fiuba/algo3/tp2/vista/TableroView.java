@@ -1,37 +1,48 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.Observer;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.juego.Algochess;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-public class TableroView extends Group {
+
+public class TableroView extends Group implements Observer {
 
     public double ancho;
     public double largo;
     private final static double ANCHO_CASILLERO = 40;
     private final static double LARGO_CASILLERO = 40;
 
+    private Algochess algochess;
     private Tablero tablero;
     private GridPane tableroView;
     private Pane[][] casilleros;
     private PiezasView piezasView;
+    private ControlesView control;
 
-    public TableroView(Algochess algochess) {
+    public TableroView(Algochess algochess,ControlesView control) {
 
+        this.algochess = algochess;
         this.tablero = algochess.getTablero();
+        this.tablero.addObserver(this);
         tableroView = new GridPane();
         ancho = ANCHO_CASILLERO * tablero.obtenerTamanioTablero();
         largo = LARGO_CASILLERO * tablero.obtenerTamanioTablero();
         casilleros = new Pane[(int)ancho][(int)largo];
         piezasView = new PiezasView();
+        this.control = control;
 
         for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
             for(int j = 0; j < tablero.obtenerTamanioTablero()/2; j++){
@@ -84,12 +95,49 @@ public class TableroView extends Group {
                 ImageView piezaNueva = new ImageView(piezaNuevaImg);
                 casillero.getChildren().clear();
                 casillero.getChildren().add(piezaNueva);
-                piezasView.dibujar(piezaNuevaString,tablero,tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
+                algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString),tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
+            }
+        });
+        casillero.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
+                System.out.println(obtenerPiezaDeInterfaz(casillero).getNombre());
             }
         });
     }
 
+    public Pieza obtenerPiezaDeInterfaz(Pane casillero){
+        return this.tablero.obtenerPieza(tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
+    }
 
+    private void actualizarCasilleroDeInterfaz(Pieza pieza,int fila,int columna){
+        Pane casilleroNuevo = new Pane();
+        ObservableList<Node> casilleros = tableroView.getChildren();
+        for(Node casillero: casilleros){
+            if(fila == tableroView.getRowIndex(casillero) && columna == tableroView.getColumnIndex(casillero)){
+                casilleroNuevo = (Pane) casillero;
+                casilleroNuevo.getChildren().clear();
+                casilleroNuevo.getChildren().add(new ImageView(piezasView.dibujar(pieza.getNombre())));
+                casilleros.set(casilleros.indexOf(casillero),casilleroNuevo);
+            }
+        }
+
+    }
+
+    private void actualizarVistaTablero(){
+        for(int i = 0;i < tablero.obtenerTamanioTablero();i++){
+            for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
+                if(tablero.obtenerPieza(i,j)!= null) {
+                    actualizarCasilleroDeInterfaz(tablero.obtenerPieza(i, j), i, j);
+                }
+            }
+        }
+    }
+
+    public void change(){
+        actualizarVistaTablero();
+    }
 
 
 

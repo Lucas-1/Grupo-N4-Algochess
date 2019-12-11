@@ -14,7 +14,6 @@ public class JuegoView extends VBox {
     private TableroView vistaTablero;
     private TiendaView vistaTienda;
     private ControlesView controles;
-    private ControlesView controlesNegro;
     private MenuBar menuBar;
     private TextField consola;
 
@@ -25,10 +24,9 @@ public class JuegoView extends VBox {
 
         this.setAlignment(Pos.CENTER);
 
-        vistaTablero = new TableroView(algochess);
-        vistaTienda = new TiendaView();
         controles = new ControlesView(this.algochess);
-        controlesNegro = new ControlesView(this.algochess);
+        vistaTablero = new TableroView(algochess,controles);
+        vistaTienda = new TiendaView();
         menuBar = new MenuBar();
         consola = new TextField();
         BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);

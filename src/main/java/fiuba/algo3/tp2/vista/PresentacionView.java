@@ -22,12 +22,9 @@ public class PresentacionView extends VBox {
 
     Stage stage;
 
-    public PresentacionView(Stage stage, Scene scene){
+    public PresentacionView(Algochess algochess,Stage stage, Scene scene){
 
         this.stage = stage;
-
-        Algochess algochess = new Algochess();
-
         this.setAlignment(Pos.CENTER);
         this.setSpacing(50);
 

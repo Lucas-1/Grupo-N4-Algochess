@@ -33,7 +33,7 @@ public class AdministradorDePiezas {
 
     public AdministradorDePiezas() {
         logger.addHandler(streamHandler);
-        piezas = new ArrayList<Pieza>();
+        piezas = new ArrayList();
         piezasContiguas = new PiezasContiguas();
         batallon = new Batallon();
         billetera = new Billetera(CANTIDAD_DINERO_INICIAL);
