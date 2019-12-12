@@ -45,18 +45,24 @@ public class PiezasView  {
     }
 
     private void actualizarMapDeTooltips(Pieza pieza) {
-        mapTooltipPiezas.put("soldado", new Tooltip("Danio: 10\n" +
-                "Vida maxima: 100" + "Vida actual: " + pieza.getPuntosDeVida()));
+        //HashMap mapDeTooltips = new HashMap();
 
-        mapTooltipPiezas.put("jinete", new Tooltip("Danio con espada: 5\n" +
+        mapTooltipPiezas.put(pieza.getNombre()+System.identityHashCode(pieza), new Tooltip("Vida actual: " + pieza.getPuntosDeVida()));
+        /*
+        mapDeTooltips.put("soldado", new Tooltip("Danio: 10\n" +
+                "Vida maxima: 100\n" + "Vida actual: " + pieza.getPuntosDeVida()));
+
+        mapDeTooltips.put("jinete", new Tooltip("Danio con espada: 5\n" +
                 "Danio con arco: 15\n" +
-                "Vida maxima: 100" + "Vida actual: " + pieza.getPuntosDeVida()));
+                "Vida maxima: 100\n" + "Vida actual: " + pieza.getPuntosDeVida()));
 
-        mapTooltipPiezas.put("curandero", new Tooltip("Curacion: 15\n" +
-                "Vida maxima: 75" + "Vida actual: " + pieza.getPuntosDeVida()));
+        mapDeTooltips.put("curandero", new Tooltip("Curacion: 15\n" +
+                "Vida maxima: 75\n" + "Vida actual: " + pieza.getPuntosDeVida()));
 
-        mapTooltipPiezas.put("catapulta", new Tooltip("Danio: 20\n" +
-                "Vida maxima: 50" + "Vida actual: " + pieza.getPuntosDeVida()));
+        mapDeTooltips.put("catapulta", new Tooltip("Danio: 20\n" +
+                "Vida maxima: 50\n" + "Vida actual: " + pieza.getPuntosDeVida()));*/
+
+        //return mapDeTooltips;
     }
 
 
@@ -71,10 +77,10 @@ public class PiezasView  {
 
     private HashMap iniciarMapDeImagenes(){
         HashMap mapDeImagenes = new HashMap();
-        mapDeImagenes.put("Soldado",new Image("file:src/main/resources/ic-soldado-negro.png",40, 40, false, false));
-        mapDeImagenes.put("Jinete",new Image("file:src/main/resources/ic-jinete-negro.png", 40, 40, false, false));
-        mapDeImagenes.put("Curandero",new Image("file:src/main/resources/ic-curandero-negro.png", 40, 40, false, false));
-        mapDeImagenes.put("Catapulta",new Image("file:src/main/resources/ic-catapulta-negro.png", 40, 40, false, false));
+        mapDeImagenes.put("soldado",new Image("file:src/main/resources/ic-soldado-negro.png",40, 40, false, false));
+        mapDeImagenes.put("jinete",new Image("file:src/main/resources/ic-jinete-negro.png", 40, 40, false, false));
+        mapDeImagenes.put("curandero",new Image("file:src/main/resources/ic-curandero-negro.png", 40, 40, false, false));
+        mapDeImagenes.put("catapulta",new Image("file:src/main/resources/ic-catapulta-negro.png", 40, 40, false, false));
         return mapDeImagenes;
     }
 
@@ -92,6 +98,6 @@ public class PiezasView  {
 
     public Tooltip getTooltip(String nombrePieza, Pieza pieza) {
         actualizarMapDeTooltips(pieza);
-        return mapTooltipPiezas.get(nombrePieza);
+        return mapTooltipPiezas.get(nombrePieza+System.identityHashCode(pieza));
     }
 }

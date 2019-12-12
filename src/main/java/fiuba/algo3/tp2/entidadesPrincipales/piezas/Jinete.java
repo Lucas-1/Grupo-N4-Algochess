@@ -22,7 +22,7 @@ public class Jinete extends Danina {
         this.color = color;
         this.puntosDeVida = new PuntosDeVida(this);
         ataque = new Ataque();
-        nombre = "Jinete";
+        nombre = "jinete";
     }
 
 
