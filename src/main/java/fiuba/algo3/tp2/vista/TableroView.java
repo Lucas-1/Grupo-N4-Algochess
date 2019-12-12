@@ -45,8 +45,8 @@ public class TableroView extends Group implements Observer {
         piezasView = new PiezasView();
         this.control = control;
 
-        for(int i = 0; i < tablero.obtenerTamanioTablero()/2; i++){
-            for(int j = 0; j < tablero.obtenerTamanioTablero(); j++){
+        for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
+            for(int j = 0; j < tablero.obtenerTamanioTablero()/2; j++){
                 Pane v = new Pane();
                 v.setMinHeight(LARGO_CASILLERO);
                 v.setMinWidth(ANCHO_CASILLERO);
@@ -57,8 +57,8 @@ public class TableroView extends Group implements Observer {
             }
         }
 
-        for(int i = tablero.obtenerTamanioTablero()/2; i < tablero.obtenerTamanioTablero(); i++){
-            for(int j = 0; j < tablero.obtenerTamanioTablero(); j++){
+        for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
+            for(int j = tablero.obtenerTamanioTablero()/2; j < tablero.obtenerTamanioTablero(); j++){
                 Pane v = new Pane();
                 v.setMinHeight(LARGO_CASILLERO);
                 v.setMinWidth(ANCHO_CASILLERO);
@@ -130,10 +130,10 @@ public class TableroView extends Group implements Observer {
         for(int i = 0;i < tablero.obtenerTamanioTablero();i++){
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
                 try {
-                    casilleros[i][j].getChildren().clear();
-                    casilleros[i][j].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
+                    casilleros[j][i].getChildren().clear();
+                    casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
                 } catch (CasilleroEstaVacioException e){
-
+                    System.out.println("el casillero esta vacio");//aca hay un error tremendo, atrapa la excepcion una vez por casillero(osea 400 veces)
                 }
             }
         }
