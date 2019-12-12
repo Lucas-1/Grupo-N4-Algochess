@@ -35,10 +35,10 @@ public class TiendaView extends Group {
         vistaTienda.setId("tienda");
 
         ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop-open.png", 200, 200, false, false));
-        ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado.png", 200, 200, false, false));
-        ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete.png", 200, 200, false, false));
-        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero.png"));
-        ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta.png", 200, 200, false, false));
+        ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-negro-seleccionado.png", 200, 200, false, false));
+        ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-negro-seleccionado.png", 200, 200, false, false));
+        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-blanco.png"));//poner al curandero 3ero para q mantenga mejor calidad la img.
+        ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta-blanco-seleccionado.png", 200, 200, false, false));
 
         curandero.setFitWidth(200);
         curandero.setFitHeight(200);
@@ -74,10 +74,10 @@ public class TiendaView extends Group {
     }
 
     private void habilitarMoverPiezaAlTablero() {
-        Image soldado = new Image("file:src/main/resources/ic-soldado.png", 40, 40, false, false);
-        Image jinete = new Image("file:src/main/resources/ic-jinete.png", 40, 40, false, false);
-        Image curandero = new Image("file:src/main/resources/ic-curandero.png", 40, 40, false, false);
-        Image catapulta = new Image("file:src/main/resources/ic-catapulta.png", 40, 40, false, false);
+        Image soldado = new Image("file:src/main/resources/ic-soldado-negro-seleccionado.png", 40, 40, false, false);
+        Image jinete = new Image("file:src/main/resources/ic-jinete-negro-seleccionado.png", 40, 40, false, false);
+        Image curandero = new Image("file:src/main/resources/ic-curandero-blanco.png", 40, 40, false, false);
+        Image catapulta = new Image("file:src/main/resources/ic-catapulta-blanco-seleccionado.png", 40, 40, false, false);
 
         primeraHBox.getChildren().get(0).setOnDragDetected(event -> {
             Dragboard db = primeraHBox.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
