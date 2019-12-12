@@ -22,58 +22,56 @@ public class PresentacionView extends VBox {
 
     Stage stage;
 
-    public PresentacionView(Stage stage, Scene scene){
+        public PresentacionView(Algochess algochess,Stage stage){
 
-        this.stage = stage;
+            this.stage = stage;
+            this.setAlignment(Pos.CENTER);
+            this.setSpacing(50);
 
-        Algochess algochess = new Algochess();
+            Background fondo = new Background(new BackgroundImage(new Image("bg-presentacion.jpg"),
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.CENTER,
+                    BackgroundSize.DEFAULT));
 
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(50);
+            this.setBackground(fondo);
 
-        Background fondo = new Background(new BackgroundImage(new Image("bg-presentacion.jpg"),
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT));
+            Text textoPresentacion = new Text("AlgoChess !");
+            textoPresentacion.setFill(Color.LAVENDER);
+            textoPresentacion.setStroke(Color.BLACK);
+            textoPresentacion.setStrokeWidth(2);
+            textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,120));
 
-        this.setBackground(fondo);
+            HBox elementosNegro = new HBox();
+            elementosNegro.setAlignment(Pos.CENTER);
+            elementosNegro.setSpacing(50);
 
-        Text textoPresentacion = new Text("AlgoChess !");
-        textoPresentacion.setFill(Color.LAVENDER);
-        textoPresentacion.setStroke(Color.BLACK);
-        textoPresentacion.setStrokeWidth(2);
-        textoPresentacion.setFont(Font.font("Verdana", FontWeight.BOLD,120));
+            Label mensajeNegro = new Label("Jugador negro:");
+            TextField entradaNegro = new TextField();
+            entradaNegro.setPromptText("escriba un nombre");
 
-        HBox elementosNegro = new HBox();
-        elementosNegro.setAlignment(Pos.CENTER);
-        elementosNegro.setSpacing(50);
+            elementosNegro.getChildren().addAll(mensajeNegro, entradaNegro);
 
-        Label mensajeNegro = new Label("Jugador negro:");
-        TextField entradaNegro = new TextField();
-        entradaNegro.setPromptText("escriba un nombre");
+            HBox elementosBlanco = new HBox();
+            elementosBlanco.setAlignment(Pos.CENTER);
+            elementosBlanco.setSpacing(50);
 
-        elementosNegro.getChildren().addAll(mensajeNegro, entradaNegro);
+            Label mensaje = new Label("Jugador blanco:");
+            TextField entradaBlanco = new TextField();
+            entradaBlanco.setPromptText("escriba un nombre");
 
-        HBox elementosBlanco = new HBox();
-        elementosBlanco.setAlignment(Pos.CENTER);
-        elementosBlanco.setSpacing(50);
+            elementosBlanco.getChildren().addAll(mensaje, entradaBlanco);
 
-        Label mensaje = new Label("Jugador blanco:");
-        TextField entradaBlanco = new TextField();
-        entradaBlanco.setPromptText("escriba un nombre");
 
-        elementosBlanco.getChildren().addAll(mensaje, entradaBlanco);
+            Button comenzar = new Button("Jugar!");
+            comenzar.setMaxWidth(200);
 
-        Button comenzar = new Button("Jugar!");
-        comenzar.setMaxWidth(200);
+            BotonJugarEventHandler botonJugar = new BotonJugarEventHandler(algochess,entradaBlanco,entradaNegro,stage);
+            comenzar.setOnAction(botonJugar);
 
-        BotonJugarEventHandler botonJugar = new BotonJugarEventHandler(algochess,entradaBlanco,entradaNegro,stage,scene);
-        comenzar.setOnAction(botonJugar);
-
-        this.getChildren().add(textoPresentacion);
-        this.getChildren().add(elementosBlanco);
-        this.getChildren().add(elementosNegro);
-        this.getChildren().add(comenzar);
+            this.getChildren().add(textoPresentacion);
+            this.getChildren().add(elementosBlanco);
+            this.getChildren().add(elementosNegro);
+            this.getChildren().add(comenzar);
     }
 }

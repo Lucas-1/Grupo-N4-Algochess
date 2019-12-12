@@ -17,13 +17,7 @@ public class Aplicacion extends Application {
         stage.setTitle("AlgoChess");
         Algochess algochess = new Algochess();
 
-        FaseDeCompraView faseCompras = new FaseDeCompraView(stage,algochess);
-        Scene comprarPiezas = new Scene(faseCompras);
-
-        //JuegoView vistaJuego = new JuegoView(algochess,stage);
-        //Scene juegoPrincipal = new Scene(vistaJuego);
-
-        PresentacionView presentacion = new PresentacionView(stage,comprarPiezas);
+        PresentacionView presentacion = new PresentacionView(algochess,stage);
         Scene bienvenidos = new Scene(presentacion);
 
         bienvenidos.getStylesheets().add("css/presentacion.css");

@@ -12,20 +12,19 @@ import java.util.HashMap;
 
 public class PiezasView  {
 
-    HashMap mapDeImagenes;
-    HashMap mapDePiezasBlancas;
-    HashMap mapDePiezasNegras;
+    private HashMap<String,Image> mapDeImagenes;
+    private HashMap<String,Pieza> mapDePiezasBlancas;
+    private HashMap<String,Pieza> mapDePiezasNegras;
 
 
     public PiezasView() {
-
         mapDePiezasNegras = this.iniciarMapDePiezas(new Negro());
         mapDePiezasBlancas = this.iniciarMapDePiezas(new Blanco());
+        mapDeImagenes = this.iniciarMapDeImagenes();
     }
 
 
     private HashMap iniciarMapDePiezas(Color color){
-
         HashMap mapDePiezas = new HashMap();
         mapDePiezas.put("soldado",new SoldadoDeInfanteria(color));
         mapDePiezas.put("jinete",new Jinete(color));
@@ -34,9 +33,21 @@ public class PiezasView  {
         return mapDePiezas;
     }
 
-    public void dibujar(String pieza, Tablero tablero,int fila,int columna) {
+    private HashMap iniciarMapDeImagenes(){
+        HashMap mapDeImagenes = new HashMap();
+        mapDeImagenes.put("Soldado",new Image("file:src/main/resources/ic-soldado-negro.png",40, 40, false, false));
+        mapDeImagenes.put("Jinete",new Image("file:src/main/resources/ic-jinete-negro.png", 40, 40, false, false));
+        mapDeImagenes.put("Curandero",new Image("file:src/main/resources/ic-curandero-negro.png", 40, 40, false, false));
+        mapDeImagenes.put("Catapulta",new Image("file:src/main/resources/ic-catapulta-negro.png", 40, 40, false, false));
+        return mapDeImagenes;
+    }
 
-        tablero.agregarPieza((Pieza) mapDePiezasBlancas.get(pieza), fila, columna);
+    public Pieza colocar(String pieza) {
+        return mapDePiezasBlancas.get(pieza);
+    }
+
+    public Image dibujar(String pieza){
+        return mapDeImagenes.get(pieza);
     }
 
 }

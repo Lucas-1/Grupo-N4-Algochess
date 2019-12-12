@@ -31,14 +31,16 @@ public class ControlesView extends VBox {
     BotonIzquierdaEventHandler botonIzquierdaEventHandler;
 
     public ControlesView(Algochess algochess){
+
         this.controles = new VBox();
         controles.setId("controles");
         VBox boxJugador = new VBox();
         VBox boxPieza = new VBox();
         nombre = new Label("Turno de: ");
         piezaActual = new Label("Pieza seleccionada: ");
+        jugador = algochess.obtenerJugadorConTurno();
 
-        Label nombreJugadorConTurno = new Label("pepe");
+        Label nombreJugadorConTurno = new Label(jugador.getNombre());
         Label nombrePiezaSeleccionada = new Label("jinete");
 
         nombreJugadorConTurno.setId("jugador-label");
@@ -104,7 +106,6 @@ public class ControlesView extends VBox {
 
     public void setPiezaAMover(Pieza pieza){
         if(pieza != null){
-            piezaActual = new Label(piezaActual + pieza.getNombre());
             botonAbajoEventHandler.setPieza(pieza);
             botonArribaEventHandler.setPieza(pieza);
             botonDerechaEventHandler.setPieza(pieza);

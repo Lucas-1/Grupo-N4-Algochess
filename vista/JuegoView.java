@@ -1,47 +1,46 @@
 package fiuba.algo3.tp2.vista;
 
-import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeCompra;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
-public class JuegoView extends BorderPane {
+public class JuegoView extends VBox {
 
+    private BorderPane interfaz;
     private Algochess algochess;
     private TableroView vistaTablero;
-    private Stage stage;
-    private TiendaView vistaTienda;
     private ControlesView controles;
-    private ControlesView controlesNegro;
     private MenuBar menuBar;
-
     private TextField consola;
 
-    public JuegoView(Algochess algochess,Stage stage, TableroView vistaTablero){
+    public JuegoView(Algochess algochess, TableroView vistaTablero){
 
         this.algochess = algochess;
-        this.stage = stage;
-        this.vistaTablero = vistaTablero;
+        interfaz = new BorderPane();
+
+        this.setAlignment(Pos.CENTER);
 
         controles = new ControlesView(this.algochess);
-        controlesNegro = new ControlesView(this.algochess);
+        this.vistaTablero = vistaTablero;
+        vistaTablero.setControl(controles);
 
         menuBar = new MenuBar();
-
         consola = new TextField();
-
-        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.png"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
-        this.setCenter(vistaTablero);
-        this.setLeft(controles);
-        this.setBottom(consola);
+        interfaz.setCenter(vistaTablero);
+        interfaz.setLeft(controles);
 
-        controles.setAlignment(Pos.CENTER);
+        interfaz.setBottom(consola);
 
+        BorderPane.setAlignment(vistaTablero, Pos.CENTER);
+        BorderPane.setAlignment(controles, Pos.CENTER_RIGHT);
+
+        BorderPane.setAlignment(consola, Pos.BOTTOM_LEFT);
+
+        this.getChildren().add(interfaz);
     }
 }

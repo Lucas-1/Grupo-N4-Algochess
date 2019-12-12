@@ -19,6 +19,7 @@ public class BotonArribaEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent){
         algochess.moverPieza(pieza, Direccion.arriba());
+        algochess.getTablero().notifyObservers();
     }
 
     public void setPieza(Pieza pieza){

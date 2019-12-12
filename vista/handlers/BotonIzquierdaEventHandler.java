@@ -19,6 +19,7 @@ public class BotonIzquierdaEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent){
         algochess.moverPieza(pieza, Direccion.izquierda());
+        algochess.getTablero().notifyObservers();
     }
 
     public void setPieza(Pieza pieza){

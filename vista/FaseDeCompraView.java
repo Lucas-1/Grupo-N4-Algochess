@@ -1,6 +1,8 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.juego.Algochess;
+import fiuba.algo3.tp2.vista.handlers.BotonTerminarCompraEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,57 +20,44 @@ public class FaseDeCompraView extends BorderPane {
     private Algochess algochess;
     private TableroView vistaTablero;
     private TiendaView vistaTienda;
-    private BorderPane interfaz;
+    private int turnosTranscurridos;
 
     public FaseDeCompraView(Stage stage, Algochess algochess) {
+
+        turnosTranscurridos = 0;
 
         this.stage = stage;
         this.algochess = algochess;
 
-
-
-        vistaTablero = new TableroView(algochess);
-
-        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.png"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
+        vistaTablero = new TableroView(algochess);
         vistaTienda = new TiendaView();
 
         this.setCenter(vistaTablero);
         this.setRight(vistaTienda);
 
-        VBox izquierda = new VBox();
-        izquierda.setPadding(new Insets(20,20,20,20));
-        izquierda.setSpacing(30);
-        Label info1 = new Label("Jugador comprando: Carlitos");
-        Label info2 = new Label("Color: Blanco");
-        Label info3 = new Label("Puntos restantes: 15");
-        Label info4 = new Label("Jinete, costo 3 .... blablabla");
-        izquierda.getChildren().addAll(info1,info2,info3,info4);
-        this.setLeft(izquierda);
+        Jugador jugadorConTurno = algochess.obtenerJugadorConTurno();
+        InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
+        this.setLeft(info);
+        info.setAlignment(Pos.CENTER);
 
 
-        VBox borrameDespues = new VBox();
-        borrameDespues.setPadding(new Insets(20,20,20,20));
-        borrameDespues.setSpacing(30);
-        Label msj = new Label("Arrasta una pieza de la tienda al tablero para comprarla");
-        msj.setTextFill(Color.WHITE);
+        VBox menu = new VBox();
+        menu.setPadding(new Insets(20,20,20,20));
+        menu.setSpacing(20);
 
-        Button botonRustico = new Button("Terminar la compra");
-        botonRustico.setOnAction( e-> {
+        Label mensaje = new Label("BIENVENIDO A LA FASE DE COMPRA. PRESIONA EL BOTON PARA FINALIZAR");
+        mensaje.setTextFill(Color.WHITE);
 
-            JuegoView vistaJuego = new JuegoView(algochess,stage,vistaTablero);
-            Scene juegoPrincipal = new Scene(vistaJuego);
+        Button terminarCompra = new Button("Terminar la compra");
+        BotonTerminarCompraEventHandler terminarCompraHandler = new BotonTerminarCompraEventHandler(turnosTranscurridos,algochess,vistaTablero,stage,this);
+        terminarCompra.setOnAction(terminarCompraHandler);
 
-            stage.setScene(juegoPrincipal);
-            stage.setFullScreenExitHint("");
-            stage.setFullScreen(true);
-        });
+        menu.getChildren().addAll(terminarCompra,mensaje);
 
-        borrameDespues.getChildren().addAll(botonRustico,msj);
-        this.setTop(borrameDespues);
-        borrameDespues.setAlignment(Pos.BASELINE_CENTER);
+        this.setTop(menu);
+        menu.setAlignment(Pos.CENTER);
     }
-
-
 }
