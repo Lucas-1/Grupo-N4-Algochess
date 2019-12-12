@@ -138,5 +138,4 @@ public class TableroView extends Group implements Observer {
     }
 
 
-
 }

@@ -107,4 +107,6 @@ public abstract class Pieza {
     public String getNombre(){
         return this.nombre;
     }
+
+    public abstract int getPuntosDePoder();
 }

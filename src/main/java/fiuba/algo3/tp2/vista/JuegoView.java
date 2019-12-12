@@ -26,7 +26,7 @@ public class JuegoView extends VBox {
 
         controles = new ControlesView(this.algochess);
         vistaTablero = new TableroView(algochess,controles);
-        vistaTienda = new TiendaView();
+        vistaTienda = new TiendaView(algochess);
         menuBar = new MenuBar();
         consola = new TextField();
         BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);

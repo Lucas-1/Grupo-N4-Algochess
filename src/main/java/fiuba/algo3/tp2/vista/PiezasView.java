@@ -28,24 +28,35 @@ public class PiezasView  {
 
     private HashMap<String, Tooltip> iniciarMapDeTooltips() {
         HashMap mapDeTooltips = new HashMap();
-        mapDeTooltips.put("soldado", new Tooltip("Precio: 1\n" +
-                                                    "Danio: 10\n" +
-                                                    "Tip: tiene la mejor relacion en costo-stats"));
+        mapDeTooltips.put("soldado", new Tooltip("Danio: 10\n" +
+                                                    "Vida maxima: 100"));
 
-        mapDeTooltips.put("jinete", new Tooltip("Precio: 3\n" +
-                                                        "Danio con espada: 5\n" +
-                                                        "Danio con arco: 15\n" +
-                                                        "Tip: Cuando hay enemigos cerca utiliza la espada"));
+        mapDeTooltips.put("jinete", new Tooltip("Danio con espada: 5\n" +
+                                                    "Danio con arco: 15\n" +
+                                                    "Vida maxima: 100"));
 
-        mapDeTooltips.put("curandero", new Tooltip("Precio: 2\n" +
-                                                        "Curacion: 15\n" +
-                                                        "Tip: No puede atacar, cura piezas aliadas"));
+        mapDeTooltips.put("curandero", new Tooltip("Curacion: 15\n" +
+                                                        "Vida maxima: 75"));
 
-        mapDeTooltips.put("catapulta", new Tooltip("Precio: 5\n" +
-                                                        "Danio: 20\n" +
-                                                        "Tip: No puede ser curada pero tiene un gran alcance"));
+        mapDeTooltips.put("catapulta", new Tooltip("Danio: 20\n" +
+                                                        "Vida maxima: 50"));
 
         return mapDeTooltips;
+    }
+
+    private void actualizarMapDeTooltips(Pieza pieza) {
+        mapTooltipPiezas.put("soldado", new Tooltip("Danio: 10\n" +
+                "Vida maxima: 100" + "Vida actual: " + pieza.getPuntosDeVida()));
+
+        mapTooltipPiezas.put("jinete", new Tooltip("Danio con espada: 5\n" +
+                "Danio con arco: 15\n" +
+                "Vida maxima: 100" + "Vida actual: " + pieza.getPuntosDeVida()));
+
+        mapTooltipPiezas.put("curandero", new Tooltip("Curacion: 15\n" +
+                "Vida maxima: 75" + "Vida actual: " + pieza.getPuntosDeVida()));
+
+        mapTooltipPiezas.put("catapulta", new Tooltip("Danio: 20\n" +
+                "Vida maxima: 50" + "Vida actual: " + pieza.getPuntosDeVida()));
     }
 
 
@@ -77,5 +88,10 @@ public class PiezasView  {
 
     public Tooltip getTooltip(String pieza) {
         return mapTooltipPiezas.get(pieza);
+    }
+
+    public Tooltip getTooltip(String nombrePieza, Pieza pieza) {
+        actualizarMapDeTooltips(pieza);
+        return mapTooltipPiezas.get(nombrePieza);
     }
 }

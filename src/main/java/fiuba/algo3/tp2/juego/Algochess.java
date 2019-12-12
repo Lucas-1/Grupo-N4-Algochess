@@ -112,4 +112,8 @@ public class Algochess{
 
         return tablero;
     }
+
+    public int getPuntosDeCompraDelJugador() {
+        return jugadores.getFirst().getPuntosDeCompraDisponibles();
+    }
 }

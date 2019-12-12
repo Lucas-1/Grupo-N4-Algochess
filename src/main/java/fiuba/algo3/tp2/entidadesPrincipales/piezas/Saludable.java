@@ -13,5 +13,7 @@ public abstract class Saludable extends Pieza {
         pieza.recibirVida(this.puntosDeCuracion);
     }
 
-
+    public int getPuntosDePoder(){
+        return puntosDeCuracion;
+    }
 }
