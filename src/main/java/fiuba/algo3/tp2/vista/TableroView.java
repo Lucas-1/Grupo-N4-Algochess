@@ -1,15 +1,14 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.Observer;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
 import fiuba.algo3.tp2.juego.Algochess;
-import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -103,27 +102,13 @@ public class TableroView extends Group implements Observer {
             @Override
             public void handle(MouseEvent event) {
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
-                System.out.println(obtenerPiezaDeInterfaz(casillero).getNombre());
+                control.setAtaque((Danina) obtenerPiezaDeInterfaz(casillero));
             }
         });
     }
 
     public Pieza obtenerPiezaDeInterfaz(Pane casillero){
         return this.tablero.obtenerPieza(tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
-    }
-
-    private void actualizarCasilleroDeInterfaz(Pieza pieza,int fila,int columna){
-        Pane casilleroNuevo;
-        ObservableList<Node> casilleros = tableroView.getChildren();
-        for(Node casillero: casilleros){
-            if(fila == tableroView.getRowIndex(casillero) && columna == tableroView.getColumnIndex(casillero)){
-                casilleroNuevo = (Pane) casillero;
-                casilleroNuevo.getChildren().clear();
-                casilleroNuevo.getChildren().add(new ImageView(piezasView.dibujar(pieza.getNombre())));
-                casilleros.set(casilleros.indexOf(casillero),casilleroNuevo);
-            }
-        }
-
     }
 
     private void actualizarVistaTablero(){

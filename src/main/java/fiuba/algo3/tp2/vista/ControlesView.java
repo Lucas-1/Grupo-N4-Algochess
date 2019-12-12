@@ -1,12 +1,10 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.juego.Algochess;
-import fiuba.algo3.tp2.vista.handlers.BotonAbajoEventHandler;
-import fiuba.algo3.tp2.vista.handlers.BotonArribaEventHandler;
-import fiuba.algo3.tp2.vista.handlers.BotonDerechaEventHandler;
-import fiuba.algo3.tp2.vista.handlers.BotonIzquierdaEventHandler;
+import fiuba.algo3.tp2.vista.handlers.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -29,6 +27,8 @@ public class ControlesView extends VBox {
     BotonAbajoEventHandler botonAbajoEventHandler;
     BotonDerechaEventHandler botonDerechaEventHandler;
     BotonIzquierdaEventHandler botonIzquierdaEventHandler;
+    BotonAtacarEventHandler botonAtacarEventHandler;
+
 
     public ControlesView(Algochess algochess){
         this.controles = new VBox();
@@ -71,11 +71,14 @@ public class ControlesView extends VBox {
         botonAbajoEventHandler = new BotonAbajoEventHandler(algochess);
         botonDerechaEventHandler = new BotonDerechaEventHandler(algochess);
         botonIzquierdaEventHandler = new BotonIzquierdaEventHandler(algochess);
+        botonAtacarEventHandler = new BotonAtacarEventHandler(algochess);
+
 
         botonArriba.setOnAction(botonArribaEventHandler);
         botonAbajo.setOnAction(botonAbajoEventHandler);
         botonDerecha.setOnAction(botonDerechaEventHandler);
         botonIzquierda.setOnAction(botonIzquierdaEventHandler);
+        botonAtacar.setOnAction(botonAtacarEventHandler);
 
         StackPane mando = new StackPane();
 
@@ -108,6 +111,15 @@ public class ControlesView extends VBox {
             botonArribaEventHandler.setPieza(pieza);
             botonDerechaEventHandler.setPieza(pieza);
             botonIzquierdaEventHandler.setPieza(pieza);
+        }
+    }
+
+    public void setAtaque(Danina pieza){
+        if(botonAtacarEventHandler.ataqueEnProgreso()){
+            botonAtacarEventHandler.setVictima(pieza);
+        }
+        else {
+            botonAtacarEventHandler.setAtacante(pieza);
         }
     }
 }
