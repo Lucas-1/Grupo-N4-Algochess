@@ -81,7 +81,6 @@ public class TiendaView extends Group {
         Image catapulta = new Image("file:src/main/resources/ic-catapulta.png", 40, 40, false, false);
 
         primeraHBox.getChildren().get(0).setOnDragDetected(event -> {
-
             Dragboard db = primeraHBox.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
             cb.putString("soldado");

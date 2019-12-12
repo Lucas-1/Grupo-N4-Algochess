@@ -12,15 +12,20 @@ public class BotonAbajoEventHandler implements EventHandler<ActionEvent> {
     Pieza pieza;
 
     public BotonAbajoEventHandler(Algochess algochess){
+
         this.algochess = algochess;
         this.pieza = null;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
+
         algochess.moverPieza(pieza, Direccion.abajo());
+        algochess.getTablero().notifyObservers();
     }
+
     public void setPieza(Pieza pieza){
+
         this.pieza = pieza;
     }
 }
