@@ -77,6 +77,7 @@ public class Algochess{
         Jugador temp = jugadores.getFirst();
         jugadores.removeFirst();
         jugadores.addLast(temp);
+        System.out.println("Se cambió de turno ahora es turno del jugador: " + jugadores.getFirst().getNombre());
 
     }
 

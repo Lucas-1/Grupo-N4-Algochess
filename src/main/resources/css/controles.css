@@ -8,7 +8,7 @@
     -fx-text-fill: -fx-text-inner-color;
     -fx-text-inner-color: #ffffff;
     -fx-border-style: hidden hidden solid hidden;
-    -fx-border-width: 3;
+    -fx-border-width: 3px;
     -fx-border-color: #ff8000;
     -fx-font-weight: 800;
 }
@@ -30,13 +30,14 @@
     -fx-border-insets: 10;
 }
 #boton-terminar-turno{
+    -fx-padding: 10px;
     -fx-text-fill: -fx-text-inner-color;
     -fx-text-inner-color: #000000;
     -fx-font-size: 30px;
     -fx-background-color: #00be00;
-    -fx-padding: 5px;
     -fx-font-weight: 600;
+    -fx-background-radius: 10px;
 }
 #boton-terminar-turno:hover{
-    -fx-background-color: #007c00;
+    -fx-background-color: #00e600;
 }
