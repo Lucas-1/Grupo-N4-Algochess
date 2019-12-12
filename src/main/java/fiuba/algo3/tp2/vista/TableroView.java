@@ -9,6 +9,7 @@ import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -16,6 +17,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
+
+import java.util.HashMap;
 
 
 public class TableroView extends Group implements Observer {
@@ -31,6 +35,7 @@ public class TableroView extends Group implements Observer {
     private Pane[][] casilleros;
     private PiezasView piezasView;
     private ControlesView control;
+
 
     public TableroView(Algochess algochess,ControlesView control) {
 
@@ -93,6 +98,10 @@ public class TableroView extends Group implements Observer {
                 String piezaNuevaString = event.getDragboard().getString();
                 Image piezaNuevaImg = event.getDragboard().getImage();
                 ImageView piezaNueva = new ImageView(piezaNuevaImg);
+                Tooltip tooltip = piezasView.getTooltip(piezaNuevaString);
+                Tooltip.install(piezaNueva, tooltip);
+                tooltip.setShowDuration(Duration.INDEFINITE);
+                tooltip.setShowDelay(Duration.seconds(.1));
                 casillero.getChildren().clear();
                 casillero.getChildren().add(piezaNueva);
                 algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString),tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));

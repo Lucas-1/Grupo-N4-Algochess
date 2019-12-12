@@ -9,12 +9,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 
 public class ControlesView extends VBox {
@@ -50,7 +52,7 @@ public class ControlesView extends VBox {
         Button botonDerecha = new Button() ;
         Button botonIzquierda = new Button();
         Button botonAtacar = new Button();
-        Button botonTerminarTrno = new Button("Terminar Turno");
+        Button botonTerminarTurno = new Button("Terminar Turno");
 
         controles.getStylesheets().add("css/controles.css");
 
@@ -82,7 +84,9 @@ public class ControlesView extends VBox {
         botonDerecha.setOnAction(botonDerechaEventHandler);
         botonIzquierda.setOnAction(botonIzquierdaEventHandler);
         botonAtacar.setOnAction(botonAtacarEventHandler);
-        botonTerminarTrno.setOnAction(botonTerminarTurnoEventHandler);
+        botonTerminarTurno.setOnAction(botonTerminarTurnoEventHandler);
+
+        botonTerminarTurno.setId("boton-terminar-turno");
 
         StackPane mando = new StackPane();
 
@@ -105,7 +109,10 @@ public class ControlesView extends VBox {
         boxPieza.getChildren().addAll(piezaActual, nombrePiezaSeleccionada);
         controles.getChildren().add(boxPieza);
         controles.getChildren().add(mando);
-        controles.getChildren().add(botonTerminarTrno);
+        controles.getChildren().add(botonTerminarTurno);
+
+        VBox.setMargin(botonTerminarTurno, new Insets(0, 0, 0, 60));
+
         this.setPrefWidth(363);
         this.getChildren().add(controles);
     }

@@ -21,3 +21,7 @@
     -fx-text-align: center;
     -fx-font-size: 40px;
 }
+
+.button:hover{
+    -fx-background-color: #50da54;
+}
