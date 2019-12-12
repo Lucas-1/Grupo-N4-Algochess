@@ -118,7 +118,7 @@ public class TableroView extends Group implements Observer {
                     casilleros[j][i].getChildren().clear();
                     casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
                 } catch (CasilleroEstaVacioException e){
-                    System.out.println("el casillero esta vacio");//aca hay un error tremendo, atrapa la excepcion una vez por casillero(osea 400 veces)
+                    //System.out.println("el casillero esta vacio");//aca hay un error tremendo, atrapa la excepcion una vez por casillero(osea 400 veces)
                 }
             }
         }
