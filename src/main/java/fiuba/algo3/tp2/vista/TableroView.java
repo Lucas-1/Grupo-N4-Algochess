@@ -11,6 +11,7 @@ import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeCompra;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -123,14 +124,19 @@ public class TableroView extends Group implements Observer {
                 vista.change();
 
                 final Popup popup = new Popup();
+                VBox popupVBox = new VBox();
                 popup.setAutoFix(true);
                 popup.setAnchorX(1440);
                 popup.setAnchorY(180);
                 popup.setAutoHide(true);
                 popup.setHideOnEscape(true);
                 Label popupText = new Label(obtenerPiezaDeInterfaz(casillero).getNombre() + " comprado.");
-                popupText.getStylesheets().add("css/popup.css");
-                popup.getContent().addAll(popupText);
+                Label dismissMensaje = new Label("clickea para hacer desaparecer este mensaje");
+                dismissMensaje.setId("dismiss-mensaje");
+                popupVBox.getChildren().addAll(popupText, dismissMensaje);
+                popupVBox.setAlignment(Pos.CENTER);
+                popupVBox.getStylesheets().add("css/popup.css");
+                popup.getContent().add(popupVBox);
                 popup.show(stage);
 
                 faseDeCompra.actualizarInformacionJugador(actual);

@@ -5,8 +5,14 @@ import fiuba.algo3.tp2.juego.Algochess;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -29,9 +35,10 @@ public class BotonDerechaEventHandler implements EventHandler<ActionEvent> {
 
         final Popup popup = new Popup();
         HBox popupText = new HBox();
+        VBox popupVBox = new VBox();
         popup.setAutoFix(true);
         popup.setAnchorX(450);
-        popup.setAnchorY(50);
+        popup.setAnchorY(40);
         popup.setAutoHide(true);
         popup.setHideOnEscape(true);
         Label primeraParteDelTexto = new Label( "Moviste la pieza ");
@@ -44,9 +51,13 @@ public class BotonDerechaEventHandler implements EventHandler<ActionEvent> {
             terceraParteDelTexto.setId("color-negro");
         }
         Label cuartaParteDelTexto = new Label(" a la derecha");
+        Label dismissMensaje = new Label("clickea para hacer desaparecer este mensaje");
+        dismissMensaje.setId("dismiss-mensaje");
         popupText.getChildren().addAll(primeraParteDelTexto,segundaParteDelTexto,terceraParteDelTexto,cuartaParteDelTexto);
-        popupText.getStylesheets().add("css/popup.css");
-        popup.getContent().addAll(popupText);
+        popupVBox.getChildren().addAll(popupText, dismissMensaje);
+        popupVBox.setAlignment(Pos.CENTER);
+        popupVBox.getStylesheets().add("css/popup.css");
+        popup.getContent().add(popupVBox);
         popup.show(stage);
     }
 

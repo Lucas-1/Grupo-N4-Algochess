@@ -18,3 +18,8 @@
 #color-negro{
     -fx-text-inner-color: #000;
 }
+#dismiss-mensaje{
+    -fx-font-size: 16px;
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-text-inner-color: #fff;
+}
