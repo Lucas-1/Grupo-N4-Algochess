@@ -9,7 +9,7 @@ import javafx.event.EventHandler;
 public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
 
     Algochess algochess;
-    Danina atacante;
+    Pieza atacante;
     Pieza victima;
     protected Boolean ataqueEnProgreso;
 
@@ -24,13 +24,13 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent){
         ataqueEnProgreso = true;
     }
-    public void setAtacante(Danina pieza){
+    public void setAtacante(Pieza pieza){
         this.atacante = pieza;
     }
 
     public void setVictima(Pieza victima) {
         this.victima = victima;
-        algochess.atacarCon(atacante,victima.getPosicion().getPosicionFila(),victima.getPosicion().getPosicionColumna());
+        algochess.atacarCon((Danina) atacante,victima.getPosicion().getPosicionFila(),victima.getPosicion().getPosicionColumna());
         algochess.obtenerJugadorDelTurnoSiguiente().actualizarPiezas(algochess.getTablero());
         algochess.getTablero().notifyObservers();
         ataqueEnProgreso = false;
