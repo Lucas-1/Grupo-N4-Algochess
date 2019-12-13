@@ -26,12 +26,14 @@ public class TiendaView extends Group {
     private Algochess algochess;
 
     public TiendaView(Algochess algochess) {
+
         vistaTienda = new VBox();
         this.prepararLaTienda();
         this.algochess = algochess;
     }
 
     private void prepararLaTienda() {
+
         tienda = new VBox();
         plataJugador = new HBox();
         tiendaHBox = new HBox();
@@ -51,15 +53,15 @@ public class TiendaView extends Group {
                                                   "Tip: No puede atacar, cura piezas aliadas");
         Tooltip tooltipCatapulta = new Tooltip("Precio: 5\n" +
                                                   "Danio: 20\n" +
-                                                  "Tip: No puede ser curada pero tiene un gran alcance");
+                                                  "Tip: No puede ser curada pero tiene un gran alcance. No se puede mover");
 
         vistaTienda.setId("tienda");
 
         ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop-open.png", 200, 200, false, false));
-        ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-negro-seleccionado.png", 200, 200, false, false));
-        ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-negro-seleccionado.png", 200, 200, false, false));
-        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-blanco.png"));//poner al curandero 3ero para q mantenga mejor calidad la img.
-        ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta-blanco-seleccionado.png", 200, 200, false, false));
+        ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-negro.png", 200, 200, false, false));
+        ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-negro.png", 200, 200, false, false));
+        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-negro.png"));
+        ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta-negro.png", 200, 200, false, false));
 
         curandero.setFitWidth(200);
         curandero.setFitHeight(200);
@@ -113,6 +115,7 @@ public class TiendaView extends Group {
     }
 
     private void habilitarMoverPiezaAlTablero() {
+
         Image soldado = new Image("file:src/main/resources/ic-soldado-negro-seleccionado.png", 40, 40, false, false);
         Image jinete = new Image("file:src/main/resources/ic-jinete-negro-seleccionado.png", 40, 40, false, false);
         Image curandero = new Image("file:src/main/resources/ic-curandero-blanco.png", 40, 40, false, false);

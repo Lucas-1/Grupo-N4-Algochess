@@ -27,7 +27,7 @@ public class Negro implements Color {
 
     public String comoString() {
 
-        return "Negro";
+        return "negro";
     }
 
 }

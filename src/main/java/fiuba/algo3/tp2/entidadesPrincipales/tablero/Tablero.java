@@ -105,6 +105,11 @@ public class Tablero extends Observable {
         return casilleros[posicionFila][posicionColumna].getPieza();
     }
 
+    public Color getColor(int posicionFila, int posicionColumna) {
+
+        return casilleros[posicionFila][posicionColumna].getColor();
+    }
+
     public int obtenerTamanioTablero(){
         return this.LIMITE_SUPERIOR;
     }

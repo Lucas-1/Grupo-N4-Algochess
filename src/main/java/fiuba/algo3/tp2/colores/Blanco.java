@@ -28,6 +28,6 @@ public class Blanco implements Color{
 
     public String comoString() {
 
-        return "Blanco";
+        return "blanco";
     }
 }

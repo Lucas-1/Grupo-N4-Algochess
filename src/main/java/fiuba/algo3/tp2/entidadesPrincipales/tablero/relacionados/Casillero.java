@@ -75,4 +75,9 @@ public class Casillero {
         if(pieza != null)
             contiguas.agregar(pieza);
     }
+
+    public Color getColor() {
+
+        return color;
+    }
 }

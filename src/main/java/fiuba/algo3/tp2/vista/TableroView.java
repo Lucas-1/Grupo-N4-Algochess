@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.Observer;
+import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
@@ -111,9 +112,12 @@ public class TableroView extends Group implements Observer {
                 tooltip.setShowDuration(Duration.INDEFINITE);
                 tooltip.setShowDelay(Duration.seconds(.1));
 
-                algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
+                Jugador actual = algochess.obtenerJugadorConTurno();
+                fiuba.algo3.tp2.colores.Color colorJugador = actual.getColor();
+
+                algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString,colorJugador), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
                 vista.change();
-                faseDeCompra.actualizarInformacionJugador(algochess.obtenerJugadorConTurno());
+                faseDeCompra.actualizarInformacionJugador(actual);
 
             }
         });
@@ -149,8 +153,9 @@ public class TableroView extends Group implements Observer {
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
 
                 try {
+
                     casilleros[j][i].getChildren().clear();
-                    casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
+                    casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre(),tablero.obtenerPieza(i,j).getColor())));
 
                 } catch (CasilleroEstaVacioException e){
 

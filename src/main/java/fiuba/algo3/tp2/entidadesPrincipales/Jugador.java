@@ -146,4 +146,9 @@ public class Jugador {
 
         return administradorDePiezas.getCantidadDePiezas();
     }
+
+    public Color getColor() {
+
+        return color;
+    }
 }
