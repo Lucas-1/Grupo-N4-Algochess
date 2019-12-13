@@ -25,12 +25,12 @@ public class JuegoView extends VBox {
     public JuegoView(Algochess algochess, TableroView vistaTablero, Stage stage){
         this.stage = stage;
         this.algochess = algochess;
-        interfaz = new BorderPane();
+        this.interfaz = new BorderPane();
+        this.vistaTablero = vistaTablero;
+        this.controles = new ControlesView(this.algochess, stage);
 
         this.setAlignment(Pos.CENTER);
 
-        controles = new ControlesView(this.algochess, stage);
-        this.vistaTablero = vistaTablero;
         vistaTablero.setControl(controles);
 
         menuBar = new MenuBar();

@@ -42,8 +42,8 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
             JuegoView vistaJuego = new JuegoView(algochess, vistaTablero, stage);
             Scene juegoPrincipal = new Scene(vistaJuego);
 
-            stage.setScene(juegoPrincipal);
             stage.setFullScreenExitHint("");
+            stage.setScene(juegoPrincipal);
             stage.setFullScreen(true);
 
         } else {
