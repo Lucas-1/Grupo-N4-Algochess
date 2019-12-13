@@ -1,10 +1,12 @@
 package fiuba.algo3.tp2.entidadesPrincipales.piezas.administrador;
 
 
-import fiuba.algo3.tp2.PiezasContiguas;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.PiezasContiguas;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.entidadesPrincipales.tienda.Tienda;
 import fiuba.algo3.tp2.entidadesPrincipales.tienda.relacionados.Billetera;
+import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
+import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
 import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
 import fiuba.algo3.tp2.movimiento.Direccion;
 import fiuba.algo3.tp2.movimiento.Posicion;
@@ -53,16 +55,23 @@ public class AdministradorDePiezas {
     public void agregarPieza(Pieza pieza, int posicionFila, int posicionColumna, Tablero tablero) {
 
         Posicion posicion = new Posicion(posicionFila,posicionColumna);
+        pieza.setPosicion(posicion);
+
         Pieza piezaComprada;
+        piezaComprada = tienda.comprarPieza(pieza, billetera);
+
         try{
-            piezaComprada = tienda.comprarPieza(pieza, billetera);
-        }catch (JugadorQuiereUtilizarMasDineroDelDisponibleException e){
+
+            tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);
+            piezas.add(pieza);
+
+        } catch (JugadorQuiereUtilizarMasDineroDelDisponibleException | CasilleroEstaOcupadoException | CasilleroDeLadoEnemigoException e){
+
             logger.log(Level.SEVERE, e.getMessage());
+            billetera.reembolsar(piezaComprada.getCosto());
             throw e;
         }
-        tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);
-        pieza.setPosicion(posicion);
-        piezas.add(pieza);
+
     }
 
     public ArrayList<Pieza> obtenerPiezasContiguas(Posicion posicion, Tablero tablero) {

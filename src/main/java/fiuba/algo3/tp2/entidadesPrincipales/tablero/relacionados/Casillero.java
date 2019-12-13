@@ -1,6 +1,6 @@
 package fiuba.algo3.tp2.entidadesPrincipales.tablero.relacionados;
 
-import fiuba.algo3.tp2.PiezasContiguas;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.PiezasContiguas;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaOcupadoException;
@@ -29,14 +29,14 @@ public class Casillero {
             if(pieza != null)
                 throw new CasilleroEstaOcupadoException("No podes colocar una pieza en un casillero ocupado");
 
-
             if (!color.esDelMismoColor(unColor))
                 throw new CasilleroDeLadoEnemigoException("No podes colocar piezas en el lado enemigo");
 
         }   catch (CasilleroEstaOcupadoException | CasilleroDeLadoEnemigoException e) {
             logger.log(Level.SEVERE, e.getMessage());
-            return false;
+            throw e;
         }
+
 
         return true;
     }

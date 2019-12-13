@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2.entidadesPrincipales;
+package fiuba.algo3.tp2.entidadesPrincipales.piezas.administrador;
 
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Jinete;

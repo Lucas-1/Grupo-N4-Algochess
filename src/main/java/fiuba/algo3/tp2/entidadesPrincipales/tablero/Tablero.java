@@ -2,7 +2,7 @@ package fiuba.algo3.tp2.entidadesPrincipales.tablero;
 
 import fiuba.algo3.tp2.Observable;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.relacionados.Casillero;
-import fiuba.algo3.tp2.PiezasContiguas;
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.PiezasContiguas;
 import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.colores.Negro;

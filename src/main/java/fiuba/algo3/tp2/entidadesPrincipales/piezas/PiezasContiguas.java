@@ -1,4 +1,4 @@
-package fiuba.algo3.tp2;
+package fiuba.algo3.tp2.entidadesPrincipales.piezas;
 
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.movimiento.Posicion;

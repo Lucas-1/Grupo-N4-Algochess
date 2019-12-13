@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.entidadesPrincipales;
 
+import fiuba.algo3.tp2.entidadesPrincipales.piezas.administrador.AdministradorDeJugadas;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.administrador.AdministradorDePiezas;
 import fiuba.algo3.tp2.colores.Color;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
@@ -71,7 +72,6 @@ public class Jugador {
             int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
             ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(posReceptor, tablero);
             adminDeJugadas.atacarCon(pieza,receptor,distanciaEntrePiezas,contiguas);
-           //pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
 
         } catch (CasilleroEstaVacioException e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -86,10 +86,7 @@ public class Jugador {
             Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
             int distanciaEntrePiezas = jinete.calcularDistancia(posReceptor);
             ArrayList<Pieza> contiguas = administradorDePiezas.obtenerPiezasContiguas(jinete.getPosicion(), tablero);
-
             adminDeJugadas.atacarCon(jinete,receptor,distanciaEntrePiezas,contiguas);
-
-            //jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
 
         } catch (CasilleroEstaVacioException e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -106,8 +103,6 @@ public class Jugador {
             Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
             int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
             adminDeJugadas.curarCon(pieza,receptor,distanciaEntrePiezas);
-
-            //pieza.curar(receptor,distanciaEntrePiezas);
 
         } catch (CasilleroEstaVacioException e) {
             logger.log(Level.SEVERE, e.getMessage());
@@ -131,7 +126,7 @@ public class Jugador {
         administradorDePiezas.actualizarPiezas(tablero);
     }
 
-    //
+
     public int getPuntosDeCompraDisponibles() {
 
         return administradorDePiezas.getPuntosDeCompraDisponibles();

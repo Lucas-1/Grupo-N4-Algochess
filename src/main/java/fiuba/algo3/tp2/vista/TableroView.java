@@ -43,6 +43,7 @@ public class TableroView extends Group implements Observer {
 
 
     public TableroView(Algochess algochess, FaseDeCompraView faseDeCompra) {
+
         this.faseDeCompra = faseDeCompra;
         this.algochess = algochess;
         this.tablero = algochess.getTablero();
@@ -59,7 +60,7 @@ public class TableroView extends Group implements Observer {
                 v.setMinHeight(LARGO_CASILLERO);
                 v.setMinWidth(ANCHO_CASILLERO);
                 v.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
-                this.setearRecibirPieza(v);
+                this.setearRecibirPieza(v,this);
                 casilleros[i][j] = v;
                 tableroView.add(v,i,j);
             }
@@ -71,7 +72,7 @@ public class TableroView extends Group implements Observer {
                 v.setMinHeight(LARGO_CASILLERO);
                 v.setMinWidth(ANCHO_CASILLERO);
                 v.setBackground(new Background(new BackgroundFill(Color.DARKGREY, CornerRadii.EMPTY, Insets.EMPTY)));
-                this.setearRecibirPieza(v);
+                this.setearRecibirPieza(v,this);
                 casilleros[i][j] = v;
                 tableroView.add(v,i,j);
             }
@@ -83,10 +84,11 @@ public class TableroView extends Group implements Observer {
     }
 
     private void addView(ImageView imagen,int fila,int columna) {
+
         this.tableroView.add(imagen,fila,columna);
     }
 
-    private void setearRecibirPieza(Pane casillero){
+    private void setearRecibirPieza(Pane casillero, TableroView vista){
 
         casillero.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
@@ -100,6 +102,7 @@ public class TableroView extends Group implements Observer {
 
             @Override
             public void handle(DragEvent event) {
+
                 String piezaNuevaString = event.getDragboard().getString();
                 Image piezaNuevaImg = event.getDragboard().getImage();
                 ImageView piezaNueva = new ImageView(piezaNuevaImg);
@@ -107,14 +110,11 @@ public class TableroView extends Group implements Observer {
                 Tooltip.install(piezaNueva, tooltip);
                 tooltip.setShowDuration(Duration.INDEFINITE);
                 tooltip.setShowDelay(Duration.seconds(.1));
-                casillero.getChildren().clear();
-                try {
-                    algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
-                }catch (JugadorQuiereUtilizarMasDineroDelDisponibleException e){
-                    return;
-                }
-                casillero.getChildren().add(piezaNueva);
+
+                algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
+                vista.change();
                 faseDeCompra.actualizarInformacionJugador(algochess.obtenerJugadorConTurno());
+
             }
         });
         casillero.setOnMouseClicked(new EventHandler<MouseEvent>() {

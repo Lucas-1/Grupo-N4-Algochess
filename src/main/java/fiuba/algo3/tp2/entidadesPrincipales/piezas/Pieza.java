@@ -108,5 +108,7 @@ public abstract class Pieza {
         return this.nombre;
     }
 
-    public abstract int getPuntosDePoder();
+    public int getCosto() {
+        return precio;
+    }
 }

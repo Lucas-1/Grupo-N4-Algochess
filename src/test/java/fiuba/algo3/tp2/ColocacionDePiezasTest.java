@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Catapulta;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Curandero;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
+import fiuba.algo3.tp2.excepciones.CasilleroDeLadoEnemigoException;
 import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
 import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import org.junit.Test;
@@ -39,9 +40,10 @@ public class ColocacionDePiezasTest {
         Tablero tablero = new Tablero();
         Curandero curandero = new Curandero(blanco);
 
-        jugador.insertarPiezaEnPosicion(curandero, 15,15, tablero);
-
-        assertFalse(tablero.casilleroOcupado(15,15));
+        assertThrows(CasilleroDeLadoEnemigoException.class,
+                ()->{
+                    jugador.insertarPiezaEnPosicion(curandero, 15, 15, tablero);
+                });
     }
 
     @Test

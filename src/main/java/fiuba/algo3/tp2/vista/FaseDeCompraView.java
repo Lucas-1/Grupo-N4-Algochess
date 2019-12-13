@@ -72,12 +72,14 @@ public class FaseDeCompraView extends BorderPane {
     }
 
     private InformacionJugadorView setInformacionJugador(Jugador jugadorConTurno) {
+
         InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
         info.setPadding(new Insets(0,0,0,100));
         return info;
     }
 
     public void actualizarInformacionJugador(Jugador jugadorConTurno){
+
         this.setLeft(setInformacionJugador(jugadorConTurno));
     }
 }

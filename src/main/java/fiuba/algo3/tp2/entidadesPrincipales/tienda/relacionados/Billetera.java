@@ -28,4 +28,9 @@ public class Billetera {
 
         return dineroDisponible;
     }
+
+    public void reembolsar(int costoPieza) {
+
+        dineroDisponible+= costoPieza;
+    }
 }
