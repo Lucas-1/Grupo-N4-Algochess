@@ -122,8 +122,8 @@ public class Algochess{
         return tablero;
     }
 
-    public int getPuntosDeCompraDelJugador() {
+    public Jugador obtenerJugadorDelTurnoSiguiente() {
 
-        return jugadores.getFirst().getPuntosDeCompraDisponibles();
+        return jugadores.getLast();
     }
 }
