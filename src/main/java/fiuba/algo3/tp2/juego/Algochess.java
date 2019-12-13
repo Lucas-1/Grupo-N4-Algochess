@@ -75,8 +75,11 @@ public class Algochess{
         /** le pasa el turno al proximo jugador poniendolo en el primer lugar de la lista
          * y el que estaba primero va al fondo**/
         Jugador temp = jugadores.getFirst();
+        temp.terminarTurno();
+
         jugadores.removeFirst();
         jugadores.addLast(temp);
+
         System.out.println("Se cambió de turno ahora es turno del jugador: " + jugadores.getFirst().getNombre());
 
     }
