@@ -52,7 +52,7 @@ public class FaseDeCompraView extends BorderPane {
         Button terminarCompra = new Button("Terminar la compra");
 
 
-        vistaTablero = new TableroView(algochess, this);
+        vistaTablero = new TableroView(algochess, this, stage);
         vistaTienda = new TiendaView(algochess);
 
         this.setAlignment(vistaTienda, Pos.CENTER_RIGHT);

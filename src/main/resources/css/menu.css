@@ -15,7 +15,7 @@
     -fx-text-inner-color: #fcff00;
 }
 .button{
-    -fx-background-color: #3239dd;
+    -fx-background-color: #00be00;
     -fx-text-fill: -fx-text-inner-color;
     -fx-text-inner-color: white;
     -fx-border: none;
@@ -28,6 +28,6 @@
 }
 
 .button:hover{
-    -fx-background-color: #3842fd;
+    -fx-background-color: #00e600;
     -fx-border-color: rgba(0, 0, 0, 0.35);
 }
