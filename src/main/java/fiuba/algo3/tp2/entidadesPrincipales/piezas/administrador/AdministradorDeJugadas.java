@@ -68,6 +68,13 @@ public class AdministradorDeJugadas {
         movimientosRealizados = 0;
     }
 
+    public boolean quedanAtaques(){
+        return ataquesRealizados<1;
+    }
+
+    public boolean quedanMovimientos(){
+        return movimientosRealizados<1;
+    }
 
 
 

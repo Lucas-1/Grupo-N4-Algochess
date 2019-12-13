@@ -30,35 +30,38 @@ public class BotonDerechaEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent){
+
+        if(algochess.obtenerJugadorConTurno().quedanMovimientos()) {
+            final Popup popup = new Popup();
+            HBox popupText = new HBox();
+            VBox popupVBox = new VBox();
+            popup.setAutoFix(true);
+            popup.setAnchorX(450);
+            popup.setAnchorY(40);
+            popup.setAutoHide(true);
+            popup.setHideOnEscape(true);
+            Label primeraParteDelTexto = new Label("Moviste la pieza ");
+            Label segundaParteDelTexto = new Label(pieza.getNombre() + " ");
+            segundaParteDelTexto.setId("nombre-pieza");
+            Label terceraParteDelTexto = new Label(pieza.getColor().comoString());
+            if (pieza.getColor().comoString() == "blanco") {
+                terceraParteDelTexto.setId("color-blanco");
+            } else {
+                terceraParteDelTexto.setId("color-negro");
+            }
+            Label cuartaParteDelTexto = new Label(" a la derecha");
+            Label dismissMensaje = new Label("clickea para hacer desaparecer este mensaje");
+            dismissMensaje.setId("dismiss-mensaje");
+            popupText.getChildren().addAll(primeraParteDelTexto, segundaParteDelTexto, terceraParteDelTexto, cuartaParteDelTexto);
+            popupVBox.getChildren().addAll(popupText, dismissMensaje);
+            popupVBox.setAlignment(Pos.CENTER);
+            popupVBox.getStylesheets().add("css/popup.css");
+            popup.getContent().add(popupVBox);
+            popup.show(stage);
+        }
+
         algochess.moverPieza(pieza, Direccion.derecha());
         algochess.getTablero().notifyObservers();
-
-        final Popup popup = new Popup();
-        HBox popupText = new HBox();
-        VBox popupVBox = new VBox();
-        popup.setAutoFix(true);
-        popup.setAnchorX(450);
-        popup.setAnchorY(40);
-        popup.setAutoHide(true);
-        popup.setHideOnEscape(true);
-        Label primeraParteDelTexto = new Label( "Moviste la pieza ");
-        Label segundaParteDelTexto = new Label(pieza.getNombre() + " ");
-        segundaParteDelTexto.setId("nombre-pieza");
-        Label terceraParteDelTexto = new Label(pieza.getColor().comoString());
-        if(pieza.getColor().comoString() == "blanco") {
-            terceraParteDelTexto.setId("color-blanco");
-        }else {
-            terceraParteDelTexto.setId("color-negro");
-        }
-        Label cuartaParteDelTexto = new Label(" a la derecha");
-        Label dismissMensaje = new Label("clickea para hacer desaparecer este mensaje");
-        dismissMensaje.setId("dismiss-mensaje");
-        popupText.getChildren().addAll(primeraParteDelTexto,segundaParteDelTexto,terceraParteDelTexto,cuartaParteDelTexto);
-        popupVBox.getChildren().addAll(popupText, dismissMensaje);
-        popupVBox.setAlignment(Pos.CENTER);
-        popupVBox.getStylesheets().add("css/popup.css");
-        popup.getContent().add(popupVBox);
-        popup.show(stage);
     }
 
     public void setPieza(Pieza pieza){

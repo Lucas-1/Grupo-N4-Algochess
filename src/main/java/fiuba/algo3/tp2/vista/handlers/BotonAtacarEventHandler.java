@@ -42,6 +42,25 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
     }
 
     public void setVictima(Pieza victima) {
+
+        if(algochess.obtenerJugadorConTurno().quedanAtaques()) {
+            final Popup popup = new Popup();
+            VBox popupVBox = new VBox();
+            popup.setAutoFix(true);
+            popup.setAnchorX(1440);
+            popup.setAnchorY(180);
+            popup.setAutoHide(true);
+            popup.setHideOnEscape(true);
+            Label popupText = new Label("Ataque realizado.");
+            Label dismissMensaje = new Label("clickea para hacer desaparecer este mensaje");
+            dismissMensaje.setId("dismiss-mensaje");
+            popupVBox.getChildren().addAll(popupText, dismissMensaje);
+            popupVBox.setAlignment(Pos.CENTER);
+            popupVBox.getStylesheets().add("css/popup.css");
+            popup.getContent().add(popupVBox);
+            popup.show(stage);
+        }
+
         this.victima = victima;
         algochess.atacarCon((Danina) atacante,victima.getPosicion().getPosicionFila(),victima.getPosicion().getPosicionColumna());
         algochess.obtenerJugadorDelTurnoSiguiente().actualizarPiezas(algochess.getTablero());
@@ -67,24 +86,9 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
             finDelJuego.setScene(dialogScene);
             finDelJuego.show();
         }
+
         algochess.getTablero().notifyObservers();
         ataqueEnProgreso = false;
-
-        final Popup popup = new Popup();
-        VBox popupVBox = new VBox();
-        popup.setAutoFix(true);
-        popup.setAnchorX(1440);
-        popup.setAnchorY(180);
-        popup.setAutoHide(true);
-        popup.setHideOnEscape(true);
-        Label popupText = new Label( "Ataque realizado.");
-        Label dismissMensaje = new Label("clickea para hacer desaparecer este mensaje");
-        dismissMensaje.setId("dismiss-mensaje");
-        popupVBox.getChildren().addAll(popupText, dismissMensaje);
-        popupVBox.setAlignment(Pos.CENTER);
-        popupVBox.getStylesheets().add("css/popup.css");
-        popup.getContent().add(popupVBox);
-        popup.show(stage);
     }
 
     public Boolean ataqueEnProgreso(){

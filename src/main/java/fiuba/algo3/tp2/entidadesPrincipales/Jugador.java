@@ -151,4 +151,13 @@ public class Jugador {
 
         return color;
     }
+
+    public boolean quedanMovimientos(){
+        return adminDeJugadas.quedanMovimientos();
+    }
+
+    public boolean quedanAtaques(){
+        return adminDeJugadas.quedanAtaques();
+    }
+
 }
