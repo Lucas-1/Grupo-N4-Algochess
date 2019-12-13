@@ -2,6 +2,7 @@ package fiuba.algo3.tp2.vista.handlers;
 
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.juego.Algochess;
+import fiuba.algo3.tp2.vista.FaseDeCompraView;
 import fiuba.algo3.tp2.vista.InformacionJugadorView;
 import fiuba.algo3.tp2.vista.JuegoView;
 import fiuba.algo3.tp2.vista.TableroView;
@@ -18,10 +19,10 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
     private Stage stage;
     private Algochess algochess;
     private TableroView vistaTablero;
-    private BorderPane escena;
+    private FaseDeCompraView escena;
     private int turnosTranscurridos;
 
-    public BotonTerminarCompraEventHandler(int turnosTranscurridos, Algochess algochess, TableroView vistaTablero, Stage stage, BorderPane escena) {
+    public BotonTerminarCompraEventHandler(int turnosTranscurridos, Algochess algochess, TableroView vistaTablero, Stage stage, FaseDeCompraView escena) {
 
         this.turnosTranscurridos = turnosTranscurridos;
         this.algochess = algochess;
@@ -51,6 +52,7 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
             Jugador jugadorConTurno = algochess.obtenerJugadorConTurno();
 
             InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
+            this.escena.actualizarColoresTienda();
             escena.setLeft(info);
             info.setPadding(new Insets(0,0,0,105));
         }

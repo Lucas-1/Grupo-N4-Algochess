@@ -24,15 +24,28 @@ public class TiendaView extends Group {
     private HBox plataJugador;
     private VBox tienda;
     private Algochess algochess;
+    ImageView soldado;
+    ImageView jinete;
+    ImageView curandero;
+    ImageView catapulta;
+    Image imagenDragSoldado;
+    Image imagenDragJinete;
+    Image imageDragCurandero;
+    Image imagenDragCatapulta;
 
     public TiendaView(Algochess algochess) {
 
         vistaTienda = new VBox();
-        this.prepararLaTienda();
+        this.prepararLaTienda(false);
+        this.algochess = algochess;
+    }
+    public TiendaView(Algochess algochess, boolean tiendaDeNegras){
+        vistaTienda = new VBox();
+        this.prepararLaTienda(tiendaDeNegras);
         this.algochess = algochess;
     }
 
-    private void prepararLaTienda() {
+    private void prepararLaTienda(boolean sonPiezasNegras) {
 
         tienda = new VBox();
         plataJugador = new HBox();
@@ -58,11 +71,17 @@ public class TiendaView extends Group {
         vistaTienda.setId("tienda");
 
         ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop-open.png", 200, 200, false, false));
-        ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-negro.png", 200, 200, false, false));
-        ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-negro.png", 200, 200, false, false));
-        ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-negro.png"));
-        ImageView catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta-negro.png", 200, 200, false, false));
-
+        if(!sonPiezasNegras) {
+            soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-blanco.png", 200, 200, false, false));
+            jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-blanco.png", 200, 200, false, false));
+            curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-blanco.png"));
+            catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta-blanco.png", 200, 200, false, false));
+        }else{
+            soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-negro.png", 200, 200, false, false));
+            jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-negro.png", 200, 200, false, false));
+            curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-negro.png"));
+            catapulta = new ImageView(new Image("file:src/main/resources/ic-catapulta-negro.png", 200, 200, false, false));
+        }
         curandero.setFitWidth(200);
         curandero.setFitHeight(200);
 
@@ -110,22 +129,29 @@ public class TiendaView extends Group {
 
         this.getChildren().add(vistaTienda);
 
-        this.habilitarMoverPiezaAlTablero();
+        this.habilitarMoverPiezaAlTablero(sonPiezasNegras);
 
     }
 
-    private void habilitarMoverPiezaAlTablero() {
+    private void habilitarMoverPiezaAlTablero(boolean sonPiezasNegras) {
 
-        Image soldado = new Image("file:src/main/resources/ic-soldado-negro-seleccionado.png", 40, 40, false, false);
-        Image jinete = new Image("file:src/main/resources/ic-jinete-negro-seleccionado.png", 40, 40, false, false);
-        Image curandero = new Image("file:src/main/resources/ic-curandero-blanco.png", 40, 40, false, false);
-        Image catapulta = new Image("file:src/main/resources/ic-catapulta-blanco-seleccionado.png", 40, 40, false, false);
+        if(!sonPiezasNegras){
+            imagenDragSoldado = new Image("file:src/main/resources/ic-soldado-blanco.png", 40, 40, false, false);
+            imagenDragJinete = new Image("file:src/main/resources/ic-jinete-blanco.png", 40, 40, false, false);
+            imageDragCurandero = new Image("file:src/main/resources/ic-curandero-blanco.png", 40, 40, false, false);
+            imagenDragCatapulta = new Image("file:src/main/resources/ic-catapulta-blanco.png", 40, 40, false, false);
+        }else{
+            imagenDragSoldado = new Image("file:src/main/resources/ic-soldado-negro.png", 40, 40, false, false);
+            imagenDragJinete = new Image("file:src/main/resources/ic-jinete-negro.png", 40, 40, false, false);
+            imageDragCurandero = new Image("file:src/main/resources/ic-curandero-negro.png", 40, 40, false, false);
+            imagenDragCatapulta = new Image("file:src/main/resources/ic-catapulta-negro.png", 40, 40, false, false);
+        }
 
         primeraHBox.getChildren().get(0).setOnDragDetected(event -> {
             Dragboard db = primeraHBox.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
             cb.putString("soldado");
-            cb.putImage(soldado);
+            cb.putImage(imagenDragSoldado);
             db.setContent(cb);
             event.consume();
         });
@@ -133,7 +159,7 @@ public class TiendaView extends Group {
             Dragboard db = primeraHBox.getChildren().get(1).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
             cb.putString("jinete");
-            cb.putImage(jinete);
+            cb.putImage(imagenDragJinete);
             db.setContent(cb);
             event.consume();
         });
@@ -141,7 +167,7 @@ public class TiendaView extends Group {
             Dragboard db = segundaHBox.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
             cb.putString("curandero");
-            cb.putImage(curandero);
+            cb.putImage(imageDragCurandero);
             db.setContent(cb);
             event.consume();
         });
@@ -149,7 +175,7 @@ public class TiendaView extends Group {
             Dragboard db = segundaHBox.getChildren().get(1).startDragAndDrop(TransferMode.COPY);
             ClipboardContent cb = new ClipboardContent();
             cb.putString("catapulta");
-            cb.putImage(catapulta);
+            cb.putImage(imagenDragCatapulta);
             db.setContent(cb);
             event.consume();
         });

@@ -57,8 +57,8 @@ public class FaseDeCompraView extends BorderPane {
 
         this.setAlignment(vistaTienda, Pos.CENTER_RIGHT);
 
-        this.setCenter(vistaTablero);
         this.setRight(vistaTienda);
+        this.setCenter(vistaTablero);
 
 
         BotonTerminarCompraEventHandler terminarCompraHandler = new BotonTerminarCompraEventHandler(turnosTranscurridos,algochess,vistaTablero,stage,this);
@@ -81,5 +81,11 @@ public class FaseDeCompraView extends BorderPane {
     public void actualizarInformacionJugador(Jugador jugadorConTurno){
 
         this.setLeft(setInformacionJugador(jugadorConTurno));
+    }
+
+    public void actualizarColoresTienda() {
+        vistaTienda = new TiendaView(algochess, true);
+        this.setAlignment(vistaTienda, Pos.CENTER_RIGHT);
+        this.setRight(vistaTienda);
     }
 }

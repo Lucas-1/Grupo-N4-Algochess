@@ -94,9 +94,7 @@ public class TableroView extends Group implements Observer {
         casillero.setOnDragOver(new EventHandler<DragEvent>() {
             @Override
             public void handle(DragEvent event) {
-                //if (event.getDragboard().hasImage()) {
                 event.acceptTransferModes(TransferMode.ANY);
-                //}
             }
         });
         casillero.setOnDragDropped(new EventHandler<DragEvent>() {
@@ -124,11 +122,21 @@ public class TableroView extends Group implements Observer {
         casillero.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                actualizarVistaTablero();
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
                 control.setAtaque((Danina) obtenerPiezaDeInterfaz(casillero));
+                seleccionarPieza(casillero);
                 actualizarTooltipPiezaDaniada(casillero);
             }
         });
+    }
+
+    private void seleccionarPieza(Pane casillero) {
+        Image imagenPieza;
+        imagenPieza = piezasView.seleccionarPieza(obtenerPiezaDeInterfaz(casillero));
+        ImageView piezaNueva = new ImageView(imagenPieza);
+        casillero.getChildren().clear();
+        casillero.getChildren().add(piezaNueva);
     }
 
     private void actualizarTooltipPiezaDaniada(Pane casillero) {
