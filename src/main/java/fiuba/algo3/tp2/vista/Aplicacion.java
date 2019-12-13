@@ -14,6 +14,7 @@ public class Aplicacion extends Application {
 
     public void start(Stage stage) {
 
+        /*
         stage.setTitle("AlgoChess");
         Algochess algochess = new Algochess();
 
@@ -27,6 +28,19 @@ public class Aplicacion extends Application {
         stage.setFullScreenExitHint("");
         stage.setFullScreen(true);
         stage.setScene(bienvenidos);
+        stage.show();*/
+
+        stage.setTitle("AlgoChess");
+        Algochess algochess = new Algochess();
+
+        PresentacionView presentacion = new PresentacionView(algochess,stage);
+        Scene bienvenidos = new Scene(presentacion);
+
+        bienvenidos.getStylesheets().add("css/presentacion.css");
+        stage.setFullScreenExitHint("");
+        stage.setFullScreen(true);
+        stage.setScene(bienvenidos);
         stage.show();
+
     }
 }

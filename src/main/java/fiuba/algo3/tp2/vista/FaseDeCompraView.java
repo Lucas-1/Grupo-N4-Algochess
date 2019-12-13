@@ -33,7 +33,7 @@ public class FaseDeCompraView extends BorderPane {
         this.setBackground(new Background(imagenDeFondo));
 
         vistaTablero = new TableroView(algochess);
-        vistaTienda = new TiendaView();
+        vistaTienda = new TiendaView(algochess);
 
         this.setCenter(vistaTablero);
         this.setRight(vistaTienda);

@@ -38,6 +38,7 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
 
             JuegoView vistaJuego = new JuegoView(algochess, vistaTablero);
             Scene juegoPrincipal = new Scene(vistaJuego);
+            algochess.terminarTurno();
 
             stage.setScene(juegoPrincipal);
             stage.setFullScreenExitHint("");
@@ -51,8 +52,6 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
             InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
             escena.setLeft(info);
             info.setAlignment(Pos.CENTER);
-
-
         }
 
 

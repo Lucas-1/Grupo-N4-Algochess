@@ -1,17 +1,14 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.Observer;
-import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
-import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,7 +37,7 @@ public class TableroView extends Group implements Observer {
     private ControlesView control;
 
 
-    public TableroView(Algochess algochess,ControlesView control) {
+    public TableroView(Algochess algochess) {
 
         this.algochess = algochess;
         this.tablero = algochess.getTablero();
@@ -50,7 +47,6 @@ public class TableroView extends Group implements Observer {
         largo = LARGO_CASILLERO * tablero.obtenerTamanioTablero();
         casilleros = new Pane[(int)ancho][(int)largo];
         piezasView = new PiezasView();
-        this.control = control;
 
         for(int i = 0; i < tablero.obtenerTamanioTablero(); i++){
             for(int j = 0; j < tablero.obtenerTamanioTablero()/2; j++){
@@ -115,19 +111,8 @@ public class TableroView extends Group implements Observer {
             public void handle(MouseEvent event) {
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
                 control.setAtaque((Danina) obtenerPiezaDeInterfaz(casillero));
-                actualizarTooltipPiezaDaniada(casillero);
             }
         });
-    }
-
-    private void actualizarTooltipPiezaDaniada(Pane casillero) {
-        Tooltip tooltip = piezasView.getTooltip(obtenerPiezaDeInterfaz(casillero).getNombre(), obtenerPiezaDeInterfaz(casillero));
-        Node piezaImageView = casillero.getChildren().get(0);
-        Tooltip.install(piezaImageView, tooltip);
-        tooltip.setShowDuration(Duration.INDEFINITE);
-        tooltip.setShowDelay(Duration.seconds(.1));
-        casillero.getChildren().clear();
-        casillero.getChildren().add(piezaImageView);
     }
 
     public Pieza obtenerPiezaDeInterfaz(Pane casillero){
@@ -148,8 +133,15 @@ public class TableroView extends Group implements Observer {
     }
 
     public void change(){
+
         actualizarVistaTablero();
     }
+
+    public void setControl(ControlesView control) {
+
+        this.control = control;
+    }
+
 
 
 }

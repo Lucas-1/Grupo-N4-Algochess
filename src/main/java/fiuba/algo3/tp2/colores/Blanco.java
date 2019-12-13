@@ -25,4 +25,9 @@ public class Blanco implements Color{
         return posicion.ladoNegro();
     }
 
+
+    public String comoString() {
+
+        return "Blanco";
+    }
 }

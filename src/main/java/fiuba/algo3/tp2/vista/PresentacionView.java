@@ -22,7 +22,7 @@ public class PresentacionView extends VBox {
 
     Stage stage;
 
-    public PresentacionView(Algochess algochess,Stage stage, Scene scene){
+    public PresentacionView(Algochess algochess,Stage stage){
 
         this.stage = stage;
         this.setAlignment(Pos.CENTER);
@@ -66,7 +66,7 @@ public class PresentacionView extends VBox {
         Button comenzar = new Button("Jugar!");
         comenzar.setMaxWidth(200);
 
-        BotonJugarEventHandler botonJugar = new BotonJugarEventHandler(algochess,entradaBlanco,entradaNegro,stage,scene);
+        BotonJugarEventHandler botonJugar = new BotonJugarEventHandler(algochess,entradaBlanco,entradaNegro,stage);
         comenzar.setOnAction(botonJugar);
 
         this.getChildren().add(textoPresentacion);

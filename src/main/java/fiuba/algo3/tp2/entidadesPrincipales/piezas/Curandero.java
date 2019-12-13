@@ -24,7 +24,7 @@ public class Curandero extends Saludable {
         this.color = color;
         this.puntosDeCuracion = CURACION;
         this.puntosDeVida = new PuntosDeVida(this);
-        this.nombre = "curandero";
+        this.nombre = "Curandero";
     }
 
     @Override

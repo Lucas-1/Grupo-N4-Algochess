@@ -91,4 +91,9 @@ public class AdministradorDePiezas {
 
         return billetera.dineroRestante();
     }
+
+    public int getCantidadDePiezas() {
+
+        return piezas.size();
+    }
 }

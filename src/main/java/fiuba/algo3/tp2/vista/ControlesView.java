@@ -34,6 +34,10 @@ public class ControlesView extends VBox {
 
 
     public ControlesView(Algochess algochess){
+
+
+        jugador = algochess.obtenerJugadorConTurno();
+
         this.controles = new VBox();
         controles.setId("controles");
         VBox boxJugador = new VBox();
@@ -41,8 +45,8 @@ public class ControlesView extends VBox {
         nombre = new Label("Turno de: ");
         piezaActual = new Label("Pieza seleccionada: ");
 
-        Label nombreJugadorConTurno = new Label("pepe");
-        Label nombrePiezaSeleccionada = new Label("jinete");
+        Label nombreJugadorConTurno = new Label(jugador.getNombre());
+        Label nombrePiezaSeleccionada = new Label("Jinete");
 
         nombreJugadorConTurno.setId("jugador-label");
         nombrePiezaSeleccionada.setId("pieza-label");
@@ -62,14 +66,11 @@ public class ControlesView extends VBox {
         Image flechaAbajo = new Image("file:src/main/resources/ic-arrow-down.png", 80,80,false,false);
         Image espadasCruzadas = new Image("file:src/main/resources/ic-swords.png", 80,80,false,false);
 
-
-
         botonIzquierda.setGraphic(new ImageView(flechaIzquierda));
         botonDerecha.setGraphic(new ImageView(flechaDerecha));
         botonArriba.setGraphic(new ImageView(flechaArriba));
         botonAbajo.setGraphic(new ImageView(flechaAbajo));
         botonAtacar.setGraphic(new ImageView(espadasCruzadas));
-
 
         botonArribaEventHandler = new BotonArribaEventHandler(algochess);
         botonAbajoEventHandler = new BotonAbajoEventHandler(algochess);
@@ -77,7 +78,6 @@ public class ControlesView extends VBox {
         botonIzquierdaEventHandler = new BotonIzquierdaEventHandler(algochess);
         botonAtacarEventHandler = new BotonAtacarEventHandler(algochess);
         botonTerminarTurnoEventHandler = new BotonTerminarTurnoEventHandler(algochess);
-
 
         botonArriba.setOnAction(botonArribaEventHandler);
         botonAbajo.setOnAction(botonAbajoEventHandler);

@@ -21,7 +21,7 @@ public class InformacionJugadorView extends VBox {
         this.setSpacing(20);
 
         Label nombre = new Label("Jugador comprando: " + jugadorConTurno.getNombre());
-        Label color = new Label("Color: " + jugadorConTurno.colorComoString());
+        Label color = new Label("Color: "  + jugadorConTurno.colorComoString());
         Label puntosRestantes = new Label("Puntos restantes: " + jugadorConTurno.getPuntosDeCompraDisponibles());
         Label cantidadDePiezas = new Label("Cantidad de piezas: " + jugadorConTurno.getCantidadPiezasDeJugador());
         Label tip = new Label("\n" + "Arrasta una pieza de la tienda al tablero para comprarla \n" +

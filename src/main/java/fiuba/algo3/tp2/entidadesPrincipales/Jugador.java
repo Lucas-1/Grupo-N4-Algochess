@@ -122,4 +122,13 @@ public class Jugador {
     }
 
 
+    public Object colorComoString() {
+
+        return color.comoString();
+    }
+
+    public int getCantidadPiezasDeJugador() {
+
+        return administradorDePiezas.getCantidadDePiezas();
+    }
 }

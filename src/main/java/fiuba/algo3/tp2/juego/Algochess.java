@@ -81,6 +81,11 @@ public class Algochess{
 
     }
 
+    public Jugador obtenerJugadorConTurno() {
+
+        return jugadores.getFirst();
+    }
+
     public void atacarCon(Danina pieza, int fila, int columna) {
 
         //administradorEventos.atacarCon(pieza, fila, columna);

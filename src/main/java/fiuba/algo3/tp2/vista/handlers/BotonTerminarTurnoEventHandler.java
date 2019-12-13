@@ -8,11 +8,13 @@ public class BotonTerminarTurnoEventHandler implements EventHandler<ActionEvent>
     private Algochess algochess;
 
     public BotonTerminarTurnoEventHandler(Algochess algochess){
+
         this.algochess = algochess;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
+
         this.algochess.terminarTurno();
     }
 }

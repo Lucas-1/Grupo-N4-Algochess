@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista.handlers;
 
 import fiuba.algo3.tp2.juego.Algochess;
+import fiuba.algo3.tp2.vista.FaseDeCompraView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -19,13 +20,12 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
     private Stage stage;
     private Scene escenaJuego;
 
-    public  BotonJugarEventHandler(Algochess algochess, TextField entradaBlanco, TextField entradaNegro, Stage stage, Scene escenaJuego) {
+    public BotonJugarEventHandler(Algochess algochess, TextField entradaBlanco, TextField entradaNegro, Stage stage) {
 
         this.algochess = algochess;
         this.entradaBlanco = entradaBlanco;
         this.entradaNegro = entradaNegro;
         this.stage = stage;
-        this.escenaJuego = escenaJuego;
     }
 
     @Override
@@ -56,10 +56,12 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
             algochess.cargarNombreBlanco(nombreBlanco);
             algochess.cargarNombreNegro(nombreNegro);
 
+            FaseDeCompraView faseCompras = new FaseDeCompraView(stage,algochess);
+            Scene escenaJuego = new Scene(faseCompras);
+
             stage.setScene(escenaJuego);
             stage.setFullScreenExitHint("");
             stage.setFullScreen(true);
         }
-
     }
 }

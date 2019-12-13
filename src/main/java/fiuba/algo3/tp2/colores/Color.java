@@ -12,4 +12,6 @@ public interface Color {
     public boolean esDelMismoColor(Color color);
 
     public boolean estoyDelLadoEnemigo(Posicion posicion);
+
+    public String comoString();
 }
