@@ -1,6 +1,7 @@
 package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.juego.Algochess;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.Group;
@@ -55,7 +56,6 @@ public class TiendaView extends Group {
         vistaTienda.setId("tienda");
 
         ImageView tiendaIcono = new ImageView(new Image("file:src/main/resources/ic-shop-open.png", 200, 200, false, false));
-        ImageView monedaIcono = new ImageView(new Image("file:src/main/resources/ic-coin.png", 100, 100, false, false));
         ImageView soldado = new ImageView(new Image("file:src/main/resources/ic-soldado-negro-seleccionado.png", 200, 200, false, false));
         ImageView jinete = new ImageView(new Image("file:src/main/resources/ic-jinete-negro-seleccionado.png", 200, 200, false, false));
         ImageView curandero = new ImageView(new Image("file:src/main/resources/ic-curandero-blanco.png"));//poner al curandero 3ero para q mantenga mejor calidad la img.
@@ -90,14 +90,6 @@ public class TiendaView extends Group {
         tooltipCatapulta.setShowDuration(Duration.INDEFINITE);
         tooltipCatapulta.setShowDelay(Duration.seconds(.1));
 
-        Label plataDelJugador = new Label(/*Integer.toString(algochess.getPuntosDeCompraDelJugador())*/);
-
-        plataJugador.getChildren().addAll(plataDelJugador, monedaIcono);
-
-
-
-
-
         tiendaHBox.getChildren().add(tiendaIcono);
         tiendaHBox.setAlignment(Pos.CENTER);
 
@@ -114,11 +106,7 @@ public class TiendaView extends Group {
 
         vistaTienda.getStylesheets().add("css/tienda.css");
 
-        tienda.getChildren().addAll(vistaTienda, plataJugador);
-
-        tienda.setSpacing(10);
-
-        this.getChildren().add(tienda);
+        this.getChildren().add(vistaTienda);
 
         this.habilitarMoverPiezaAlTablero();
 

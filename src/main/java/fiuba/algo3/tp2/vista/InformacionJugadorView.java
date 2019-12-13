@@ -2,7 +2,10 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
@@ -20,22 +23,25 @@ public class InformacionJugadorView extends VBox {
         this.setPadding(new Insets(20,20,20,20));
         this.setSpacing(20);
 
-        Label nombre = new Label("Jugador comprando: " + jugadorConTurno.getNombre());
+        Label nombre = new Label(jugadorConTurno.getNombre());
+        nombre.setId("jugador-label");
         Label color = new Label("Color: "  + jugadorConTurno.colorComoString());
-        Label puntosRestantes = new Label("Puntos restantes: " + jugadorConTurno.getPuntosDeCompraDisponibles());
-        Label cantidadDePiezas = new Label("Cantidad de piezas: " + jugadorConTurno.getCantidadPiezasDeJugador());
-        Label tip = new Label("\n" + "Arrasta una pieza de la tienda al tablero para comprarla \n" +
-                "Recorda que solo podes poner piezas de tu lado del tablero que corresponde con tu color");
+        Label puntosRestantes = new Label(Integer.toString(jugadorConTurno.getPuntosDeCompraDisponibles()));
+        Label cantidadDePiezas = new Label(Integer.toString(jugadorConTurno.getCantidadPiezasDeJugador()));
 
 
+        ImageView monedaIcono = new ImageView(new Image("file:src/main/resources/ic-coin.png", 100, 100, false, false));
+        ImageView piezaIcono = new ImageView(new Image("file:src/main/resources/ic-pieza.png", 100, 72, false, false));
+        puntosRestantes.setGraphic(monedaIcono);
+        cantidadDePiezas.setGraphic(piezaIcono);
 
-        nombre.setTextFill(Color.WHITE);
-        color.setTextFill(Color.WHITE);
-        puntosRestantes.setTextFill(Color.WHITE);
-        cantidadDePiezas.setTextFill(Color.WHITE);
-        tip.setTextFill(Color.WHITE);
+        this.setSpacing(50);
+        this.setAlignment(Pos.CENTER);
 
-        this.getChildren().addAll(nombre, color, puntosRestantes,cantidadDePiezas,tip);
+        this.getChildren().addAll(nombre, color, puntosRestantes,cantidadDePiezas);
+
+
+        this.getStylesheets().add("css/informacion-jugador.css");
 
     }
 

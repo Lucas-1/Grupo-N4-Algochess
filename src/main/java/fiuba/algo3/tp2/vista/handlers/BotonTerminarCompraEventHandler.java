@@ -7,6 +7,7 @@ import fiuba.algo3.tp2.vista.JuegoView;
 import fiuba.algo3.tp2.vista.TableroView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -51,7 +52,7 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
 
             InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
             escena.setLeft(info);
-            info.setAlignment(Pos.CENTER);
+            info.setPadding(new Insets(0,0,0,105));
         }
 
 

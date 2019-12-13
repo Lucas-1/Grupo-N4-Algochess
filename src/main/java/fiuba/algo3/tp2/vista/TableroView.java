@@ -9,6 +9,7 @@ import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -111,8 +112,19 @@ public class TableroView extends Group implements Observer {
             public void handle(MouseEvent event) {
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
                 control.setAtaque((Danina) obtenerPiezaDeInterfaz(casillero));
+                actualizarTooltipPiezaDaniada(casillero);
             }
         });
+    }
+
+    private void actualizarTooltipPiezaDaniada(Pane casillero) {
+        Tooltip tooltip = piezasView.getTooltip(obtenerPiezaDeInterfaz(casillero).getNombre(), obtenerPiezaDeInterfaz(casillero));
+        Node piezaImageView = casillero.getChildren().get(0);
+        Tooltip.install(piezaImageView, tooltip);
+        tooltip.setShowDuration(Duration.INDEFINITE);
+        tooltip.setShowDelay(Duration.seconds(.1));
+        casillero.getChildren().clear();
+        casillero.getChildren().add(piezaImageView);
     }
 
     public Pieza obtenerPiezaDeInterfaz(Pane casillero){
@@ -126,7 +138,7 @@ public class TableroView extends Group implements Observer {
                     casilleros[j][i].getChildren().clear();
                     casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
                 } catch (CasilleroEstaVacioException e){
-                    //System.out.println("el casillero esta vacio");//aca hay un error tremendo, atrapa la excepcion una vez por casillero(osea 400 veces)
+
                 }
             }
         }

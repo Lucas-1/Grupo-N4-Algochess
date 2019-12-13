@@ -29,15 +29,3 @@
     -fx-border-width: 5;
     -fx-border-insets: 10;
 }
-#boton-terminar-turno{
-    -fx-padding: 10px;
-    -fx-text-fill: -fx-text-inner-color;
-    -fx-text-inner-color: #000000;
-    -fx-font-size: 30px;
-    -fx-background-color: #00be00;
-    -fx-font-weight: 600;
-    -fx-background-radius: 10px;
-}
-#boton-terminar-turno:hover{
-    -fx-background-color: #00e600;
-}

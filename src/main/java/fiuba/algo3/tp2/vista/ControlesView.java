@@ -30,7 +30,6 @@ public class ControlesView extends VBox {
     BotonDerechaEventHandler botonDerechaEventHandler;
     BotonIzquierdaEventHandler botonIzquierdaEventHandler;
     BotonAtacarEventHandler botonAtacarEventHandler;
-    BotonTerminarTurnoEventHandler botonTerminarTurnoEventHandler;
 
 
     public ControlesView(Algochess algochess){
@@ -56,7 +55,6 @@ public class ControlesView extends VBox {
         Button botonDerecha = new Button() ;
         Button botonIzquierda = new Button();
         Button botonAtacar = new Button();
-        Button botonTerminarTurno = new Button("Terminar Turno");
 
         controles.getStylesheets().add("css/controles.css");
 
@@ -77,16 +75,12 @@ public class ControlesView extends VBox {
         botonDerechaEventHandler = new BotonDerechaEventHandler(algochess);
         botonIzquierdaEventHandler = new BotonIzquierdaEventHandler(algochess);
         botonAtacarEventHandler = new BotonAtacarEventHandler(algochess);
-        botonTerminarTurnoEventHandler = new BotonTerminarTurnoEventHandler(algochess);
 
         botonArriba.setOnAction(botonArribaEventHandler);
         botonAbajo.setOnAction(botonAbajoEventHandler);
         botonDerecha.setOnAction(botonDerechaEventHandler);
         botonIzquierda.setOnAction(botonIzquierdaEventHandler);
         botonAtacar.setOnAction(botonAtacarEventHandler);
-        botonTerminarTurno.setOnAction(botonTerminarTurnoEventHandler);
-
-        botonTerminarTurno.setId("boton-terminar-turno");
 
         StackPane mando = new StackPane();
 
@@ -109,9 +103,6 @@ public class ControlesView extends VBox {
         boxPieza.getChildren().addAll(piezaActual, nombrePiezaSeleccionada);
         controles.getChildren().add(boxPieza);
         controles.getChildren().add(mando);
-        controles.getChildren().add(botonTerminarTurno);
-
-        VBox.setMargin(botonTerminarTurno, new Insets(0, 0, 0, 60));
 
         this.setPrefWidth(363);
         this.getChildren().add(controles);

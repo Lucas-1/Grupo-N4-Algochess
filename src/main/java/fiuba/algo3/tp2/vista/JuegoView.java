@@ -2,7 +2,10 @@ package fiuba.algo3.tp2.vista;
 
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.juego.Algochess;
+import fiuba.algo3.tp2.vista.handlers.BotonTerminarTurnoEventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -16,6 +19,7 @@ public class JuegoView extends VBox {
     private ControlesView controles;
     private MenuBar menuBar;
     private TextField consola;
+    BotonTerminarTurnoEventHandler botonTerminarTurnoEventHandler;
 
     public JuegoView(Algochess algochess, TableroView vistaTablero){
 
@@ -36,10 +40,23 @@ public class JuegoView extends VBox {
         interfaz.setLeft(controles);
         interfaz.setBottom(consola);
 
+        Button botonTerminarTurno = setBotonTerminarTurno();
+        interfaz.setRight(botonTerminarTurno);
+        interfaz.setAlignment(botonTerminarTurno, Pos.CENTER_LEFT);
+
         BorderPane.setAlignment(vistaTablero, Pos.CENTER);
         BorderPane.setAlignment(controles, Pos.CENTER_RIGHT);
         BorderPane.setAlignment(consola, Pos.BOTTOM_LEFT);
 
         this.getChildren().add(interfaz);
+    }
+
+    private Button setBotonTerminarTurno() {
+        botonTerminarTurnoEventHandler = new BotonTerminarTurnoEventHandler(algochess);
+        Button botonTerminarTurno = new Button("Terminar Turno");
+        botonTerminarTurno.getStylesheets().add("css/terminar-turno.css");
+        BorderPane.setMargin(botonTerminarTurno, new Insets(0, 100, 0, 0));
+        botonTerminarTurno.setOnAction(botonTerminarTurnoEventHandler);
+        return botonTerminarTurno;
     }
 }
