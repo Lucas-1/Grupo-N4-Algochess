@@ -1,14 +1,8 @@
 package fiuba.algo3.tp2.vista;
-import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
-import fiuba.algo3.tp2.colores.Negro;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.*;
-import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-
 import java.util.HashMap;
 
 public class PiezasView  {
