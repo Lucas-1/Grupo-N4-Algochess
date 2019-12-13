@@ -61,12 +61,14 @@ public class ControlesView extends VBox {
         Image flechaArriba = new Image("file:src/main/resources/ic-arrow-up.png", 80,80,false,false);
         Image flechaAbajo = new Image("file:src/main/resources/ic-arrow-down.png", 80,80,false,false);
         Image espadasCruzadas = new Image("file:src/main/resources/ic-swords.png", 80,80,false,false);
+        Image cruzVerde = new Image("file:src/main/resources/ic-green-cross.png", 80,80,false,false);
 
         botonIzquierda.setGraphic(new ImageView(flechaIzquierda));
         botonDerecha.setGraphic(new ImageView(flechaDerecha));
         botonArriba.setGraphic(new ImageView(flechaArriba));
         botonAbajo.setGraphic(new ImageView(flechaAbajo));
         botonAtacar.setGraphic(new ImageView(espadasCruzadas));
+        botonCurar.setGraphic(new ImageView(cruzVerde));
 
         botonArribaEventHandler = new BotonArribaEventHandler(algochess, stage);
         botonAbajoEventHandler = new BotonAbajoEventHandler(algochess, stage);
@@ -89,19 +91,15 @@ public class ControlesView extends VBox {
         mando.setAlignment(botonDerecha,Pos.CENTER_RIGHT);
         mando.setAlignment(botonIzquierda,Pos.CENTER_LEFT);
         mando.setAlignment(botonAtacar,Pos.CENTER);
-        mando.setMargin(botonArriba, new Insets(10, 0, 0, 0));
-        mando.setMargin(botonDerecha, new Insets(0, 10, 0, 0));
-        mando.setMargin(botonAbajo, new Insets(0, 0, 10, 0));
-        mando.setMargin(botonIzquierda, new Insets(0, 0, 0, 10));
+        mando.setAlignment(botonCurar, Pos.TOP_RIGHT);
         mando.setPrefWidth(250);
         mando.setPrefHeight(350);
-        mando.getChildren().addAll(botonAbajo,botonArriba,botonAtacar,botonDerecha,botonIzquierda);
+        mando.getChildren().addAll(botonAbajo,botonArriba,botonAtacar,botonDerecha,botonIzquierda, botonCurar);
 
         controles.setSpacing(50);
         boxJugador.getChildren().addAll(nombre, nombreJugadorConTurno);
         controles.getChildren().add(boxJugador);
         controles.getChildren().add(mando);
-        controles.getChildren().add(botonCurar);
 
         this.setPrefWidth(363);
         this.getChildren().add(controles);
