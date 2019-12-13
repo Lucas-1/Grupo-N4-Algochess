@@ -39,7 +39,7 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
         if(turnosTranscurridos == 2) {
 
             algochess.terminarTurno();
-            JuegoView vistaJuego = new JuegoView(algochess, vistaTablero);
+            JuegoView vistaJuego = new JuegoView(algochess, vistaTablero, stage);
             Scene juegoPrincipal = new Scene(vistaJuego);
 
             stage.setScene(juegoPrincipal);

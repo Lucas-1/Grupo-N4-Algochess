@@ -5,19 +5,24 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Label;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
 
-    Algochess algochess;
-    Pieza atacante;
-    Pieza victima;
+    private Algochess algochess;
+    private Pieza atacante;
+    private Pieza victima;
     protected Boolean ataqueEnProgreso;
+    private Stage stage;
 
-    public BotonAtacarEventHandler(Algochess algochess){
+    public BotonAtacarEventHandler(Algochess algochess, Stage stage){
         this.algochess = algochess;
         atacante = null;
         victima = null;
         ataqueEnProgreso = false;
+        this.stage = stage;
     }
 
     @Override
@@ -37,6 +42,17 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
         }
         algochess.getTablero().notifyObservers();
         ataqueEnProgreso = false;
+
+        final Popup popup = new Popup();
+        popup.setAutoFix(true);
+        popup.setAnchorX(1440);
+        popup.setAnchorY(180);
+        popup.setAutoHide(true);
+        popup.setHideOnEscape(true);
+        Label popupText = new Label( "Ataque realizado.");
+        popupText.getStylesheets().add("css/popup.css");
+        popup.getContent().addAll(popupText);
+        popup.show(stage);
     }
 
     public Boolean ataqueEnProgreso(){

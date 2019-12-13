@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,6 +22,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.HashMap;
@@ -41,10 +46,11 @@ public class TableroView extends Group implements Observer {
     private PiezasView piezasView;
     private ControlesView control;
     private FaseDeCompraView faseDeCompra;
+    private Stage stage;
 
 
-    public TableroView(Algochess algochess, FaseDeCompraView faseDeCompra) {
-
+    public TableroView(Algochess algochess, FaseDeCompraView faseDeCompra, Stage stage) {
+        this.stage = stage;
         this.faseDeCompra = faseDeCompra;
         this.algochess = algochess;
         this.tablero = algochess.getTablero();
@@ -115,6 +121,18 @@ public class TableroView extends Group implements Observer {
 
                 algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString,colorJugador), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
                 vista.change();
+
+                final Popup popup = new Popup();
+                popup.setAutoFix(true);
+                popup.setAnchorX(1440);
+                popup.setAnchorY(180);
+                popup.setAutoHide(true);
+                popup.setHideOnEscape(true);
+                Label popupText = new Label(obtenerPiezaDeInterfaz(casillero).getNombre() + " comprado.");
+                popupText.getStylesheets().add("css/popup.css");
+                popup.getContent().addAll(popupText);
+                popup.show(stage);
+
                 faseDeCompra.actualizarInformacionJugador(actual);
 
             }

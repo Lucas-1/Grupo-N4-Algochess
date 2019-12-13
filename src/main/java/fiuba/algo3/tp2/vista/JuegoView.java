@@ -10,6 +10,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
 public class JuegoView extends VBox {
 
@@ -18,16 +19,17 @@ public class JuegoView extends VBox {
     private TableroView vistaTablero;
     private ControlesView controles;
     private MenuBar menuBar;
-    BotonTerminarTurnoEventHandler botonTerminarTurnoEventHandler;
+    private Stage stage;
+    private BotonTerminarTurnoEventHandler botonTerminarTurnoEventHandler;
 
-    public JuegoView(Algochess algochess, TableroView vistaTablero){
-
+    public JuegoView(Algochess algochess, TableroView vistaTablero, Stage stage){
+        this.stage = stage;
         this.algochess = algochess;
         interfaz = new BorderPane();
 
         this.setAlignment(Pos.CENTER);
 
-        controles = new ControlesView(this.algochess);
+        controles = new ControlesView(this.algochess, stage);
         this.vistaTablero = vistaTablero;
         vistaTablero.setControl(controles);
 
@@ -57,7 +59,7 @@ public class JuegoView extends VBox {
     }
 
     public void actualizar() {
-        controles = new ControlesView(this.algochess);
+        controles = new ControlesView(this.algochess, stage);
         interfaz.setLeft(controles);
         BorderPane.setAlignment(controles, Pos.CENTER_RIGHT);
     }

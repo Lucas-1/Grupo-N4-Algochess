@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -32,7 +33,7 @@ public class ControlesView extends VBox {
     private JuegoView vistaDelJuego;
     private BotonCurarEventHandler botonCurarEventHandler;
 
-    public ControlesView(Algochess algochess){
+    public ControlesView(Algochess algochess, Stage stage){
 
 
         jugador = algochess.obtenerJugadorConTurno();
@@ -67,12 +68,12 @@ public class ControlesView extends VBox {
         botonAbajo.setGraphic(new ImageView(flechaAbajo));
         botonAtacar.setGraphic(new ImageView(espadasCruzadas));
 
-        botonArribaEventHandler = new BotonArribaEventHandler(algochess);
-        botonAbajoEventHandler = new BotonAbajoEventHandler(algochess);
-        botonDerechaEventHandler = new BotonDerechaEventHandler(algochess);
-        botonIzquierdaEventHandler = new BotonIzquierdaEventHandler(algochess);
-        botonAtacarEventHandler = new BotonAtacarEventHandler(algochess);
-        botonCurarEventHandler = new BotonCurarEventHandler(algochess);
+        botonArribaEventHandler = new BotonArribaEventHandler(algochess, stage);
+        botonAbajoEventHandler = new BotonAbajoEventHandler(algochess, stage);
+        botonDerechaEventHandler = new BotonDerechaEventHandler(algochess, stage);
+        botonIzquierdaEventHandler = new BotonIzquierdaEventHandler(algochess, stage);
+        botonAtacarEventHandler = new BotonAtacarEventHandler(algochess, stage);
+        botonCurarEventHandler = new BotonCurarEventHandler(algochess, stage);
 
         botonArriba.setOnAction(botonArribaEventHandler);
         botonAbajo.setOnAction(botonAbajoEventHandler);
