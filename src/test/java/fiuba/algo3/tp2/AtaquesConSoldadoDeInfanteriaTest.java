@@ -116,6 +116,7 @@ public class AtaquesConSoldadoDeInfanteriaTest {
         /** ataca 5 veces y la deja en 0 de vida */
         for(int i = 0; i < 5; i++) {
             jugadorBlanco.atacarCon(soldado,10,9,tablero);
+            jugadorBlanco.terminarTurno();
         }
 
         /** falla atacar devuelta porque ya esta muerta */
@@ -157,6 +158,7 @@ public class AtaquesConSoldadoDeInfanteriaTest {
         jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,18,9,tablero);
 
         jugadorBlanco.moverPieza(soldado, Direccion.abajo(),tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.moverPieza(soldado, Direccion.abajo(),tablero); // posicion pasa a ser Fila:11 - Columna:9
 
         jugadorNegro.atacarCon(catapultaEnemiga,11,9,tablero);

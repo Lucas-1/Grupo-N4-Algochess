@@ -25,74 +25,40 @@ public class AdministradorDeJugadas {
 
         ataquesRealizados = 0;
         movimientosRealizados = 0;
-
     }
 
 
     public void moverPieza(Pieza pieza, Direccion direccion, Tablero tablero, AdministradorDePiezas admin) {
 
-        if(movimientosRealizados < 1) {
+        if(movimientosRealizados < MAX_JUGADA_POR_TURNO) {
             admin.moverPieza(pieza, direccion, tablero);
             movimientosRealizados++;
         }
     }
 
-    public void atacarCon(Danina pieza, int posicionFila, int posicionColumna, Tablero tablero, AdministradorDePiezas admin, Logger logger) {
+    public void atacarCon(Danina pieza, Pieza receptor, int distanciaEntrePiezas, ArrayList<Pieza> contiguas) {
 
-
-        if (ataquesRealizados < 1) {
-
-            try {
-
-                Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
-                Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
-                int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
-                ArrayList<Pieza> contiguas = admin.obtenerPiezasContiguas(posReceptor, tablero);
-                pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
-                ataquesRealizados++;
-
-            } catch (CasilleroEstaVacioException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-            }
+        if(ataquesRealizados < MAX_JUGADA_POR_TURNO) {
+            pieza.atacar(receptor, distanciaEntrePiezas, contiguas);
+            ataquesRealizados++;
         }
+
     }
 
-    public void atacarCon(Jinete jinete, int posicionFila, int posicionColumna, Tablero tablero, AdministradorDePiezas admin, Logger logger) {
+    public void atacarCon(Jinete jinete, Pieza receptor, int distanciaEntrePiezas, ArrayList<Pieza> contiguas) {
 
-        if (ataquesRealizados < 1) {
-
-            try {
-
-                Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
-                Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
-                int distanciaEntrePiezas = jinete.calcularDistancia(posReceptor);
-                ArrayList<Pieza> contiguas = admin.obtenerPiezasContiguas(jinete.getPosicion(), tablero);
-                jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
-                ataquesRealizados++;
-
-            } catch (CasilleroEstaVacioException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-            }
-
+        if(ataquesRealizados < MAX_JUGADA_POR_TURNO) {
+            jinete.atacar(receptor, distanciaEntrePiezas, contiguas);
+            ataquesRealizados++;
         }
     }
 
 
-    public void curarCon(Saludable pieza, int posicionFila, int posicionColumna, Tablero tablero, Logger logger) {
+    public void curarCon(Saludable pieza, Pieza receptor, int distanciaEntrePiezas) {
 
-        if (ataquesRealizados < 1) {
-
-            try {
-
-                Pieza receptor = tablero.obtenerPieza(posicionFila, posicionColumna);
-                Posicion posReceptor = new Posicion(posicionFila, posicionColumna);
-                int distanciaEntrePiezas = pieza.calcularDistancia(posReceptor);
-                pieza.curar(receptor, distanciaEntrePiezas);
-                ataquesRealizados++;
-
-            } catch (CasilleroEstaVacioException e) {
-                logger.log(Level.SEVERE, e.getMessage());
-            }
+        if(ataquesRealizados < 1) {
+            pieza.curar(receptor, distanciaEntrePiezas);
+            ataquesRealizados++;
         }
     }
 

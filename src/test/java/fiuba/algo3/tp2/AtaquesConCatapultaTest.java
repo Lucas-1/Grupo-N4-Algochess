@@ -133,10 +133,15 @@ public class AtaquesConCatapultaTest {
         jugadorNegro.insertarPiezaEnPosicion(jineteEnemigo,19,19,tablero);
 
         jugadorBlanco.atacarCon(catapulta,19,19,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,19,19,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,19,19,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,19,19,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,19,19,tablero);
+        jugadorBlanco.terminarTurno();
 
         assertThrows(PiezaEstaMuertaException.class,
                 ()->{

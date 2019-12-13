@@ -123,6 +123,7 @@ public class Algochess{
     }
 
     public int getPuntosDeCompraDelJugador() {
+
         return jugadores.getFirst().getPuntosDeCompraDisponibles();
     }
 }

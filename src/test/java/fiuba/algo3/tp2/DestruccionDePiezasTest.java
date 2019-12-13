@@ -59,9 +59,13 @@ public class DestruccionDePiezasTest {
         jugadorNegro.insertarPiezaEnPosicion(soldado,11,11,tablero);
 
         jugadorBlanco.atacarCon(catapulta,11,11,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,11,11,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,11,11,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,11,11,tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.atacarCon(catapulta,11,11,tablero);
 
         jugadorNegro.actualizarPiezas(tablero);

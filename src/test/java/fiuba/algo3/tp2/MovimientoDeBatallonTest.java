@@ -158,6 +158,7 @@ public class MovimientoDeBatallonTest {
         jugadorBlanco.insertarPiezaEnPosicion(jinete,4,5,tablero);
 
         jugadorBlanco.moverPieza(soldado1, Direccion.derecha(), tablero);
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.moverPieza(soldado1, Direccion.derecha(), tablero);
 
 

@@ -65,6 +65,7 @@ public class RangoJineteTest {
 
     @Test
     public void test04JineteConRivalCercaNoPuedeAtacarRivalADistanciaMedia() {
+
         Jugador jugadorBlanco = new Jugador(new Blanco());
         Jugador jugadorNegro = new Jugador(new Negro());
         Tablero tablero = new Tablero();

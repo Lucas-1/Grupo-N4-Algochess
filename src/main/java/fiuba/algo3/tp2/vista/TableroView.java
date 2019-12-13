@@ -97,6 +97,7 @@ public class TableroView extends Group implements Observer {
             }
         });
         casillero.setOnDragDropped(new EventHandler<DragEvent>() {
+
             @Override
             public void handle(DragEvent event) {
                 String piezaNuevaString = event.getDragboard().getString();
@@ -127,6 +128,7 @@ public class TableroView extends Group implements Observer {
     }
 
     private void actualizarTooltipPiezaDaniada(Pane casillero) {
+
         Tooltip tooltip = piezasView.getTooltip(obtenerPiezaDeInterfaz(casillero).getNombre(), obtenerPiezaDeInterfaz(casillero));
         Node piezaImageView = casillero.getChildren().get(0);
         Tooltip.install(piezaImageView, tooltip);
@@ -137,15 +139,19 @@ public class TableroView extends Group implements Observer {
     }
 
     public Pieza obtenerPiezaDeInterfaz(Pane casillero){
+
         return this.tablero.obtenerPieza(tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
     }
 
     private void actualizarVistaTablero(){
+
         for(int i = 0;i < tablero.obtenerTamanioTablero();i++){
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
+
                 try {
                     casilleros[j][i].getChildren().clear();
                     casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre())));
+
                 } catch (CasilleroEstaVacioException e){
 
                 }

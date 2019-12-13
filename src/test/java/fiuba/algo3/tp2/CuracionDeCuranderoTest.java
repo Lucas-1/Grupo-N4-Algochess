@@ -61,7 +61,7 @@ public class CuracionDeCuranderoTest {
         jugadorNegro.insertarPiezaEnPosicion(jineteEnemigo,10,9,tablero);
 
         jugadorBlanco.atacarCon(catapulta,10,9,tablero);
-
+        jugadorBlanco.terminarTurno();
         jugadorBlanco.curarCon(curandero, 10, 9, tablero);
 
         assertEquals( 95, jineteEnemigo.getPuntosDeVida());
@@ -85,9 +85,13 @@ public class CuracionDeCuranderoTest {
         jugadorNegro.insertarPiezaEnPosicion(catapultaEnemiga,19,19,tablero);
 
         jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.terminarTurno();
         jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.terminarTurno();
         jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.terminarTurno();
         jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
+        jugadorNegro.terminarTurno();
         jugadorNegro.atacarCon(catapultaEnemiga,1,1,tablero);
 
 

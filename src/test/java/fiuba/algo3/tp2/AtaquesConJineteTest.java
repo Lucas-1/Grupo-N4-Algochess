@@ -118,6 +118,7 @@ public class AtaquesConJineteTest {
         /** ataca 10 veces y la deja en 0 de vida */
         for(int i = 0; i < 10; i++) {
             jugadorBlanco.atacarCon(jinete, 10, 9, tablero);
+            jugadorBlanco.terminarTurno();
         }
 
         /** falla atacar devuelta porque ya esta muerta */
