@@ -32,6 +32,9 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
         this.victima = victima;
         algochess.atacarCon((Danina) atacante,victima.getPosicion().getPosicionFila(),victima.getPosicion().getPosicionColumna());
         algochess.obtenerJugadorDelTurnoSiguiente().actualizarPiezas(algochess.getTablero());
+        if(algochess.juegoTerminado()){
+            //aca va el popup de juego terminado
+        }
         algochess.getTablero().notifyObservers();
         ataqueEnProgreso = false;
     }
