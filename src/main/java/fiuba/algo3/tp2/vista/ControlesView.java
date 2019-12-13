@@ -30,6 +30,7 @@ public class ControlesView extends VBox {
     private BotonIzquierdaEventHandler botonIzquierdaEventHandler;
     private BotonAtacarEventHandler botonAtacarEventHandler;
     private JuegoView vistaDelJuego;
+    private BotonCurarEventHandler botonCurarEventHandler;
 
     public ControlesView(Algochess algochess){
 
@@ -50,6 +51,7 @@ public class ControlesView extends VBox {
         Button botonDerecha = new Button() ;
         Button botonIzquierda = new Button();
         Button botonAtacar = new Button();
+        Button botonCurar = new Button();
 
         controles.getStylesheets().add("css/controles.css");
 
@@ -70,12 +72,14 @@ public class ControlesView extends VBox {
         botonDerechaEventHandler = new BotonDerechaEventHandler(algochess);
         botonIzquierdaEventHandler = new BotonIzquierdaEventHandler(algochess);
         botonAtacarEventHandler = new BotonAtacarEventHandler(algochess);
+        botonCurarEventHandler = new BotonCurarEventHandler(algochess);
 
         botonArriba.setOnAction(botonArribaEventHandler);
         botonAbajo.setOnAction(botonAbajoEventHandler);
         botonDerecha.setOnAction(botonDerechaEventHandler);
         botonIzquierda.setOnAction(botonIzquierdaEventHandler);
         botonAtacar.setOnAction(botonAtacarEventHandler);
+        botonCurar.setOnAction(botonCurarEventHandler);
 
         StackPane mando = new StackPane();
 
@@ -96,6 +100,7 @@ public class ControlesView extends VBox {
         boxJugador.getChildren().addAll(nombre, nombreJugadorConTurno);
         controles.getChildren().add(boxJugador);
         controles.getChildren().add(mando);
+        controles.getChildren().add(botonCurar);
 
         this.setPrefWidth(363);
         this.getChildren().add(controles);
@@ -110,12 +115,21 @@ public class ControlesView extends VBox {
         }
     }
 
-    public void setAtaque(Danina pieza){
+    public void setAtaque(Pieza pieza){
         if(botonAtacarEventHandler.ataqueEnProgreso()){
             botonAtacarEventHandler.setVictima(pieza);
         }
         else {
             botonAtacarEventHandler.setAtacante(pieza);
+        }
+    }
+
+    public void setCuracion(Pieza pieza){
+        if(botonCurarEventHandler.curacionEnProgreso()){
+            botonCurarEventHandler.setPaciente(pieza);
+        }
+        else{
+            botonCurarEventHandler.setCurandero(pieza);
         }
     }
 }

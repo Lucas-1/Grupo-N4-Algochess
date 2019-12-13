@@ -142,7 +142,8 @@ public class TableroView extends Group implements Observer {
             public void handle(MouseEvent event) {
                 actualizarVistaTablero();
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
-                control.setAtaque((Danina) obtenerPiezaDeInterfaz(casillero));
+                control.setAtaque(obtenerPiezaDeInterfaz(casillero));
+                control.setCuracion(obtenerPiezaDeInterfaz(casillero));
                 seleccionarPieza(casillero);
                 actualizarTooltipPiezaDaniada(casillero);
             }
