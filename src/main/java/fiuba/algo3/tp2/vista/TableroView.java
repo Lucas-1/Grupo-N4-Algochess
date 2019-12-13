@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
+import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
 import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeCompra;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.EventHandler;
@@ -22,6 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.util.HashMap;
+import java.util.logging.Level;
 
 
 public class TableroView extends Group implements Observer {
@@ -105,8 +107,12 @@ public class TableroView extends Group implements Observer {
                 tooltip.setShowDuration(Duration.INDEFINITE);
                 tooltip.setShowDelay(Duration.seconds(.1));
                 casillero.getChildren().clear();
+                try {
+                    algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
+                }catch (JugadorQuiereUtilizarMasDineroDelDisponibleException e){
+                    return;
+                }
                 casillero.getChildren().add(piezaNueva);
-                algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString),tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
                 faseDeCompra.actualizarInformacionJugador(algochess.obtenerJugadorConTurno());
             }
         });

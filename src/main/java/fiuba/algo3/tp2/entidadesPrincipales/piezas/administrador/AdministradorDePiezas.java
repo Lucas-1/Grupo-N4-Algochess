@@ -58,7 +58,7 @@ public class AdministradorDePiezas {
             piezaComprada = tienda.comprarPieza(pieza, billetera);
         }catch (JugadorQuiereUtilizarMasDineroDelDisponibleException e){
             logger.log(Level.SEVERE, e.getMessage());
-            return;
+            throw e;
         }
         tablero.agregarPieza(piezaComprada, posicionFila, posicionColumna);
         pieza.setPosicion(posicion);

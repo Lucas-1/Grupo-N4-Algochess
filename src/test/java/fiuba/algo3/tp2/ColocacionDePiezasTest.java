@@ -7,6 +7,8 @@ import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Catapulta;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Curandero;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.SoldadoDeInfanteria;
+import fiuba.algo3.tp2.excepciones.JugadorQuiereUtilizarMasDineroDelDisponibleException;
+import fiuba.algo3.tp2.excepciones.PiezaEstaMuertaException;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -75,9 +77,11 @@ public class ColocacionDePiezasTest {
         jugador.insertarPiezaEnPosicion(catapulta3, 2,5, tablero);
 
         // jugador se quedo con 0 puntos despues de gastar 20
-        jugador.insertarPiezaEnPosicion(catapulta4, 1,5, tablero);
 
-        assertFalse(tablero.casilleroOcupado(1,5));
+        assertThrows(JugadorQuiereUtilizarMasDineroDelDisponibleException.class,
+                ()->{
+                    jugador.insertarPiezaEnPosicion(catapulta4, 1, 5, tablero);
+                });
 
     }
 
