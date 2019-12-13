@@ -118,4 +118,6 @@ public class Tablero extends Observable {
         this.borrarPieza(pieza.getPosicion());
         this.agregarPieza(pieza, fila, columna);
     }
+
+
 }

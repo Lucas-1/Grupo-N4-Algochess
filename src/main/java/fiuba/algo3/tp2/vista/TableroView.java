@@ -140,6 +140,7 @@ public class TableroView extends Group implements Observer {
         casillero.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+
                 actualizarVistaTablero();
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
                 control.setAtaque(obtenerPiezaDeInterfaz(casillero));
@@ -151,6 +152,7 @@ public class TableroView extends Group implements Observer {
     }
 
     private void seleccionarPieza(Pane casillero) {
+
         Image imagenPieza;
         imagenPieza = piezasView.seleccionarPieza(obtenerPiezaDeInterfaz(casillero));
         ImageView piezaNueva = new ImageView(imagenPieza);

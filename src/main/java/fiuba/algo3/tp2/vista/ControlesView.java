@@ -32,9 +32,9 @@ public class ControlesView extends VBox {
     private BotonAtacarEventHandler botonAtacarEventHandler;
     private JuegoView vistaDelJuego;
     private BotonCurarEventHandler botonCurarEventHandler;
+    private Label nombreJugadorConTurno;
 
     public ControlesView(Algochess algochess, Stage stage){
-
 
         jugador = algochess.obtenerJugadorConTurno();
 
@@ -43,8 +43,7 @@ public class ControlesView extends VBox {
         VBox boxJugador = new VBox();
         nombre = new Label("Turno de: ");
 
-        Label nombreJugadorConTurno = new Label(jugador.getNombre());
-
+        nombreJugadorConTurno = new Label(jugador.getNombre());
         nombreJugadorConTurno.setId("jugador-label");
 
         Button botonArriba = new Button();
@@ -106,6 +105,7 @@ public class ControlesView extends VBox {
     }
 
     public void setPiezaAMover(Pieza pieza){
+
         if(pieza != null){
             botonAbajoEventHandler.setPieza(pieza);
             botonArribaEventHandler.setPieza(pieza);
@@ -130,5 +130,13 @@ public class ControlesView extends VBox {
         else{
             botonCurarEventHandler.setCurandero(pieza);
         }
+    }
+
+    public void setNombreJugadorConTurno(Jugador jugador) {
+
+        String nombre = jugador.getNombre();
+        nombreJugadorConTurno.setText(nombre);
+
+
     }
 }

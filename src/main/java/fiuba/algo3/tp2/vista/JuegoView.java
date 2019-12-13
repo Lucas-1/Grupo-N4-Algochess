@@ -1,5 +1,6 @@
 package fiuba.algo3.tp2.vista;
 
+import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.juego.Algochess;
 import fiuba.algo3.tp2.vista.handlers.BotonTerminarTurnoEventHandler;
@@ -58,9 +59,8 @@ public class JuegoView extends VBox {
         return botonTerminarTurno;
     }
 
-    public void actualizar() {
-        controles = new ControlesView(this.algochess, stage);
-        interfaz.setLeft(controles);
-        BorderPane.setAlignment(controles, Pos.CENTER_RIGHT);
+    public void actualizar(Jugador jugador) {
+
+        controles.setNombreJugadorConTurno(jugador);
     }
 }

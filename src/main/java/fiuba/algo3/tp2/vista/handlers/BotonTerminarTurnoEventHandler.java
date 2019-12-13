@@ -10,14 +10,17 @@ public class BotonTerminarTurnoEventHandler implements EventHandler<ActionEvent>
     private JuegoView vistaDelJuego;
 
     public BotonTerminarTurnoEventHandler(Algochess algochess, JuegoView vistaDelJuego){
+
         this.vistaDelJuego = vistaDelJuego;
         this.algochess = algochess;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
+
         this.algochess.terminarTurno();
-        this.vistaDelJuego.actualizar();
+        this.vistaDelJuego.actualizar(algochess.obtenerJugadorConTurno());
+
 
     }
 }
