@@ -4,7 +4,7 @@
 }
 
 .label{
-    -fx-font-size: 40px;
+    -fx-font-size: 38px;
     -fx-font-weight: 700;
     -fx-text-fill: -fx-text-inner-color;
     -fx-text-inner-color: #00dbff;
