@@ -1,5 +1,7 @@
 package fiuba.algo3.tp2.vista;
+import fiuba.algo3.tp2.colores.Blanco;
 import fiuba.algo3.tp2.colores.Color;
+import fiuba.algo3.tp2.colores.Negro;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.*;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
@@ -10,11 +12,37 @@ public class PiezasView  {
     private HashMap<String,Image> mapDeImagenes;
     private HashMap<String,Tooltip> mapTooltipPiezas;
     private HashMap<String,Pieza> mapDePiezas;
+    private HashMap<String,Image> mapDePiezasSeleccionadas;
 
 
     public PiezasView() {
 
         mapTooltipPiezas = this.iniciarMapDeTooltips();
+        iniciarMapDePiezasSeleccionadas();
+    }
+
+    private void iniciarMapDePiezasSeleccionadas() {
+        mapDePiezasSeleccionadas = new HashMap();
+        Color blanco = new Blanco();
+        Color negro = new Negro();
+
+        String urlSoldadoNegro = "file:src/main/resources/ic-soldado-" + negro.comoString() + "-seleccionado" + ".png";
+        String urlJineteNegro = "file:src/main/resources/ic-jinete-" + negro.comoString() + "-seleccionado" + ".png";
+        String urlCuranderoNegro = "file:src/main/resources/ic-curandero-" + negro.comoString() + "-seleccionado" + ".png";
+        String urlCatapultaNegro = "file:src/main/resources/ic-catapulta-" + negro.comoString() + "-seleccionado" + ".png";
+        String urlSoldadoBlanco = "file:src/main/resources/ic-soldado-" + blanco.comoString() + "-seleccionado" + ".png";
+        String urlJineteBlanco = "file:src/main/resources/ic-jinete-" + blanco.comoString() + "-seleccionado" + ".png";
+        String urlCuranderoBlanco = "file:src/main/resources/ic-curandero-" + blanco.comoString() + "-seleccionado" + ".png";
+        String urlCatapultaBlanco = "file:src/main/resources/ic-catapulta-" + blanco.comoString() + "-seleccionado" + ".png";
+
+        mapDePiezasSeleccionadas.put("soldado"+blanco.comoString(), new Image(urlSoldadoBlanco, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("soldado"+negro.comoString(), new Image(urlSoldadoNegro, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("jinete"+blanco.comoString(), new Image(urlJineteBlanco, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("jinete"+negro.comoString(), new Image(urlJineteNegro, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("curandero"+blanco.comoString(), new Image(urlCuranderoBlanco, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("curandero"+negro.comoString(), new Image(urlCuranderoNegro, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("catapulta"+blanco.comoString(), new Image(urlCatapultaBlanco, 40,40,false,false));
+        mapDePiezasSeleccionadas.put("catapulta"+negro.comoString(), new Image(urlCatapultaNegro, 40,40,false,false));
     }
 
     private HashMap<String, Tooltip> iniciarMapDeTooltips() {
@@ -61,6 +89,8 @@ public class PiezasView  {
         String urlCurandero = "file:src/main/resources/ic-curandero-" + color.comoString() + ".png";
         String urlCatapulta = "file:src/main/resources/ic-catapulta-" + color.comoString() + ".png";
 
+        System.out.println(color.comoString());
+
 
         mapDeImagenes.put("soldado", new Image(urlSoldado, 40, 40, false, false));
         mapDeImagenes.put("jinete", new Image(urlJinete, 40, 40, false, false));
@@ -94,5 +124,9 @@ public class PiezasView  {
 
         actualizarMapDeTooltips(pieza);
         return mapTooltipPiezas.get(nombrePieza+System.identityHashCode(pieza));
+    }
+
+    public Image seleccionarPieza(Pieza pieza) {
+        return mapDePiezasSeleccionadas.get(pieza.getNombre()+pieza.getColor().comoString());
     }
 }
