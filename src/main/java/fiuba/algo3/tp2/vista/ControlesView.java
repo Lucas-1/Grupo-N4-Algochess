@@ -21,16 +21,15 @@ import javafx.util.Duration;
 
 public class ControlesView extends VBox {
 
-    Jugador jugador;
-    VBox controles;
-    Label nombre;
-    Label piezaActual;
-    BotonArribaEventHandler botonArribaEventHandler;
-    BotonAbajoEventHandler botonAbajoEventHandler;
-    BotonDerechaEventHandler botonDerechaEventHandler;
-    BotonIzquierdaEventHandler botonIzquierdaEventHandler;
-    BotonAtacarEventHandler botonAtacarEventHandler;
-
+    private Jugador jugador;
+    private VBox controles;
+    private Label nombre;
+    private BotonArribaEventHandler botonArribaEventHandler;
+    private BotonAbajoEventHandler botonAbajoEventHandler;
+    private BotonDerechaEventHandler botonDerechaEventHandler;
+    private BotonIzquierdaEventHandler botonIzquierdaEventHandler;
+    private BotonAtacarEventHandler botonAtacarEventHandler;
+    private JuegoView vistaDelJuego;
 
     public ControlesView(Algochess algochess){
 
@@ -40,15 +39,11 @@ public class ControlesView extends VBox {
         this.controles = new VBox();
         controles.setId("controles");
         VBox boxJugador = new VBox();
-        VBox boxPieza = new VBox();
         nombre = new Label("Turno de: ");
-        piezaActual = new Label("Pieza seleccionada: ");
 
         Label nombreJugadorConTurno = new Label(jugador.getNombre());
-        Label nombrePiezaSeleccionada = new Label("Jinete");
 
         nombreJugadorConTurno.setId("jugador-label");
-        nombrePiezaSeleccionada.setId("pieza-label");
 
         Button botonArriba = new Button();
         Button botonAbajo = new Button();
@@ -100,8 +95,6 @@ public class ControlesView extends VBox {
         controles.setSpacing(50);
         boxJugador.getChildren().addAll(nombre, nombreJugadorConTurno);
         controles.getChildren().add(boxJugador);
-        boxPieza.getChildren().addAll(piezaActual, nombrePiezaSeleccionada);
-        controles.getChildren().add(boxPieza);
         controles.getChildren().add(mando);
 
         this.setPrefWidth(363);

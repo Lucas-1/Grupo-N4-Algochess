@@ -48,11 +48,17 @@ public class JuegoView extends VBox {
     }
 
     private Button setBotonTerminarTurno() {
-        botonTerminarTurnoEventHandler = new BotonTerminarTurnoEventHandler(algochess);
+        botonTerminarTurnoEventHandler = new BotonTerminarTurnoEventHandler(algochess, this);
         Button botonTerminarTurno = new Button("Terminar Turno");
         botonTerminarTurno.getStylesheets().add("css/terminar-turno.css");
         BorderPane.setMargin(botonTerminarTurno, new Insets(0, 100, 0, 0));
         botonTerminarTurno.setOnAction(botonTerminarTurnoEventHandler);
         return botonTerminarTurno;
+    }
+
+    public void actualizar() {
+        controles = new ControlesView(this.algochess);
+        interfaz.setLeft(controles);
+        BorderPane.setAlignment(controles, Pos.CENTER_RIGHT);
     }
 }
