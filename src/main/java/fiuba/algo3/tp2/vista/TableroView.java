@@ -5,6 +5,7 @@ import fiuba.algo3.tp2.entidadesPrincipales.piezas.Danina;
 import fiuba.algo3.tp2.entidadesPrincipales.piezas.Pieza;
 import fiuba.algo3.tp2.entidadesPrincipales.tablero.Tablero;
 import fiuba.algo3.tp2.excepciones.CasilleroEstaVacioException;
+import fiuba.algo3.tp2.flujoDelJuego.fasesDeJuego.FaseDeCompra;
 import fiuba.algo3.tp2.juego.Algochess;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -36,10 +37,11 @@ public class TableroView extends Group implements Observer {
     private Pane[][] casilleros;
     private PiezasView piezasView;
     private ControlesView control;
+    private FaseDeCompraView faseDeCompra;
 
 
-    public TableroView(Algochess algochess) {
-
+    public TableroView(Algochess algochess, FaseDeCompraView faseDeCompra) {
+        this.faseDeCompra = faseDeCompra;
         this.algochess = algochess;
         this.tablero = algochess.getTablero();
         this.tablero.addObserver(this);
@@ -105,6 +107,7 @@ public class TableroView extends Group implements Observer {
                 casillero.getChildren().clear();
                 casillero.getChildren().add(piezaNueva);
                 algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString),tableroView.getRowIndex(casillero),tableroView.getColumnIndex(casillero));
+                faseDeCompra.actualizarInformacionJugador(algochess.obtenerJugadorConTurno());
             }
         });
         casillero.setOnMouseClicked(new EventHandler<MouseEvent>() {

@@ -18,11 +18,15 @@ public class InformacionJugadorView extends VBox {
     Label tip;
 
     public InformacionJugadorView(Jugador jugadorConTurno) {
-
-
         this.setPadding(new Insets(20,20,20,20));
         this.setSpacing(20);
 
+        this.actualizarInformacion(jugadorConTurno);
+
+        this.getStylesheets().add("css/informacion-jugador.css");
+    }
+
+    private void actualizarInformacion(Jugador jugadorConTurno) {
         Label nombre = new Label(jugadorConTurno.getNombre());
         nombre.setId("jugador-label");
         Label color = new Label("Color: "  + jugadorConTurno.colorComoString());
@@ -39,10 +43,10 @@ public class InformacionJugadorView extends VBox {
         this.setAlignment(Pos.CENTER);
 
         this.getChildren().addAll(nombre, color, puntosRestantes,cantidadDePiezas);
-
-
-        this.getStylesheets().add("css/informacion-jugador.css");
-
+    }
+    public void actualizarInformacionJugador(Jugador jugadorConTurno){
+        this.getChildren().clear();
+        this.actualizarInformacionJugador(jugadorConTurno);
     }
 
 }

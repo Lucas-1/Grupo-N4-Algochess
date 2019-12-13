@@ -32,19 +32,9 @@ public class FaseDeCompraView extends BorderPane {
         BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
-        vistaTablero = new TableroView(algochess);
-        vistaTienda = new TiendaView(algochess);
-
-        this.setAlignment(vistaTienda, Pos.CENTER_RIGHT);
-
-        this.setCenter(vistaTablero);
-        this.setRight(vistaTienda);
 
         Jugador jugadorConTurno = algochess.obtenerJugadorConTurno();
-        InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
-        this.setLeft(info);
-
-        info.setPadding(new Insets(0,0,0,100));
+        this.setLeft(this.setInformacionJugador(jugadorConTurno));
         VBox menu = new VBox();
 
         menu.getStylesheets().add("css/menu.css");
@@ -59,9 +49,18 @@ public class FaseDeCompraView extends BorderPane {
 
         tip.setId("tip");
 
-        mensaje.setTextFill(Color.WHITE);
-
         Button terminarCompra = new Button("Terminar la compra");
+
+
+        vistaTablero = new TableroView(algochess, this);
+        vistaTienda = new TiendaView(algochess);
+
+        this.setAlignment(vistaTienda, Pos.CENTER_RIGHT);
+
+        this.setCenter(vistaTablero);
+        this.setRight(vistaTienda);
+
+
         BotonTerminarCompraEventHandler terminarCompraHandler = new BotonTerminarCompraEventHandler(turnosTranscurridos,algochess,vistaTablero,stage,this);
         terminarCompra.setOnAction(terminarCompraHandler);
 
@@ -70,5 +69,15 @@ public class FaseDeCompraView extends BorderPane {
         this.setTop(menu);
         menu.setAlignment(Pos.TOP_CENTER);
 
+    }
+
+    private InformacionJugadorView setInformacionJugador(Jugador jugadorConTurno) {
+        InformacionJugadorView info = new InformacionJugadorView(jugadorConTurno);
+        info.setPadding(new Insets(0,0,0,100));
+        return info;
+    }
+
+    public void actualizarInformacionJugador(Jugador jugadorConTurno){
+        this.setLeft(setInformacionJugador(jugadorConTurno));
     }
 }
