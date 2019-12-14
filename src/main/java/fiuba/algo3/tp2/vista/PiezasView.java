@@ -13,10 +13,11 @@ public class PiezasView  {
     private HashMap<String,Tooltip> mapTooltipPiezas;
     private HashMap<String,Pieza> mapDePiezas;
     private HashMap<String,Image> mapDePiezasSeleccionadas;
+    private HashMap<String,Tooltip> mapPiezaYSuTooltip;
 
 
     public PiezasView() {
-
+        mapPiezaYSuTooltip = new HashMap();
         mapTooltipPiezas = this.iniciarMapDeTooltips();
         iniciarMapDePiezasSeleccionadas();
     }
@@ -128,5 +129,12 @@ public class PiezasView  {
 
     public Image seleccionarPieza(Pieza pieza) {
         return mapDePiezasSeleccionadas.get(pieza.getNombre()+pieza.getColor().comoString());
+    }
+
+    public void setTooltip(Pieza pieza, Tooltip tooltip) {
+        this.mapPiezaYSuTooltip.put(pieza.getNombre()+System.identityHashCode(pieza), tooltip);
+    }
+    public Tooltip getTooltip(Pieza pieza) {
+        return this.mapPiezaYSuTooltip.get(pieza.getNombre()+System.identityHashCode(pieza));
     }
 }

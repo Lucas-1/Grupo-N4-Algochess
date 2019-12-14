@@ -2,10 +2,7 @@ package fiuba.algo3.tp2.vista.handlers;
 
 import fiuba.algo3.tp2.entidadesPrincipales.Jugador;
 import fiuba.algo3.tp2.juego.Algochess;
-import fiuba.algo3.tp2.vista.FaseDeCompraView;
-import fiuba.algo3.tp2.vista.InformacionJugadorView;
-import fiuba.algo3.tp2.vista.JuegoView;
-import fiuba.algo3.tp2.vista.TableroView;
+import fiuba.algo3.tp2.vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -16,19 +13,21 @@ import javafx.stage.Stage;
 
 public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent> {
 
+    private final ControlesView controles;
     private Stage stage;
     private Algochess algochess;
     private TableroView vistaTablero;
     private FaseDeCompraView escena;
     private int turnosTranscurridos;
 
-    public BotonTerminarCompraEventHandler(int turnosTranscurridos, Algochess algochess, TableroView vistaTablero, Stage stage, FaseDeCompraView escena) {
+    public BotonTerminarCompraEventHandler(int turnosTranscurridos, Algochess algochess, TableroView vistaTablero, Stage stage, FaseDeCompraView escena, ControlesView controles) {
 
         this.turnosTranscurridos = turnosTranscurridos;
         this.algochess = algochess;
         this.vistaTablero = vistaTablero;
         this.stage = stage;
         this.escena = escena;
+        this.controles = controles;
     }
 
     @Override
@@ -39,7 +38,7 @@ public class BotonTerminarCompraEventHandler implements EventHandler<ActionEvent
         if(turnosTranscurridos == 2) {
 
             algochess.terminarTurno();
-            JuegoView vistaJuego = new JuegoView(algochess, vistaTablero, stage);
+            JuegoView vistaJuego = new JuegoView(algochess, vistaTablero, stage, controles);
             Scene juegoPrincipal = new Scene(vistaJuego);
 
             stage.setFullScreenExitHint("");

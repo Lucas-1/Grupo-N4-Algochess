@@ -23,16 +23,14 @@ public class JuegoView extends VBox {
     private Stage stage;
     private BotonTerminarTurnoEventHandler botonTerminarTurnoEventHandler;
 
-    public JuegoView(Algochess algochess, TableroView vistaTablero, Stage stage){
+    public JuegoView(Algochess algochess, TableroView vistaTablero, Stage stage, ControlesView controles){
         this.stage = stage;
         this.algochess = algochess;
         this.interfaz = new BorderPane();
         this.vistaTablero = vistaTablero;
-        this.controles = new ControlesView(this.algochess, stage);
+        this.controles = controles;
 
         this.setAlignment(Pos.CENTER);
-
-        vistaTablero.setControl(controles);
 
         menuBar = new MenuBar();
         BackgroundImage imagenDeFondo = new BackgroundImage(new Image("file:src/main/resources/bg-madera.jpg"), BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);

@@ -20,9 +20,12 @@ public class FaseDeCompraView extends BorderPane {
     private Algochess algochess;
     private TableroView vistaTablero;
     private TiendaView vistaTienda;
+    private ControlesView vistaControles;
     private int turnosTranscurridos;
 
     public FaseDeCompraView(Stage stage, Algochess algochess) {
+
+        this.vistaControles = new ControlesView(algochess, stage);
 
         turnosTranscurridos = 0;
 
@@ -52,7 +55,7 @@ public class FaseDeCompraView extends BorderPane {
         Button terminarCompra = new Button("Terminar la compra");
 
 
-        vistaTablero = new TableroView(algochess, this, stage);
+        vistaTablero = new TableroView(algochess, this, stage, vistaControles);
         vistaTienda = new TiendaView(algochess);
 
         this.setAlignment(vistaTienda, Pos.CENTER_RIGHT);
@@ -61,7 +64,7 @@ public class FaseDeCompraView extends BorderPane {
         this.setCenter(vistaTablero);
 
 
-        BotonTerminarCompraEventHandler terminarCompraHandler = new BotonTerminarCompraEventHandler(turnosTranscurridos,algochess,vistaTablero,stage,this);
+        BotonTerminarCompraEventHandler terminarCompraHandler = new BotonTerminarCompraEventHandler(turnosTranscurridos,algochess,vistaTablero,stage,this, vistaControles);
         terminarCompra.setOnAction(terminarCompraHandler);
 
         menu.getChildren().addAll(terminarCompra,mensaje, tip);
