@@ -79,6 +79,7 @@ public class BotonJugarEventHandler implements EventHandler<ActionEvent> {
                 "Al posicionar el cursor sobre las piezas se pueden conocer sus atributos\n" +
                 "Clickear para sacar los Pop-Ups\n\n\n" +
                 "SUPUESTOS\n\n" +
+                "- La curacion del curandero puede exceder la vida maxima inicial de la pieza\n" +
                 "- No se pueden colocar piezas en el campo rival\n"+
                 "- No se puede atacar con el curandero\n" +
                 "- No se puede curar con otra pieza que no sea el curandero\n"+
