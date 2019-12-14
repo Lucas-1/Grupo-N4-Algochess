@@ -113,15 +113,16 @@ public class TableroView extends Group implements Observer {
                 Image piezaNuevaImg = event.getDragboard().getImage();
                 ImageView piezaNueva = new ImageView(piezaNuevaImg);
                 Tooltip tooltip = piezasView.getTooltip(piezaNuevaString);
-                Tooltip.install(piezaNueva, tooltip);
                 tooltip.setShowDuration(Duration.INDEFINITE);
                 tooltip.setShowDelay(Duration.seconds(.1));
+                Tooltip.install(piezaNueva, tooltip);
+                casillero.getChildren().clear();
+                casillero.getChildren().add(piezaNueva);
 
                 Jugador actual = algochess.obtenerJugadorConTurno();
                 fiuba.algo3.tp2.colores.Color colorJugador = actual.getColor();
 
                 algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString,colorJugador), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
-                vista.change();
 
                 final Popup popup = new Popup();
                 VBox popupVBox = new VBox();
@@ -146,7 +147,6 @@ public class TableroView extends Group implements Observer {
         casillero.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-
                 actualizarVistaTablero();
                 control.setPiezaAMover(obtenerPiezaDeInterfaz(casillero));
                 control.setAtaque(obtenerPiezaDeInterfaz(casillero));
