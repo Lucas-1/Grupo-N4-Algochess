@@ -193,8 +193,8 @@ public class TableroView extends Group implements Observer {
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
 
                 try {
-                    Tooltip tooltipPieza = piezasView.getTooltip(obtenerPiezaDeInterfaz(casilleros[j][i]));
                     casilleros[j][i].getChildren().clear();
+                    Tooltip tooltipPieza = piezasView.getTooltip(obtenerPiezaDeInterfaz(casilleros[j][i]));
                     ImageView imagenPieza = new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre(),tablero.obtenerPieza(i,j).getColor()));
                     Tooltip.install(imagenPieza, tooltipPieza);
                     casilleros[j][i].getChildren().add(imagenPieza);
@@ -207,7 +207,6 @@ public class TableroView extends Group implements Observer {
     }
 
     public void change(){
-
         actualizarVistaTablero();
     }
 
