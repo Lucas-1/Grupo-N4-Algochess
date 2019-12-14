@@ -50,7 +50,8 @@ public class TableroView extends Group implements Observer {
     private Stage stage;
 
 
-    public TableroView(Algochess algochess, FaseDeCompraView faseDeCompra, Stage stage) {
+    public TableroView(Algochess algochess, FaseDeCompraView faseDeCompra, Stage stage,ControlesView controles) {
+        this.control = controles;
         this.stage = stage;
         this.faseDeCompra = faseDeCompra;
         this.algochess = algochess;
@@ -116,13 +117,16 @@ public class TableroView extends Group implements Observer {
                 tooltip.setShowDuration(Duration.INDEFINITE);
                 tooltip.setShowDelay(Duration.seconds(.1));
                 Tooltip.install(piezaNueva, tooltip);
-                casillero.getChildren().clear();
-                casillero.getChildren().add(piezaNueva);
 
                 Jugador actual = algochess.obtenerJugadorConTurno();
                 fiuba.algo3.tp2.colores.Color colorJugador = actual.getColor();
 
                 algochess.jugadorComprarPieza(piezasView.colocar(piezaNuevaString,colorJugador), tableroView.getRowIndex(casillero), tableroView.getColumnIndex(casillero));
+
+                casillero.getChildren().clear();
+                casillero.getChildren().add(piezaNueva);
+
+                piezasView.setTooltip(obtenerPiezaDeInterfaz(casillero), tooltip);
 
                 final Popup popup = new Popup();
                 VBox popupVBox = new VBox();
@@ -175,6 +179,7 @@ public class TableroView extends Group implements Observer {
         tooltip.setShowDelay(Duration.seconds(.1));
         casillero.getChildren().clear();
         casillero.getChildren().add(piezaImageView);
+        piezasView.setTooltip(obtenerPiezaDeInterfaz(casillero), tooltip);
     }
 
     public Pieza obtenerPiezaDeInterfaz(Pane casillero){
@@ -188,9 +193,11 @@ public class TableroView extends Group implements Observer {
             for(int j = 0;j < tablero.obtenerTamanioTablero();j++){
 
                 try {
-
+                    Tooltip tooltipPieza = piezasView.getTooltip(obtenerPiezaDeInterfaz(casilleros[j][i]));
                     casilleros[j][i].getChildren().clear();
-                    casilleros[j][i].getChildren().add(new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre(),tablero.obtenerPieza(i,j).getColor())));
+                    ImageView imagenPieza = new ImageView(piezasView.dibujar(tablero.obtenerPieza(i,j).getNombre(),tablero.obtenerPieza(i,j).getColor()));
+                    Tooltip.install(imagenPieza, tooltipPieza);
+                    casilleros[j][i].getChildren().add(imagenPieza);
 
                 } catch (CasilleroEstaVacioException e){
 
@@ -202,11 +209,6 @@ public class TableroView extends Group implements Observer {
     public void change(){
 
         actualizarVistaTablero();
-    }
-
-    public void setControl(ControlesView control) {
-
-        this.control = control;
     }
 
 
