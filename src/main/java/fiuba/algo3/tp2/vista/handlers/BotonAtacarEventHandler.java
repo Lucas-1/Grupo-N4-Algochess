@@ -72,6 +72,12 @@ public class BotonAtacarEventHandler implements EventHandler<ActionEvent> {
 
             VBox finDelJuegoVBox = new VBox(20);
             Button botonSalirDelJuego = new Button("salir");
+            botonSalirDelJuego.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    stage.close();
+                }
+            });
             HBox lineaJugadorGanador = new HBox();
             Label ganador = new Label(algochess.obtenerJugadorConTurno().getNombre());
 
